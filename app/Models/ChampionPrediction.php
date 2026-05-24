@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Database\Factories\PredictionFactory;
+use Database\Factories\ChampionPredictionFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,16 +10,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[Fillable([
     'user_id',
-    'game_id',
-    'home_score',
-    'away_score',
-    'penalty_winner',
+    'fifa_team_id',
     'points',
     'scored_at',
 ])]
-class Prediction extends Model
+class ChampionPrediction extends Model
 {
-    /** @use HasFactory<PredictionFactory> */
+    /** @use HasFactory<ChampionPredictionFactory> */
     use HasFactory;
 
     /**
@@ -28,8 +25,6 @@ class Prediction extends Model
     protected function casts(): array
     {
         return [
-            'home_score' => 'integer',
-            'away_score' => 'integer',
             'points' => 'integer',
             'scored_at' => 'datetime',
         ];
@@ -38,10 +33,5 @@ class Prediction extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function game(): BelongsTo
-    {
-        return $this->belongsTo(Game::class);
     }
 }

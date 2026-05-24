@@ -33,10 +33,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'match_status',
     'home_score',
     'away_score',
+    'home_penalty_score',
+    'away_penalty_score',
+    'penalty_winner',
     'time_defined',
     'is_final',
     'payload',
     'synced_at',
+    'scored_at',
 ])]
 class Game extends Model
 {
@@ -54,10 +58,13 @@ class Game extends Model
             'match_status' => 'integer',
             'home_score' => 'integer',
             'away_score' => 'integer',
+            'home_penalty_score' => 'integer',
+            'away_penalty_score' => 'integer',
             'time_defined' => 'boolean',
             'is_final' => 'boolean',
             'payload' => 'array',
             'synced_at' => 'datetime',
+            'scored_at' => 'datetime',
         ];
     }
 
@@ -80,6 +87,10 @@ class Game extends Model
 
     public function isBettingOpen(): bool
     {
+        if ($this->scheduled_at === null || ! $this->scheduled_at->isFuture()) {
+            return false;
+        }
+
         return now()->lt($this->bettingClosesAt());
     }
 
@@ -96,6 +107,15 @@ class Game extends Model
     public function matchTitle(): string
     {
         return "{$this->homeDisplayName()} x {$this->awayDisplayName()}";
+    }
+
+    /**
+     * @param  Builder<Game>  $query
+     * @return Builder<Game>
+     */
+    public function scopeBettingOpen(Builder $query): Builder
+    {
+        return $query->where('scheduled_at', '>', now()->addMinute());
     }
 
     /**
@@ -125,5 +145,75 @@ class Game extends Model
     public function scopeKickoffPassed(Builder $query): Builder
     {
         return $query->where('scheduled_at', '<=', now());
+    }
+
+    public function isGroupStage(): bool
+    {
+        return $this->id_group !== null;
+    }
+
+    public function isKnockout(): bool
+    {
+        return ! $this->isGroupStage();
+    }
+
+    public function wentToPenalties(): bool
+    {
+        return $this->home_penalty_score !== null
+            && $this->away_penalty_score !== null
+            && ($this->home_penalty_score > 0 || $this->away_penalty_score > 0);
+    }
+
+    public function penaltyWinnerSide(): ?string
+    {
+        return $this->penalty_winner;
+    }
+
+    public function isTournamentFinal(): bool
+    {
+        return in_array($this->stage_name, config('bolao.final_stage_names', []), true);
+    }
+
+    public function winningFifaTeamId(): ?string
+    {
+        $side = $this->matchWinnerSide();
+
+        if ($side === 'home') {
+            return $this->home_fifa_team_id;
+        }
+
+        if ($side === 'away') {
+            return $this->away_fifa_team_id;
+        }
+
+        return null;
+    }
+
+    public function matchWinnerSide(): ?string
+    {
+        if ($this->wentToPenalties() && $this->penalty_winner !== null) {
+            return $this->penalty_winner;
+        }
+
+        if ($this->home_score === null || $this->away_score === null) {
+            return null;
+        }
+
+        if ($this->home_score > $this->away_score) {
+            return 'home';
+        }
+
+        if ($this->away_score > $this->home_score) {
+            return 'away';
+        }
+
+        return null;
+    }
+
+    public function isReadyForScoring(): bool
+    {
+        return $this->is_final
+            && $this->home_score !== null
+            && $this->away_score !== null;
     }
 }

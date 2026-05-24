@@ -69,4 +69,38 @@ class GameFactory extends Factory
             'local_scheduled_at' => now()->subDay(),
         ]);
     }
+
+    public function knockout(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'id_group' => null,
+            'group_name' => null,
+            'stage_name' => 'Round of 16',
+        ]);
+    }
+
+    public function finalMatch(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'id_group' => null,
+            'group_name' => null,
+            'stage_name' => 'Final',
+        ]);
+    }
+
+    /**
+     * @param  array{home_score?: int, away_score?: int, home_penalty_score?: int|null, away_penalty_score?: int|null, penalty_winner?: string|null}  $result
+     */
+    public function finished(array $result = []): static
+    {
+        return $this->past()->state(fn (array $attributes) => array_merge([
+            'home_score' => 2,
+            'away_score' => 1,
+            'home_penalty_score' => null,
+            'away_penalty_score' => null,
+            'penalty_winner' => null,
+            'match_status' => 4,
+            'is_final' => true,
+        ], $result));
+    }
 }
