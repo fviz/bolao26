@@ -45,8 +45,8 @@ onMounted(async () => {
                 <LockKeyhole class="size-4" />Códigos de recuperação do 2FA
             </CardTitle>
             <CardDescription>
-                Códigos de recuperação permitem recuperar o acesso se você perder seu dispositivo 2FA
-                armazenados em um gerenciador de senhas seguro.
+                Os códigos de recuperação permitem recuperar o acesso se você perder seu
+                dispositivo 2FA. Guarde-os em um gerenciador de senhas seguro.
             </CardDescription>
         </CardHeader>
         <CardContent>

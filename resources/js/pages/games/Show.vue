@@ -244,7 +244,7 @@ const venueLabel = (): string => {
                         Salvar previsão
                     </Button>
                     <Button as-child variant="outline">
-                        <Link :href="dashboard()">Voltar ao dashboard</Link>
+                        <Link :href="dashboard()">Voltar ao painel</Link>
                     </Button>
                 </div>
             </Form>

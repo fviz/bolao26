@@ -83,7 +83,7 @@ defineOptions({
                     :tabindex="4"
                     autocomplete="new-password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="Senha"
                     :passwordrules="passwordRules"
                 />
                 <InputError :message="errors.password" />
@@ -121,7 +121,7 @@ defineOptions({
                 :href="login()"
                 class="underline underline-offset-4"
                 :tabindex="7"
-                >Log in</TextLink
+                >Entrar</TextLink
             >
         </div>
     </Form>

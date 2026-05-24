@@ -31,7 +31,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Security settings',
+                title: 'Ajustes de segurança',
                 href: edit(),
             },
         ],
@@ -138,7 +138,7 @@ onUnmounted(() => clearTwoFactorAuthData());
 
             <div>
                 <Button v-if="hasSetupData" @click="showSetupModal = true">
-                    <ShieldCheck />Continue setup
+                    <ShieldCheck />Continuar configuração
                 </Button>
                 <Form
                     v-else
