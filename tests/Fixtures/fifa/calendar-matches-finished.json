@@ -1,0 +1,153 @@
+{
+    "ContinuationToken": null,
+    "ContinuationHash": null,
+    "Results": [
+        {
+            "IdCompetition": "17",
+            "IdSeason": "285023",
+            "IdStage": "289273",
+            "IdGroup": "289275",
+            "Weather": null,
+            "Attendance": null,
+            "IdMatch": "400021443",
+            "MatchDay": null,
+            "StageName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "First Stage"
+                }
+            ],
+            "GroupName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "Group A"
+                }
+            ],
+            "CompetitionName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "FIFA World Cup\u2122"
+                }
+            ],
+            "SeasonName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "FIFA World Cup 2026\u2122"
+                }
+            ],
+            "SeasonShortName": [],
+            "Date": "2026-06-11T19:00:00Z",
+            "LocalDate": "2026-06-11T13:00:00Z",
+            "Home": {
+                "Score": 2,
+                "Side": null,
+                "IdTeam": "43911",
+                "PictureUrl": "https://api.fifa.com/api/v3/picture/flags-{format}-{size}/MEX",
+                "IdCountry": "MEX",
+                "Tactics": null,
+                "TeamType": 1,
+                "AgeType": 7,
+                "TeamName": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Mexico"
+                    }
+                ],
+                "Abbreviation": "MEX",
+                "ShortClubName": "Mexico",
+                "FootballType": 0,
+                "Gender": 1,
+                "IdAssociation": "MEX"
+            },
+            "Away": {
+                "Score": 1,
+                "Side": null,
+                "IdTeam": "43883",
+                "PictureUrl": "https://api.fifa.com/api/v3/picture/flags-{format}-{size}/RSA",
+                "IdCountry": "RSA",
+                "Tactics": null,
+                "TeamType": 1,
+                "AgeType": 7,
+                "TeamName": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "South Africa"
+                    }
+                ],
+                "Abbreviation": "RSA",
+                "ShortClubName": "South Africa",
+                "FootballType": 0,
+                "Gender": 1,
+                "IdAssociation": "RSA"
+            },
+            "HomeTeamScore": 2,
+            "AwayTeamScore": 1,
+            "AggregateHomeTeamScore": null,
+            "AggregateAwayTeamScore": null,
+            "HomeTeamPenaltyScore": null,
+            "AwayTeamPenaltyScore": null,
+            "LastPeriodUpdate": null,
+            "Leg": null,
+            "IsHomeMatch": null,
+            "Stadium": {
+                "IdStadium": "400222084",
+                "Name": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Mexico City Stadium"
+                    }
+                ],
+                "Capacity": null,
+                "WebAddress": null,
+                "Built": null,
+                "Roof": false,
+                "Turf": null,
+                "IdCity": "400222094",
+                "CityName": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Mexico City"
+                    }
+                ],
+                "IdCountry": "MEX",
+                "PostalCode": null,
+                "Street": null,
+                "Email": null,
+                "Fax": null,
+                "Phone": null,
+                "AffiliationCountry": null,
+                "AffiliationRegion": null,
+                "Latitude": null,
+                "Longitude": null,
+                "Length": null,
+                "Width": null,
+                "Properties": {
+                    "IdIFES": "5000118"
+                },
+                "IsUpdateable": null
+            },
+            "IsTicketSalesAllowed": null,
+            "MatchTime": null,
+            "SecondHalfTime": null,
+            "FirstHalfTime": null,
+            "FirstHalfExtraTime": null,
+            "SecondHalfExtraTime": null,
+            "Winner": null,
+            "MatchReportUrl": null,
+            "PlaceHolderA": "A1",
+            "PlaceHolderB": "A2",
+            "BallPossession": null,
+            "Officials": [],
+            "MatchStatus": 4,
+            "ResultType": 0,
+            "MatchNumber": 1,
+            "TimeDefined": true,
+            "OfficialityStatus": 0,
+            "MatchLegInfo": null,
+            "Properties": {
+                "IdIFES": "151600"
+            },
+            "IsUpdateable": null
+        }
+    ]
+}
