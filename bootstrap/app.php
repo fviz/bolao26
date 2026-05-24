@@ -32,6 +32,9 @@ return Application::configure(basePath: dirname(__DIR__))
             ->cron('*/'.config('fifa.results_sync_minutes').' * * * *')
             ->withoutOverlapping();
     })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: '*'); 
+    })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
