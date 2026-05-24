@@ -94,3 +94,34 @@ test('prediction is accepted more than one minute before kickoff', function () {
 
     Carbon::setTestNow();
 });
+
+test('knockout draw prediction requires penalty winner', function () {
+    $user = User::factory()->create();
+    $game = Game::factory()->knockout()->create([
+        'scheduled_at' => now()->addHours(2),
+    ]);
+
+    $this->actingAs($user)
+        ->put(route('games.prediction.upsert', $game), [
+            'home_score' => 2,
+            'away_score' => 2,
+        ])
+        ->assertSessionHasErrors('penalty_winner');
+});
+
+test('knockout draw prediction saves penalty winner', function () {
+    $user = User::factory()->create();
+    $game = Game::factory()->knockout()->create([
+        'scheduled_at' => now()->addHours(2),
+    ]);
+
+    $this->actingAs($user)
+        ->put(route('games.prediction.upsert', $game), [
+            'home_score' => 2,
+            'away_score' => 2,
+            'penalty_winner' => 'home',
+        ])
+        ->assertRedirect(route('games.show', $game));
+
+    expect($game->fresh()->userPrediction($user)?->penalty_winner)->toBe('home');
+});

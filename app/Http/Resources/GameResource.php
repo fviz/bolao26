@@ -43,8 +43,15 @@ class GameResource extends JsonResource
                 $this->away_placeholder,
                 is_array($payload['Away'] ?? null) ? $payload['Away'] : null,
             ),
+            'isKnockout' => $this->isKnockout(),
+            'isFinal' => $this->is_final,
             'isBettingOpen' => $this->isBettingOpen(),
             'bettingClosesAt' => $this->bettingClosesAt()->toIso8601String(),
+            'result' => $this->when($this->is_final, fn (): array => [
+                'homeScore' => $this->home_score,
+                'awayScore' => $this->away_score,
+                'penaltyWinner' => $this->penalty_winner,
+            ]),
             'userPrediction' => $this->when(
                 $this->relationLoaded('predictions'),
                 fn () => $this->userPredictionFromRelation(),
@@ -70,7 +77,7 @@ class GameResource extends JsonResource
     }
 
     /**
-     * @return array{homeScore: int, awayScore: int}|null
+     * @return array{homeScore: int, awayScore: int, penaltyWinner: string|null, points: int|null}|null
      */
     private function userPredictionFromRelation(): ?array
     {
@@ -84,6 +91,8 @@ class GameResource extends JsonResource
         return [
             'homeScore' => $prediction->home_score,
             'awayScore' => $prediction->away_score,
+            'penaltyWinner' => $prediction->penalty_winner,
+            'points' => $prediction->points,
         ];
     }
 }

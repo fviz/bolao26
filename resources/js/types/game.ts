@@ -7,6 +7,14 @@ export type GameTeam = {
 export type UserPrediction = {
     homeScore: number;
     awayScore: number;
+    penaltyWinner: string | null;
+    points: number | null;
+};
+
+export type GameResult = {
+    homeScore: number;
+    awayScore: number;
+    penaltyWinner: string | null;
 };
 
 export type GameListItem = {
@@ -21,8 +29,11 @@ export type GameListItem = {
     cityName: string | null;
     home: GameTeam;
     away: GameTeam;
+    isKnockout: boolean;
+    isFinal: boolean;
     isBettingOpen: boolean;
     bettingClosesAt: string;
+    result?: GameResult;
     userPrediction?: UserPrediction | null;
 };
 
@@ -49,4 +60,23 @@ export type Paginated<T> = {
         to: number | null;
         total: number;
     };
+};
+
+export type LeaderboardEntry = {
+    id: number;
+    name: string;
+    totalPoints: number;
+    rank: number;
+    isCurrentUser: boolean;
+};
+
+export type ChampionTeam = {
+    fifaTeamId: string;
+    name: string;
+    abbr: string | null;
+};
+
+export type ChampionPrediction = {
+    fifaTeamId: string;
+    points: number | null;
 };
