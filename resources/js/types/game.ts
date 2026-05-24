@@ -17,6 +17,16 @@ export type GameResult = {
     penaltyWinner: string | null;
 };
 
+export type GamePredictionEntry = {
+    userId: number;
+    userName: string;
+    homeScore: number;
+    awayScore: number;
+    penaltyWinner: string | null;
+    points: number | null;
+    isCurrentUser: boolean;
+};
+
 export type GameListItem = {
     id: number;
     matchTitle: string;
@@ -32,9 +42,11 @@ export type GameListItem = {
     isKnockout: boolean;
     isFinal: boolean;
     isBettingOpen: boolean;
+    arePredictionsVisible: boolean;
     bettingClosesAt: string;
     result?: GameResult;
     userPrediction?: UserPrediction | null;
+    allPredictions?: GamePredictionEntry[];
 };
 
 export type Paginated<T> = {

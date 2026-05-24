@@ -94,6 +94,11 @@ class Game extends Model
         return now()->lt($this->bettingClosesAt());
     }
 
+    public function arePredictionsVisible(): bool
+    {
+        return ! $this->isBettingOpen();
+    }
+
     public function homeDisplayName(): string
     {
         return $this->home_name ?? $this->home_placeholder ?? '—';

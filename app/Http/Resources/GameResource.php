@@ -46,6 +46,7 @@ class GameResource extends JsonResource
             'isKnockout' => $this->isKnockout(),
             'isFinal' => $this->is_final,
             'isBettingOpen' => $this->isBettingOpen(),
+            'arePredictionsVisible' => $this->arePredictionsVisible(),
             'bettingClosesAt' => $this->bettingClosesAt()->toIso8601String(),
             'result' => $this->when($this->is_final, fn (): array => [
                 'homeScore' => $this->home_score,
@@ -54,7 +55,13 @@ class GameResource extends JsonResource
             ]),
             'userPrediction' => $this->when(
                 $this->relationLoaded('predictions'),
-                fn () => $this->userPredictionFromRelation(),
+                fn () => $this->userPredictionFromRelation($request),
+            ),
+            'allPredictions' => $this->when(
+                $this->arePredictionsVisible() && $this->relationLoaded('predictions'),
+                fn () => PredictionResource::collection(
+                    $this->predictions->sortBy(fn (Prediction $prediction): string => $prediction->user->name)->values(),
+                ),
             ),
         ];
     }
@@ -79,10 +86,10 @@ class GameResource extends JsonResource
     /**
      * @return array{homeScore: int, awayScore: int, penaltyWinner: string|null, points: int|null}|null
      */
-    private function userPredictionFromRelation(): ?array
+    private function userPredictionFromRelation(Request $request): ?array
     {
         /** @var Prediction|null $prediction */
-        $prediction = $this->predictions->first();
+        $prediction = $this->predictions->firstWhere('user_id', $request->user()?->id);
 
         if ($prediction === null) {
             return null;

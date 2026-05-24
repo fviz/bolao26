@@ -249,5 +249,74 @@ const venueLabel = (): string => {
                 </div>
             </Form>
         </section>
+
+        <section class="rounded-xl border p-4 md:p-6">
+            <Heading
+                variant="small"
+                title="Previsões"
+                :description="
+                    game.arePredictionsVisible
+                        ? 'Previsões de todos os participantes neste jogo.'
+                        : 'As previsões dos participantes serão reveladas quando as apostas encerrarem.'
+                "
+            />
+
+            <div v-if="!game.arePredictionsVisible" class="mt-4">
+                <p class="text-muted-foreground text-sm">
+                    As apostas ainda estão abertas para este jogo.
+                </p>
+            </div>
+
+            <div v-else-if="game.allPredictions?.length" class="mt-4">
+                <ol class="space-y-3 text-sm">
+                    <li
+                        v-for="prediction in game.allPredictions"
+                        :key="prediction.userId"
+                        class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between"
+                        :class="{ 'font-semibold': prediction.isCurrentUser }"
+                    >
+                        <span>
+                            {{ prediction.userName }}
+                            <span
+                                v-if="prediction.isCurrentUser"
+                                class="text-muted-foreground font-normal"
+                            >
+                                (você)
+                            </span>
+                        </span>
+                        <div class="text-right">
+                            <p class="text-base font-medium sm:text-sm">
+                                {{ prediction.homeScore }} ×
+                                {{ prediction.awayScore }}
+                                <span
+                                    v-if="prediction.penaltyWinner"
+                                    class="text-muted-foreground block text-xs font-normal sm:inline sm:text-sm"
+                                >
+                                    (pênaltis:
+                                    {{
+                                        penaltyWinnerLabel(
+                                            prediction.penaltyWinner,
+                                        )
+                                    }})
+                                </span>
+                            </p>
+                            <p
+                                v-if="prediction.points !== null"
+                                class="text-green-700 dark:text-green-400"
+                            >
+                                {{ prediction.points }} pontos
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <p
+                v-else-if="game.arePredictionsVisible"
+                class="text-muted-foreground mt-4 text-sm"
+            >
+                Nenhum participante registrou previsão para este jogo.
+            </p>
+        </section>
     </div>
 </template>
