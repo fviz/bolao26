@@ -266,10 +266,10 @@ const venueLabel = (): string => {
                     <li
                         v-for="prediction in game.allPredictions"
                         :key="prediction.userId"
-                        class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between"
+                        class="p-2 rounded-lg mb-2 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between odd:bg-gray-100 dark:odd:bg-gray-900/30"
                         :class="{ 'font-semibold': prediction.isCurrentUser }"
                     >
-                        <span>
+                        <span class="text-center sm:text-left">
                             {{ prediction.userName }}
                             <span
                                 v-if="prediction.isCurrentUser"
@@ -278,7 +278,7 @@ const venueLabel = (): string => {
                                 (você)
                             </span>
                         </span>
-                        <div class="text-right">
+                        <div class="text-center sm:text-right">
                             <p class="text-base font-medium sm:text-sm">
                                 <template
                                     v-if="
