@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
-import { rules } from '@/routes';
 import Heading from '@/components/Heading.vue';
+import { rules } from '@/routes';
 
 defineOptions({
     layout: {

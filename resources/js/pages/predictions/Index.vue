@@ -6,8 +6,8 @@ import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useGameSchedule } from '@/composables/useGameSchedule';
-import { index as predictionsIndex } from '@/routes/predictions';
 import { upsert as upsertChampionPrediction } from '@/routes/champion-prediction';
+import { index as predictionsIndex } from '@/routes/predictions';
 import type {
     ChampionPrediction,
     ChampionTeam,
