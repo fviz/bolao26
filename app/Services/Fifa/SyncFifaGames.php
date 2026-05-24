@@ -4,6 +4,8 @@ namespace App\Services\Fifa;
 
 use App\Models\Game;
 use App\Services\Fifa\Exceptions\FifaApiException;
+use App\Services\Scoring\ScoreChampionPredictions;
+use App\Services\Scoring\ScoreGamePredictions;
 use Illuminate\Support\Collection;
 
 class SyncFifaGames
@@ -11,6 +13,8 @@ class SyncFifaGames
     public function __construct(
         private readonly FifaCalendarClient $client,
         private readonly FifaMatchMapper $mapper,
+        private readonly ScoreGamePredictions $scoreGamePredictions,
+        private readonly ScoreChampionPredictions $scoreChampionPredictions,
     ) {}
 
     /**
@@ -62,6 +66,15 @@ class SyncFifaGames
             $attributes = $this->mapper->toAttributes($match);
             $game->fill($attributes);
             $game->save();
+
+            if ($this->shouldScoreGame($game)) {
+                $this->scoreGamePredictions->score($game->fresh());
+
+                if ($game->fresh()->isTournamentFinal()) {
+                    $this->scoreChampionPredictions->scoreForFinal($game->fresh());
+                }
+            }
+
             $updated++;
         }
 
@@ -75,5 +88,21 @@ class SyncFifaGames
     private function matchesIndexedById(array $matches): Collection
     {
         return collect($matches)->keyBy(fn (array $match): string => (string) $match['IdMatch']);
+    }
+
+    private function shouldScoreGame(Game $game): bool
+    {
+        if (! $game->is_final) {
+            return false;
+        }
+
+        return $game->wasChanged([
+            'is_final',
+            'home_score',
+            'away_score',
+            'home_penalty_score',
+            'away_penalty_score',
+            'penalty_winner',
+        ]);
     }
 }

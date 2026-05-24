@@ -2,6 +2,7 @@
 
 namespace App\Services\Fifa;
 
+use App\Support\PenaltyWinner;
 use Illuminate\Support\Carbon;
 
 class FifaMatchMapper
@@ -16,6 +17,8 @@ class FifaMatchMapper
     {
         $homeScore = $this->normalizeScore($match['HomeTeamScore'] ?? null);
         $awayScore = $this->normalizeScore($match['AwayTeamScore'] ?? null);
+        $homePenaltyScore = $this->normalizeScore($match['HomeTeamPenaltyScore'] ?? null);
+        $awayPenaltyScore = $this->normalizeScore($match['AwayTeamPenaltyScore'] ?? null);
         $matchStatus = (int) ($match['MatchStatus'] ?? 0);
 
         return [
@@ -43,6 +46,13 @@ class FifaMatchMapper
             'match_status' => $matchStatus,
             'home_score' => $homeScore,
             'away_score' => $awayScore,
+            'home_penalty_score' => $homePenaltyScore,
+            'away_penalty_score' => $awayPenaltyScore,
+            'penalty_winner' => $this->determinePenaltyWinner(
+                $match,
+                $homePenaltyScore,
+                $awayPenaltyScore,
+            ),
             'time_defined' => (bool) ($match['TimeDefined'] ?? true),
             'is_final' => $this->determineIsFinal($matchStatus, $homeScore, $awayScore),
             'payload' => $match,
@@ -106,5 +116,44 @@ class FifaMatchMapper
         }
 
         return in_array($matchStatus, [3, 4, 7], true);
+    }
+
+    /**
+     * @param  array<string, mixed>  $match
+     */
+    private function determinePenaltyWinner(
+        array $match,
+        ?int $homePenaltyScore,
+        ?int $awayPenaltyScore,
+    ): ?string {
+        if ($homePenaltyScore === null || $awayPenaltyScore === null) {
+            return null;
+        }
+
+        if ($homePenaltyScore > $awayPenaltyScore) {
+            return PenaltyWinner::Home;
+        }
+
+        if ($awayPenaltyScore > $homePenaltyScore) {
+            return PenaltyWinner::Away;
+        }
+
+        $winnerTeamId = isset($match['Winner']) ? (string) $match['Winner'] : null;
+        $homeTeamId = $this->teamId($match['Home'] ?? []);
+        $awayTeamId = $this->teamId($match['Away'] ?? []);
+
+        if ($winnerTeamId === null || $homeTeamId === null || $awayTeamId === null) {
+            return null;
+        }
+
+        if ($winnerTeamId === $homeTeamId) {
+            return PenaltyWinner::Home;
+        }
+
+        if ($winnerTeamId === $awayTeamId) {
+            return PenaltyWinner::Away;
+        }
+
+        return null;
     }
 }
