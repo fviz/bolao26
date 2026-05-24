@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
+import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
 import { dashboard } from '@/routes';
+import type { GameListItem, Paginated } from '@/types/game';
+
+type Props = {
+    games: Paginated<GameListItem>;
+};
+
+defineProps<Props>();
 
 defineOptions({
     layout: {
@@ -42,10 +50,9 @@ defineOptions({
             </div>
         </div>
         <div
-            class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
+            class="relative flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
         >
-        Lista de jogos
-            <PlaceholderPattern />
+            <UpcomingGamesList :games="games" />
         </div>
     </div>
 </template>

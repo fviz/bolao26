@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Carbon\CarbonInterface;
+use Database\Factories\GameFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'fifa_match_id',
@@ -36,6 +40,9 @@ use Illuminate\Database\Eloquent\Model;
 ])]
 class Game extends Model
 {
+    /** @use HasFactory<GameFactory> */
+    use HasFactory;
+
     /**
      * @return array<string, string>
      */
@@ -52,6 +59,54 @@ class Game extends Model
             'payload' => 'array',
             'synced_at' => 'datetime',
         ];
+    }
+
+    public function predictions(): HasMany
+    {
+        return $this->hasMany(Prediction::class);
+    }
+
+    public function userPrediction(User $user): ?Prediction
+    {
+        return $this->predictions()
+            ->where('user_id', $user->id)
+            ->first();
+    }
+
+    public function bettingClosesAt(): CarbonInterface
+    {
+        return $this->scheduled_at->copy()->subMinute();
+    }
+
+    public function isBettingOpen(): bool
+    {
+        return now()->lt($this->bettingClosesAt());
+    }
+
+    public function homeDisplayName(): string
+    {
+        return $this->home_name ?? $this->home_placeholder ?? '—';
+    }
+
+    public function awayDisplayName(): string
+    {
+        return $this->away_name ?? $this->away_placeholder ?? '—';
+    }
+
+    public function matchTitle(): string
+    {
+        return "{$this->homeDisplayName()} x {$this->awayDisplayName()}";
+    }
+
+    /**
+     * @param  Builder<Game>  $query
+     * @return Builder<Game>
+     */
+    public function scopeUpcoming(Builder $query): Builder
+    {
+        return $query
+            ->where('scheduled_at', '>', now())
+            ->orderBy('scheduled_at');
     }
 
     /**
