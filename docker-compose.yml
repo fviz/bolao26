@@ -2,6 +2,9 @@
 # "Environment variables" section. Compose path: docker-compose.yml
 #
 # Local: docker compose --env-file .env.docker up -d --build
+#
+# The app service joins the external nginx_proxy network (Nginx Proxy Manager) on
+# every deploy. Create it once on the host if missing: docker network create nginx_proxy
 
 x-app-image: &app-image
   image: ${COMPOSE_PROJECT_NAME:-bolao26}-app
@@ -88,6 +91,9 @@ services:
     depends_on:
       mariadb:
         condition: service_healthy
+    networks:
+      - default
+      - nginx_proxy
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost/up']
       interval: 30s
@@ -131,3 +137,8 @@ volumes:
   mariadb_data:
   app_storage:
   app_cache:
+
+networks:
+  nginx_proxy:
+    external: true
+    name: ${NGINX_PROXY_NETWORK:-nginx_proxy}
