@@ -1,15 +1,28 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
+import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
-import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
+import LeaderboardList from '@/components/LeaderboardList.vue';
+import { useGameSchedule } from '@/composables/useGameSchedule';
 import { dashboard } from '@/routes';
-import type { GameListItem, Paginated } from '@/types/game';
+import { show as showGame } from '@/routes/games';
+import { index as rankingIndex } from '@/routes/ranking';
+import type {
+    GameListItem,
+    LeaderboardEntry,
+    Paginated,
+} from '@/types/game';
 
 type Props = {
     games: Paginated<GameListItem>;
+    userTotalPoints: number;
+    leaderboard: LeaderboardEntry[];
+    nextGame: GameListItem | null;
 };
 
 defineProps<Props>();
+
+const { formatScheduledAt } = useGameSchedule();
 
 defineOptions({
     layout: {
@@ -31,24 +44,60 @@ defineOptions({
     >
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div
-                class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
+                class="flex flex-col justify-center gap-1 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
             >
-                Minha pontuação
-                <PlaceholderPattern />
+                <p class="text-muted-foreground text-sm">Minha pontuação</p>
+                <p class="text-3xl font-bold">{{ userTotalPoints }}</p>
+                <p class="text-muted-foreground text-xs">pontos no total</p>
             </div>
             <div
-                class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
+                class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
             >
-                Ranking geral
-                <PlaceholderPattern />
+                <p class="text-muted-foreground text-sm">Ranking geral</p>
+                <LeaderboardList :entries="leaderboard" />
+                <Link
+                    :href="rankingIndex()"
+                    class="text-primary text-sm font-medium hover:underline"
+                >
+                    Ver ranking completo
+                </Link>
             </div>
             <div
-                class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
+                class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
             >
-                Próximo jogo
-                <PlaceholderPattern />
+                <p class="text-muted-foreground text-sm">Próximo jogo</p>
+                <template v-if="nextGame">
+                    <GameMatchDisplay
+                        :home="nextGame.home"
+                        :away="nextGame.away"
+                        layout="stacked"
+                    />
+                    <p class="text-muted-foreground text-sm">
+                        {{
+                            formatScheduledAt(nextGame.scheduledAt).combined
+                        }}
+                    </p>
+                    <p
+                        v-if="nextGame.userPrediction"
+                        class="text-sm font-medium"
+                    >
+                        Seu palpite:
+                        {{ nextGame.userPrediction.homeScore }} ×
+                        {{ nextGame.userPrediction.awayScore }}
+                    </p>
+                    <Link
+                        :href="showGame(nextGame.id)"
+                        class="text-primary text-sm font-medium hover:underline"
+                    >
+                        Ver jogo
+                    </Link>
+                </template>
+                <p v-else class="text-muted-foreground text-sm">
+                    Nenhum jogo programado.
+                </p>
             </div>
         </div>
+
         <div
             class="relative flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
         >
