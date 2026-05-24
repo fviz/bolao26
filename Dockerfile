@@ -21,15 +21,13 @@ RUN composer install \
     --prefer-dist \
     --optimize-autoloader
 
-FROM php:8.4-cli-alpine AS frontend
+RUN rm -f bootstrap/cache/*.php \
+    && APP_KEY="base64:$(php -r 'echo base64_encode(random_bytes(32));')" \
+        php artisan wayfinder:generate --no-interaction --with-form
+
+FROM node:22-alpine AS frontend
 
 WORKDIR /var/www/html
-
-RUN apk add --no-cache \
-    nodejs \
-    npm \
-    && docker-php-ext-install -j"$(nproc)" mbstring xml zip \
-    && rm -rf /var/cache/apk/*
 
 COPY package.json package-lock.json ./
 
@@ -38,8 +36,11 @@ RUN npm ci
 COPY . .
 
 COPY --from=vendor /var/www/html/vendor ./vendor
+COPY --from=vendor /var/www/html/resources/js/actions ./resources/js/actions
+COPY --from=vendor /var/www/html/resources/js/routes ./resources/js/routes
+COPY --from=vendor /var/www/html/resources/js/wayfinder ./resources/js/wayfinder
 
-ENV APP_KEY=base64:dGVtcG9yYXJ5a2V5Zm9yYnVpbGRvbmx5AAAAAAAAAAAAAAA=
+ENV SKIP_WAYFINDER=true
 
 RUN npm run build
 
@@ -80,9 +81,8 @@ COPY . .
 COPY --from=vendor /var/www/html/vendor ./vendor
 COPY --from=frontend /var/www/html/public/build ./public/build
 
-ENV APP_KEY=base64:dGVtcG9yYXJ5a2V5Zm9yYnVpbGRvbmx5AAAAAAAAAAAAAAA=
-
-RUN php artisan storage:link \
+RUN rm -f bootstrap/cache/*.php \
+    && ln -sf ../storage/app/public public/storage \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R ug+rwx storage bootstrap/cache
 

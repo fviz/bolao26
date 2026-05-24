@@ -3,6 +3,12 @@ set -e
 
 cd /var/www/html
 
+if [ -z "${APP_KEY:-}" ]; then
+    echo "APP_KEY is not set. Add it to your Portainer stack environment variables."
+    echo "Generate one with: php artisan key:generate --show"
+    exit 1
+fi
+
 ensure_storage_directories() {
     mkdir -p \
         storage/app/public \
