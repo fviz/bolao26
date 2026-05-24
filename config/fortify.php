@@ -154,4 +154,16 @@ return [
         ]),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Registration Invite Code
+    |--------------------------------------------------------------------------
+    |
+    | Users must submit this code when registering. If empty, registration
+    | is blocked (fail-closed). Set REGISTRATION_INVITE_CODE in your .env.
+    |
+    */
+
+    'registration_invite_code' => env('REGISTRATION_INVITE_CODE'),
+
 ];
