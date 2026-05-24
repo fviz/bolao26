@@ -5,10 +5,20 @@ import AuthLayout from '@/layouts/AuthLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
 import { initializeFlashToast } from '@/lib/flashToast';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+function resolveAppName(): string {
+    const runtimeAppName = document
+        .querySelector('meta[name="app-name"]')
+        ?.getAttribute('content');
+
+    return runtimeAppName || import.meta.env.VITE_APP_NAME || 'Laravel';
+}
 
 createInertiaApp({
-    title: (title) => (title ? `${title} - ${appName}` : appName),
+    title: (title) => {
+        const appName = resolveAppName();
+
+        return title ? `${title} - ${appName}` : appName;
+    },
     layout: (name) => {
         switch (true) {
             case name === 'Welcome':
