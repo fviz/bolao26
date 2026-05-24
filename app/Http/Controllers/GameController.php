@@ -12,13 +12,7 @@ class GameController extends Controller
 {
     public function show(Request $request, Game $game): Response
     {
-        if ($game->arePredictionsVisible()) {
-            $game->load(['predictions.user']);
-        } else {
-            $game->load([
-                'predictions' => fn ($query) => $query->where('user_id', $request->user()->id),
-            ]);
-        }
+        $game->load(['predictions.user']);
 
         return Inertia::render('games/Show', [
             'game' => GameResource::make($game),

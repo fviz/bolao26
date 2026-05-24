@@ -20,11 +20,11 @@ export type GameResult = {
 export type GamePredictionEntry = {
     userId: number;
     userName: string;
-    homeScore: number;
-    awayScore: number;
-    penaltyWinner: string | null;
-    points: number | null;
     isCurrentUser: boolean;
+    homeScore?: number;
+    awayScore?: number;
+    penaltyWinner?: string | null;
+    points?: number | null;
 };
 
 export type GameListItem = {

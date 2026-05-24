@@ -261,13 +261,7 @@ const venueLabel = (): string => {
                 "
             />
 
-            <div v-if="!game.arePredictionsVisible" class="mt-4">
-                <p class="text-muted-foreground text-sm">
-                    As apostas ainda estão abertas para este jogo.
-                </p>
-            </div>
-
-            <div v-else-if="game.allPredictions?.length" class="mt-4">
+            <div v-if="game.allPredictions?.length" class="mt-4">
                 <ol class="space-y-3 text-sm">
                     <li
                         v-for="prediction in game.allPredictions"
@@ -286,22 +280,34 @@ const venueLabel = (): string => {
                         </span>
                         <div class="text-right">
                             <p class="text-base font-medium sm:text-sm">
-                                {{ prediction.homeScore }} ×
-                                {{ prediction.awayScore }}
-                                <span
-                                    v-if="prediction.penaltyWinner"
-                                    class="text-muted-foreground block text-xs font-normal sm:inline sm:text-sm"
+                                <template
+                                    v-if="
+                                        prediction.homeScore !== undefined &&
+                                        prediction.awayScore !== undefined
+                                    "
                                 >
-                                    (pênaltis:
-                                    {{
-                                        penaltyWinnerLabel(
-                                            prediction.penaltyWinner,
-                                        )
-                                    }})
-                                </span>
+                                    {{ prediction.homeScore }} ×
+                                    {{ prediction.awayScore }}
+                                    <span
+                                        v-if="prediction.penaltyWinner"
+                                        class="text-muted-foreground block text-xs font-normal sm:inline sm:text-sm"
+                                    >
+                                        (pênaltis:
+                                        {{
+                                            penaltyWinnerLabel(
+                                                prediction.penaltyWinner,
+                                            )
+                                        }})
+                                    </span>
+                                </template>
+                                <template v-else>? × ?</template>
                             </p>
                             <p
-                                v-if="prediction.points !== null"
+                                v-if="
+                                    game.arePredictionsVisible &&
+                                    prediction.points !== null &&
+                                    prediction.points !== undefined
+                                "
                                 class="text-green-700 dark:text-green-400"
                             >
                                 {{ prediction.points }} pontos
@@ -311,10 +317,7 @@ const venueLabel = (): string => {
                 </ol>
             </div>
 
-            <p
-                v-else-if="game.arePredictionsVisible"
-                class="text-muted-foreground mt-4 text-sm"
-            >
+            <p v-else class="text-muted-foreground mt-4 text-sm">
                 Nenhum participante registrou previsão para este jogo.
             </p>
         </section>

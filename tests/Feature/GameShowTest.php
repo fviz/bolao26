@@ -32,7 +32,7 @@ test('authenticated users can view an upcoming game', function () {
             ->where('game.isBettingOpen', true)
             ->where('game.arePredictionsVisible', false)
             ->where('game.userPrediction', null)
-            ->missing('game.allPredictions'));
+            ->has('game.allPredictions', 0));
 });
 
 test('other users predictions stay hidden while betting is open', function () {
@@ -59,7 +59,15 @@ test('other users predictions stay hidden while betting is open', function () {
             ->where('game.arePredictionsVisible', false)
             ->where('game.userPrediction.homeScore', 2)
             ->where('game.userPrediction.awayScore', 0)
-            ->missing('game.allPredictions'));
+            ->has('game.allPredictions', 2)
+            ->where('game.allPredictions.0.userName', 'Other User')
+            ->where('game.allPredictions.0.isCurrentUser', false)
+            ->missing('game.allPredictions.0.homeScore')
+            ->missing('game.allPredictions.0.awayScore')
+            ->where('game.allPredictions.1.userName', 'Viewer')
+            ->where('game.allPredictions.1.isCurrentUser', true)
+            ->where('game.allPredictions.1.homeScore', 2)
+            ->where('game.allPredictions.1.awayScore', 0));
 });
 
 test('all predictions are visible after betting closes', function () {

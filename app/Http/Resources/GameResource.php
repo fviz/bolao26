@@ -58,10 +58,8 @@ class GameResource extends JsonResource
                 fn () => $this->userPredictionFromRelation($request),
             ),
             'allPredictions' => $this->when(
-                $this->arePredictionsVisible() && $this->relationLoaded('predictions'),
-                fn () => PredictionResource::collection(
-                    $this->predictions->sortBy(fn (Prediction $prediction): string => $prediction->user->name)->values(),
-                ),
+                $this->relationLoaded('predictions'),
+                fn () => $this->allPredictionsPayload($request),
             ),
         ];
     }
@@ -81,6 +79,40 @@ class GameResource extends JsonResource
             'abbr' => $abbr,
             'flagEmoji' => TeamFlagEmoji::forTeam($abbr, $payloadSide),
         ];
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private function allPredictionsPayload(Request $request): array
+    {
+        $sorted = $this->predictions
+            ->sortBy(fn (Prediction $prediction): string => $prediction->user->name)
+            ->values();
+
+        if ($this->arePredictionsVisible()) {
+            return PredictionResource::collection($sorted)->resolve($request);
+        }
+
+        return $sorted
+            ->map(function (Prediction $prediction) use ($request): array {
+                $isCurrentUser = $request->user()?->id === $prediction->user_id;
+
+                $payload = [
+                    'userId' => $prediction->user_id,
+                    'userName' => $prediction->user->name,
+                    'isCurrentUser' => $isCurrentUser,
+                ];
+
+                if ($isCurrentUser) {
+                    $payload['homeScore'] = $prediction->home_score;
+                    $payload['awayScore'] = $prediction->away_score;
+                    $payload['penaltyWinner'] = $prediction->penalty_winner;
+                }
+
+                return $payload;
+            })
+            ->all();
     }
 
     /**
