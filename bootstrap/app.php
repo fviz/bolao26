@@ -22,6 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
         ]);
+
+        $middleware->trustProxies(at: '*'); 
     })
     ->withSchedule(function (Schedule $schedule): void {
         $schedule->command('games:sync-fifa')
@@ -31,9 +33,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $schedule->command('games:sync-fifa-results')
             ->cron('*/'.config('fifa.results_sync_minutes').' * * * *')
             ->withoutOverlapping();
-    })
-    ->withMiddleware(function (Middleware $middleware) {
-        $middleware->trustProxies(at: '*'); 
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
