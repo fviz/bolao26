@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid, Volleyball } from 'lucide-vue-next';
+import { BookOpen, ClipboardList, Trophy, Volleyball } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -15,6 +15,8 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard, rules } from '@/routes';
+import { index as predictionsIndex } from '@/routes/predictions';
+import { index as rankingIndex } from '@/routes/ranking';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -22,6 +24,16 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard do Bolão',
         href: dashboard(),
         icon: Volleyball,
+    },
+    {
+        title: 'Ranking',
+        href: rankingIndex(),
+        icon: Trophy,
+    },
+    {
+        title: 'Minhas previsões',
+        href: predictionsIndex(),
+        icon: ClipboardList,
     },
 ];
 
