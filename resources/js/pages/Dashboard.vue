@@ -7,7 +7,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Dashboard',
+                title: 'Dashboard do Bolão',
                 href: dashboard(),
             },
         ],
@@ -16,7 +16,7 @@ defineOptions({
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Dashboard do Bolão" />
 
     <div
         class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"
@@ -25,22 +25,26 @@ defineOptions({
             <div
                 class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
             >
+                Minha pontuação
                 <PlaceholderPattern />
             </div>
             <div
                 class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
             >
+                Ranking geral
                 <PlaceholderPattern />
             </div>
             <div
                 class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
             >
+                Próximo jogo
                 <PlaceholderPattern />
             </div>
         </div>
         <div
             class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
         >
+        Lista de jogos
             <PlaceholderPattern />
         </div>
     </div>
