@@ -29,6 +29,42 @@ test('user can save champion prediction before deadline', function () {
     expect($user->fresh()->championPrediction?->fifa_team_id)->toBe('team-home');
 });
 
+test('user can remove champion prediction before deadline', function () {
+    Config::set('bolao.champion_predictions_deadline', now()->addDay()->toDateTimeString());
+
+    $user = User::factory()->create();
+    $game = Game::factory()->create([
+        'home_fifa_team_id' => 'team-home',
+        'home_name' => 'Brazil',
+    ]);
+
+    ChampionPrediction::factory()->create([
+        'user_id' => $user->id,
+        'fifa_team_id' => $game->home_fifa_team_id,
+    ]);
+
+    $this->actingAs($user)
+        ->delete(route('champion-prediction.destroy'))
+        ->assertRedirect(route('predictions.index'));
+
+    expect($user->fresh()->championPrediction)->toBeNull();
+});
+
+test('champion prediction removal rejected after deadline', function () {
+    Config::set('bolao.champion_predictions_deadline', now()->subMinute()->toDateTimeString());
+
+    $user = User::factory()->create();
+
+    ChampionPrediction::factory()->create([
+        'user_id' => $user->id,
+        'fifa_team_id' => 'team-home',
+    ]);
+
+    $this->actingAs($user)
+        ->delete(route('champion-prediction.destroy'))
+        ->assertSessionHasErrors('fifa_team_id');
+});
+
 test('champion prediction rejected after deadline', function () {
     Config::set('bolao.champion_predictions_deadline', now()->subMinute()->toDateTimeString());
 

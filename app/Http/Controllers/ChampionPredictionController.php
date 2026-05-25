@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DestroyChampionPredictionRequest;
 use App\Http\Requests\StoreChampionPredictionRequest;
 use Illuminate\Http\RedirectResponse;
 
@@ -13,6 +14,13 @@ class ChampionPredictionController extends Controller
             ['user_id' => $request->user()->id],
             $request->validated(),
         );
+
+        return to_route('predictions.index');
+    }
+
+    public function destroy(DestroyChampionPredictionRequest $request): RedirectResponse
+    {
+        $request->user()->championPrediction?->delete();
 
         return to_route('predictions.index');
     }

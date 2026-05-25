@@ -24,6 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('games.comments.destroy')
         ->scopeBindings();
     Route::put('champion-prediction', [ChampionPredictionController::class, 'upsert'])->name('champion-prediction.upsert');
+    Route::delete('champion-prediction', [ChampionPredictionController::class, 'destroy'])->name('champion-prediction.destroy');
     Route::inertia('rules', 'Rules')->name('rules');
 });
 

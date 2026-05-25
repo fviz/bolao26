@@ -1,12 +1,23 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
+import { MoreHorizontal } from 'lucide-vue-next';
+import { computed, ref } from 'vue';
 import GamesList from '@/components/games/GamesList.vue';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Label } from '@/components/ui/label';
 import { useGameSchedule } from '@/composables/useGameSchedule';
-import { upsert as upsertChampionPrediction } from '@/routes/champion-prediction';
+import {
+    destroy as destroyChampionPrediction,
+    upsert as upsertChampionPrediction,
+} from '@/routes/champion-prediction';
 import { index as predictionsIndex } from '@/routes/predictions';
 import type {
     ChampionPrediction,
@@ -24,9 +35,35 @@ type Props = {
     championTeams: ChampionTeam[];
 };
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const { formatScheduledAt } = useGameSchedule();
+
+const showChampionForm = ref(false);
+
+const championTeamName = computed(() => {
+    if (!props.championPrediction) {
+        return null;
+    }
+
+    return (
+        props.championTeams.find(
+            (team) => team.fifaTeamId === props.championPrediction?.fifaTeamId,
+        )?.name ?? props.championPrediction.fifaTeamId
+    );
+});
+
+const showChampionPredictionForm = computed(
+    () =>
+        props.championPredictionsOpen &&
+        props.championTeams.length > 0 &&
+        (!props.championPrediction || showChampionForm.value),
+);
+
+const canManageChampionPrediction = computed(
+    () =>
+        props.championPrediction !== null && props.championPredictionsOpen,
+);
 
 defineOptions({
     layout: {
@@ -54,15 +91,53 @@ defineOptions({
             <div
                 class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
             >
-                <p class="text-muted-foreground text-sm">Campeão</p>
+                <div class="flex items-start justify-between gap-2">
+                    <p class="text-muted-foreground text-sm">Campeão</p>
+                    <DropdownMenu v-if="canManageChampionPrediction">
+                        <DropdownMenuTrigger as-child>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                class="size-8 shrink-0"
+                                aria-label="Opções do palpite de campeão"
+                            >
+                                <MoreHorizontal class="size-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuItem
+                                @select="
+                                    (event) => {
+                                        event.preventDefault();
+                                        showChampionForm = true;
+                                    }
+                                "
+                            >
+                                Editar palpite
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                                variant="destructive"
+                                as-child
+                            >
+                                <Form
+                                    v-bind="destroyChampionPrediction.form()"
+                                    :options="{ preserveScroll: true }"
+                                    class="w-full"
+                                    @success="showChampionForm = false"
+                                >
+                                    <button
+                                        type="submit"
+                                        class="w-full cursor-default text-left"
+                                    >
+                                        Remover palpite
+                                    </button>
+                                </Form>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
                 <p v-if="championPrediction" class="font-medium">
-                    {{
-                        championTeams.find(
-                            (t) =>
-                                t.fifaTeamId ===
-                                championPrediction?.fifaTeamId,
-                        )?.name ?? championPrediction.fifaTeamId
-                    }}
+                    {{ championTeamName }}
                     <span
                         v-if="championPrediction.points !== null"
                         class="text-green-700 dark:text-green-400"
@@ -84,14 +159,16 @@ defineOptions({
         </div>
 
         <section
-            v-if="championPredictionsOpen && championTeams.length"
+            v-if="showChampionPredictionForm"
             class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
         >
             <h2 class="mb-3 text-lg font-semibold">Palpite de campeão</h2>
             <Form
                 v-bind="upsertChampionPrediction.form()"
                 class="flex flex-wrap items-end gap-4"
+                :options="{ preserveScroll: true }"
                 v-slot="{ errors, processing }"
+                @success="showChampionForm = false"
             >
                 <div class="grid min-w-48 flex-1 gap-2">
                     <Label for="champion_team">Seleção campeã</Label>
@@ -116,7 +193,11 @@ defineOptions({
                     <InputError :message="errors.fifa_team_id" />
                 </div>
                 <Button type="submit" :disabled="processing">
-                    Salvar campeão
+                    {{
+                        championPrediction
+                            ? 'Atualizar campeão'
+                            : 'Salvar campeão'
+                    }}
                 </Button>
             </Form>
         </section>
