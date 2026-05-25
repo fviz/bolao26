@@ -136,6 +136,20 @@ test('deleting account removes the avatar file from storage', function () {
     Storage::disk('public')->assertMissing($path);
 });
 
+test('uploaded avatar is publicly accessible at storage url', function () {
+    $user = User::factory()->create();
+
+    $this
+        ->actingAs($user)
+        ->post(route('profile.avatar.store'), [
+            'avatar' => UploadedFile::fake()->image('avatar.jpg'),
+        ]);
+
+    $user->refresh();
+
+    $this->get($user->avatar)->assertOk();
+});
+
 test('profile page includes avatar url after upload', function () {
     $user = User::factory()->create();
 

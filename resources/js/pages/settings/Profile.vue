@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Form, Head, Link, usePage } from '@inertiajs/vue3';
+import { Form, Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import ProfileController from '@/actions/App/Http/Controllers/Settings/ProfileController';
 import DeleteUser from '@/components/DeleteUser.vue';
@@ -36,18 +36,42 @@ const { getInitials } = useInitials();
 
 const avatarPreviewUrl = ref<string | null>(null);
 
+const avatarForm = useForm<{ avatar: File | null }>({
+    avatar: null,
+});
+
 const displayAvatarUrl = computed(
     () => avatarPreviewUrl.value ?? user.value.avatar ?? null,
 );
 
 const onAvatarFileChange = (event: Event): void => {
-    const file = (event.target as HTMLInputElement).files?.[0];
+    const file = (event.target as HTMLInputElement).files?.[0] ?? null;
+
+    avatarForm.avatar = file;
 
     if (avatarPreviewUrl.value) {
         URL.revokeObjectURL(avatarPreviewUrl.value);
     }
 
     avatarPreviewUrl.value = file ? URL.createObjectURL(file) : null;
+};
+
+const submitAvatar = (): void => {
+    if (!avatarForm.avatar) {
+        return;
+    }
+
+    avatarForm.post(ProfileController.storeAvatar.url(), {
+        preserveScroll: true,
+        onSuccess: () => {
+            avatarForm.reset('avatar');
+
+            if (avatarPreviewUrl.value) {
+                URL.revokeObjectURL(avatarPreviewUrl.value);
+                avatarPreviewUrl.value = null;
+            }
+        },
+    });
 };
 </script>
 
@@ -84,34 +108,31 @@ const onAvatarFileChange = (event: Event): void => {
             </div>
 
             <div class="flex flex-col gap-3">
-                <Form
-                    v-bind="ProfileController.storeAvatar.form()"
-                    :options="{ preserveScroll: true }"
+                <form
                     class="flex flex-wrap items-center gap-3"
-                    v-slot="{ errors, processing }"
+                    @submit.prevent="submitAvatar"
                 >
                     <div class="grid gap-2">
                         <Label for="avatar" class="sr-only"
                             >Selecionar foto de perfil</Label
                         >
-                        <Input
+                        <input
                             id="avatar"
                             type="file"
-                            name="avatar"
                             accept="image/jpeg,image/png,image/webp"
-                            class="max-w-xs"
+                            class="border-input max-w-xs rounded-md border bg-transparent px-3 py-1 text-sm file:mr-3 file:border-0 file:bg-transparent file:text-sm file:font-medium"
                             @change="onAvatarFileChange"
                         />
-                        <InputError :message="errors.avatar" />
+                        <InputError :message="avatarForm.errors.avatar" />
                     </div>
                     <Button
                         type="submit"
-                        :disabled="processing"
+                        :disabled="avatarForm.processing || !avatarForm.avatar"
                         data-test="upload-avatar-button"
                     >
                         Enviar foto
                     </Button>
-                </Form>
+                </form>
 
                 <Form
                     v-if="user.avatar"
