@@ -41,10 +41,10 @@ defineOptions({
     >
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div
-                class="flex flex-col justify-between gap-1 rounded-xl border border-green-300 bg-green-50 p-4 text-green-500 dark:border-green-900 dark:bg-green-950 dark:text-green-400"
+                class="flex flex-col justify-between gap-1 rounded-xl border p-4"
             >
                 <div class="">
-                    <p class="text-sm text-green-700 dark:text-green-400">
+                    <p class="text-sm">
                         Minha pontuação
                     </p>
                 </div>
@@ -60,26 +60,26 @@ defineOptions({
                 </div>
             </div>
             <div
-                class="flex flex-col justify-between gap-2 rounded-xl border border-blue-300 bg-blue-50 p-4 text-blue-500 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-400"
+                class="flex flex-col justify-between gap-2 rounded-xl border p-4"
             >
                 <div>
                     <p class="text-sm">Ranking geral</p>
                     <LeaderboardList
                         :entries="leaderboard"
-                        class="dark:text-blue-300"
+                        class=""
                     />
                 </div>
                 <div>
                     <Link
                         :href="rankingIndex()"
-                        class="text-sm font-medium hover:underline"
+                        class="text-sm font-medium hover:underline text-blue-500 dark:text-blue-400"
                     >
                         Ver ranking completo
                     </Link>
                 </div>
             </div>
             <div
-                class="flex flex-col gap-2 rounded-xl border border-yellow-400 bg-yellow-50 p-4 text-yellow-600 dark:border-yellow-900 dark:bg-yellow-900 dark:text-yellow-400"
+                class="flex flex-col gap-2 rounded-xl border p-4"
             >
                 <p class="text-sm">Próximo jogo</p>
                 <template v-if="nextGame">
@@ -88,13 +88,15 @@ defineOptions({
                         :away="nextGame.away"
                         layout="stacked"
                     />
-                    <p class="text-sm">
-                        {{ formatScheduledAt(nextGame.scheduledAt).combined }}
-                    </p>
-                    <GameCommentsCount :count="nextGame.commentsCount" />
+                    <div class="flex justify-between items-center gap-2">
+                        <p class="text-sm">
+                            {{ formatScheduledAt(nextGame.scheduledAt).combined }}
+                        </p>
+                        <GameCommentsCount :count="nextGame.commentsCount" />
+                    </div>
                     <p
                         v-if="nextGame.userPrediction"
-                        class="text-sm font-medium"
+                        class="text-sm font-medium bg-gray-100 dark:bg-gray-800 rounded-md p-2"
                     >
                         Seu palpite:
                         {{ nextGame.userPrediction.homeScore }} ×
@@ -102,7 +104,7 @@ defineOptions({
                     </p>
                     <Link
                         :href="showGame(nextGame.id)"
-                        class="text-sm font-medium hover:underline"
+                        class="text-sm font-medium hover:underline text-yellow-500 dark:text-yellow-400"
                     >
                         Ver jogo
                     </Link>
