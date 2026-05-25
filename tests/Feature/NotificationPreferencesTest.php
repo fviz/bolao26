@@ -164,3 +164,7 @@ test('current browser push subscription can receive a test notification', functi
         },
     );
 });
+
+test('web push channel dependencies are registered', function () {
+    expect(app(WebPushChannel::class))->toBeInstanceOf(WebPushChannel::class);
+});
