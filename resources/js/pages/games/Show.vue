@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { Form, Head, Link, setLayoutProps } from '@inertiajs/vue3';
+import { MoreHorizontal } from 'lucide-vue-next';
 import { computed, ref, watchEffect } from 'vue';
 import GameCommentsSection from '@/components/games/GameCommentsSection.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useGameSchedule } from '@/composables/useGameSchedule';
@@ -25,13 +32,30 @@ const schedule = formatScheduledAt(props.game.scheduledAt);
 
 const homeScoreInput = ref(props.game.userPrediction?.homeScore ?? 0);
 const awayScoreInput = ref(props.game.userPrediction?.awayScore ?? 0);
+const showPredictionForm = ref(!props.game.userPrediction);
 
 const isDrawPrediction = computed(
     () => homeScoreInput.value === awayScoreInput.value,
 );
 
+const shouldShowPredictionForm = computed(
+    () =>
+        props.game.isBettingOpen &&
+        (!props.game.userPrediction || showPredictionForm.value),
+);
+
+const canShowPredictionOptions = computed(
+    () =>
+        props.game.isBettingOpen &&
+        !!props.game.userPrediction &&
+        !showPredictionForm.value,
+);
+
 const showPenaltyPicker = computed(
-    () => props.game.isKnockout && props.game.isBettingOpen && isDrawPrediction.value,
+    () =>
+        props.game.isKnockout &&
+        props.game.isBettingOpen &&
+        isDrawPrediction.value,
 );
 
 const penaltyWinnerLabel = (side: string | null): string => {
@@ -67,6 +91,16 @@ const venueLabel = (): string => {
 
     return props.game.stadiumName ?? props.game.cityName ?? '—';
 };
+
+function showPredictionEditor(event: Event): void {
+    event.preventDefault();
+
+    homeScoreInput.value =
+        props.game.userPrediction?.homeScore ?? homeScoreInput.value;
+    awayScoreInput.value =
+        props.game.userPrediction?.awayScore ?? awayScoreInput.value;
+    showPredictionForm.value = true;
+}
 </script>
 
 <template>
@@ -123,15 +157,34 @@ const venueLabel = (): string => {
         </section>
 
         <section class="rounded-xl border p-4 md:p-6">
-            <Heading
-                variant="small"
-                title="Sua previsão"
-                :description="
-                    game.isBettingOpen
-                        ? 'Apostas aceitas até 1 minuto antes do apito inicial'
-                        : 'Apostas encerradas para este jogo'
-                "
-            />
+            <div class="flex items-start justify-between gap-2">
+                <Heading
+                    variant="small"
+                    title="Sua previsão"
+                    :description="
+                        game.isBettingOpen
+                            ? 'Apostas aceitas até 1 minuto antes do apito inicial'
+                            : 'Apostas encerradas para este jogo'
+                    "
+                />
+                <DropdownMenu v-if="canShowPredictionOptions">
+                    <DropdownMenuTrigger as-child>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            class="size-8 shrink-0"
+                            aria-label="Opções da previsão"
+                        >
+                            <MoreHorizontal class="size-4" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        <DropdownMenuItem @select="showPredictionEditor">
+                            Editar previsão
+                        </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            </div>
 
             <div v-if="!game.isBettingOpen" class="mt-4 space-y-3">
                 <p v-if="game.userPrediction" class="text-lg font-semibold">
@@ -139,7 +192,7 @@ const venueLabel = (): string => {
                     {{ game.userPrediction.awayScore }}
                     <span
                         v-if="game.userPrediction.penaltyWinner"
-                        class="text-muted-foreground text-base font-normal"
+                        class="text-base font-normal text-muted-foreground"
                     >
                         (pênaltis:
                         {{
@@ -149,26 +202,51 @@ const venueLabel = (): string => {
                         }})
                     </span>
                 </p>
-                <p v-else class="text-muted-foreground text-sm">
+                <p v-else class="text-sm text-muted-foreground">
                     Você não registrou previsão para este jogo.
                 </p>
                 <p
-                    v-if="game.userPrediction?.points !== null && game.userPrediction?.points !== undefined"
+                    v-if="
+                        game.userPrediction?.points !== null &&
+                        game.userPrediction?.points !== undefined
+                    "
                     class="text-lg font-semibold text-green-700 dark:text-green-400"
                 >
                     {{ game.userPrediction.points }} pontos neste jogo
                 </p>
-                <p class="text-muted-foreground text-sm">
+                <p class="text-sm text-muted-foreground">
                     O prazo encerrou em
                     {{ formatScheduledAt(game.bettingClosesAt).combined }}.
                 </p>
             </div>
 
+            <div
+                v-else-if="game.userPrediction && !showPredictionForm"
+                class="mt-4 space-y-3"
+            >
+                <p class="text-lg font-semibold">
+                    {{ game.userPrediction.homeScore }} ×
+                    {{ game.userPrediction.awayScore }}
+                    <span
+                        v-if="game.userPrediction.penaltyWinner"
+                        class="text-base font-normal text-muted-foreground"
+                    >
+                        (pênaltis:
+                        {{
+                            penaltyWinnerLabel(
+                                game.userPrediction.penaltyWinner,
+                            )
+                        }})
+                    </span>
+                </p>
+            </div>
+
             <Form
-                v-else
+                v-else-if="shouldShowPredictionForm"
                 v-bind="upsertPrediction.form(game.id)"
                 class="mt-4 space-y-4"
                 v-slot="{ errors, processing }"
+                @success="showPredictionForm = false"
             >
                 <div class="flex flex-wrap items-end gap-4">
                     <div class="grid gap-2">
@@ -187,8 +265,7 @@ const venueLabel = (): string => {
                         />
                         <InputError :message="errors.home_score" />
                     </div>
-                    <span
-                        class="text-muted-foreground pb-2 text-lg font-medium"
+                    <span class="pb-2 text-lg font-medium text-muted-foreground"
                         >×</span
                     >
                     <div class="grid gap-2">
@@ -268,14 +345,14 @@ const venueLabel = (): string => {
                     <li
                         v-for="prediction in game.allPredictions"
                         :key="prediction.userId"
-                        class="p-2 rounded-lg mb-2 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between odd:bg-gray-100 dark:odd:bg-gray-900/30"
+                        class="mb-2 flex flex-col gap-1 rounded-lg p-2 odd:bg-gray-100 sm:flex-row sm:items-start sm:justify-between dark:odd:bg-gray-900/30"
                         :class="{ 'font-semibold': prediction.isCurrentUser }"
                     >
                         <span class="text-center sm:text-left">
                             {{ prediction.userName }}
                             <span
                                 v-if="prediction.isCurrentUser"
-                                class="text-muted-foreground font-normal"
+                                class="font-normal text-muted-foreground"
                             >
                                 (você)
                             </span>
@@ -292,7 +369,7 @@ const venueLabel = (): string => {
                                     {{ prediction.awayScore }}
                                     <span
                                         v-if="prediction.penaltyWinner"
-                                        class="text-muted-foreground block text-xs font-normal sm:inline sm:text-sm"
+                                        class="block text-xs font-normal text-muted-foreground sm:inline sm:text-sm"
                                     >
                                         (pênaltis:
                                         {{
@@ -319,7 +396,7 @@ const venueLabel = (): string => {
                 </ol>
             </div>
 
-            <p v-else class="text-muted-foreground mt-4 text-sm">
+            <p v-else class="mt-4 text-sm text-muted-foreground">
                 Nenhum participante registrou previsão para este jogo.
             </p>
         </section>
