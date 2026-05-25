@@ -20,16 +20,16 @@ withDefaults(
             class="flex justify-between gap-2"
             :class="{ 'font-semibold': entry.isCurrentUser }"
         >
-            <span>
+            <span class="">
                 {{ entry.rank }}º {{ entry.name }}
                 <span
                     v-if="showYouLabel && entry.isCurrentUser"
-                    class="text-muted-foreground font-normal"
+                    class="font-normal"
                 >
                     (você)
                 </span>
             </span>
-            <span>{{ entry.totalPoints }}</span>
+            <span class="">{{ entry.totalPoints }}</span>
         </li>
     </ol>
     <p v-else class="text-muted-foreground text-sm">

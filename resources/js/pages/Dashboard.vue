@@ -44,35 +44,44 @@ defineOptions({
     >
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div
-                class="flex flex-col justify-center gap-1 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
+                class="flex flex-col justify-between gap-1 rounded-xl border border-green-300 p-4 dark:border-green-900 bg-green-50 dark:bg-green-950 text-green-500 dark:text-green-400"
             >
-                <p class="text-muted-foreground text-sm">Minha pontuação</p>
-                <p class="text-3xl font-bold">{{ userTotalPoints }}</p>
-                <p class="text-muted-foreground text-xs">pontos no total</p>
+                <div class="">
+                    <p class="text-green-700 dark:text-green-400 text-sm">Minha pontuação</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-black text-green-700 dark:text-green-400">{{ userTotalPoints }}</p>
+                    <p class="text-green-700 dark:text-green-400 text-xs">pontos no total</p>
+                </div>
             </div>
             <div
-                class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
+                class="flex flex-col justify-between gap-2 rounded-xl border border-blue-300 p-4 dark:border-blue-900 bg-blue-50 dark:bg-blue-950 text-blue-500 dark:text-blue-400"
             >
-                <p class="text-muted-foreground text-sm">Ranking geral</p>
-                <LeaderboardList :entries="leaderboard" />
-                <Link
-                    :href="rankingIndex()"
-                    class="text-primary text-sm font-medium hover:underline"
-                >
-                    Ver ranking completo
-                </Link>
+                <div>
+                    <p class=" text-sm">Ranking geral</p>
+                    <LeaderboardList :entries="leaderboard" class="dark:text-blue-300" />
+                </div>
+                <div>
+                    <Link
+                        :href="rankingIndex()"
+                        class="text-sm font-medium hover:underline"
+                    >
+                        Ver ranking completo
+                    </Link>
+                </div>
+                
             </div>
             <div
-                class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
+                class="flex flex-col gap-2 rounded-xl border border-yellow-400 p-4 dark:border-yellow-900 bg-yellow-50 dark:bg-yellow-900 text-yellow-600 dark:text-yellow-400"
             >
-                <p class="text-muted-foreground text-sm">Próximo jogo</p>
+                <p class="text-sm">Próximo jogo</p>
                 <template v-if="nextGame">
                     <GameMatchDisplay
                         :home="nextGame.home"
                         :away="nextGame.away"
                         layout="stacked"
                     />
-                    <p class="text-muted-foreground text-sm">
+                    <p class="text-sm">
                         {{
                             formatScheduledAt(nextGame.scheduledAt).combined
                         }}
@@ -87,7 +96,7 @@ defineOptions({
                     </p>
                     <Link
                         :href="showGame(nextGame.id)"
-                        class="text-primary text-sm font-medium hover:underline"
+                        class="text-sm font-medium hover:underline"
                     >
                         Ver jogo
                     </Link>
