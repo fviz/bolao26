@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GameCommentResource;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
 use Illuminate\Http\Request;
@@ -12,10 +13,15 @@ class GameController extends Controller
 {
     public function show(Request $request, Game $game): Response
     {
-        $game->load(['predictions.user']);
+        $game->load([
+            'predictions.user',
+            'topLevelComments.user',
+            'topLevelComments.replies.user',
+        ]);
 
         return Inertia::render('games/Show', [
             'game' => GameResource::make($game),
+            'comments' => GameCommentResource::collection($game->topLevelComments),
         ]);
     }
 }

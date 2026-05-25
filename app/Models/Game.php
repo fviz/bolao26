@@ -73,6 +73,16 @@ class Game extends Model
         return $this->hasMany(Prediction::class);
     }
 
+    public function comments(): HasMany
+    {
+        return $this->hasMany(GameComment::class);
+    }
+
+    public function topLevelComments(): HasMany
+    {
+        return $this->hasMany(GameComment::class)->whereNull('parent_id')->orderBy('created_at');
+    }
+
     public function userPrediction(User $user): ?Prediction
     {
         return $this->predictions()

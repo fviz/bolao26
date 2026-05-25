@@ -68,6 +68,7 @@ RUN apk add --no-cache \
     && rm -rf /var/cache/apk/*
 
 COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf
+COPY docker/php/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 COPY docker/supervisord.conf /etc/supervisord.conf
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 

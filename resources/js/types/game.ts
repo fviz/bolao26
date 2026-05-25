@@ -27,6 +27,17 @@ export type GamePredictionEntry = {
     points?: number | null;
 };
 
+export type GameComment = {
+    id: number;
+    body: string;
+    createdAt: string;
+    userId: number;
+    userName: string;
+    userAvatar: string | null;
+    isCurrentUser: boolean;
+    replies: GameComment[];
+};
+
 export type GameListItem = {
     id: number;
     matchTitle: string;

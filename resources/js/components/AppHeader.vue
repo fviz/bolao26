@@ -55,7 +55,7 @@ const activeItemStyles =
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard do Bolão',
+        title: 'Painel do Bolão',
         href: dashboard(),
         icon: LayoutGrid,
     },

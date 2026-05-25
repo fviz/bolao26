@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChampionPredictionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GameCommentController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\RankingController;
@@ -18,6 +19,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('predictions', [PredictionController::class, 'index'])->name('predictions.index');
     Route::get('ranking', [RankingController::class, 'index'])->name('ranking.index');
     Route::put('games/{game}/prediction', [PredictionController::class, 'upsert'])->name('games.prediction.upsert');
+    Route::post('games/{game}/comments', [GameCommentController::class, 'store'])->name('games.comments.store');
+    Route::delete('games/{game}/comments/{comment}', [GameCommentController::class, 'destroy'])
+        ->name('games.comments.destroy')
+        ->scopeBindings();
     Route::put('champion-prediction', [ChampionPredictionController::class, 'upsert'])->name('champion-prediction.upsert');
     Route::inertia('rules', 'Rules')->name('rules');
 });

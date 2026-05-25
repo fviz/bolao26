@@ -21,7 +21,7 @@ import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard do Bolão',
+        title: 'Painel do Bolão',
         href: dashboard(),
         icon: Volleyball,
     },

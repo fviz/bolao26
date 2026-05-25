@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Form, Head, Link, setLayoutProps } from '@inertiajs/vue3';
 import { computed, ref, watchEffect } from 'vue';
+import GameCommentsSection from '@/components/games/GameCommentsSection.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
@@ -10,10 +11,11 @@ import { Label } from '@/components/ui/label';
 import { useGameSchedule } from '@/composables/useGameSchedule';
 import { dashboard } from '@/routes';
 import { upsert as upsertPrediction } from '@/routes/games/prediction';
-import type { GameListItem } from '@/types/game';
+import type { GameComment, GameListItem } from '@/types/game';
 
 type Props = {
     game: GameListItem;
+    comments: GameComment[];
 };
 
 const props = defineProps<Props>();
@@ -48,7 +50,7 @@ watchEffect(() => {
     setLayoutProps({
         breadcrumbs: [
             {
-                title: 'Dashboard do Bolão',
+                title: 'Painel do Bolão',
                 href: dashboard(),
             },
             {
@@ -321,5 +323,7 @@ const venueLabel = (): string => {
                 Nenhum participante registrou previsão para este jogo.
             </p>
         </section>
+
+        <GameCommentsSection :game-id="game.id" :comments="comments" />
     </div>
 </template>
