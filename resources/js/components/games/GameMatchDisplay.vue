@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FlagIcon from '@/components/FlagIcon.vue';
 import type { GameTeam } from '@/types/game';
 
 type Props = {
@@ -16,39 +17,29 @@ withDefaults(defineProps<Props>(), {
     <div
         :class="
             layout === 'stacked'
-                ? 'flex flex-col items-center gap-2 text-center dark:bg-yellow-950 bg-yellow-50 border border-yellow-300 dark:border-yellow-900 py-8 rounded-xl'
+                ? 'flex flex-col items-center gap-2 rounded-xl border border-yellow-300 bg-yellow-50 py-8 text-center dark:border-yellow-900 dark:bg-yellow-950'
                 : 'flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1'
         "
     >
         <span class="inline-flex min-w-0 items-center gap-1.5">
-            <span
-                v-if="home.flagEmoji"
-                class="shrink-0 text-lg leading-none"
-                aria-hidden="true"
-                >{{ home.flagEmoji }}</span
-            >
+            <FlagIcon v-if="home.flagIconCode" :code="home.flagIconCode" />
             <span
                 v-else-if="home.abbr"
-                class="bg-muted text-muted-foreground shrink-0 rounded px-1.5 py-0.5 text-xs font-medium"
+                class="shrink-0 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
                 >{{ home.abbr }}</span
             >
             <span class="truncate font-medium">{{ home.displayName }}</span>
         </span>
         <span
-            class="text-muted-foreground shrink-0 text-sm"
+            class="shrink-0 text-sm text-muted-foreground"
             :class="layout === 'stacked' ? '' : 'px-0.5'"
             >×</span
         >
         <span class="inline-flex min-w-0 items-center gap-1.5">
-            <span
-                v-if="away.flagEmoji"
-                class="shrink-0 text-lg leading-none"
-                aria-hidden="true"
-                >{{ away.flagEmoji }}</span
-            >
+            <FlagIcon v-if="away.flagIconCode" :code="away.flagIconCode" />
             <span
                 v-else-if="away.abbr"
-                class="bg-muted text-muted-foreground shrink-0 rounded px-1.5 py-0.5 text-xs font-medium"
+                class="shrink-0 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
                 >{{ away.abbr }}</span
             >
             <span class="truncate font-medium">{{ away.displayName }}</span>

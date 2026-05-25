@@ -32,7 +32,7 @@ return [
     | FIFA country codes to ISO 3166-1 alpha-2
     |--------------------------------------------------------------------------
     |
-    | Used to render flag emojis from FIFA three-letter abbreviations.
+    | Used to render bundled flag icons from FIFA three-letter abbreviations.
     |
     */
 
@@ -47,9 +47,13 @@ return [
         'BRA' => 'BR',
         'CAN' => 'CA',
         'CHI' => 'CL',
+        'CIV' => 'CI',
+        'COD' => 'CD',
         'COL' => 'CO',
+        'CPV' => 'CV',
         'CRC' => 'CR',
         'CRO' => 'HR',
+        'CUW' => 'CW',
         'CZE' => 'CZ',
         'DEN' => 'DK',
         'ECU' => 'EC',
@@ -60,13 +64,17 @@ return [
         'GER' => 'DE',
         'GHA' => 'GH',
         'GRE' => 'GR',
+        'HAI' => 'HT',
         'HUN' => 'HU',
         'IRN' => 'IR',
+        'IRQ' => 'IQ',
         'ISL' => 'IS',
         'ITA' => 'IT',
         'JAM' => 'JM',
+        'JOR' => 'JO',
         'JPN' => 'JP',
         'KOR' => 'KR',
+        'KSA' => 'SA',
         'MAR' => 'MA',
         'MEX' => 'MX',
         'NED' => 'NL',
@@ -92,7 +100,15 @@ return [
         'UKR' => 'UA',
         'URU' => 'UY',
         'USA' => 'US',
+        'UZB' => 'UZ',
         'WAL' => 'GB',
+    ],
+
+    'flag_icon_codes' => [
+        'ENG' => 'gb-eng',
+        'NIR' => 'gb-nir',
+        'SCO' => 'gb-sct',
+        'WAL' => 'gb-wls',
     ],
 
 ];

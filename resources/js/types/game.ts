@@ -1,7 +1,7 @@
 export type GameTeam = {
     displayName: string;
     abbr: string | null;
-    flagEmoji: string | null;
+    flagIconCode: string | null;
 };
 
 export type UserPrediction = {

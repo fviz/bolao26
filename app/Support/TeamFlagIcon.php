@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-class TeamFlagEmoji
+class TeamFlagIcon
 {
     /**
      * @param  array<string, mixed>|null  $payloadSide
@@ -21,19 +21,28 @@ class TeamFlagEmoji
             return null;
         }
 
-        $alpha2 = self::toAlpha2(strtoupper($code));
+        $teamCode = strtoupper($code);
+
+        /** @var array<string, string> $iconCodes */
+        $iconCodes = config('fifa.flag_icon_codes', []);
+
+        if (isset($iconCodes[$teamCode])) {
+            return self::normalizeFlagIconCode($iconCodes[$teamCode]);
+        }
+
+        $alpha2 = self::toAlpha2($teamCode);
 
         if ($alpha2 === null) {
             return null;
         }
 
-        return self::emojiFromAlpha2($alpha2);
+        return strtolower($alpha2);
     }
 
     public static function toAlpha2(string $code): ?string
     {
         if (strlen($code) === 2 && ctype_alpha($code)) {
-            return $code;
+            return strtoupper($code);
         }
 
         if (strlen($code) !== 3 || ! ctype_alpha($code)) {
@@ -46,19 +55,14 @@ class TeamFlagEmoji
         return $map[$code] ?? null;
     }
 
-    public static function emojiFromAlpha2(string $alpha2): ?string
+    private static function normalizeFlagIconCode(string $code): ?string
     {
-        if (strlen($alpha2) !== 2 || ! ctype_alpha($alpha2)) {
+        $code = strtolower($code);
+
+        if (preg_match('/^[a-z]{2}(?:-[a-z0-9]+)?$/', $code) !== 1) {
             return null;
         }
 
-        $alpha2 = strtoupper($alpha2);
-        $emoji = '';
-
-        foreach (str_split($alpha2) as $char) {
-            $emoji .= mb_chr(0x1F1E6 + ord($char) - ord('A'));
-        }
-
-        return $emoji;
+        return $code;
     }
 }

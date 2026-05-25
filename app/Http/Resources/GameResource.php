@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use App\Models\Game;
 use App\Models\Prediction;
-use App\Support\TeamFlagEmoji;
+use App\Support\TeamFlagIcon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -66,7 +66,7 @@ class GameResource extends JsonResource
 
     /**
      * @param  array<string, mixed>|null  $payloadSide
-     * @return array{displayName: string, abbr: string|null, flagEmoji: string|null}
+     * @return array{displayName: string, abbr: string|null, flagIconCode: string|null}
      */
     private function teamPayload(
         ?string $name,
@@ -77,7 +77,7 @@ class GameResource extends JsonResource
         return [
             'displayName' => $name ?? $placeholder ?? '—',
             'abbr' => $abbr,
-            'flagEmoji' => TeamFlagEmoji::forTeam($abbr, $payloadSide),
+            'flagIconCode' => TeamFlagIcon::forTeam($abbr, $payloadSide),
         ];
     }
 
