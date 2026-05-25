@@ -1,0 +1,100 @@
+<?php
+
+use App\Models\User;
+use Inertia\Testing\AssertableInertia as Assert;
+
+test('notification settings page is displayed with default preferences', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('notifications.settings.edit'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('settings/Notifications')
+            ->where('preferences.missingPredictionRemindersEnabled', true)
+            ->where('preferences.gameResultNotificationsEnabled', true)
+            ->where('preferences.dailySummaryEnabled', true)
+            ->where('preferences.tournamentDeadlineEnabled', true)
+            ->where('preferences.browserNotificationsEnabled', false)
+            ->where('preferences.gameReminderMinutes', 60)
+            ->where('preferences.dailySummaryTime', '09:00'),
+        );
+});
+
+test('notification settings can be updated', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->patch(route('notifications.settings.update'), [
+            'missing_prediction_reminders_enabled' => false,
+            'game_result_notifications_enabled' => true,
+            'daily_summary_enabled' => true,
+            'tournament_deadline_enabled' => false,
+            'browser_notifications_enabled' => false,
+            'game_reminder_minutes' => 180,
+            'daily_summary_time' => '08:30',
+            'daily_summary_timezone' => 'America/Sao_Paulo',
+        ])
+        ->assertSessionHasNoErrors()
+        ->assertRedirect(route('notifications.settings.edit'));
+
+    $preference = $user->notificationPreference()->first();
+
+    expect($preference)->not->toBeNull()
+        ->and($preference->missing_prediction_reminders_enabled)->toBeFalse()
+        ->and($preference->game_result_notifications_enabled)->toBeTrue()
+        ->and($preference->daily_summary_enabled)->toBeTrue()
+        ->and($preference->tournament_deadline_enabled)->toBeFalse()
+        ->and($preference->game_reminder_minutes)->toBe(180)
+        ->and($preference->daily_summary_time)->toBe('08:30')
+        ->and($preference->daily_summary_timezone)->toBe('America/Sao_Paulo');
+});
+
+test('notification settings validate reminder interval and timezone', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->patch(route('notifications.settings.update'), [
+            'missing_prediction_reminders_enabled' => true,
+            'game_result_notifications_enabled' => true,
+            'daily_summary_enabled' => true,
+            'tournament_deadline_enabled' => true,
+            'browser_notifications_enabled' => false,
+            'game_reminder_minutes' => 45,
+            'daily_summary_time' => '25:00',
+            'daily_summary_timezone' => 'Mars/Base',
+        ])
+        ->assertSessionHasErrors([
+            'game_reminder_minutes',
+            'daily_summary_time',
+            'daily_summary_timezone',
+        ]);
+});
+
+test('push subscription endpoints store and remove browser subscriptions', function () {
+    $user = User::factory()->create();
+    $payload = [
+        'endpoint' => 'https://example.test/push/subscription',
+        'keys' => [
+            'p256dh' => str_repeat('a', 88),
+            'auth' => str_repeat('b', 24),
+        ],
+        'contentEncoding' => 'aes128gcm',
+    ];
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.store'), $payload)
+        ->assertOk()
+        ->assertJson(['subscribed' => true]);
+
+    expect($user->pushSubscriptions()->where('endpoint', $payload['endpoint'])->exists())->toBeTrue()
+        ->and($user->notificationPreference()->first()?->browser_notifications_enabled)->toBeTrue();
+
+    $this->actingAs($user)
+        ->deleteJson(route('push-subscriptions.destroy'), ['endpoint' => $payload['endpoint']])
+        ->assertOk()
+        ->assertJson(['subscribed' => false]);
+
+    expect($user->pushSubscriptions()->where('endpoint', $payload['endpoint'])->exists())->toBeFalse()
+        ->and($user->notificationPreference()->first()?->refresh()->browser_notifications_enabled)->toBeFalse();
+});

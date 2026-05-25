@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             AddLinkHeadersForPreloadedAssets::class,
         ]);
 
-        $middleware->trustProxies(at: '*'); 
+        $middleware->trustProxies(at: '*');
     })
     ->withSchedule(function (Schedule $schedule): void {
         $schedule->command('games:sync-fifa')
@@ -32,6 +32,18 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $schedule->command('games:sync-fifa-results')
             ->cron('*/'.config('fifa.results_sync_minutes').' * * * *')
+            ->withoutOverlapping();
+
+        $schedule->command('notifications:send-game-reminders')
+            ->everyFiveMinutes()
+            ->withoutOverlapping();
+
+        $schedule->command('notifications:send-daily-summary')
+            ->everyFiveMinutes()
+            ->withoutOverlapping();
+
+        $schedule->command('notifications:send-tournament-deadline')
+            ->hourly()
             ->withoutOverlapping();
     })
     ->withExceptions(function (Exceptions $exceptions): void {

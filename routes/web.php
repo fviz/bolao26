@@ -4,7 +4,9 @@ use App\Http\Controllers\ChampionPredictionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameCommentController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PredictionController;
+use App\Http\Controllers\PushSubscriptionController;
 use App\Http\Controllers\RankingController;
 use App\Http\Controllers\TopScorerPredictionController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('games/{game}', [GameController::class, 'show'])->name('games.show');
     Route::get('predictions', [PredictionController::class, 'index'])->name('predictions.index');
     Route::get('ranking', [RankingController::class, 'index'])->name('ranking.index');
+    Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::patch('notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+    Route::patch('notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');
+    Route::get('push-subscriptions/vapid-key', [PushSubscriptionController::class, 'vapidKey'])->name('push-subscriptions.vapid-key');
+    Route::post('push-subscriptions', [PushSubscriptionController::class, 'store'])->name('push-subscriptions.store');
+    Route::delete('push-subscriptions', [PushSubscriptionController::class, 'destroy'])->name('push-subscriptions.destroy');
     Route::put('games/{game}/prediction', [PredictionController::class, 'upsert'])->name('games.prediction.upsert');
     Route::post('games/{game}/comments', [GameCommentController::class, 'store'])->name('games.comments.store');
     Route::delete('games/{game}/comments/{comment}', [GameCommentController::class, 'destroy'])
