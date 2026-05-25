@@ -334,7 +334,7 @@ defineOptions({
             <h2 class="mb-3 text-lg font-semibold">Palpite de artilheiro</h2>
             <Form
                 v-bind="upsertTopScorerPrediction.form()"
-                class="flex flex-wrap items-end gap-4"
+                class="flex sm:flex-row flex-col flex-wrap sm:items-end gap-4"
                 :options="{ preserveScroll: true }"
                 v-slot="{ errors, processing }"
                 @success="showTopScorerForm = false"
