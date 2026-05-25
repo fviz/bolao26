@@ -2,6 +2,9 @@
 
 use NotificationChannels\WebPush\PushSubscription;
 
+$tableName = env('WEBPUSH_DB_TABLE') ?: 'push_subscriptions';
+$databaseConnection = env('WEBPUSH_DB_CONNECTION') ?: env('DB_CONNECTION', 'mysql');
+
 return [
 
     /**
@@ -24,13 +27,13 @@ return [
      * This is the name of the table that will be created by the migration and
      * used by the PushSubscription model shipped with this package.
      */
-    'table_name' => env('WEBPUSH_DB_TABLE', 'push_subscriptions'),
+    'table_name' => $tableName,
 
     /**
      * This is the database connection that will be used by the migration and
      * the PushSubscription model shipped with this package.
      */
-    'database_connection' => env('WEBPUSH_DB_CONNECTION', env('DB_CONNECTION', 'mysql')),
+    'database_connection' => $databaseConnection,
 
     /**
      * The Guzzle client options used by Minishlink\WebPush.

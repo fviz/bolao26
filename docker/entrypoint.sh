@@ -24,6 +24,9 @@ ensure_storage_directories() {
 
 ensure_storage_directories
 
+php artisan config:clear --no-interaction
+php artisan route:clear --no-interaction
+
 wait_for_database() {
     echo "Waiting for database connection..."
     attempts=0
