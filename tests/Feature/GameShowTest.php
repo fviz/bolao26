@@ -34,6 +34,7 @@ test('authenticated users can view an upcoming game', function () {
             ->where('game.matchTitle', 'Mexico x South Africa')
             ->where('game.isBettingOpen', true)
             ->where('game.arePredictionsVisible', false)
+            ->where('game.commentsCount', 0)
             ->where('game.userPrediction', null)
             ->has('game.allPredictions', 0)
             ->has('comments', 0));
@@ -133,6 +134,7 @@ test('game show includes comments ordered oldest to newest with replies nested',
         ->get(route('games.show', $game))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
+            ->where('game.commentsCount', 3)
             ->has('comments', 2)
             ->where('comments.0.id', $older->id)
             ->where('comments.0.body', 'Primeiro')

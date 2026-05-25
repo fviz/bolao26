@@ -17,6 +17,7 @@ class DashboardController extends Controller
 
         $games = Game::query()
             ->upcoming()
+            ->withCount('comments')
             ->paginate(20)
             ->withQueryString();
 
@@ -32,6 +33,7 @@ class DashboardController extends Controller
             ->with([
                 'predictions' => fn ($query) => $query->where('user_id', $user->id),
             ])
+            ->withCount('comments')
             ->first();
 
         return Inertia::render('Dashboard', [

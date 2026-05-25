@@ -1,14 +1,11 @@
-import { computed, type Ref } from 'vue';
+import { computed } from 'vue';
+import type { Ref } from 'vue';
 import type { WorldCupPlayer } from '@/types/game';
 
 export type CountrySearchTerms = Record<string, string[]>;
 
 function normalizeSearchText(value: string): string {
-    return value
-        .normalize('NFD')
-        .replace(/\p{M}/gu, '')
-        .toLowerCase()
-        .trim();
+    return value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
 }
 
 function matchesCountryQuery(

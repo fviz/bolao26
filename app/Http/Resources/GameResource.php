@@ -48,6 +48,7 @@ class GameResource extends JsonResource
             'isBettingOpen' => $this->isBettingOpen(),
             'arePredictionsVisible' => $this->arePredictionsVisible(),
             'bettingClosesAt' => $this->bettingClosesAt()->toIso8601String(),
+            'commentsCount' => $this->whenCounted('comments'),
             'result' => $this->when($this->is_final, fn (): array => [
                 'homeScore' => $this->home_score,
                 'awayScore' => $this->away_score,

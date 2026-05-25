@@ -14,8 +14,8 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Label } from '@/components/ui/label';
-import type { CountrySearchTerms } from '@/composables/usePlayerSearch';
 import { useGameSchedule } from '@/composables/useGameSchedule';
+import type { CountrySearchTerms } from '@/composables/usePlayerSearch';
 import {
     destroy as destroyChampionPrediction,
     upsert as upsertChampionPrediction,
@@ -109,14 +109,23 @@ const showTopScorerPredictionForm = computed(
 );
 
 const canManageChampionPrediction = computed(
-    () =>
-        props.championPrediction !== null && props.championPredictionsOpen,
+    () => props.championPrediction !== null && props.championPredictionsOpen,
 );
 
 const canManageTopScorerPrediction = computed(
-    () =>
-        props.topScorerPrediction !== null && props.topScorerPredictionsOpen,
+    () => props.topScorerPrediction !== null && props.topScorerPredictionsOpen,
 );
+
+function showChampionPredictionEditor(event: Event): void {
+    event.preventDefault();
+    showChampionForm.value = true;
+}
+
+function showTopScorerPredictionEditor(event: Event): void {
+    event.preventDefault();
+    showTopScorerForm.value = true;
+    selectedPlayerId.value = props.topScorerPrediction?.playerId ?? null;
+}
 
 defineOptions({
     layout: {
@@ -145,7 +154,7 @@ defineOptions({
                 class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
             >
                 <div class="flex items-start justify-between gap-2">
-                    <p class="text-muted-foreground text-sm">Campeão</p>
+                    <p class="text-sm text-muted-foreground">Campeão</p>
                     <DropdownMenu v-if="canManageChampionPrediction">
                         <DropdownMenuTrigger as-child>
                             <Button
@@ -159,19 +168,11 @@ defineOptions({
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                             <DropdownMenuItem
-                                @select="
-                                    (event) => {
-                                        event.preventDefault();
-                                        showChampionForm = true;
-                                    }
-                                "
+                                @select="showChampionPredictionEditor"
                             >
                                 Editar palpite
                             </DropdownMenuItem>
-                            <DropdownMenuItem
-                                variant="destructive"
-                                as-child
-                            >
+                            <DropdownMenuItem variant="destructive" as-child>
                                 <Form
                                     v-bind="destroyChampionPrediction.form()"
                                     :options="{ preserveScroll: true }"
@@ -201,11 +202,10 @@ defineOptions({
                 <p v-else-if="championPredictionsOpen" class="text-sm">
                     Escolha abaixo até
                     {{
-                        formatScheduledAt(championPredictionsDeadline)
-                            .combined
+                        formatScheduledAt(championPredictionsDeadline).combined
                     }}
                 </p>
-                <p v-else class="text-muted-foreground text-sm">
+                <p v-else class="text-sm text-muted-foreground">
                     Prazo encerrado
                 </p>
             </div>
@@ -214,7 +214,7 @@ defineOptions({
                 class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
             >
                 <div class="flex items-start justify-between gap-2">
-                    <p class="text-muted-foreground text-sm">Artilheiro</p>
+                    <p class="text-sm text-muted-foreground">Artilheiro</p>
                     <DropdownMenu v-if="canManageTopScorerPrediction">
                         <DropdownMenuTrigger as-child>
                             <Button
@@ -228,22 +228,11 @@ defineOptions({
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                             <DropdownMenuItem
-                                @select="
-                                    (event) => {
-                                        event.preventDefault();
-                                        showTopScorerForm = true;
-                                        selectedPlayerId =
-                                            topScorerPrediction?.playerId ??
-                                            null;
-                                    }
-                                "
+                                @select="showTopScorerPredictionEditor"
                             >
                                 Editar palpite
                             </DropdownMenuItem>
-                            <DropdownMenuItem
-                                variant="destructive"
-                                as-child
-                            >
+                            <DropdownMenuItem variant="destructive" as-child>
                                 <Form
                                     v-bind="destroyTopScorerPrediction.form()"
                                     :options="{ preserveScroll: true }"
@@ -273,11 +262,10 @@ defineOptions({
                 <p v-else-if="topScorerPredictionsOpen" class="text-sm">
                     Escolha abaixo até
                     {{
-                        formatScheduledAt(topScorerPredictionsDeadline)
-                            .combined
+                        formatScheduledAt(topScorerPredictionsDeadline).combined
                     }}
                 </p>
-                <p v-else class="text-muted-foreground text-sm">
+                <p v-else class="text-sm text-muted-foreground">
                     Prazo encerrado
                 </p>
             </div>
@@ -300,13 +288,11 @@ defineOptions({
                     <select
                         id="champion_team"
                         name="fifa_team_id"
-                        class="border-input bg-background h-9 w-full rounded-md border px-3 text-sm"
+                        class="h-9 w-full rounded-md border border-input bg-background px-3 text-sm"
                         required
                         :default-value="championPrediction?.fifaTeamId"
                     >
-                        <option value="" disabled>
-                            Selecione uma seleção
-                        </option>
+                        <option value="" disabled>Selecione uma seleção</option>
                         <option
                             v-for="team in championTeams"
                             :key="team.fifaTeamId"
@@ -334,7 +320,7 @@ defineOptions({
             <h2 class="mb-3 text-lg font-semibold">Palpite de artilheiro</h2>
             <Form
                 v-bind="upsertTopScorerPrediction.form()"
-                class="flex sm:flex-row flex-col flex-wrap sm:items-end gap-4"
+                class="flex flex-col flex-wrap gap-4 sm:flex-row sm:items-end"
                 :options="{ preserveScroll: true }"
                 v-slot="{ errors, processing }"
                 @success="showTopScorerForm = false"

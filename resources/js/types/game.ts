@@ -55,6 +55,7 @@ export type GameListItem = {
     isBettingOpen: boolean;
     arePredictionsVisible: boolean;
     bettingClosesAt: string;
+    commentsCount: number;
     result?: GameResult;
     userPrediction?: UserPrediction | null;
     allPredictions?: GamePredictionEntry[];

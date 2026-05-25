@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Game;
+use App\Models\GameComment;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -32,12 +33,16 @@ test('dashboard exposes next upcoming game', function () {
         'scheduled_at' => now()->addDays(2),
     ]);
 
+    GameComment::factory()->count(2)->for($soonest)->create();
+
     $this->actingAs($user)
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->where('nextGame.id', $soonest->id)
             ->where('nextGame.matchTitle', 'Brazil x France')
+            ->where('nextGame.commentsCount', 2)
+            ->where('games.data.0.commentsCount', 2)
             ->missing('championPrediction'));
 });
 

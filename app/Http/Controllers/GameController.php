@@ -18,6 +18,7 @@ class GameController extends Controller
             'topLevelComments.user',
             'topLevelComments.replies.user',
         ]);
+        $game->loadCount('comments');
 
         return Inertia::render('games/Show', [
             'game' => GameResource::make($game),

@@ -26,6 +26,7 @@ class PredictionController extends Controller
         $predictedGames = Game::query()
             ->whereHas('predictions', fn ($query) => $query->where('user_id', $user->id))
             ->with($loadUserPredictions)
+            ->withCount('comments')
             ->orderBy('scheduled_at')
             ->paginate(20, ['*'], 'predicted_page')
             ->withQueryString();
@@ -34,6 +35,7 @@ class PredictionController extends Controller
             ->bettingOpen()
             ->whereDoesntHave('predictions', fn ($query) => $query->where('user_id', $user->id))
             ->with($loadUserPredictions)
+            ->withCount('comments')
             ->orderBy('scheduled_at')
             ->paginate(20, ['*'], 'missing_page')
             ->withQueryString();

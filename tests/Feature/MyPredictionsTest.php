@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Game;
+use App\Models\GameComment;
 use App\Models\Prediction;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -53,14 +54,19 @@ test('predicted games section lists only games with user predictions', function 
         'game_id' => $otherUserGame->id,
     ]);
 
+    GameComment::factory()->count(3)->for($predicted)->create();
+    GameComment::factory()->for($notPredicted)->create();
+
     $this->actingAs($user)
         ->get(route('predictions.index'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->has('predictedGames.data', 1)
             ->where('predictedGames.data.0.id', $predicted->id)
+            ->where('predictedGames.data.0.commentsCount', 3)
             ->where('predictedGames.data.0.userPrediction.homeScore', 2)
             ->where('predictedGames.data.0.userPrediction.awayScore', 1)
+            ->where('missingGames.data.0.commentsCount', 1)
             ->where('missingGames.data', fn ($games) => collect($games)->pluck('id')->contains($notPredicted->id)
                 && ! collect($games)->pluck('id')->contains($predicted->id)));
 });

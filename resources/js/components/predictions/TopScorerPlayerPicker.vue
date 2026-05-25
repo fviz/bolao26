@@ -3,10 +3,8 @@ import { computed, ref } from 'vue';
 import InputError from '@/components/InputError.vue';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-    usePlayerSearch,
-    type CountrySearchTerms,
-} from '@/composables/usePlayerSearch';
+import { usePlayerSearch } from '@/composables/usePlayerSearch';
+import type { CountrySearchTerms } from '@/composables/usePlayerSearch';
 import type { WorldCupPlayer } from '@/types/game';
 
 type Props = {
@@ -55,7 +53,7 @@ function formatPlayerLine(player: WorldCupPlayer): string {
                 placeholder="Nome ou país (ex.: Brasil, Haaland)"
                 autocomplete="off"
             />
-            <p class="text-muted-foreground text-xs">
+            <p class="text-xs text-muted-foreground">
                 Digite um país em português ou inglês para filtrar a seleção, ou
                 o nome do jogador.
             </p>
@@ -68,7 +66,7 @@ function formatPlayerLine(player: WorldCupPlayer): string {
         >
             <p
                 v-if="filteredPlayers.length === 0"
-                class="text-muted-foreground p-3 text-sm"
+                class="p-3 text-sm text-muted-foreground"
             >
                 Nenhum jogador encontrado.
             </p>
@@ -78,14 +76,14 @@ function formatPlayerLine(player: WorldCupPlayer): string {
                 type="button"
                 role="option"
                 :aria-selected="modelValue === player.id"
-                class="hover:bg-accent flex w-full flex-col gap-0.5 border-b border-input px-3 py-2 text-left text-sm last:border-b-0"
+                class="flex w-full flex-col gap-0.5 border-b border-input px-3 py-2 text-left text-sm last:border-b-0 hover:bg-accent"
                 :class="{
                     'bg-accent font-medium': modelValue === player.id,
                 }"
                 @click="selectPlayer(player.id)"
             >
                 <span>{{ player.name }}</span>
-                <span class="text-muted-foreground text-xs">
+                <span class="text-xs text-muted-foreground">
                     {{ formatPlayerLine(player) }}
                 </span>
             </button>

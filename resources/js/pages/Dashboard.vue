@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import GameCommentsCount from '@/components/games/GameCommentsCount.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
@@ -7,11 +8,7 @@ import { useGameSchedule } from '@/composables/useGameSchedule';
 import { dashboard } from '@/routes';
 import { show as showGame } from '@/routes/games';
 import { index as rankingIndex } from '@/routes/ranking';
-import type {
-    GameListItem,
-    LeaderboardEntry,
-    Paginated,
-} from '@/types/game';
+import type { GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
 
 type Props = {
     games: Paginated<GameListItem>;
@@ -44,22 +41,33 @@ defineOptions({
     >
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div
-                class="flex flex-col justify-between gap-1 rounded-xl border border-green-300 p-4 dark:border-green-900 bg-green-50 dark:bg-green-950 text-green-500 dark:text-green-400"
+                class="flex flex-col justify-between gap-1 rounded-xl border border-green-300 bg-green-50 p-4 text-green-500 dark:border-green-900 dark:bg-green-950 dark:text-green-400"
             >
                 <div class="">
-                    <p class="text-green-700 dark:text-green-400 text-sm">Minha pontuação</p>
+                    <p class="text-sm text-green-700 dark:text-green-400">
+                        Minha pontuação
+                    </p>
                 </div>
                 <div>
-                    <p class="text-4xl font-black text-green-700 dark:text-green-400">{{ userTotalPoints }}</p>
-                    <p class="text-green-700 dark:text-green-400 text-xs">pontos no total</p>
+                    <p
+                        class="text-4xl font-black text-green-700 dark:text-green-400"
+                    >
+                        {{ userTotalPoints }}
+                    </p>
+                    <p class="text-xs text-green-700 dark:text-green-400">
+                        pontos no total
+                    </p>
                 </div>
             </div>
             <div
-                class="flex flex-col justify-between gap-2 rounded-xl border border-blue-300 p-4 dark:border-blue-900 bg-blue-50 dark:bg-blue-950 text-blue-500 dark:text-blue-400"
+                class="flex flex-col justify-between gap-2 rounded-xl border border-blue-300 bg-blue-50 p-4 text-blue-500 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-400"
             >
                 <div>
-                    <p class=" text-sm">Ranking geral</p>
-                    <LeaderboardList :entries="leaderboard" class="dark:text-blue-300" />
+                    <p class="text-sm">Ranking geral</p>
+                    <LeaderboardList
+                        :entries="leaderboard"
+                        class="dark:text-blue-300"
+                    />
                 </div>
                 <div>
                     <Link
@@ -69,10 +77,9 @@ defineOptions({
                         Ver ranking completo
                     </Link>
                 </div>
-                
             </div>
             <div
-                class="flex flex-col gap-2 rounded-xl border border-yellow-400 p-4 dark:border-yellow-900 bg-yellow-50 dark:bg-yellow-900 text-yellow-600 dark:text-yellow-400"
+                class="flex flex-col gap-2 rounded-xl border border-yellow-400 bg-yellow-50 p-4 text-yellow-600 dark:border-yellow-900 dark:bg-yellow-900 dark:text-yellow-400"
             >
                 <p class="text-sm">Próximo jogo</p>
                 <template v-if="nextGame">
@@ -82,10 +89,9 @@ defineOptions({
                         layout="stacked"
                     />
                     <p class="text-sm">
-                        {{
-                            formatScheduledAt(nextGame.scheduledAt).combined
-                        }}
+                        {{ formatScheduledAt(nextGame.scheduledAt).combined }}
                     </p>
+                    <GameCommentsCount :count="nextGame.commentsCount" />
                     <p
                         v-if="nextGame.userPrediction"
                         class="text-sm font-medium"
@@ -101,7 +107,7 @@ defineOptions({
                         Ver jogo
                     </Link>
                 </template>
-                <p v-else class="text-muted-foreground text-sm">
+                <p v-else class="text-sm text-muted-foreground">
                     Nenhum jogo programado.
                 </p>
             </div>
