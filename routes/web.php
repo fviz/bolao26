@@ -26,6 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');
     Route::get('push-subscriptions/vapid-key', [PushSubscriptionController::class, 'vapidKey'])->name('push-subscriptions.vapid-key');
     Route::post('push-subscriptions', [PushSubscriptionController::class, 'store'])->name('push-subscriptions.store');
+    Route::post('push-subscriptions/test', [PushSubscriptionController::class, 'sendTest'])
+        ->middleware('throttle:6,1')
+        ->name('push-subscriptions.test');
     Route::delete('push-subscriptions', [PushSubscriptionController::class, 'destroy'])->name('push-subscriptions.destroy');
     Route::put('games/{game}/prediction', [PredictionController::class, 'upsert'])->name('games.prediction.upsert');
     Route::post('games/{game}/comments', [GameCommentController::class, 'store'])->name('games.comments.store');

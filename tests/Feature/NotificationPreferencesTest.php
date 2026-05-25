@@ -1,7 +1,11 @@
 <?php
 
 use App\Models\User;
+use App\Notifications\TestBrowserNotification;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Notification;
 use Inertia\Testing\AssertableInertia as Assert;
+use NotificationChannels\WebPush\WebPushChannel;
 
 test('notification settings page is displayed with default preferences', function () {
     $user = User::factory()->create();
@@ -119,4 +123,44 @@ test('push subscription endpoints store and remove browser subscriptions', funct
 
     expect($user->pushSubscriptions()->where('endpoint', $payload['endpoint'])->exists())->toBeFalse()
         ->and($user->notificationPreference()->first()?->refresh()->browser_notifications_enabled)->toBeFalse();
+});
+
+test('current browser push subscription can receive a test notification', function () {
+    Notification::fake();
+    config([
+        'webpush.vapid.public_key' => 'public-key',
+        'webpush.vapid.private_key' => 'private-key',
+    ]);
+
+    $user = User::factory()->create();
+    $payload = [
+        'endpoint' => 'https://example.test/push/current-browser',
+        'keys' => [
+            'p256dh' => str_repeat('a', 88),
+            'auth' => str_repeat('b', 24),
+        ],
+        'contentEncoding' => 'aes128gcm',
+    ];
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.store'), $payload)
+        ->assertOk();
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.test'), [
+            'endpoint' => $payload['endpoint'],
+        ])
+        ->assertOk()
+        ->assertJson(['sent' => true]);
+
+    Notification::assertSentOnDemand(
+        TestBrowserNotification::class,
+        function (TestBrowserNotification $notification, array $channels, $notifiable) use ($payload): bool {
+            $subscriptions = $notifiable->routeNotificationFor('WebPush');
+
+            return $channels === [WebPushChannel::class]
+                && $subscriptions instanceof Collection
+                && $subscriptions->first()->endpoint === $payload['endpoint'];
+        },
+    );
 });

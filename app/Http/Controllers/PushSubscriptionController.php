@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\TestBrowserNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class PushSubscriptionController extends Controller
 {
@@ -35,6 +37,31 @@ class PushSubscriptionController extends Controller
             ->updateOrCreate([], ['browser_notifications_enabled' => true]);
 
         return response()->json(['subscribed' => true]);
+    }
+
+    public function sendTest(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'endpoint' => ['required', 'string', 'max:500'],
+        ]);
+
+        abort_unless(
+            filled(config('webpush.vapid.public_key')) && filled(config('webpush.vapid.private_key')),
+            422,
+            'As chaves VAPID precisam ser configuradas no servidor.',
+        );
+
+        $subscriptions = $request->user()
+            ->pushSubscriptions()
+            ->where('endpoint', $validated['endpoint'])
+            ->get();
+
+        abort_unless($subscriptions->isNotEmpty(), 404, 'Este navegador ainda não está inscrito para notificações.');
+
+        Notification::route('WebPush', $subscriptions)
+            ->notifyNow(new TestBrowserNotification);
+
+        return response()->json(['sent' => true]);
     }
 
     public function destroy(Request $request): JsonResponse

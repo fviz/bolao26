@@ -35,6 +35,8 @@ const systemTimezone =
     Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
 const pushError = ref<string | null>(null);
 const pushProcessing = ref(false);
+const testProcessing = ref(false);
+const testSent = ref(false);
 
 const form = useForm({
     missing_prediction_reminders_enabled:
@@ -56,6 +58,7 @@ const {
     permission,
     isSubscribed,
     refreshSubscription,
+    sendTestNotification,
     subscribe,
     unsubscribe,
 } = useWebPush();
@@ -104,6 +107,7 @@ const enableBrowserNotifications = async (): Promise<void> => {
     try {
         await subscribe();
         form.browser_notifications_enabled = true;
+        testSent.value = false;
     } catch (error) {
         pushError.value =
             error instanceof Error
@@ -121,6 +125,7 @@ const disableBrowserNotifications = async (): Promise<void> => {
     try {
         await unsubscribe();
         form.browser_notifications_enabled = false;
+        testSent.value = false;
     } catch (error) {
         pushError.value =
             error instanceof Error
@@ -128,6 +133,24 @@ const disableBrowserNotifications = async (): Promise<void> => {
                 : 'Não foi possível desabilitar notificações do navegador.';
     } finally {
         pushProcessing.value = false;
+    }
+};
+
+const testBrowserNotification = async (): Promise<void> => {
+    testProcessing.value = true;
+    testSent.value = false;
+    pushError.value = null;
+
+    try {
+        await sendTestNotification();
+        testSent.value = true;
+    } catch (error) {
+        pushError.value =
+            error instanceof Error
+                ? error.message
+                : 'Não foi possível enviar a notificação de teste.';
+    } finally {
+        testProcessing.value = false;
     }
 };
 
@@ -165,8 +188,7 @@ onMounted(() => {
                         </span>
                         <InputError
                             :message="
-                                form.errors
-                                    .missing_prediction_reminders_enabled
+                                form.errors.missing_prediction_reminders_enabled
                             "
                         />
                     </span>
@@ -227,7 +249,9 @@ onMounted(() => {
                             Receba um lembrete diário quando ainda houver
                             previsões pendentes para os jogos do dia.
                         </span>
-                        <InputError :message="form.errors.daily_summary_enabled" />
+                        <InputError
+                            :message="form.errors.daily_summary_enabled"
+                        />
                     </span>
                 </label>
 
@@ -311,13 +335,35 @@ onMounted(() => {
                                 v-else
                                 type="button"
                                 variant="outline"
-                                :disabled="pushProcessing"
+                                :disabled="pushProcessing || testProcessing"
                                 @click="disableBrowserNotifications"
                             >
                                 Desabilitar neste dispositivo
                             </Button>
+                            <Button
+                                type="button"
+                                variant="outline"
+                                :disabled="
+                                    pushProcessing ||
+                                    testProcessing ||
+                                    !isSubscribed
+                                "
+                                @click="testBrowserNotification"
+                            >
+                                {{
+                                    testProcessing
+                                        ? 'Enviando teste...'
+                                        : 'Testar notificação'
+                                }}
+                            </Button>
                         </div>
 
+                        <p
+                            v-if="testSent"
+                            class="text-sm font-medium text-green-600"
+                        >
+                            Notificação de teste enviada para este navegador.
+                        </p>
                         <p
                             v-if="pushError"
                             class="text-sm font-medium text-destructive"

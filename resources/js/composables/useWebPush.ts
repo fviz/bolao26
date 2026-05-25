@@ -2,11 +2,16 @@ import { ref } from 'vue';
 import {
     destroy as destroyPushSubscription,
     store as storePushSubscription,
+    test as testPushSubscription,
     vapidKey,
 } from '@/routes/push-subscriptions';
 
 type VapidKeyResponse = {
     publicKey: string | null;
+};
+
+type JsonErrorResponse = {
+    message?: string;
 };
 
 type PushSubscriptionPayload = PushSubscriptionJSON & {
@@ -25,6 +30,7 @@ const permission = ref<NotificationPermission>(
 );
 
 const isSubscribed = ref(false);
+const subscriptionEndpoint = ref<string | null>(null);
 
 function csrfToken(): string {
     return (
@@ -51,6 +57,7 @@ async function postJson(
     url: string,
     payload: unknown,
     method = 'POST',
+    fallbackMessage = 'Não foi possível atualizar a inscrição de notificações.',
 ): Promise<void> {
     const response = await fetch(url, {
         method,
@@ -64,9 +71,11 @@ async function postJson(
     });
 
     if (!response.ok) {
-        throw new Error(
-            'Não foi possível atualizar a inscrição de notificações.',
-        );
+        const data = (await response
+            .json()
+            .catch(() => null)) as JsonErrorResponse | null;
+
+        throw new Error(data?.message ?? fallbackMessage);
     }
 }
 
@@ -111,6 +120,7 @@ export function useWebPush() {
 
         permission.value = Notification.permission;
         isSubscribed.value = subscription !== null;
+        subscriptionEndpoint.value = subscription?.endpoint ?? null;
     };
 
     const subscribe = async (): Promise<void> => {
@@ -143,6 +153,34 @@ export function useWebPush() {
 
         await postJson(storePushSubscription.url(), payload);
         isSubscribed.value = true;
+        subscriptionEndpoint.value = subscription.endpoint;
+    };
+
+    const sendTestNotification = async (): Promise<void> => {
+        if (!isSupported.value) {
+            throw new Error('Este navegador não suporta notificações push.');
+        }
+
+        const serviceWorkerRegistration = await registration();
+        const subscription =
+            await serviceWorkerRegistration.pushManager.getSubscription();
+
+        permission.value = Notification.permission;
+        isSubscribed.value = subscription !== null;
+        subscriptionEndpoint.value = subscription?.endpoint ?? null;
+
+        if (!subscription) {
+            throw new Error(
+                'Habilite as notificações neste dispositivo antes de testar.',
+            );
+        }
+
+        await postJson(
+            testPushSubscription.url(),
+            { endpoint: subscription.endpoint },
+            'POST',
+            'Não foi possível enviar a notificação de teste.',
+        );
     };
 
     const unsubscribe = async (): Promise<void> => {
@@ -168,6 +206,7 @@ export function useWebPush() {
 
         await subscription.unsubscribe();
         isSubscribed.value = false;
+        subscriptionEndpoint.value = null;
     };
 
     return {
@@ -175,6 +214,7 @@ export function useWebPush() {
         permission,
         isSubscribed,
         refreshSubscription,
+        sendTestNotification,
         subscribe,
         unsubscribe,
     };
