@@ -8,14 +8,14 @@ use Illuminate\Support\Collection;
 final class Leaderboard
 {
     /**
-     * @return Collection<int, array{id: int, name: string, totalPoints: int, rank: int, isCurrentUser: bool}>
+     * @return Collection<int, array{id: int, name: string, avatar: ?string, totalPoints: int, rank: int, isCurrentUser: bool}>
      */
     public static function rankedEntries(?User $currentUser = null): Collection
     {
         $users = User::query()
             ->orderByDesc('total_points')
             ->orderBy('name')
-            ->get(['id', 'name', 'total_points']);
+            ->get(['id', 'name', 'avatar_path', 'total_points']);
 
         $rank = 1;
 
@@ -27,6 +27,7 @@ final class Leaderboard
             return [
                 'id' => $user->id,
                 'name' => $user->name,
+                'avatar' => $user->avatar,
                 'totalPoints' => $user->total_points,
                 'rank' => $rank,
                 'isCurrentUser' => $currentUser !== null && $user->is($currentUser),
@@ -35,8 +36,8 @@ final class Leaderboard
     }
 
     /**
-     * @param  Collection<int, array{id: int, name: string, totalPoints: int, rank: int, isCurrentUser: bool}>  $entries
-     * @return Collection<int, array{id: int, name: string, totalPoints: int, rank: int, isCurrentUser: bool}>
+     * @param  Collection<int, array{id: int, name: string, avatar: ?string, totalPoints: int, rank: int, isCurrentUser: bool}>  $entries
+     * @return Collection<int, array{id: int, name: string, avatar: ?string, totalPoints: int, rank: int, isCurrentUser: bool}>
      */
     public static function windowForUser(Collection $entries, int $userId, int $size = 5): Collection
     {

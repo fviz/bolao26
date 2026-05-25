@@ -36,7 +36,7 @@ defineOptions({
         <div
             class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
         >
-            <LeaderboardList :entries="leaderboard" />
+            <LeaderboardList :entries="leaderboard" show-avatar />
         </div>
     </div>
 </template>

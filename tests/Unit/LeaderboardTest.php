@@ -99,3 +99,14 @@ test('marks the current user in ranked entries', function () {
     expect($entries->firstWhere('id', $user->id)['isCurrentUser'])->toBeTrue()
         ->and($entries->where('isCurrentUser', true))->toHaveCount(1);
 });
+
+test('ranked entries include user avatar url', function () {
+    $user = User::factory()->create([
+        'avatar_path' => 'avatars/example.jpg',
+        'total_points' => 50,
+    ]);
+
+    $entries = Leaderboard::rankedEntries();
+
+    expect($entries->firstWhere('id', $user->id)['avatar'])->toBe($user->avatar);
+});

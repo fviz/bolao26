@@ -89,6 +89,7 @@ export type Paginated<T> = {
 export type LeaderboardEntry = {
     id: number;
     name: string;
+    avatar: string | null;
     totalPoints: number;
     rank: number;
     isCurrentUser: boolean;
