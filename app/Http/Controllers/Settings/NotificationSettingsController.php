@@ -36,18 +36,20 @@ class NotificationSettingsController extends Controller
 
     public function update(NotificationSettingsUpdateRequest $request): RedirectResponse
     {
-        $request->user()
+        $preference = $request->user()
             ->notificationPreference()
-            ->updateOrCreate([], [
-                'missing_prediction_reminders_enabled' => $request->boolean('missing_prediction_reminders_enabled'),
-                'game_result_notifications_enabled' => $request->boolean('game_result_notifications_enabled'),
-                'daily_summary_enabled' => $request->boolean('daily_summary_enabled'),
-                'tournament_deadline_enabled' => $request->boolean('tournament_deadline_enabled'),
-                'browser_notifications_enabled' => $request->boolean('browser_notifications_enabled'),
-                'game_reminder_minutes' => $request->integer('game_reminder_minutes'),
-                'daily_summary_time' => $request->string('daily_summary_time')->toString(),
-                'daily_summary_timezone' => $request->string('daily_summary_timezone')->toString(),
-            ]);
+            ->firstOrNew();
+
+        $preference->fill([
+            'missing_prediction_reminders_enabled' => $request->boolean('missing_prediction_reminders_enabled'),
+            'game_result_notifications_enabled' => $request->boolean('game_result_notifications_enabled'),
+            'daily_summary_enabled' => $request->boolean('daily_summary_enabled'),
+            'tournament_deadline_enabled' => $request->boolean('tournament_deadline_enabled'),
+            'browser_notifications_enabled' => $request->boolean('browser_notifications_enabled'),
+            'game_reminder_minutes' => $request->integer('game_reminder_minutes'),
+            'daily_summary_time' => $request->string('daily_summary_time')->toString(),
+            'daily_summary_timezone' => $request->string('daily_summary_timezone')->toString(),
+        ])->save();
 
         Inertia::flash('toast', ['type' => 'success', 'message' => __('Notificações atualizadas.')]);
 

@@ -23,6 +23,15 @@ test('notification settings page is displayed with default preferences', functio
 
 test('notification settings can be updated', function () {
     $user = User::factory()->create();
+    $user->notificationPreference()->create([
+        'missing_prediction_reminders_enabled' => true,
+        'game_result_notifications_enabled' => false,
+        'daily_summary_enabled' => false,
+        'tournament_deadline_enabled' => true,
+        'game_reminder_minutes' => 60,
+        'daily_summary_time' => '09:00',
+        'daily_summary_timezone' => 'UTC',
+    ]);
 
     $this->actingAs($user)
         ->patch(route('notifications.settings.update'), [
@@ -47,7 +56,20 @@ test('notification settings can be updated', function () {
         ->and($preference->tournament_deadline_enabled)->toBeFalse()
         ->and($preference->game_reminder_minutes)->toBe(180)
         ->and($preference->daily_summary_time)->toBe('08:30')
-        ->and($preference->daily_summary_timezone)->toBe('America/Sao_Paulo');
+        ->and($preference->daily_summary_timezone)->toBe('America/Sao_Paulo')
+        ->and($user->notificationPreference()->count())->toBe(1);
+
+    $this->actingAs($user)
+        ->get(route('notifications.settings.edit'))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('preferences.missingPredictionRemindersEnabled', false)
+            ->where('preferences.gameResultNotificationsEnabled', true)
+            ->where('preferences.dailySummaryEnabled', true)
+            ->where('preferences.tournamentDeadlineEnabled', false)
+            ->where('preferences.gameReminderMinutes', 180)
+            ->where('preferences.dailySummaryTime', '08:30')
+            ->where('preferences.dailySummaryTimezone', 'America/Sao_Paulo'),
+        );
 });
 
 test('notification settings validate reminder interval and timezone', function () {

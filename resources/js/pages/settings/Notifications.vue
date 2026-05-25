@@ -93,6 +93,7 @@ const reminderLabel = (minutes: number): string => {
 const submit = (): void => {
     form.patch(update.url(), {
         preserveScroll: true,
+        preserveState: false,
     });
 };
 
@@ -151,9 +152,7 @@ onMounted(() => {
             <div class="space-y-4">
                 <label class="flex items-start gap-3">
                     <Checkbox
-                        v-model:checked="
-                            form.missing_prediction_reminders_enabled
-                        "
+                        v-model="form.missing_prediction_reminders_enabled"
                         class="mt-1"
                     />
                     <span class="space-y-1">
@@ -164,6 +163,12 @@ onMounted(() => {
                             Receba um aviso quando um jogo estiver perto de
                             começar e você ainda não tiver feito previsão.
                         </span>
+                        <InputError
+                            :message="
+                                form.errors
+                                    .missing_prediction_reminders_enabled
+                            "
+                        />
                     </span>
                 </label>
 
@@ -191,7 +196,7 @@ onMounted(() => {
 
                 <label class="flex items-start gap-3">
                     <Checkbox
-                        v-model:checked="form.game_result_notifications_enabled"
+                        v-model="form.game_result_notifications_enabled"
                         class="mt-1"
                     />
                     <span class="space-y-1">
@@ -201,12 +206,17 @@ onMounted(() => {
                         <span class="block text-sm text-muted-foreground">
                             Receba os pontos garantidos quando um jogo terminar.
                         </span>
+                        <InputError
+                            :message="
+                                form.errors.game_result_notifications_enabled
+                            "
+                        />
                     </span>
                 </label>
 
                 <label class="flex items-start gap-3">
                     <Checkbox
-                        v-model:checked="form.daily_summary_enabled"
+                        v-model="form.daily_summary_enabled"
                         class="mt-1"
                     />
                     <span class="space-y-1">
@@ -217,6 +227,7 @@ onMounted(() => {
                             Receba um lembrete diário quando ainda houver
                             previsões pendentes para os jogos do dia.
                         </span>
+                        <InputError :message="form.errors.daily_summary_enabled" />
                     </span>
                 </label>
 
@@ -240,7 +251,7 @@ onMounted(() => {
 
                 <label class="flex items-start gap-3">
                     <Checkbox
-                        v-model:checked="form.tournament_deadline_enabled"
+                        v-model="form.tournament_deadline_enabled"
                         class="mt-1"
                     />
                     <span class="space-y-1">
@@ -251,6 +262,9 @@ onMounted(() => {
                             Receba um aviso perto do início da Copa caso essas
                             previsões ainda estejam pendentes.
                         </span>
+                        <InputError
+                            :message="form.errors.tournament_deadline_enabled"
+                        />
                     </span>
                 </label>
             </div>
