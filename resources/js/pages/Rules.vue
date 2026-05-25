@@ -174,7 +174,7 @@ defineOptions({
         <Heading
             variant="small"
             title="Fim do campeonato"
-            description="Escolha o campeão antes do início da Copa"
+            description="Escolha o campeão e o artilheiro antes do início da Copa"
         />
 
         <table class="w-full border-separate rounded-xl">
@@ -184,6 +184,22 @@ defineOptions({
                         Acertar o campeão<br />
                         <span class="text-sm text-gray-500"
                             >Seleção vencedora da final</span
+                        >
+                    </td>
+                    <td class="p-4">
+                        <div
+                            class="rounded-md bg-green-500 p-2 text-center font-bold text-white"
+                        >
+                            300 pontos
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pl-4">
+                        Acertar o artilheiro<br />
+                        <span class="text-sm text-gray-500"
+                            >Jogador com mais gols na Copa (definido ao fim do
+                            campeonato)</span
                         >
                     </td>
                     <td class="p-4">

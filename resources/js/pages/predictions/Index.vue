@@ -5,6 +5,7 @@ import { computed, ref } from 'vue';
 import GamesList from '@/components/games/GamesList.vue';
 import Heading from '@/components/Heading.vue';
 import InputError from '@/components/InputError.vue';
+import TopScorerPlayerPicker from '@/components/predictions/TopScorerPlayerPicker.vue';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -13,17 +14,24 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Label } from '@/components/ui/label';
+import type { CountrySearchTerms } from '@/composables/usePlayerSearch';
 import { useGameSchedule } from '@/composables/useGameSchedule';
 import {
     destroy as destroyChampionPrediction,
     upsert as upsertChampionPrediction,
 } from '@/routes/champion-prediction';
 import { index as predictionsIndex } from '@/routes/predictions';
+import {
+    destroy as destroyTopScorerPrediction,
+    upsert as upsertTopScorerPrediction,
+} from '@/routes/top-scorer-prediction';
 import type {
     ChampionPrediction,
     ChampionTeam,
     GameListItem,
     Paginated,
+    TopScorerPrediction,
+    WorldCupPlayer,
 } from '@/types/game';
 
 type Props = {
@@ -33,6 +41,11 @@ type Props = {
     championPredictionsOpen: boolean;
     championPredictionsDeadline: string;
     championTeams: ChampionTeam[];
+    topScorerPrediction: TopScorerPrediction | null;
+    topScorerPredictionsOpen: boolean;
+    topScorerPredictionsDeadline: string;
+    players: WorldCupPlayer[];
+    playerCountrySearchTerms: CountrySearchTerms;
 };
 
 const props = defineProps<Props>();
@@ -40,6 +53,10 @@ const props = defineProps<Props>();
 const { formatScheduledAt } = useGameSchedule();
 
 const showChampionForm = ref(false);
+const showTopScorerForm = ref(false);
+const selectedPlayerId = ref<string | null>(
+    props.topScorerPrediction?.playerId ?? null,
+);
 
 const championTeamName = computed(() => {
     if (!props.championPrediction) {
@@ -53,6 +70,30 @@ const championTeamName = computed(() => {
     );
 });
 
+const selectedTopScorerPlayer = computed(() => {
+    if (!props.topScorerPrediction) {
+        return null;
+    }
+
+    return (
+        props.players.find(
+            (player) => player.id === props.topScorerPrediction?.playerId,
+        ) ?? null
+    );
+});
+
+const topScorerDisplayName = computed(() => {
+    const player = selectedTopScorerPlayer.value;
+
+    if (!player) {
+        return props.topScorerPrediction?.playerId ?? null;
+    }
+
+    const club = player.club ? ` · ${player.club}` : '';
+
+    return `${player.name} — ${player.position}${club} · ${player.country}`;
+});
+
 const showChampionPredictionForm = computed(
     () =>
         props.championPredictionsOpen &&
@@ -60,9 +101,21 @@ const showChampionPredictionForm = computed(
         (!props.championPrediction || showChampionForm.value),
 );
 
+const showTopScorerPredictionForm = computed(
+    () =>
+        props.topScorerPredictionsOpen &&
+        props.players.length > 0 &&
+        (!props.topScorerPrediction || showTopScorerForm.value),
+);
+
 const canManageChampionPrediction = computed(
     () =>
         props.championPrediction !== null && props.championPredictionsOpen,
+);
+
+const canManageTopScorerPrediction = computed(
+    () =>
+        props.topScorerPrediction !== null && props.topScorerPredictionsOpen,
 );
 
 defineOptions({
@@ -156,6 +209,78 @@ defineOptions({
                     Prazo encerrado
                 </p>
             </div>
+
+            <div
+                class="flex flex-col gap-2 rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
+            >
+                <div class="flex items-start justify-between gap-2">
+                    <p class="text-muted-foreground text-sm">Artilheiro</p>
+                    <DropdownMenu v-if="canManageTopScorerPrediction">
+                        <DropdownMenuTrigger as-child>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                class="size-8 shrink-0"
+                                aria-label="Opções do palpite de artilheiro"
+                            >
+                                <MoreHorizontal class="size-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuItem
+                                @select="
+                                    (event) => {
+                                        event.preventDefault();
+                                        showTopScorerForm = true;
+                                        selectedPlayerId =
+                                            topScorerPrediction?.playerId ??
+                                            null;
+                                    }
+                                "
+                            >
+                                Editar palpite
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                                variant="destructive"
+                                as-child
+                            >
+                                <Form
+                                    v-bind="destroyTopScorerPrediction.form()"
+                                    :options="{ preserveScroll: true }"
+                                    class="w-full"
+                                    @success="showTopScorerForm = false"
+                                >
+                                    <button
+                                        type="submit"
+                                        class="w-full cursor-default text-left"
+                                    >
+                                        Remover palpite
+                                    </button>
+                                </Form>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
+                <p v-if="topScorerPrediction" class="font-medium">
+                    {{ topScorerDisplayName }}
+                    <span
+                        v-if="topScorerPrediction.points !== null"
+                        class="text-green-700 dark:text-green-400"
+                    >
+                        (+{{ topScorerPrediction.points }} pts)
+                    </span>
+                </p>
+                <p v-else-if="topScorerPredictionsOpen" class="text-sm">
+                    Escolha abaixo até
+                    {{
+                        formatScheduledAt(topScorerPredictionsDeadline)
+                            .combined
+                    }}
+                </p>
+                <p v-else class="text-muted-foreground text-sm">
+                    Prazo encerrado
+                </p>
+            </div>
         </div>
 
         <section
@@ -197,6 +322,37 @@ defineOptions({
                         championPrediction
                             ? 'Atualizar campeão'
                             : 'Salvar campeão'
+                    }}
+                </Button>
+            </Form>
+        </section>
+
+        <section
+            v-if="showTopScorerPredictionForm"
+            class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
+        >
+            <h2 class="mb-3 text-lg font-semibold">Palpite de artilheiro</h2>
+            <Form
+                v-bind="upsertTopScorerPrediction.form()"
+                class="flex flex-wrap items-end gap-4"
+                :options="{ preserveScroll: true }"
+                v-slot="{ errors, processing }"
+                @success="showTopScorerForm = false"
+            >
+                <TopScorerPlayerPicker
+                    v-model="selectedPlayerId"
+                    :players="players"
+                    :country-search-terms="playerCountrySearchTerms"
+                    :error="errors.player_id"
+                />
+                <Button
+                    type="submit"
+                    :disabled="processing || !selectedPlayerId"
+                >
+                    {{
+                        topScorerPrediction
+                            ? 'Atualizar artilheiro'
+                            : 'Salvar artilheiro'
                     }}
                 </Button>
             </Form>

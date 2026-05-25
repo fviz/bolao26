@@ -23,6 +23,7 @@ test('authenticated users can view my predictions page', function () {
             ->has('predictedGames.data')
             ->has('missingGames.data')
             ->has('championTeams')
+            ->has('players')
             ->missing('nextGame'));
 });
 

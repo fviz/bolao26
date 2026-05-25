@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Game;
 use App\Services\Scoring\ScoreChampionPredictions;
 use App\Services\Scoring\ScoreGamePredictions;
+use App\Services\Scoring\ScoreTopScorerPredictions;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
@@ -16,6 +17,7 @@ class ScoreBolaoGamesCommand extends Command
     public function handle(
         ScoreGamePredictions $scoreGamePredictions,
         ScoreChampionPredictions $scoreChampionPredictions,
+        ScoreTopScorerPredictions $scoreTopScorerPredictions,
     ): int {
         $gameId = $this->option('game');
 
@@ -40,6 +42,10 @@ class ScoreBolaoGamesCommand extends Command
         });
 
         $this->info("Scored {$scored} game(s).");
+
+        if ($scoreTopScorerPredictions->score()) {
+            $this->line('Scored top scorer predictions.');
+        }
 
         return self::SUCCESS;
     }

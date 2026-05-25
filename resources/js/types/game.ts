@@ -103,3 +103,17 @@ export type ChampionPrediction = {
     fifaTeamId: string;
     points: number | null;
 };
+
+export type WorldCupPlayer = {
+    id: string;
+    name: string;
+    position: string;
+    club: string;
+    country: string;
+    countryKey: string;
+};
+
+export type TopScorerPrediction = {
+    playerId: string;
+    points: number | null;
+};

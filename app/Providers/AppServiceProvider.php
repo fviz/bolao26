@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\TournamentTopScorerResolver;
+use App\Services\TournamentTopScorer\NullTournamentTopScorerResolver;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Date;
@@ -17,7 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            TournamentTopScorerResolver::class,
+            NullTournamentTopScorerResolver::class,
+        );
     }
 
     /**

@@ -80,6 +80,11 @@ class User extends Authenticatable
         return $this->hasOne(ChampionPrediction::class);
     }
 
+    public function topScorerPrediction(): HasOne
+    {
+        return $this->hasOne(TopScorerPrediction::class);
+    }
+
     public function gameComments(): HasMany
     {
         return $this->hasMany(GameComment::class);

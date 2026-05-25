@@ -6,6 +6,7 @@ use App\Http\Controllers\GameCommentController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\RankingController;
+use App\Http\Controllers\TopScorerPredictionController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -25,6 +26,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->scopeBindings();
     Route::put('champion-prediction', [ChampionPredictionController::class, 'upsert'])->name('champion-prediction.upsert');
     Route::delete('champion-prediction', [ChampionPredictionController::class, 'destroy'])->name('champion-prediction.destroy');
+    Route::put('top-scorer-prediction', [TopScorerPredictionController::class, 'upsert'])->name('top-scorer-prediction.upsert');
+    Route::delete('top-scorer-prediction', [TopScorerPredictionController::class, 'destroy'])->name('top-scorer-prediction.destroy');
     Route::inertia('rules', 'Rules')->name('rules');
 });
 

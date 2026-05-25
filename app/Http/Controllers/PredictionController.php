@@ -6,6 +6,8 @@ use App\Http\Requests\StorePredictionRequest;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
 use App\Support\ChampionPredictions;
+use App\Support\TopScorerPredictions;
+use App\Support\WorldCupPlayers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -37,6 +39,7 @@ class PredictionController extends Controller
             ->withQueryString();
 
         $championPrediction = $user->championPrediction;
+        $topScorerPrediction = $user->topScorerPrediction;
 
         return Inertia::render('predictions/Index', [
             'predictedGames' => GameResource::collection($predictedGames),
@@ -48,6 +51,14 @@ class PredictionController extends Controller
             'championPredictionsOpen' => ChampionPredictions::isOpen(),
             'championPredictionsDeadline' => ChampionPredictions::deadline()->toIso8601String(),
             'championTeams' => ChampionPredictions::availableTeams(),
+            'topScorerPrediction' => $topScorerPrediction ? [
+                'playerId' => $topScorerPrediction->player_id,
+                'points' => $topScorerPrediction->points,
+            ] : null,
+            'topScorerPredictionsOpen' => TopScorerPredictions::isOpen(),
+            'topScorerPredictionsDeadline' => TopScorerPredictions::deadline()->toIso8601String(),
+            'players' => WorldCupPlayers::forFrontend(),
+            'playerCountrySearchTerms' => WorldCupPlayers::countrySearchTerms(),
         ]);
     }
 
