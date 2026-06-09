@@ -17,7 +17,7 @@ withDefaults(defineProps<Props>(), {
     <div
         :class="
             layout === 'stacked'
-                ? 'flex flex-col items-center gap-2 rounded-xl border py-2 text-center'
+                ? 'flex flex-col items-center gap-1 rounded-lg border py-1.5 text-center [&_.fi]:text-base md:gap-2 md:rounded-xl md:py-2 md:[&_.fi]:text-lg'
                 : 'flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1'
         "
     >

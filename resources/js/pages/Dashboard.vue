@@ -120,7 +120,7 @@ defineOptions({
                 </div>
             </div>
             <div
-                class="flex flex-col gap-2 rounded-xl border p-4"
+                class="flex flex-col gap-1.5 rounded-xl border p-3 md:gap-2 md:p-4"
             >
                 <p class="text-sm">Próximo jogo</p>
                 <template v-if="nextGame">
@@ -130,7 +130,7 @@ defineOptions({
                         layout="stacked"
                     />
                     <div class="flex justify-between items-center gap-2">
-                        <p class="text-sm">
+                        <p class="text-xs md:text-sm">
                             {{ formatScheduledAt(nextGame.scheduledAt).combined }}
                         </p>
                         <GameCommentsCount :count="nextGame.commentsCount" />

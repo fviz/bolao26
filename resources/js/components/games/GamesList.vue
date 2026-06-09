@@ -59,34 +59,44 @@ const actionLabelForGame = (game: GameListItem): string => {
         </p>
 
         <div v-else class="flex flex-col gap-4">
-            <div class="flex flex-col gap-3 md:hidden">
+            <div class="flex flex-col gap-2 md:hidden">
                 <Card
                     v-for="game in games.data"
                     :key="game.id"
                     class="gap-0 py-0"
                 >
-                    <CardContent class="flex flex-col gap-3 p-4">
+                    <CardContent class="flex flex-col gap-2 p-3">
                         <GameMatchDisplay
                             :home="game.home"
                             :away="game.away"
-                            layout="stacked"
                         />
                         <UserPredictionSummary
                             v-if="showUserPrediction && game.userPrediction"
                             :prediction="game.userPrediction"
                         />
-                        <p class="text-sm text-muted-foreground">
-                            {{ formatScheduledAt(game.scheduledAt).combined }}
-                        </p>
-                        <p class="text-sm">
-                            {{ venueLabel(game) }}
-                        </p>
-                        <GameCommentsCount :count="game.commentsCount" />
+                        <div class="flex flex-col gap-0.5">
+                            <div
+                                class="flex items-center justify-between gap-2"
+                            >
+                                <p class="text-xs text-muted-foreground">
+                                    {{
+                                        formatScheduledAt(game.scheduledAt)
+                                            .combined
+                                    }}
+                                </p>
+                                <GameCommentsCount
+                                    :count="game.commentsCount"
+                                />
+                            </div>
+                            <p class="text-xs">
+                                {{ venueLabel(game) }}
+                            </p>
+                        </div>
                     </CardContent>
-                    <CardFooter class="border-t px-4 py-3">
+                    <CardFooter class="border-t px-3 py-2">
                         <Button
                             as-child
-                            class="min-h-10 w-full"
+                            class="min-h-9 w-full"
                             variant="default"
                         >
                             <Link :href="showGame(game.id)">
