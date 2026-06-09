@@ -4,6 +4,7 @@ import { BellRing } from 'lucide-vue-next';
 import { computed, onMounted } from 'vue';
 import GameCommentsCount from '@/components/games/GameCommentsCount.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
+import UserPredictionSummary from '@/components/games/UserPredictionSummary.vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -134,14 +135,10 @@ defineOptions({
                         </p>
                         <GameCommentsCount :count="nextGame.commentsCount" />
                     </div>
-                    <p
+                    <UserPredictionSummary
                         v-if="nextGame.userPrediction"
-                        class="text-sm font-medium bg-gray-100 dark:bg-gray-800 rounded-md p-2"
-                    >
-                        Seu palpite:
-                        {{ nextGame.userPrediction.homeScore }} ×
-                        {{ nextGame.userPrediction.awayScore }}
-                    </p>
+                        :prediction="nextGame.userPrediction"
+                    />
                     <Link
                         :href="showGame(nextGame.id)"
                         class="text-sm font-medium hover:underline text-yellow-500 dark:text-yellow-400"

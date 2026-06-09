@@ -2,6 +2,7 @@
 
 use App\Models\Game;
 use App\Models\GameComment;
+use App\Models\Prediction;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -44,6 +45,35 @@ test('dashboard exposes next upcoming game', function () {
             ->where('nextGame.commentsCount', 2)
             ->where('games.data.0.commentsCount', 2)
             ->missing('championPrediction'));
+});
+
+test('dashboard exposes user prediction on listed games', function () {
+    $user = User::factory()->create();
+
+    $predictedGame = Game::factory()->create([
+        'scheduled_at' => now()->addDay(),
+        'home_name' => 'Brazil',
+        'away_name' => 'France',
+    ]);
+
+    Prediction::factory()->for($user)->for($predictedGame)->create([
+        'home_score' => 2,
+        'away_score' => 1,
+    ]);
+
+    $unpredictedGame = Game::factory()->create([
+        'scheduled_at' => now()->addDays(2),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('games.data.0.id', $predictedGame->id)
+            ->where('games.data.0.userPrediction.homeScore', 2)
+            ->where('games.data.0.userPrediction.awayScore', 1)
+            ->where('games.data.1.id', $unpredictedGame->id)
+            ->where('games.data.1.userPrediction', null));
 });
 
 test('dashboard lists only upcoming games paginated twenty per page', function () {

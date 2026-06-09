@@ -17,6 +17,9 @@ class DashboardController extends Controller
 
         $games = Game::query()
             ->upcoming()
+            ->with([
+                'predictions' => fn ($query) => $query->where('user_id', $user->id),
+            ])
             ->withCount('comments')
             ->paginate(20)
             ->withQueryString();

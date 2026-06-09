@@ -355,7 +355,7 @@ defineOptions({
                 :games="predictedGames"
                 empty-message="Você ainda não fez nenhuma previsão."
                 action-label="Ver jogo"
-                show-prediction-column
+                show-user-prediction
                 pagination-aria-label="Paginação de jogos com previsão"
             />
         </section>

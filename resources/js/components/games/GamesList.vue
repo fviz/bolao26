@@ -2,6 +2,7 @@
 import { Link } from '@inertiajs/vue3';
 import GameCommentsCount from '@/components/games/GameCommentsCount.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
+import UserPredictionSummary from '@/components/games/UserPredictionSummary.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { useGameSchedule } from '@/composables/useGameSchedule';
@@ -12,13 +13,15 @@ type Props = {
     games: Paginated<GameListItem>;
     emptyMessage: string;
     actionLabel?: string;
-    showPredictionColumn?: boolean;
+    actionLabelWithoutPrediction?: string;
+    actionLabelWithPrediction?: string;
+    showUserPrediction?: boolean;
     paginationAriaLabel?: string;
 };
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     actionLabel: 'Ver jogo',
-    showPredictionColumn: false,
+    showUserPrediction: false,
     paginationAriaLabel: 'Paginação de jogos',
 });
 
@@ -32,12 +35,17 @@ const venueLabel = (game: GameListItem): string => {
     return game.stadiumName ?? game.cityName ?? '—';
 };
 
-const predictionLabel = (game: GameListItem): string => {
-    if (!game.userPrediction) {
-        return '—';
+const actionLabelForGame = (game: GameListItem): string => {
+    if (
+        props.actionLabelWithoutPrediction
+        && props.actionLabelWithPrediction
+    ) {
+        return game.userPrediction
+            ? props.actionLabelWithPrediction
+            : props.actionLabelWithoutPrediction;
     }
 
-    return `${game.userPrediction.homeScore} × ${game.userPrediction.awayScore}`;
+    return props.actionLabel;
 };
 </script>
 
@@ -63,12 +71,10 @@ const predictionLabel = (game: GameListItem): string => {
                             :away="game.away"
                             layout="stacked"
                         />
-                        <p
-                            v-if="showPredictionColumn"
-                            class="text-lg font-semibold"
-                        >
-                            {{ predictionLabel(game) }}
-                        </p>
+                        <UserPredictionSummary
+                            v-if="showUserPrediction && game.userPrediction"
+                            :prediction="game.userPrediction"
+                        />
                         <p class="text-sm text-muted-foreground">
                             {{ formatScheduledAt(game.scheduledAt).combined }}
                         </p>
@@ -84,7 +90,7 @@ const predictionLabel = (game: GameListItem): string => {
                             variant="default"
                         >
                             <Link :href="showGame(game.id)">
-                                {{ actionLabel }}
+                                {{ actionLabelForGame(game) }}
                             </Link>
                         </Button>
                     </CardFooter>
@@ -99,12 +105,6 @@ const predictionLabel = (game: GameListItem): string => {
                                 class="min-w-[12rem] px-4 py-3 text-left font-medium"
                             >
                                 Jogo
-                            </th>
-                            <th
-                                v-if="showPredictionColumn"
-                                class="px-4 py-3 text-left font-medium whitespace-nowrap"
-                            >
-                                Previsão
                             </th>
                             <th
                                 class="px-4 py-3 text-left font-medium whitespace-nowrap"
@@ -136,16 +136,19 @@ const predictionLabel = (game: GameListItem): string => {
                             "
                         >
                             <td class="px-4 py-3">
-                                <GameMatchDisplay
-                                    :home="game.home"
-                                    :away="game.away"
-                                />
-                            </td>
-                            <td
-                                v-if="showPredictionColumn"
-                                class="px-4 py-3 font-semibold whitespace-nowrap"
-                            >
-                                {{ predictionLabel(game) }}
+                                <div class="flex flex-col gap-2">
+                                    <GameMatchDisplay
+                                        :home="game.home"
+                                        :away="game.away"
+                                    />
+                                    <UserPredictionSummary
+                                        v-if="
+                                            showUserPrediction
+                                                && game.userPrediction
+                                        "
+                                        :prediction="game.userPrediction"
+                                    />
+                                </div>
                             </td>
                             <td
                                 class="px-4 py-3 whitespace-nowrap text-muted-foreground"
@@ -174,7 +177,7 @@ const predictionLabel = (game: GameListItem): string => {
                                     :href="showGame(game.id)"
                                     class="font-medium text-primary hover:underline"
                                 >
-                                    {{ actionLabel }}
+                                    {{ actionLabelForGame(game) }}
                                 </Link>
                             </td>
                         </tr>
