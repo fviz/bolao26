@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAdminBroadcastNotificationRequest;
+use App\Jobs\BroadcastAdminNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\DatabaseNotification;
@@ -49,6 +51,19 @@ class NotificationController extends Controller
         $request->user()
             ->unreadNotifications()
             ->update(['read_at' => now()]);
+
+        return back();
+    }
+
+    public function storeBroadcast(StoreAdminBroadcastNotificationRequest $request): RedirectResponse
+    {
+        BroadcastAdminNotification::dispatch(
+            $request->string('title')->toString(),
+            $request->string('body')->toString(),
+            $request->filled('url') ? $request->string('url')->toString() : null,
+        );
+
+        Inertia::flash('toast', ['type' => 'success', 'message' => __('Notificação enviada para todos os usuários.')]);
 
         return back();
     }

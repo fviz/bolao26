@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Form, Head, Link } from '@inertiajs/vue3';
-import { Bell, CheckCheck } from 'lucide-vue-next';
+import { Form, Head, Link, usePage } from '@inertiajs/vue3';
+import { Bell, CheckCheck, Send } from 'lucide-vue-next';
+import { computed, ref } from 'vue';
+import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import {
     Card,
@@ -9,7 +11,18 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { index, read, readAll } from '@/routes/notifications';
+import { store as storeBroadcast } from '@/routes/notifications/broadcast';
 import type { AppNotification, NotificationPaginator } from '@/types';
 
 type Props = {
@@ -28,6 +41,10 @@ defineOptions({
         ],
     },
 });
+
+const page = usePage();
+const isAdmin = computed(() => page.props.auth.user.is_admin);
+const showBroadcastDialog = ref(false);
 
 const formatDate = (value: string | null): string => {
     if (!value) {
@@ -57,17 +74,32 @@ const formatDate = (value: string | null): string => {
                 </p>
             </div>
 
-            <Form
-                v-if="notifications.total > 0"
-                v-bind="readAll.form()"
-                :options="{ preserveScroll: true }"
-                v-slot="{ processing }"
-            >
-                <Button type="submit" variant="outline" :disabled="processing">
-                    <CheckCheck />
-                    Marcar todas como lidas
+            <div class="flex flex-wrap gap-2">
+                <Button
+                    v-if="isAdmin"
+                    variant="default"
+                    @click="showBroadcastDialog = true"
+                >
+                    <Send />
+                    Enviar notificação
                 </Button>
-            </Form>
+
+                <Form
+                    v-if="notifications.total > 0"
+                    v-bind="readAll.form()"
+                    :options="{ preserveScroll: true }"
+                    v-slot="{ processing }"
+                >
+                    <Button
+                        type="submit"
+                        variant="outline"
+                        :disabled="processing"
+                    >
+                        <CheckCheck />
+                        Marcar todas como lidas
+                    </Button>
+                </Form>
+            </div>
         </div>
 
         <div v-if="notifications.data.length" class="space-y-3">
@@ -171,4 +203,74 @@ const formatDate = (value: string | null): string => {
             </Button>
         </nav>
     </div>
+
+    <Dialog v-model:open="showBroadcastDialog">
+        <DialogContent class="sm:max-w-md">
+            <DialogHeader>
+                <DialogTitle>Enviar notificação</DialogTitle>
+                <DialogDescription>
+                    A mensagem será enviada para todos os usuários do bolão.
+                </DialogDescription>
+            </DialogHeader>
+
+            <Form
+                v-bind="storeBroadcast.form()"
+                :options="{ preserveScroll: true }"
+                reset-on-success
+                class="space-y-4"
+                @success="showBroadcastDialog = false"
+                v-slot="{ errors, processing }"
+            >
+                <div class="grid gap-2">
+                    <Label for="broadcast_title">Título</Label>
+                    <Input
+                        id="broadcast_title"
+                        name="title"
+                        placeholder="Ex.: Aviso importante"
+                        maxlength="100"
+                        required
+                    />
+                    <InputError :message="errors.title" />
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="broadcast_body">Mensagem</Label>
+                    <Textarea
+                        id="broadcast_body"
+                        name="body"
+                        placeholder="Escreva a mensagem da notificação…"
+                        maxlength="500"
+                        rows="4"
+                        required
+                    />
+                    <InputError :message="errors.body" />
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="broadcast_url">Link (opcional)</Label>
+                    <Input
+                        id="broadcast_url"
+                        name="url"
+                        type="url"
+                        placeholder="https://"
+                    />
+                    <InputError :message="errors.url" />
+                </div>
+
+                <div class="flex justify-end gap-2">
+                    <Button
+                        type="button"
+                        variant="outline"
+                        @click="showBroadcastDialog = false"
+                    >
+                        Cancelar
+                    </Button>
+                    <Button type="submit" :disabled="processing">
+                        <Send />
+                        Enviar
+                    </Button>
+                </div>
+            </Form>
+        </DialogContent>
+    </Dialog>
 </template>
