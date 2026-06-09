@@ -33,9 +33,9 @@ defineOptions({
             <tbody class="rounded-xl">
                 <tr class="bg-gray-50 dark:bg-gray-900">
                     <td class="py-2 pl-4">
-                        Boa previsão do resultado completo<br />
+                        Bom palpite do resultado completo<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 2-1 previsto, resultado 2-1</span
+                            >Por exemplo, palpite de 2-1, resultado 2-1</span
                         >
                     </td>
                     <td class="p-4">
@@ -48,9 +48,9 @@ defineOptions({
                 </tr>
                 <tr>
                     <td class="pl-4">
-                        Boa previsão de empate<br />
+                        Bom palpite de empate<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 1-1 previsto, resultado 2-2</span
+                            >Por exemplo, palpite de 1-1, resultado 2-2</span
                         >
                     </td>
                     <td class="p-4">
@@ -63,10 +63,10 @@ defineOptions({
                 </tr>
                 <tr class="bg-gray-50 dark:bg-gray-900">
                     <td class="pl-4">
-                        Boa previsão do vencedor + número de gols de um
+                        Bom palpite do vencedor + número de gols de um
                         time<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 3-0 previsto, resultado 3-1</span
+                            >Por exemplo, palpite de 3-0, resultado 3-1</span
                         >
                     </td>
                     <td class="p-4">
@@ -79,9 +79,9 @@ defineOptions({
                 </tr>
                 <tr>
                     <td class="pl-4">
-                        Boa previsão do vencedor<br />
+                        Bom palpite do vencedor<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 3-1 previsto, resultado 1-0</span
+                            >Por exemplo, palpite de 3-1, resultado 1-0</span
                         >
                     </td>
                     <td class="p-4">
@@ -94,9 +94,9 @@ defineOptions({
                 </tr>
                 <tr class="bg-gray-50 dark:bg-gray-900">
                     <td class="pl-4">
-                        Boa previsão do número de gols de um time<br />
+                        Bom palpite do número de gols de um time<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 1-2 previsto, resultado 1-0</span
+                            >Por exemplo, palpite de 1-2, resultado 1-0</span
                         >
                     </td>
                     <td class="p-4">
@@ -113,17 +113,17 @@ defineOptions({
         <Heading
             variant="small"
             title="Fases eliminatórias"
-            description="Quando o jogo for decidido nos pênaltis e você prever empate no tempo regulamentar"
+            description="Quando o jogo for decidido nos pênaltis e você palpitar empate no tempo regulamentar"
         />
 
         <table class="w-full border-separate rounded-xl">
             <tbody class="rounded-xl">
                 <tr class="bg-gray-50 dark:bg-gray-900">
                     <td class="py-2 pl-4">
-                        Previsão perfeita de empate e vencedor nos
+                        Palpite perfeito de empate e vencedor nos
                         pênaltis<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 2-2 e time B nos pênaltis previsto,
+                            >Por exemplo, palpite de 2-2 e time B nos pênaltis,
                             resultado 2-2 e time B nos pênaltis</span
                         >
                     </td>
@@ -137,9 +137,9 @@ defineOptions({
                 </tr>
                 <tr>
                     <td class="pl-4">
-                        Boa previsão de empate e vencedor nos pênaltis<br />
+                        Bom palpite de empate e vencedor nos pênaltis<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 2-2 e time B nos pênaltis previsto,
+                            >Por exemplo, palpite de 2-2 e time B nos pênaltis,
                             resultado 3-3 e time B nos pênaltis</span
                         >
                     </td>
@@ -153,10 +153,10 @@ defineOptions({
                 </tr>
                 <tr class="bg-gray-50 dark:bg-gray-900">
                     <td class="pl-4">
-                        Boa previsão de empate, mas erro no vencedor nos
+                        Bom palpite de empate, mas erro no vencedor nos
                         pênaltis<br />
                         <span class="text-sm text-gray-500"
-                            >Por exemplo, 2-2 e time B nos pênaltis previsto,
+                            >Por exemplo, palpite de 2-2 e time B nos pênaltis,
                             resultado 2-2 e time A nos pênaltis</span
                         >
                     </td>

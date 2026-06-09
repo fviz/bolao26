@@ -160,11 +160,11 @@ function showPredictionEditor(event: Event): void {
             <div class="flex items-start justify-between gap-2">
                 <Heading
                     variant="small"
-                    title="Sua previsão"
+                    title="Seu palpite"
                     :description="
                         game.isBettingOpen
-                            ? 'Apostas aceitas até 1 minuto antes do apito inicial'
-                            : 'Apostas encerradas para este jogo'
+                            ? 'Palpites aceitos até 1 minuto antes do apito inicial'
+                            : 'Palpites encerrados para este jogo'
                     "
                 />
                 <DropdownMenu v-if="canShowPredictionOptions">
@@ -173,14 +173,14 @@ function showPredictionEditor(event: Event): void {
                             variant="ghost"
                             size="icon"
                             class="size-8 shrink-0"
-                            aria-label="Opções da previsão"
+                            aria-label="Opções do palpite"
                         >
                             <MoreHorizontal class="size-4" />
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuItem @select="showPredictionEditor">
-                            Editar previsão
+                            Editar palpite
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
@@ -203,7 +203,7 @@ function showPredictionEditor(event: Event): void {
                     </span>
                 </p>
                 <p v-else class="text-sm text-muted-foreground">
-                    Você não registrou previsão para este jogo.
+                    Você não registrou palpite para este jogo.
                 </p>
                 <p
                     v-if="
@@ -320,7 +320,7 @@ function showPredictionEditor(event: Event): void {
 
                 <div class="flex flex-wrap gap-3">
                     <Button type="submit" :disabled="processing">
-                        Salvar previsão
+                        Salvar palpite
                     </Button>
                     <Button as-child variant="outline">
                         <Link :href="dashboard()">Voltar ao painel</Link>
@@ -332,11 +332,11 @@ function showPredictionEditor(event: Event): void {
         <section class="rounded-xl border p-4 md:p-6">
             <Heading
                 variant="small"
-                title="Previsões"
+                title="Palpites"
                 :description="
                     game.arePredictionsVisible
-                        ? 'Previsões de todos os participantes neste jogo.'
-                        : 'As previsões dos participantes serão reveladas quando as apostas encerrarem.'
+                        ? 'Palpites de todos os participantes neste jogo.'
+                        : 'Os palpites dos participantes serão revelados quando o prazo encerrar.'
                 "
             />
 
@@ -397,7 +397,7 @@ function showPredictionEditor(event: Event): void {
             </div>
 
             <p v-else class="mt-4 text-sm text-muted-foreground">
-                Nenhum participante registrou previsão para este jogo.
+                Nenhum participante registrou palpite para este jogo.
             </p>
         </section>
 

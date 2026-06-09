@@ -59,7 +59,7 @@ withDefaults(
                 >
                     <h1 class="mb-1 font-medium">Bolão 2026!</h1>
                     <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
-                        Chegou o segundo momento mais aguardado do ano (depois do lançamento do GTA VI). <br /><br />É época de Copa do Mundo, e nada melhor que vencer no campo e na aposta.
+                        Chegou o segundo momento mais aguardado do ano (depois do lançamento do GTA VI). <br /><br />É época de Copa do Mundo, e nada melhor que vencer no campo e no palpite.
                     </p>
                     <ul class="mb-4 flex flex-col lg:mb-6">
 

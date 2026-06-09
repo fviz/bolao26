@@ -178,7 +178,7 @@ const formatDate = (value: string | null): string => {
             <Bell class="mb-3 size-8 text-muted-foreground" />
             <h2 class="text-lg font-medium">Nenhuma notificação ainda</h2>
             <p class="max-w-md text-sm text-muted-foreground">
-                Quando houver lembretes de previsões, resultados ou avisos da
+                Quando houver lembretes de palpites, resultados ou avisos da
                 Copa, eles aparecerão aqui.
             </p>
         </div>

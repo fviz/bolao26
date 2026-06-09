@@ -131,7 +131,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Minhas previsões',
+                title: 'Meus palpites',
                 href: predictionsIndex(),
             },
         ],
@@ -140,13 +140,13 @@ defineOptions({
 </script>
 
 <template>
-    <Head title="Minhas previsões" />
+    <Head title="Meus palpites" />
 
     <div class="flex flex-col gap-8 p-4 md:p-6">
         <Heading
             variant="small"
-            title="Minhas previsões"
-            description="Acompanhe suas previsões e os jogos que ainda faltam apostar"
+            title="Meus palpites"
+            description="Acompanhe seus palpites e os jogos que ainda faltam palpitar"
         />
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-2">
@@ -347,31 +347,31 @@ defineOptions({
         <section class="flex flex-col gap-4">
             <Heading
                 variant="small"
-                title="Com previsão"
+                title="Com palpite"
                 description="Jogos em que você já registrou um placar"
             />
 
             <GamesList
                 :games="predictedGames"
-                empty-message="Você ainda não fez nenhuma previsão."
+                empty-message="Você ainda não fez nenhum palpite."
                 action-label="Ver jogo"
                 show-user-prediction
-                pagination-aria-label="Paginação de jogos com previsão"
+                pagination-aria-label="Paginação de jogos com palpite"
             />
         </section>
 
         <section class="flex flex-col gap-4">
             <Heading
                 variant="small"
-                title="Sem previsão"
-                description="Jogos abertos para aposta — encerram 1 minuto antes do apito inicial"
+                title="Sem palpite"
+                description="Jogos abertos para palpite — encerram 1 minuto antes do apito inicial"
             />
 
             <GamesList
                 :games="missingGames"
-                empty-message="Nenhum jogo aberto para aposta no momento."
-                action-label="Fazer previsão"
-                pagination-aria-label="Paginação de jogos sem previsão"
+                empty-message="Nenhum jogo aberto para palpite no momento."
+                action-label="Fazer palpite"
+                pagination-aria-label="Paginação de jogos sem palpite"
             />
         </section>
     </div>

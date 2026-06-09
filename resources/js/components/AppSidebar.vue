@@ -49,7 +49,7 @@ const mainNavItems = computed<NavItem[]>(() => [
         icon: Trophy,
     },
     {
-        title: 'Minhas previsões',
+        title: 'Meus palpites',
         href: predictionsIndex(),
         icon: ClipboardList,
     },

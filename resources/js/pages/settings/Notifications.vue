@@ -184,7 +184,7 @@ onMounted(() => {
                         </span>
                         <span class="block text-sm text-muted-foreground">
                             Receba um aviso quando um jogo estiver perto de
-                            começar e você ainda não tiver feito previsão.
+                            começar e você ainda não tiver feito palpite.
                         </span>
                         <InputError
                             :message="
@@ -223,7 +223,7 @@ onMounted(() => {
                     />
                     <span class="space-y-1">
                         <span class="block text-sm font-medium">
-                            Resultado das previsões
+                            Resultado dos palpites
                         </span>
                         <span class="block text-sm text-muted-foreground">
                             Receba os pontos garantidos quando um jogo terminar.
@@ -247,7 +247,7 @@ onMounted(() => {
                         </span>
                         <span class="block text-sm text-muted-foreground">
                             Receba um lembrete diário quando ainda houver
-                            previsões pendentes para os jogos do dia.
+                            palpites pendentes para os jogos do dia.
                         </span>
                         <InputError
                             :message="form.errors.daily_summary_enabled"
@@ -280,11 +280,11 @@ onMounted(() => {
                     />
                     <span class="space-y-1">
                         <span class="block text-sm font-medium">
-                            Previsões de campeão e artilheiro
+                            Palpites de campeão e artilheiro
                         </span>
                         <span class="block text-sm text-muted-foreground">
-                            Receba um aviso perto do início da Copa caso essas
-                            previsões ainda estejam pendentes.
+                            Receba um aviso perto do início da Copa caso esses
+                            palpites ainda estejam pendentes.
                         </span>
                         <InputError
                             :message="form.errors.tournament_deadline_enabled"

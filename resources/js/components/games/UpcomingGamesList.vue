@@ -21,8 +21,8 @@ defineProps<Props>();
         <GamesList
             :games="games"
             empty-message="Nenhum jogo programado no momento."
-            action-label-without-prediction="Faça sua aposta"
-            action-label-with-prediction="Veja sua aposta"
+            action-label-without-prediction="Faça seu palpite"
+            action-label-with-prediction="Veja seu palpite"
             show-user-prediction
         />
     </div>
