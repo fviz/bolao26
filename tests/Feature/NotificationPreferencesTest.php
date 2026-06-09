@@ -168,3 +168,100 @@ test('current browser push subscription can receive a test notification', functi
 test('web push channel dependencies are registered', function () {
     expect(app(WebPushChannel::class))->toBeInstanceOf(WebPushChannel::class);
 });
+
+test('user can store push subscriptions for multiple devices', function () {
+    $user = User::factory()->create();
+    $firstPayload = [
+        'endpoint' => 'https://example.test/push/device-one',
+        'keys' => [
+            'p256dh' => str_repeat('a', 88),
+            'auth' => str_repeat('b', 24),
+        ],
+        'contentEncoding' => 'aes128gcm',
+    ];
+    $secondPayload = [
+        'endpoint' => 'https://example.test/push/device-two',
+        'keys' => [
+            'p256dh' => str_repeat('c', 88),
+            'auth' => str_repeat('d', 24),
+        ],
+        'contentEncoding' => 'aes128gcm',
+    ];
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.store'), $firstPayload)
+        ->assertOk()
+        ->assertJson(['subscribed' => true]);
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.store'), $secondPayload)
+        ->assertOk()
+        ->assertJson(['subscribed' => true]);
+
+    expect($user->pushSubscriptions()->count())->toBe(2)
+        ->and($user->pushSubscriptions()->where('endpoint', $firstPayload['endpoint'])->exists())->toBeTrue()
+        ->and($user->pushSubscriptions()->where('endpoint', $secondPayload['endpoint'])->exists())->toBeTrue()
+        ->and($user->notificationPreference()->first()?->browser_notifications_enabled)->toBeTrue();
+});
+
+test('removing one device push subscription keeps other devices subscribed', function () {
+    $user = User::factory()->create();
+    $firstPayload = [
+        'endpoint' => 'https://example.test/push/device-one',
+        'keys' => [
+            'p256dh' => str_repeat('a', 88),
+            'auth' => str_repeat('b', 24),
+        ],
+        'contentEncoding' => 'aes128gcm',
+    ];
+    $secondPayload = [
+        'endpoint' => 'https://example.test/push/device-two',
+        'keys' => [
+            'p256dh' => str_repeat('c', 88),
+            'auth' => str_repeat('d', 24),
+        ],
+        'contentEncoding' => 'aes128gcm',
+    ];
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.store'), $firstPayload)
+        ->assertOk();
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.store'), $secondPayload)
+        ->assertOk();
+
+    $this->actingAs($user)
+        ->deleteJson(route('push-subscriptions.destroy'), ['endpoint' => $firstPayload['endpoint']])
+        ->assertOk()
+        ->assertJson(['subscribed' => false]);
+
+    expect($user->pushSubscriptions()->count())->toBe(1)
+        ->and($user->pushSubscriptions()->where('endpoint', $firstPayload['endpoint'])->exists())->toBeFalse()
+        ->and($user->pushSubscriptions()->where('endpoint', $secondPayload['endpoint'])->exists())->toBeTrue()
+        ->and($user->notificationPreference()->first()?->refresh()->browser_notifications_enabled)->toBeTrue();
+});
+
+test('removing the last device push subscription disables browser notifications', function () {
+    $user = User::factory()->create();
+    $payload = [
+        'endpoint' => 'https://example.test/push/last-device',
+        'keys' => [
+            'p256dh' => str_repeat('a', 88),
+            'auth' => str_repeat('b', 24),
+        ],
+        'contentEncoding' => 'aes128gcm',
+    ];
+
+    $this->actingAs($user)
+        ->postJson(route('push-subscriptions.store'), $payload)
+        ->assertOk();
+
+    $this->actingAs($user)
+        ->deleteJson(route('push-subscriptions.destroy'), ['endpoint' => $payload['endpoint']])
+        ->assertOk()
+        ->assertJson(['subscribed' => false]);
+
+    expect($user->pushSubscriptions()->count())->toBe(0)
+        ->and($user->notificationPreference()->first()?->refresh()->browser_notifications_enabled)->toBeFalse();
+});

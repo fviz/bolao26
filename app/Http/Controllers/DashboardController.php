@@ -41,6 +41,8 @@ class DashboardController extends Controller
             'userTotalPoints' => $user->total_points,
             'leaderboard' => $leaderboard->values()->all(),
             'nextGame' => $nextGame ? GameResource::make($nextGame) : null,
+            'browserPushAvailable' => filled(config('webpush.vapid.public_key'))
+                && filled(config('webpush.vapid.private_key')),
         ]);
     }
 }

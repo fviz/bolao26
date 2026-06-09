@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import { BellRing } from 'lucide-vue-next';
+import { computed, onMounted } from 'vue';
 import GameCommentsCount from '@/components/games/GameCommentsCount.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
 import { useGameSchedule } from '@/composables/useGameSchedule';
+import { useWebPush } from '@/composables/useWebPush';
 import { dashboard } from '@/routes';
 import { show as showGame } from '@/routes/games';
+import { edit as editNotifications } from '@/routes/notifications/settings';
 import { index as rankingIndex } from '@/routes/ranking';
 import type { GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
 
@@ -15,11 +21,30 @@ type Props = {
     userTotalPoints: number;
     leaderboard: LeaderboardEntry[];
     nextGame: GameListItem | null;
+    browserPushAvailable: boolean;
 };
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const { formatScheduledAt } = useGameSchedule();
+const {
+    isSupported,
+    permission,
+    isSubscribed,
+    refreshSubscription,
+} = useWebPush();
+
+const showNotificationsPrompt = computed(
+    () =>
+        props.browserPushAvailable
+        && isSupported.value
+        && permission.value !== 'denied'
+        && !isSubscribed.value,
+);
+
+onMounted(() => {
+    void refreshSubscription();
+});
 
 defineOptions({
     layout: {
@@ -39,6 +64,21 @@ defineOptions({
     <div
         class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"
     >
+        <Alert v-if="showNotificationsPrompt">
+            <BellRing />
+            <AlertTitle>Ative as notificações do navegador</AlertTitle>
+            <AlertDescription>
+                <p>
+                    Receba lembretes e resultados mesmo com o app fechado.
+                </p>
+                <Button as-child size="sm" class="mt-3">
+                    <Link :href="editNotifications()">
+                        Habilitar neste dispositivo
+                    </Link>
+                </Button>
+            </AlertDescription>
+        </Alert>
+
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div
                 class="flex flex-col justify-between gap-1 rounded-xl border p-4"

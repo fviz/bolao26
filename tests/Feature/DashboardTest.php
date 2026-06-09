@@ -107,3 +107,33 @@ test('dashboard leaderboard widget assigns tied ranks', function () {
             ->where('leaderboard.1.rank', 1)
             ->where('leaderboard.2.rank', 3));
 });
+
+test('dashboard exposes browser push availability when vapid keys are configured', function () {
+    config([
+        'webpush.vapid.public_key' => 'public-key',
+        'webpush.vapid.private_key' => 'private-key',
+    ]);
+
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('browserPushAvailable', true));
+});
+
+test('dashboard exposes browser push as unavailable when vapid keys are missing', function () {
+    config([
+        'webpush.vapid.public_key' => null,
+        'webpush.vapid.private_key' => null,
+    ]);
+
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('browserPushAvailable', false));
+});
