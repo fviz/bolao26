@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Game;
+use App\Models\Prediction;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 
@@ -106,4 +108,48 @@ test('sync fifa game results command skips games that have not kicked off', func
     expect($game->home_score)->toBeNull()
         ->and($game->away_score)->toBeNull()
         ->and($game->is_final)->toBeFalse();
+});
+
+test('sync fifa game results command rescores predictions when a final match is corrected', function () {
+    fakeFifaCalendarMatchSequence(
+        'calendar-matches.json',
+        'calendar-matches-finished.json',
+        'calendar-matches-corrected.json',
+    );
+
+    $this->artisan('games:sync-fifa')->assertSuccessful();
+
+    $game = Game::query()->where('fifa_match_id', '400021443')->first();
+    $game->update([
+        'scheduled_at' => now()->subHour(),
+        'is_final' => false,
+    ]);
+
+    $this->artisan('games:sync-fifa-results')->assertSuccessful();
+
+    $game->refresh();
+
+    expect($game->home_score)->toBe(2)
+        ->and($game->away_score)->toBe(1)
+        ->and($game->is_final)->toBeTrue();
+
+    $user = User::factory()->create(['total_points' => 200]);
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $game->id,
+        'home_score' => 2,
+        'away_score' => 1,
+        'points' => 200,
+        'scored_at' => now(),
+    ]);
+
+    $this->artisan('games:sync-fifa-results')->assertSuccessful();
+
+    $game->refresh();
+    $user->refresh();
+
+    expect($game->home_score)->toBe(3)
+        ->and($user->predictions()->first()->points)->toBe(95)
+        ->and($user->total_points)->toBe(95);
 });

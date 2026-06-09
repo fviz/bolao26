@@ -162,6 +162,18 @@ class Game extends Model
         return $query->where('scheduled_at', '<=', now());
     }
 
+    /**
+     * @param  Builder<Game>  $query
+     * @return Builder<Game>
+     */
+    public function scopeResultsSyncCandidates(Builder $query): Builder
+    {
+        return $query->where(function (Builder $query): void {
+            $query->kickoffPassed()
+                ->orWhere('is_final', true);
+        });
+    }
+
     public function isGroupStage(): bool
     {
         return $this->id_group !== null;

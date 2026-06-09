@@ -45,8 +45,7 @@ class SyncFifaGames
     public function syncResults(): int
     {
         $candidates = Game::query()
-            ->notFinal()
-            ->kickoffPassed()
+            ->resultsSyncCandidates()
             ->get();
 
         if ($candidates->isEmpty()) {

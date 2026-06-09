@@ -16,7 +16,7 @@ class SyncFifaGameResultsCommand extends Command
     /**
      * @var string
      */
-    protected $description = 'Update scores and status for kicked-off matches that are not final';
+    protected $description = 'Update scores and status for kicked-off matches, including reevaluated finals';
 
     public function handle(SyncFifaGames $syncFifaGames): int
     {
