@@ -18,7 +18,7 @@ class TopScorerPredictionFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'player_id' => 'brazil-neymar',
+            'player_id' => 'brazil-neymar-jr',
             'points' => null,
             'scored_at' => null,
         ];

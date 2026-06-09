@@ -1,0 +1,6338 @@
+{
+    "Algeria": [
+        {
+            "player_name": "MASTIL Melvin",
+            "position": "GK",
+            "club": "FC Stade Nyonnais (SUI)"
+        },
+        {
+            "player_name": "MANDI Aissa",
+            "position": "DF",
+            "club": "Lille OSC (FRA)"
+        },
+        {
+            "player_name": "ABADA Achref",
+            "position": "DF",
+            "club": "USM Alger (ALG)"
+        },
+        {
+            "player_name": "TOUGAI Mohamed Amine",
+            "position": "DF",
+            "club": "Espérance De Tunisie (TUN)"
+        },
+        {
+            "player_name": "BELAID Zineddine",
+            "position": "DF",
+            "club": "JS Kabylie (ALG)"
+        },
+        {
+            "player_name": "ZERROUKI Ramiz",
+            "position": "MF",
+            "club": "FC Twente (NED)"
+        },
+        {
+            "player_name": "MAHREZ Riyad",
+            "position": "FW",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "AOUAR Houssem",
+            "position": "MF",
+            "club": "Al Ittihad (KSA)"
+        },
+        {
+            "player_name": "GOUIRI Amine",
+            "position": "FW",
+            "club": "Olympique Marseille (FRA)"
+        },
+        {
+            "player_name": "CHAIBI Fares",
+            "position": "MF",
+            "club": "Eintracht Frankfurt (GER)"
+        },
+        {
+            "player_name": "HADJ MOUSSA Anis",
+            "position": "FW",
+            "club": "Feyenoord Rotterdam (NED)"
+        },
+        {
+            "player_name": "BENBOUALI Nadhir Ahmed",
+            "position": "FW",
+            "club": "Györi ETO FC (HUN)"
+        },
+        {
+            "player_name": "HADJAM Jaouen",
+            "position": "DF",
+            "club": "BSC Young Boys (SUI)"
+        },
+        {
+            "player_name": "BOUDAOUI Hicham",
+            "position": "MF",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "AIT-NOURI Rayan",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "BENBOT Oussama",
+            "position": "GK",
+            "club": "USM Alger (ALG)"
+        },
+        {
+            "player_name": "BELGHALI Rak",
+            "position": "DF",
+            "club": "Hellas Verona FC (ITA)"
+        },
+        {
+            "player_name": "AMOURA Mohamed",
+            "position": "FW",
+            "club": "VfL Wolfsburg (GER)"
+        },
+        {
+            "player_name": "BENTALEB Nabil",
+            "position": "MF",
+            "club": "Lille OSC (FRA)"
+        },
+        {
+            "player_name": "BOULBINA Adil",
+            "position": "FW",
+            "club": "Al Duhail SC (QAT)"
+        },
+        {
+            "player_name": "BENSEBAINI Ramy",
+            "position": "DF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "MAZA Ibrahim",
+            "position": "MF",
+            "club": "Bayer 04 Leverkusen (GER)"
+        },
+        {
+            "player_name": "ZIDANE Luca",
+            "position": "GK",
+            "club": "Granada CF (ESP)"
+        },
+        {
+            "player_name": "TITRAOUI Yassine",
+            "position": "MF",
+            "club": "Sporting Charleroi (BEL)"
+        },
+        {
+            "player_name": "GHEDJEMIS Fares",
+            "position": "FW",
+            "club": "Frosinone (ITA)"
+        },
+        {
+            "player_name": "CHERGUI Samir",
+            "position": "DF",
+            "club": "Paris FC (FRA)"
+        }
+    ],
+    "Argentina": [
+        {
+            "player_name": "MUSSO Juan",
+            "position": "GK",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "BALERDI Leonardo",
+            "position": "DF",
+            "club": "Olympique Marseille (FRA)"
+        },
+        {
+            "player_name": "TAGLIAFICO Nicolas",
+            "position": "DF",
+            "club": "Olympique Lyonnais (FRA)"
+        },
+        {
+            "player_name": "MONTIEL Gonzalo",
+            "position": "DF",
+            "club": "CA River Plate (ARG)"
+        },
+        {
+            "player_name": "PAREDES Leandro",
+            "position": "MF",
+            "club": "CA Boca Juniors (ARG)"
+        },
+        {
+            "player_name": "MARTINEZ Lisandro",
+            "position": "DF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "DE PAUL Rodrigo",
+            "position": "MF",
+            "club": "Inter Miami CF (USA)"
+        },
+        {
+            "player_name": "BARCO Valentin",
+            "position": "MF",
+            "club": "RC Strasbourg (FRA)"
+        },
+        {
+            "player_name": "ALVAREZ Julian",
+            "position": "FW",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "MESSI Lionel",
+            "position": "FW",
+            "club": "Inter Miami CF (USA)"
+        },
+        {
+            "player_name": "LO CELSO Giovani",
+            "position": "MF",
+            "club": "Real Betis (ESP)"
+        },
+        {
+            "player_name": "RULLI Geronimo",
+            "position": "GK",
+            "club": "Olympique Marseille (FRA)"
+        },
+        {
+            "player_name": "ROMERO Cristian",
+            "position": "DF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "PALACIOS Exequiel",
+            "position": "MF",
+            "club": "Bayer 04 Leverkusen (GER)"
+        },
+        {
+            "player_name": "GONZALEZ Nico",
+            "position": "MF",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "ALMADA Thiago",
+            "position": "FW",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "SIMEONE Giuliano",
+            "position": "FW",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "PAZ Nico",
+            "position": "FW",
+            "club": "Como (ITA)"
+        },
+        {
+            "player_name": "OTAMENDI Nicolas",
+            "position": "DF",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "MAC ALLISTER Alexis",
+            "position": "MF",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "LOPEZ Jose Manuel",
+            "position": "FW",
+            "club": "SE Palmeiras (BRA)"
+        },
+        {
+            "player_name": "MARTINEZ Lautaro",
+            "position": "FW",
+            "club": "FC Internazionale Milano (ITA)"
+        },
+        {
+            "player_name": "MARTINEZ Emiliano Damián",
+            "position": "GK",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "FERNANDEZ Enzo",
+            "position": "MF",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "MEDINA Facundo",
+            "position": "DF",
+            "club": "Olympique Marseille (FRA)"
+        },
+        {
+            "player_name": "MOLINA Nahuel",
+            "position": "DF",
+            "club": "Atlético De Madrid (ESP)"
+        }
+    ],
+    "Australia": [
+        {
+            "player_name": "RYAN Mathew",
+            "position": "GK",
+            "club": "Levante UD (ESP)"
+        },
+        {
+            "player_name": "DEGENEK Milos",
+            "position": "DF",
+            "club": "APOEL FC (CYP)"
+        },
+        {
+            "player_name": "CIRCATI Alessandro",
+            "position": "DF",
+            "club": "Parma (ITA)"
+        },
+        {
+            "player_name": "ITALIANO Jacob",
+            "position": "DF",
+            "club": "Grazer AK (AUT)"
+        },
+        {
+            "player_name": "BOS Jordan",
+            "position": "DF",
+            "club": "Feyenoord Rotterdam (NED)"
+        },
+        {
+            "player_name": "GERIA Jason",
+            "position": "DF",
+            "club": "Albirex Niigata (JPN)"
+        },
+        {
+            "player_name": "LECKIE Mathew",
+            "position": "FW",
+            "club": "Melbourne City FC (AUS)"
+        },
+        {
+            "player_name": "METCALFE Connor",
+            "position": "MF",
+            "club": "FC St. Pauli (GER)"
+        },
+        {
+            "player_name": "TOURE Mohamed",
+            "position": "FW",
+            "club": "Norwich City FC (ENG)"
+        },
+        {
+            "player_name": "HRUSTIC Ajdin",
+            "position": "FW",
+            "club": "SC Heracles Almelo (NED)"
+        },
+        {
+            "player_name": "MABIL Awer",
+            "position": "FW",
+            "club": "CD Castellón (ESP)"
+        },
+        {
+            "player_name": "IZZO Paul",
+            "position": "GK",
+            "club": "Randers FC (DEN)"
+        },
+        {
+            "player_name": "ONEILL Aiden",
+            "position": "MF",
+            "club": "New York City FC (USA)"
+        },
+        {
+            "player_name": "DEVLIN Cameron",
+            "position": "MF",
+            "club": "Heart Of Midlothian FC (SCO)"
+        },
+        {
+            "player_name": "TREWIN Kai",
+            "position": "DF",
+            "club": "New York City FC (USA)"
+        },
+        {
+            "player_name": "BEHICH Aziz",
+            "position": "DF",
+            "club": "Melbourne City FC (AUS)"
+        },
+        {
+            "player_name": "IRANKUNDA Nestory",
+            "position": "FW",
+            "club": "Watford FC (ENG)"
+        },
+        {
+            "player_name": "BEACH Patrick",
+            "position": "GK",
+            "club": "Melbourne City FC (AUS)"
+        },
+        {
+            "player_name": "SOUTTAR Harry",
+            "position": "DF",
+            "club": "Leicester City FC (ENG)"
+        },
+        {
+            "player_name": "VOLPATO Cristian",
+            "position": "FW",
+            "club": "US Sassuolo (ITA)"
+        },
+        {
+            "player_name": "BURGESS Cameron",
+            "position": "DF",
+            "club": "Swansea City AFC (WAL)"
+        },
+        {
+            "player_name": "IRVINE Jackson",
+            "position": "MF",
+            "club": "FC St. Pauli (GER)"
+        },
+        {
+            "player_name": "VELUPILLAY Nishan",
+            "position": "FW",
+            "club": "Melbourne Victory FC (AUS)"
+        },
+        {
+            "player_name": "OKON-ENGSTLER Paul",
+            "position": "MF",
+            "club": "Sydney FC (AUS)"
+        },
+        {
+            "player_name": "HERRINGTON Lucas",
+            "position": "DF",
+            "club": "Colorado Rapids (USA)"
+        },
+        {
+            "player_name": "YENGI Tete",
+            "position": "FW",
+            "club": "FC Machida Zelvia (JPN)"
+        }
+    ],
+    "Austria": [
+        {
+            "player_name": "SCHLAGER Alexander",
+            "position": "GK",
+            "club": "FC Red Bull Salzburg (AUT)"
+        },
+        {
+            "player_name": "AFFENGRUBER David",
+            "position": "DF",
+            "club": "Elche CF (ESP)"
+        },
+        {
+            "player_name": "DANSO Kevin",
+            "position": "DF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "SCHLAGER Xaver",
+            "position": "MF",
+            "club": "RB Leipzig (GER)"
+        },
+        {
+            "player_name": "POSCH Stefan",
+            "position": "DF",
+            "club": "1. FSV Mainz 05 (GER)"
+        },
+        {
+            "player_name": "SEIWALD Nicolas",
+            "position": "MF",
+            "club": "RB Leipzig (GER)"
+        },
+        {
+            "player_name": "ARNAUTOVIC Marko",
+            "position": "FW",
+            "club": "FK Crvena Zvezda (SRB)"
+        },
+        {
+            "player_name": "ALABA David",
+            "position": "DF",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "SABITZER Marcel",
+            "position": "MF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "GRILLITSCH Florian",
+            "position": "MF",
+            "club": "SC Braga (POR)"
+        },
+        {
+            "player_name": "GREGORITSCH Michael",
+            "position": "FW",
+            "club": "FC Augsburg (GER)"
+        },
+        {
+            "player_name": "WIEGELE Florian",
+            "position": "GK",
+            "club": "FC Viktoria Plzeň (CZE)"
+        },
+        {
+            "player_name": "PENTZ Patrick",
+            "position": "GK",
+            "club": "Brøndby IF (DEN)"
+        },
+        {
+            "player_name": "KALAJDZIC Sasa",
+            "position": "FW",
+            "club": "LASK Linz (AUT)"
+        },
+        {
+            "player_name": "LIENHART Philipp",
+            "position": "DF",
+            "club": "SC Freiburg (GER)"
+        },
+        {
+            "player_name": "MWENE Phillip",
+            "position": "DF",
+            "club": "1. FSV Mainz 05 (GER)"
+        },
+        {
+            "player_name": "CHUKWUEMEKA Carney",
+            "position": "MF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "SCHMID Romano",
+            "position": "MF",
+            "club": "SV Werder Bremen (GER)"
+        },
+        {
+            "player_name": "BAUMGARTNER Christoph",
+            "position": "MF",
+            "club": "RB Leipzig (GER)"
+        },
+        {
+            "player_name": "LAIMER Konrad",
+            "position": "MF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "WIMMER Patrick",
+            "position": "FW",
+            "club": "VfL Wolfsburg (GER)"
+        },
+        {
+            "player_name": "PRASS Alexander",
+            "position": "MF",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "FRIEDL Marco",
+            "position": "DF",
+            "club": "SV Werder Bremen (GER)"
+        },
+        {
+            "player_name": "WANNER Paul",
+            "position": "MF",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "SVOBODA Michael",
+            "position": "DF",
+            "club": "Venezia FC (ITA)"
+        },
+        {
+            "player_name": "SCHOEPF Alessandro",
+            "position": "MF",
+            "club": "Wolfsberger AC (AUT)"
+        }
+    ],
+    "Belgium": [
+        {
+            "player_name": "COURTOIS Thibaut",
+            "position": "GK",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "DEBAST Zeno",
+            "position": "DF",
+            "club": "Sporting CP (POR)"
+        },
+        {
+            "player_name": "THEATE Arthur",
+            "position": "DF",
+            "club": "Eintracht Frankfurt (GER)"
+        },
+        {
+            "player_name": "MECHELE Brandon",
+            "position": "DF",
+            "club": "Club Brugge (BEL)"
+        },
+        {
+            "player_name": "DE CUYPER Maxim",
+            "position": "DF",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "WITSEL Axel",
+            "position": "MF",
+            "club": "Girona FC (ESP)"
+        },
+        {
+            "player_name": "DE BRUYNE Kevin",
+            "position": "MF",
+            "club": "SSC Napoli (ITA)"
+        },
+        {
+            "player_name": "TIELEMANS Youri",
+            "position": "MF",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "LUKAKU Romelu",
+            "position": "FW",
+            "club": "SSC Napoli (ITA)"
+        },
+        {
+            "player_name": "TROSSARD Leandro",
+            "position": "FW",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "DOKU Jeremy",
+            "position": "FW",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "LAMMENS Senne",
+            "position": "GK",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "PENDERS Mike",
+            "position": "GK",
+            "club": "RC Strasbourg (FRA)"
+        },
+        {
+            "player_name": "LUKEBAKIO Dodi",
+            "position": "FW",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "MEUNIER Thomas",
+            "position": "DF",
+            "club": "Lille OSC (FRA)"
+        },
+        {
+            "player_name": "DE WINTER Koni",
+            "position": "DF",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "DE KETELAERE Charles",
+            "position": "FW",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "SEYS Joaquin",
+            "position": "DF",
+            "club": "Club Brugge (BEL)"
+        },
+        {
+            "player_name": "MOREIRA Diego",
+            "position": "MF",
+            "club": "RC Strasbourg (FRA)"
+        },
+        {
+            "player_name": "VANAKEN Hans",
+            "position": "MF",
+            "club": "Club Brugge (BEL)"
+        },
+        {
+            "player_name": "CASTAGNE Timothy",
+            "position": "DF",
+            "club": "Fulham FC (ENG)"
+        },
+        {
+            "player_name": "SAELEMAEKERS Alexis",
+            "position": "MF",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "RASKIN Nicolas",
+            "position": "MF",
+            "club": "Rangers FC (SCO)"
+        },
+        {
+            "player_name": "ONANA Amadou",
+            "position": "MF",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "NGOY Nathan",
+            "position": "DF",
+            "club": "Lille OSC (FRA)"
+        },
+        {
+            "player_name": "FERNANDEZ-PARDO Matias",
+            "position": "FW",
+            "club": "Lille OSC (FRA)"
+        }
+    ],
+    "Bosnia And Herzegovina": [
+        {
+            "player_name": "VASILJ Nikola",
+            "position": "GK",
+            "club": "FC St. Pauli (GER)"
+        },
+        {
+            "player_name": "MUJAKIC Nihad",
+            "position": "DF",
+            "club": "Gaziantep FK (TUR)"
+        },
+        {
+            "player_name": "HADZIKADUNIC Dennis",
+            "position": "DF",
+            "club": "UC Sampdoria (ITA)"
+        },
+        {
+            "player_name": "MUHAREMOVIC Tarik",
+            "position": "DF",
+            "club": "US Sassuolo (ITA)"
+        },
+        {
+            "player_name": "KOLASINAC Sead",
+            "position": "DF",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "TAHIROVIC Benjamin",
+            "position": "MF",
+            "club": "Brøndby IF (DEN)"
+        },
+        {
+            "player_name": "DEDIC Amar",
+            "position": "DF",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "GIGOVIC Armin",
+            "position": "MF",
+            "club": "BSC Young Boys (SUI)"
+        },
+        {
+            "player_name": "BAZDAR Samed",
+            "position": "FW",
+            "club": "Jagiellonia Białystok (POL)"
+        },
+        {
+            "player_name": "DEMIROVIC Ermedin",
+            "position": "FW",
+            "club": "VfB Stuttgart (GER)"
+        },
+        {
+            "player_name": "DZEKO Edin",
+            "position": "FW",
+            "club": "FC Schalke 04 (GER)"
+        },
+        {
+            "player_name": "JURKAS Mladen",
+            "position": "GK",
+            "club": "FK Borac Banja Luka (BIH)"
+        },
+        {
+            "player_name": "BASIC Ivan",
+            "position": "MF",
+            "club": "FC Astana (KAZ)"
+        },
+        {
+            "player_name": "SUNJIC Ivan",
+            "position": "MF",
+            "club": "Pafos FC (CYP)"
+        },
+        {
+            "player_name": "MEMIC Amar",
+            "position": "MF",
+            "club": "FC Viktoria Plzeň (CZE)"
+        },
+        {
+            "player_name": "HADZIAHMETOVIC Amir",
+            "position": "MF",
+            "club": "Hull City FC (ENG)"
+        },
+        {
+            "player_name": "BURNIC Dzenis",
+            "position": "MF",
+            "club": "Karlsruher SC (GER)"
+        },
+        {
+            "player_name": "KATIC Nikola",
+            "position": "DF",
+            "club": "FC Schalke 04 (GER)"
+        },
+        {
+            "player_name": "ALAJBEGOVIC Kerim",
+            "position": "FW",
+            "club": "FC Red Bull Salzburg (AUT)"
+        },
+        {
+            "player_name": "BAJRAKTAREVIC Esmir",
+            "position": "FW",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "RADELJIC Stjepan",
+            "position": "DF",
+            "club": "HNK Rijeka (CRO)"
+        },
+        {
+            "player_name": "ZLOMISLIC Martin",
+            "position": "GK",
+            "club": "HNK Rijeka (CRO)"
+        },
+        {
+            "player_name": "TABAKOVIC Haris",
+            "position": "FW",
+            "club": "Borussia Mönchengladbach (GER)"
+        },
+        {
+            "player_name": "CELIK Nidal",
+            "position": "DF",
+            "club": "RC Lens (FRA)"
+        },
+        {
+            "player_name": "LUKIC Jovo",
+            "position": "FW",
+            "club": "Universitatea Cluj (ROU)"
+        },
+        {
+            "player_name": "MAHMIC Ermin",
+            "position": "MF",
+            "club": "FC Slovan Liberec (CZE)"
+        }
+    ],
+    "Brazil": [
+        {
+            "player_name": "ALISSON",
+            "position": "GK",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "EDERSON SILVA",
+            "position": "MF",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "GABRIEL MAGALHAES",
+            "position": "DF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "MARQUINHOS",
+            "position": "DF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "CASEMIRO",
+            "position": "MF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "ALEX SANDRO",
+            "position": "DF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "VINICIUS JUNIOR",
+            "position": "FW",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "BRUNO GUIMARAES",
+            "position": "MF",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "MATHEUS CUNHA",
+            "position": "FW",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "NEYMAR JR",
+            "position": "FW",
+            "club": "Santos FC (BRA)"
+        },
+        {
+            "player_name": "RAPHINHA",
+            "position": "FW",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "WEVERTON",
+            "position": "GK",
+            "club": "Grêmio FBPA (BRA)"
+        },
+        {
+            "player_name": "DANILO",
+            "position": "DF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "BREMER",
+            "position": "DF",
+            "club": "Juventus FC (ITA)"
+        },
+        {
+            "player_name": "LEO PEREIRA",
+            "position": "DF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "DOUGLAS SANTOS",
+            "position": "DF",
+            "club": "FC Zenit St. Petersburg (RUS)"
+        },
+        {
+            "player_name": "FABINHO",
+            "position": "MF",
+            "club": "Al Ittihad (KSA)"
+        },
+        {
+            "player_name": "DANILO SANTOS",
+            "position": "MF",
+            "club": "Botafogo (BRA)"
+        },
+        {
+            "player_name": "ENDRICK",
+            "position": "FW",
+            "club": "Olympique Lyonnais (FRA)"
+        },
+        {
+            "player_name": "LUCAS PAQUETA",
+            "position": "MF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "LUIZ HENRIQUE",
+            "position": "FW",
+            "club": "FC Zenit St. Petersburg (RUS)"
+        },
+        {
+            "player_name": "GABRIEL MARTINELLI",
+            "position": "FW",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "EDERSON",
+            "position": "GK",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "ROGER IBANEZ",
+            "position": "DF",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "IGOR THIAGO",
+            "position": "FW",
+            "club": "Brentford FC (ENG)"
+        },
+        {
+            "player_name": "RAYAN",
+            "position": "FW",
+            "club": "AFC Bournemouth (ENG)"
+        }
+    ],
+    "Cabo Verde": [
+        {
+            "player_name": "VOZINHA",
+            "position": "GK",
+            "club": "GD Chaves (POR)"
+        },
+        {
+            "player_name": "STOPIRA",
+            "position": "DF",
+            "club": "SCU Torreense (POR)"
+        },
+        {
+            "player_name": "DINEY BORGES",
+            "position": "DF",
+            "club": "Al Bataeh Club (UAE)"
+        },
+        {
+            "player_name": "PICO LOPES",
+            "position": "DF",
+            "club": "Shamrock Rovers FC (IRL)"
+        },
+        {
+            "player_name": "LOGAN COSTA",
+            "position": "DF",
+            "club": "Villarreal CF (ESP)"
+        },
+        {
+            "player_name": "KEVIN PINA",
+            "position": "MF",
+            "club": "FC Krasnodar (RUS)"
+        },
+        {
+            "player_name": "JOVANE CABRAL",
+            "position": "MF",
+            "club": "CF Estrela Da Amadora (POR)"
+        },
+        {
+            "player_name": "JOAO PAULO",
+            "position": "MF",
+            "club": "FC FCSB (ROU)"
+        },
+        {
+            "player_name": "GILSON BENCHIMOL",
+            "position": "FW",
+            "club": "FC Akron Tolyatti (RUS)"
+        },
+        {
+            "player_name": "JAMIRO MONTEIRO",
+            "position": "MF",
+            "club": "PEC Zwolle (NED)"
+        },
+        {
+            "player_name": "GARRY RODRIGUES",
+            "position": "MF",
+            "club": "Apollon Limassol (CYP)"
+        },
+        {
+            "player_name": "MARCIO ROSA",
+            "position": "GK",
+            "club": "PFC Montana (BUL)"
+        },
+        {
+            "player_name": "SIDNY LOPES CABRAL",
+            "position": "DF",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "DEROY DUARTE",
+            "position": "MF",
+            "club": "PFC Ludogorets Razgrad (BUL)"
+        },
+        {
+            "player_name": "LAROS DUARTE",
+            "position": "MF",
+            "club": "Puskás Akadémia FC (HUN)"
+        },
+        {
+            "player_name": "YANNICK SEMEDO",
+            "position": "MF",
+            "club": "SC Farense (POR)"
+        },
+        {
+            "player_name": "WILLY SEMEDO",
+            "position": "MF",
+            "club": "AC Omonia (CYP)"
+        },
+        {
+            "player_name": "TELMO ARCANJO",
+            "position": "MF",
+            "club": "Vitória SC (POR)"
+        },
+        {
+            "player_name": "DAILON LIVRAMENTO",
+            "position": "FW",
+            "club": "Casa Pia AC (POR)"
+        },
+        {
+            "player_name": "RYAN MENDES",
+            "position": "FW",
+            "club": "Iğdır FK (TUR)"
+        },
+        {
+            "player_name": "NUNO DA COSTA",
+            "position": "MF",
+            "club": "Başakşehir FK (TUR)"
+        },
+        {
+            "player_name": "STEVEN MOREIRA",
+            "position": "DF",
+            "club": "Columbus Crew (USA)"
+        },
+        {
+            "player_name": "CJ DOS SANTOS",
+            "position": "GK",
+            "club": "San Diego FC (USA)"
+        },
+        {
+            "player_name": "WAGNER PINA",
+            "position": "DF",
+            "club": "Trabzonspor (TUR)"
+        },
+        {
+            "player_name": "KELVIN PIRES",
+            "position": "DF",
+            "club": "SJK (FIN)"
+        },
+        {
+            "player_name": "HELIO VARELA",
+            "position": "MF",
+            "club": "Maccabi Tel-Aviv FC (ISR)"
+        }
+    ],
+    "Canada": [
+        {
+            "player_name": "ST. CLAIR Dayne",
+            "position": "GK",
+            "club": "Inter Miami CF (USA)"
+        },
+        {
+            "player_name": "JOHNSTON Alistair",
+            "position": "DF",
+            "club": "Celtic FC (SCO)"
+        },
+        {
+            "player_name": "JONES Ale",
+            "position": "DF",
+            "club": "Middlesbrough FC (ENG)"
+        },
+        {
+            "player_name": "DE FOUGEROLLES Luc",
+            "position": "DF",
+            "club": "FCV Dender EH (BEL)"
+        },
+        {
+            "player_name": "WATERMAN Joel",
+            "position": "DF",
+            "club": "Chicago Fire FC (USA)"
+        },
+        {
+            "player_name": "CHOINIERE Mathieu",
+            "position": "MF",
+            "club": "LAFC (USA)"
+        },
+        {
+            "player_name": "EUSTAQUIO Stephen",
+            "position": "MF",
+            "club": "LAFC (USA)"
+        },
+        {
+            "player_name": "KONE Ismael",
+            "position": "MF",
+            "club": "US Sassuolo (ITA)"
+        },
+        {
+            "player_name": "LARIN Cyle",
+            "position": "FW",
+            "club": "Southampton FC (ENG)"
+        },
+        {
+            "player_name": "DAVID Jonathan",
+            "position": "FW",
+            "club": "Juventus FC (ITA)"
+        },
+        {
+            "player_name": "MILLAR Liam",
+            "position": "MF",
+            "club": "Hull City FC (ENG)"
+        },
+        {
+            "player_name": "OLUWASEYI Tani",
+            "position": "FW",
+            "club": "Villarreal CF (ESP)"
+        },
+        {
+            "player_name": "CORNELIUS Derek",
+            "position": "DF",
+            "club": "Rangers FC (SCO)"
+        },
+        {
+            "player_name": "SHAFFELBURG Jacob",
+            "position": "MF",
+            "club": "LAFC (USA)"
+        },
+        {
+            "player_name": "BOMBITO Moise",
+            "position": "DF",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "CREPEAU Maxime",
+            "position": "GK",
+            "club": "Orlando City SC (USA)"
+        },
+        {
+            "player_name": "BUCHANAN Tajon",
+            "position": "FW",
+            "club": "Villarreal CF (ESP)"
+        },
+        {
+            "player_name": "GOODMAN Owen",
+            "position": "GK",
+            "club": "Barnsley (ENG)"
+        },
+        {
+            "player_name": "DAVIES Alphonso",
+            "position": "DF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "AHMED Ali",
+            "position": "FW",
+            "club": "Norwich City FC (ENG)"
+        },
+        {
+            "player_name": "OSORIO Jonathan",
+            "position": "MF",
+            "club": "Toronto FC (CAN)"
+        },
+        {
+            "player_name": "LARYEA Richie",
+            "position": "DF",
+            "club": "Toronto FC (CAN)"
+        },
+        {
+            "player_name": "SIGUR Niko",
+            "position": "DF",
+            "club": "HNK Hajduk Split (CRO)"
+        },
+        {
+            "player_name": "DAVID Promise",
+            "position": "FW",
+            "club": "Royale Union Saint-Gilloise (BEL)"
+        },
+        {
+            "player_name": "SALIBA Nathan",
+            "position": "MF",
+            "club": "RSC Anderlecht (BEL)"
+        },
+        {
+            "player_name": "FLORES Marcelo",
+            "position": "MF",
+            "club": "Tigres UANL (MEX)"
+        }
+    ],
+    "Colombia": [
+        {
+            "player_name": "OSPINA David",
+            "position": "GK",
+            "club": "Atlético Nacional (COL)"
+        },
+        {
+            "player_name": "MUNOZ Daniel",
+            "position": "DF",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "LUCUMI Jhon",
+            "position": "DF",
+            "club": "Bologna FC (ITA)"
+        },
+        {
+            "player_name": "ARIAS Santiago",
+            "position": "DF",
+            "club": "CA Independiente (ARG)"
+        },
+        {
+            "player_name": "CASTANO Kevin",
+            "position": "MF",
+            "club": "CA River Plate (ARG)"
+        },
+        {
+            "player_name": "RIOS Richard",
+            "position": "MF",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "DIAZ Luis",
+            "position": "FW",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "CARRASCAL Jorge",
+            "position": "MF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "CORDOBA Jhon",
+            "position": "FW",
+            "club": "FC Krasnodar (RUS)"
+        },
+        {
+            "player_name": "RODRIGUEZ James",
+            "position": "MF",
+            "club": "Minnesota United FC (USA)"
+        },
+        {
+            "player_name": "ARIAS Jhon",
+            "position": "MF",
+            "club": "SE Palmeiras (BRA)"
+        },
+        {
+            "player_name": "VARGAS Camilo",
+            "position": "GK",
+            "club": "Atlas FC (MEX)"
+        },
+        {
+            "player_name": "MINA Yerry",
+            "position": "DF",
+            "club": "Cagliari (ITA)"
+        },
+        {
+            "player_name": "PUERTA Gustavo",
+            "position": "DF",
+            "club": "Racing Santander (ESP)"
+        },
+        {
+            "player_name": "PORTILLA Juan",
+            "position": "MF",
+            "club": "Athletico Paranaense (BRA)"
+        },
+        {
+            "player_name": "LERMA Jefferson",
+            "position": "MF",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "MOJICA Johan",
+            "position": "DF",
+            "club": "RCD Mallorca (ESP)"
+        },
+        {
+            "player_name": "DITTA Willer",
+            "position": "DF",
+            "club": "CF Cruz Azul (MEX)"
+        },
+        {
+            "player_name": "HERNANDEZ Cucho",
+            "position": "FW",
+            "club": "Real Betis (ESP)"
+        },
+        {
+            "player_name": "QUINTERO Juan",
+            "position": "MF",
+            "club": "CA River Plate (ARG)"
+        },
+        {
+            "player_name": "CAMPAZ Jaminton",
+            "position": "FW",
+            "club": "CA Rosario Central (ARG)"
+        },
+        {
+            "player_name": "MACHADO Deiver",
+            "position": "DF",
+            "club": "FC Nantes (FRA)"
+        },
+        {
+            "player_name": "SANCHEZ Davinson",
+            "position": "DF",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "MONTERO Alvaro",
+            "position": "GK",
+            "club": "CA Vélez Sarseld (ARG)"
+        },
+        {
+            "player_name": "SUAREZ Luis",
+            "position": "FW",
+            "club": "Sporting CP (POR)"
+        },
+        {
+            "player_name": "GOMEZ Andres",
+            "position": "FW",
+            "club": "CR Vasco Da Gama (BRA)"
+        }
+    ],
+    "Congo DR": [
+        {
+            "player_name": "MPASI Lionel",
+            "position": "GK",
+            "club": "Le Havre AC (FRA)"
+        },
+        {
+            "player_name": "WAN-BISSAKA Aaron",
+            "position": "DF",
+            "club": "West Ham United FC (ENG)"
+        },
+        {
+            "player_name": "KAPUADI Steve",
+            "position": "DF",
+            "club": "Widzew Łódź (POL)"
+        },
+        {
+            "player_name": "TUANZEBE Axel",
+            "position": "DF",
+            "club": "Burnley FC (ENG)"
+        },
+        {
+            "player_name": "BATUBINSIKA Dylan",
+            "position": "DF",
+            "club": "AEL FC (GRE)"
+        },
+        {
+            "player_name": "MUKAU Ngalayel",
+            "position": "MF",
+            "club": "Lille OSC (FRA)"
+        },
+        {
+            "player_name": "MBUKU Nathanael",
+            "position": "MF",
+            "club": "Montpellier HSC (FRA)"
+        },
+        {
+            "player_name": "MOUTOUSSAMY Samuel",
+            "position": "MF",
+            "club": "Atromitos FC (GRE)"
+        },
+        {
+            "player_name": "CIPENGA Brian Kibambe",
+            "position": "FW",
+            "club": "CD Castellón (ESP)"
+        },
+        {
+            "player_name": "BONGONDA Theo",
+            "position": "MF",
+            "club": "FC Spartak Moscow (RUS)"
+        },
+        {
+            "player_name": "KAKUTA Gael Mambenga",
+            "position": "FW",
+            "club": "AEL FC (GRE)"
+        },
+        {
+            "player_name": "KAYEMBE Joris",
+            "position": "DF",
+            "club": "KRC Genk (BEL)"
+        },
+        {
+            "player_name": "ELIA Meschack",
+            "position": "FW",
+            "club": "Alanyaspor (TUR)"
+        },
+        {
+            "player_name": "ADIKI Noah",
+            "position": "MF",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "TSHIBOLA Aaron",
+            "position": "MF",
+            "club": "Kilmarnock FC (SCO)"
+        },
+        {
+            "player_name": "FAYULU Timothy",
+            "position": "GK",
+            "club": "FC Noah (ARM)"
+        },
+        {
+            "player_name": "BAKAMBU Cedric",
+            "position": "FW",
+            "club": "Real Betis (ESP)"
+        },
+        {
+            "player_name": "PICKEL Charles",
+            "position": "MF",
+            "club": "RCD Espanyol (ESP)"
+        },
+        {
+            "player_name": "MAYELE Fiston",
+            "position": "FW",
+            "club": "Pyramids FC (EGY)"
+        },
+        {
+            "player_name": "WISSA Yoane",
+            "position": "FW",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "EPOLO Matthieu",
+            "position": "GK",
+            "club": "Standard Liège (BEL)"
+        },
+        {
+            "player_name": "MBEMBA Chancel Mangulu",
+            "position": "DF",
+            "club": "Lille OSC (FRA)"
+        },
+        {
+            "player_name": "BANZA Simon",
+            "position": "FW",
+            "club": "Al Jazira (UAE)"
+        },
+        {
+            "player_name": "KALULU Gedeon",
+            "position": "DF",
+            "club": "Aris Limassol FC (CYP)"
+        },
+        {
+            "player_name": "KAYEMBE Edo",
+            "position": "MF",
+            "club": "Watford FC (ENG)"
+        },
+        {
+            "player_name": "MASUAKU Arthur",
+            "position": "DF",
+            "club": "RC Lens (FRA)"
+        }
+    ],
+    "Côte D'Ivoire": [
+        {
+            "player_name": "FOFANA Yahia",
+            "position": "GK",
+            "club": "Çaykur Rizespor (TUR)"
+        },
+        {
+            "player_name": "DIOMANDE Ousmane",
+            "position": "DF",
+            "club": "Sporting CP (POR)"
+        },
+        {
+            "player_name": "KONAN Ghislain N'clomande",
+            "position": "DF",
+            "club": "Gil Vicente FC (POR)"
+        },
+        {
+            "player_name": "SERI Jean Michael",
+            "position": "MF",
+            "club": "NK Maribor (SVN)"
+        },
+        {
+            "player_name": "SINGO Wilfried",
+            "position": "DF",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "FOFANA Seko",
+            "position": "MF",
+            "club": "FC Porto (POR)"
+        },
+        {
+            "player_name": "KOSSOUNOU Odilon Kouakou",
+            "position": "DF",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "KESSIE Franck",
+            "position": "MF",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "BONNY Ange-Yoan",
+            "position": "FW",
+            "club": "FC Internazionale Milano (ITA)"
+        },
+        {
+            "player_name": "ADINGRA Simon",
+            "position": "FW",
+            "club": "AS Monaco (FRA)"
+        },
+        {
+            "player_name": "DIOMANDE Yan",
+            "position": "FW",
+            "club": "RB Leipzig (GER)"
+        },
+        {
+            "player_name": "WAHI Elye Sepe",
+            "position": "FW",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "OPERI Christopher",
+            "position": "DF",
+            "club": "Başakşehir FK (TUR)"
+        },
+        {
+            "player_name": "DIAKITE Oumar",
+            "position": "FW",
+            "club": "Cercle Brugge (BEL)"
+        },
+        {
+            "player_name": "DIALLO Amad",
+            "position": "FW",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "KONE Mohamed",
+            "position": "GK",
+            "club": "Sporting Charleroi (BEL)"
+        },
+        {
+            "player_name": "DOUE Guela",
+            "position": "DF",
+            "club": "RC Strasbourg (FRA)"
+        },
+        {
+            "player_name": "SANGARE Ibrahim",
+            "position": "MF",
+            "club": "Nottingham Forest FC (ENG)"
+        },
+        {
+            "player_name": "PEPE Nicolas",
+            "position": "FW",
+            "club": "Villarreal CF (ESP)"
+        },
+        {
+            "player_name": "AGBADOU Emmanuel Badobre",
+            "position": "DF",
+            "club": "Beşiktaş JK (TUR)"
+        },
+        {
+            "player_name": "NDICKA Evan Obite",
+            "position": "DF",
+            "club": "AS Roma (ITA)"
+        },
+        {
+            "player_name": "GUESSAND Evann",
+            "position": "FW",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "LAFONT Alban",
+            "position": "GK",
+            "club": "Panathinaikos FC (GRE)"
+        },
+        {
+            "player_name": "TOURE Bazoumana",
+            "position": "FW",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "GUIAGON Parfait",
+            "position": "MF",
+            "club": "Sporting Charleroi (BEL)"
+        },
+        {
+            "player_name": "OULAI Christ Inao",
+            "position": "MF",
+            "club": "Trabzonspor (TUR)"
+        }
+    ],
+    "Croatia": [
+        {
+            "player_name": "LIVAKOVIC Dominik",
+            "position": "GK",
+            "club": "GNK Dinamo Zagreb (CRO)"
+        },
+        {
+            "player_name": "STANISIC Josip",
+            "position": "DF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "PONGRACIC Marin",
+            "position": "DF",
+            "club": "ACF Fiorentina (ITA)"
+        },
+        {
+            "player_name": "GVARDIOL Josko",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "CALETA-CAR Duje",
+            "position": "DF",
+            "club": "Real Sociedad (ESP)"
+        },
+        {
+            "player_name": "SUTALO Josip",
+            "position": "DF",
+            "club": "AFC Ajax (NED)"
+        },
+        {
+            "player_name": "MORO Nikola",
+            "position": "MF",
+            "club": "Bologna FC (ITA)"
+        },
+        {
+            "player_name": "KOVACIC Mateo",
+            "position": "MF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "KRAMARIC Andrej",
+            "position": "FW",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "MODRIC Luka",
+            "position": "MF",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "BUDIMIR Ante",
+            "position": "FW",
+            "club": "CA Osasuna (ESP)"
+        },
+        {
+            "player_name": "PANDUR Ivor",
+            "position": "GK",
+            "club": "Hull City FC (ENG)"
+        },
+        {
+            "player_name": "VLASIC Nikola",
+            "position": "MF",
+            "club": "Torino FC (ITA)"
+        },
+        {
+            "player_name": "PERISIC Ivan",
+            "position": "FW",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "PASALIC Mario",
+            "position": "MF",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "BATURINA Martin",
+            "position": "MF",
+            "club": "Como (ITA)"
+        },
+        {
+            "player_name": "SUCIC Petar",
+            "position": "MF",
+            "club": "FC Internazionale Milano (ITA)"
+        },
+        {
+            "player_name": "JAKIC Kristijan",
+            "position": "DF",
+            "club": "FC Augsburg (GER)"
+        },
+        {
+            "player_name": "FRUK Toni",
+            "position": "MF",
+            "club": "HNK Rijeka (CRO)"
+        },
+        {
+            "player_name": "MATANOVIC Igor",
+            "position": "FW",
+            "club": "SC Freiburg (GER)"
+        },
+        {
+            "player_name": "SUCIC Luka",
+            "position": "MF",
+            "club": "Real Sociedad (ESP)"
+        },
+        {
+            "player_name": "VUSKOVIC Luka",
+            "position": "DF",
+            "club": "Hamburger SV (GER)"
+        },
+        {
+            "player_name": "KOTARSKI Dominik",
+            "position": "GK",
+            "club": "FC København (DEN)"
+        },
+        {
+            "player_name": "PASALIC Marco",
+            "position": "FW",
+            "club": "Orlando City SC (USA)"
+        },
+        {
+            "player_name": "ERLIC Martin",
+            "position": "DF",
+            "club": "FC Midtjylland (DEN)"
+        },
+        {
+            "player_name": "MUSA Petar",
+            "position": "FW",
+            "club": "FC Dallas (USA)"
+        }
+    ],
+    "Curaçao": [
+        {
+            "player_name": "ROOM Eloy",
+            "position": "GK",
+            "club": "Miami FC (USA)"
+        },
+        {
+            "player_name": "SAMBO Shurandy",
+            "position": "DF",
+            "club": "Sparta Rotterdam (NED)"
+        },
+        {
+            "player_name": "GAARI Jurien",
+            "position": "DF",
+            "club": "Abha Club (KSA)"
+        },
+        {
+            "player_name": "VAN EIJMA Roshon",
+            "position": "DF",
+            "club": "RKC Waalwijk (NED)"
+        },
+        {
+            "player_name": "FLORANUS Sherel",
+            "position": "DF",
+            "club": "PEC Zwolle (NED)"
+        },
+        {
+            "player_name": "ROEMERATOE Godfried",
+            "position": "MF",
+            "club": "RKC Waalwijk (NED)"
+        },
+        {
+            "player_name": "BACUNA Juninho",
+            "position": "MF",
+            "club": "FC Volendam (NED)"
+        },
+        {
+            "player_name": "COMENENCIA Livano",
+            "position": "MF",
+            "club": "FC Zürich (SUI)"
+        },
+        {
+            "player_name": "LOCADIA Juergen",
+            "position": "FW",
+            "club": "Miami FC (USA)"
+        },
+        {
+            "player_name": "BACUNA Leandro",
+            "position": "MF",
+            "club": "Iğdır FK (TUR)"
+        },
+        {
+            "player_name": "ANTONISSE Jeremy",
+            "position": "FW",
+            "club": "AE Kisia FC (GRE)"
+        },
+        {
+            "player_name": "HANSEN Sontje",
+            "position": "FW",
+            "club": "Middlesbrough FC (ENG)"
+        },
+        {
+            "player_name": "NOSLIN Tyrese",
+            "position": "FW",
+            "club": "SC Telstar (NED)"
+        },
+        {
+            "player_name": "GORRE Kenji",
+            "position": "FW",
+            "club": "Maccabi Haifa FC (ISR)"
+        },
+        {
+            "player_name": "MARTHA Arjany",
+            "position": "MF",
+            "club": "Rotherham United FC (ENG)"
+        },
+        {
+            "player_name": "MARGARITHA Jearl",
+            "position": "FW",
+            "club": "SK Beveren (BEL)"
+        },
+        {
+            "player_name": "KUWAS Brandley",
+            "position": "FW",
+            "club": "FC Volendam (NED)"
+        },
+        {
+            "player_name": "OBISPO Armando",
+            "position": "DF",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "KASTANEER Gervane",
+            "position": "FW",
+            "club": "Terengganu FC (MAS)"
+        },
+        {
+            "player_name": "BRENET Joshua",
+            "position": "DF",
+            "club": "Kayserispor (TUR)"
+        },
+        {
+            "player_name": "CHONG Tahith",
+            "position": "MF",
+            "club": "Sheeld United FC (ENG)"
+        },
+        {
+            "player_name": "FELIDA Kevin",
+            "position": "MF",
+            "club": "FC Den Bosch (NED)"
+        },
+        {
+            "player_name": "BAZOER Riechedly",
+            "position": "DF",
+            "club": "Konyaspor (TUR)"
+        },
+        {
+            "player_name": "FONVILLE Deveron",
+            "position": "DF",
+            "club": "NEC Nijmegen (NED)"
+        },
+        {
+            "player_name": "BODAK Tyrick",
+            "position": "GK",
+            "club": "SC Telstar (NED)"
+        },
+        {
+            "player_name": "DOORNBUSCH Trevor",
+            "position": "GK",
+            "club": "VVV Venlo (NED)"
+        }
+    ],
+    "Czechia": [
+        {
+            "player_name": "KOVAR Matej",
+            "position": "GK",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "ZIMA David",
+            "position": "DF",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "HOLES Tomas",
+            "position": "DF",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "HRANAC Robin",
+            "position": "DF",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "COUFAL Vladimir",
+            "position": "DF",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "CHALOUPEK Stepan",
+            "position": "DF",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "KREJCI Ladislav",
+            "position": "DF",
+            "club": "Wolverhampton Wanderers FC (ENG)"
+        },
+        {
+            "player_name": "DARIDA Vladimir",
+            "position": "MF",
+            "club": "FC Hradec Králové (CZE)"
+        },
+        {
+            "player_name": "HLOZEK Adam",
+            "position": "FW",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "SCHICK Patrik",
+            "position": "FW",
+            "club": "Bayer 04 Leverkusen (GER)"
+        },
+        {
+            "player_name": "KUCHTA Jan",
+            "position": "FW",
+            "club": "AC Sparta Praha (CZE)"
+        },
+        {
+            "player_name": "CERV Lukas",
+            "position": "MF",
+            "club": "FC Viktoria Plzeň (CZE)"
+        },
+        {
+            "player_name": "CHYTIL Mojmir",
+            "position": "FW",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "JURASEK David",
+            "position": "DF",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "SULC Pavel",
+            "position": "FW",
+            "club": "Olympique Lyonnais (FRA)"
+        },
+        {
+            "player_name": "STANEK Jindrich",
+            "position": "GK",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "PROVOD Lukas",
+            "position": "MF",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "SADILEK Michal",
+            "position": "MF",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "CHORY Tomas",
+            "position": "FW",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "ZELENY Jaroslav",
+            "position": "DF",
+            "club": "AC Sparta Praha (CZE)"
+        },
+        {
+            "player_name": "DOUDERA David",
+            "position": "DF",
+            "club": "SK Slavia Praha (CZE)"
+        },
+        {
+            "player_name": "SOUCEK Tomas",
+            "position": "MF",
+            "club": "West Ham United FC (ENG)"
+        },
+        {
+            "player_name": "HORNICEK Lukas",
+            "position": "GK",
+            "club": "SC Braga (POR)"
+        },
+        {
+            "player_name": "SOJKA Alexandr",
+            "position": "MF",
+            "club": "FC Viktoria Plzeň (CZE)"
+        },
+        {
+            "player_name": "SOCHUREK Hugo",
+            "position": "MF",
+            "club": "AC Sparta Praha (CZE)"
+        },
+        {
+            "player_name": "VISINSKY Denis",
+            "position": "FW",
+            "club": "FC Viktoria Plzeň (CZE)"
+        }
+    ],
+    "Ecuador": [
+        {
+            "player_name": "GALINDEZ Hernan",
+            "position": "GK",
+            "club": "CA Huracán (ARG)"
+        },
+        {
+            "player_name": "TORRES Felix",
+            "position": "DF",
+            "club": "SC Internacional (BRA)"
+        },
+        {
+            "player_name": "HINCAPIE Piero",
+            "position": "DF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "ORDONEZ Joel",
+            "position": "DF",
+            "club": "Club Brugge (BEL)"
+        },
+        {
+            "player_name": "ALCIVAR Jordy",
+            "position": "MF",
+            "club": "Independiente Del Valle (ECU)"
+        },
+        {
+            "player_name": "PACHO Willian",
+            "position": "DF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "ESTUPINAN Pervis",
+            "position": "DF",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "VALENCIA Anthony",
+            "position": "MF",
+            "club": "Royal Antwerp FC (BEL)"
+        },
+        {
+            "player_name": "YEBOAH John",
+            "position": "FW",
+            "club": "Venezia FC (ITA)"
+        },
+        {
+            "player_name": "PAEZ Kendry Ray",
+            "position": "MF",
+            "club": "CA River Plate (ARG)"
+        },
+        {
+            "player_name": "RODRIGUEZ Kevin",
+            "position": "FW",
+            "club": "Royale Union Saint-Gilloise (BEL)"
+        },
+        {
+            "player_name": "RAMIREZ Moises Wellington",
+            "position": "GK",
+            "club": "AE Kisia FC (GRE)"
+        },
+        {
+            "player_name": "VALENCIA Enner",
+            "position": "FW",
+            "club": "CF Pachuca (MEX)"
+        },
+        {
+            "player_name": "MINDA Alan",
+            "position": "MF",
+            "club": "Atlético Mineiro (BRA)"
+        },
+        {
+            "player_name": "VITE Pedro",
+            "position": "MF",
+            "club": "Pumas UNAM (MEX)"
+        },
+        {
+            "player_name": "CAICEDO Jordy",
+            "position": "FW",
+            "club": "CA Huracán (ARG)"
+        },
+        {
+            "player_name": "PRECIADO Angelo",
+            "position": "DF",
+            "club": "Atlético Mineiro (BRA)"
+        },
+        {
+            "player_name": "CASTILLO Denil",
+            "position": "MF",
+            "club": "FC Midtjylland (DEN)"
+        },
+        {
+            "player_name": "PLATA Gonzalo",
+            "position": "FW",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "ANGULO Nilson",
+            "position": "FW",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "FRANCO Alan",
+            "position": "MF",
+            "club": "Atlético Mineiro (BRA)"
+        },
+        {
+            "player_name": "VALLE Gonzalo",
+            "position": "GK",
+            "club": "LDU Quito (ECU)"
+        },
+        {
+            "player_name": "CAICEDO Moises",
+            "position": "MF",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "AREVALO Jeremy",
+            "position": "FW",
+            "club": "VfB Stuttgart (GER)"
+        },
+        {
+            "player_name": "POROZO Jackson",
+            "position": "DF",
+            "club": "Club Tijuana (MEX)"
+        },
+        {
+            "player_name": "MEDINA Yaimar",
+            "position": "DF",
+            "club": "KRC Genk (BEL)"
+        }
+    ],
+    "Egypt": [
+        {
+            "player_name": "MOHAMED ELSHENAWY",
+            "position": "GK",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "YASSER IBRAHIM",
+            "position": "DF",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "MOHAMED HANY",
+            "position": "DF",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "HOSSAM ABDELMAGUID",
+            "position": "DF",
+            "club": "Zamalek SC (EGY)"
+        },
+        {
+            "player_name": "RAMY RABIA",
+            "position": "DF",
+            "club": "Al Ain FC (UAE)"
+        },
+        {
+            "player_name": "MOHAMED ABDELMONEIM",
+            "position": "DF",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "TREZEGUET Mahmoud",
+            "position": "FW",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "EMAM ASHOUR",
+            "position": "MF",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "HAMZA ABDELKARIM",
+            "position": "FW",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "MOHAMED SALAH",
+            "position": "FW",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "MOSTAFA ZICO",
+            "position": "MF",
+            "club": "Pyramids FC (EGY)"
+        },
+        {
+            "player_name": "HAISSEM HASSAN",
+            "position": "FW",
+            "club": "Real Oviedo (ESP)"
+        },
+        {
+            "player_name": "AHMED FATOUH",
+            "position": "DF",
+            "club": "Zamalek SC (EGY)"
+        },
+        {
+            "player_name": "HAMDY FATHY",
+            "position": "MF",
+            "club": "Al Wakrah SC (QAT)"
+        },
+        {
+            "player_name": "KARIM HAFEZ",
+            "position": "DF",
+            "club": "Pyramids FC (EGY)"
+        },
+        {
+            "player_name": "MAHDY SOLIMAN",
+            "position": "GK",
+            "club": "Zamalek SC (EGY)"
+        },
+        {
+            "player_name": "MOHANAD LASHIN",
+            "position": "MF",
+            "club": "Pyramids FC (EGY)"
+        },
+        {
+            "player_name": "NABIL DONGA",
+            "position": "MF",
+            "club": "Al Najmah SC (KSA)"
+        },
+        {
+            "player_name": "MARAWAN ATTIA",
+            "position": "MF",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "IBRAHIM ADEL",
+            "position": "FW",
+            "club": "FC Nordsjælland (DEN)"
+        },
+        {
+            "player_name": "MAHMOUD SABER",
+            "position": "MF",
+            "club": "ZED FC (EGY)"
+        },
+        {
+            "player_name": "OMAR MARMOUSH",
+            "position": "FW",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "MOSTAFA SHOUBIR",
+            "position": "GK",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "TAREK ALAA",
+            "position": "DF",
+            "club": "ZED FC (EGY)"
+        },
+        {
+            "player_name": "ZIZO",
+            "position": "FW",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "MOHAMED ALAA",
+            "position": "GK",
+            "club": "El Gouna FC (EGY)"
+        }
+    ],
+    "England": [
+        {
+            "player_name": "PICKFORD Jordan",
+            "position": "GK",
+            "club": "Everton FC (ENG)"
+        },
+        {
+            "player_name": "KONSA Ezri",
+            "position": "DF",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "OREILLY Nico",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "RICE Declan",
+            "position": "MF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "STONES John",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "GUEHI Marc Addji Keaninkin",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "SAKA Bukayo",
+            "position": "FW",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "ANDERSON Elliot",
+            "position": "MF",
+            "club": "Nottingham Forest FC (ENG)"
+        },
+        {
+            "player_name": "KANE Harry",
+            "position": "FW",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "BELLINGHAM Jude",
+            "position": "MF",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "RASHFORD Marcus",
+            "position": "FW",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "LIVRAMENTO Tino",
+            "position": "DF",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "HENDERSON Dean",
+            "position": "GK",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "HENDERSON Jordan",
+            "position": "MF",
+            "club": "Brentford FC (ENG)"
+        },
+        {
+            "player_name": "BURN Dan",
+            "position": "DF",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "MAINOO Kobbie",
+            "position": "MF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "ROGERS Morgan",
+            "position": "MF",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "GORDON Anthony",
+            "position": "FW",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "WATKINS Ollie",
+            "position": "FW",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "MADUEKE Noni",
+            "position": "FW",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "EZE Eberechi",
+            "position": "MF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "TONEY Ivan",
+            "position": "FW",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "TRAFFORD James",
+            "position": "GK",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "JAMES Reece",
+            "position": "DF",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "SPENCE Djed",
+            "position": "DF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "QUANSAH Jarell",
+            "position": "DF",
+            "club": "Bayer 04 Leverkusen (GER)"
+        }
+    ],
+    "France": [
+        {
+            "player_name": "SAMBA Brice",
+            "position": "GK",
+            "club": "Stade Rennais FC (FRA)"
+        },
+        {
+            "player_name": "GUSTO Malo",
+            "position": "DF",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "DIGNE Lucas",
+            "position": "DF",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "UPAMECANO Dayot",
+            "position": "DF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "KOUNDE Jules",
+            "position": "DF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "KONE Manu",
+            "position": "MF",
+            "club": "AS Roma (ITA)"
+        },
+        {
+            "player_name": "DEMBELE Ousmane",
+            "position": "FW",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "TCHOUAMENI Aurelien",
+            "position": "MF",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "THURAM Marcus",
+            "position": "FW",
+            "club": "FC Internazionale Milano (ITA)"
+        },
+        {
+            "player_name": "MBAPPE Kylian",
+            "position": "FW",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "OLISE Michael",
+            "position": "FW",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "BARCOLA Bradley",
+            "position": "FW",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "KANTE Ngolo",
+            "position": "MF",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "RABIOT Adrien",
+            "position": "MF",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "KONATE Ibrahima",
+            "position": "DF",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "MAIGNAN Mike",
+            "position": "GK",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "SALIBA William",
+            "position": "DF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "ZAIRE-EMERY Warren",
+            "position": "MF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "HERNANDEZ Theo",
+            "position": "DF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "DOUE Desire",
+            "position": "FW",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "HERNANDEZ Lucas",
+            "position": "DF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "MATETA Jean-Philippe",
+            "position": "FW",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "RISSER Robin",
+            "position": "GK",
+            "club": "RC Lens (FRA)"
+        },
+        {
+            "player_name": "CHERKI Rayan",
+            "position": "MF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "AKLIOUCHE Maghnes",
+            "position": "MF",
+            "club": "AS Monaco (FRA)"
+        },
+        {
+            "player_name": "LACROIX Maxence",
+            "position": "DF",
+            "club": "Crystal Palace FC (ENG)"
+        }
+    ],
+    "Germany": [
+        {
+            "player_name": "NEUER Manuel",
+            "position": "GK",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "RUEDIGER Antonio",
+            "position": "DF",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "ANTON Waldemar",
+            "position": "DF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "TAH Jonathan",
+            "position": "DF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "PAVLOVIC Aleksandar",
+            "position": "MF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "KIMMICH Joshua",
+            "position": "DF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "HAVERTZ Kai",
+            "position": "FW",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "GORETZKA Leon",
+            "position": "MF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "LEWELING Jamie",
+            "position": "MF",
+            "club": "VfB Stuttgart (GER)"
+        },
+        {
+            "player_name": "MUSIALA Jamal",
+            "position": "MF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "WOLTEMADE Nick",
+            "position": "FW",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "BAUMANN Oliver",
+            "position": "GK",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "GROSS Pascal",
+            "position": "MF",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "BEIER Maximilian",
+            "position": "FW",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "SCHLOTTERBECK Nico",
+            "position": "DF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "STILLER Angelo",
+            "position": "MF",
+            "club": "VfB Stuttgart (GER)"
+        },
+        {
+            "player_name": "WIRTZ Florian",
+            "position": "MF",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "BROWN Nathaniel",
+            "position": "DF",
+            "club": "Eintracht Frankfurt (GER)"
+        },
+        {
+            "player_name": "SANE Leroy",
+            "position": "MF",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "AMIRI Nadiem",
+            "position": "MF",
+            "club": "1. FSV Mainz 05 (GER)"
+        },
+        {
+            "player_name": "NUEBEL Alexander",
+            "position": "GK",
+            "club": "VfB Stuttgart (GER)"
+        },
+        {
+            "player_name": "RAUM David",
+            "position": "DF",
+            "club": "RB Leipzig (GER)"
+        },
+        {
+            "player_name": "NMECHA Felix",
+            "position": "MF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "THIAW Malick",
+            "position": "DF",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "OUEDRAOGO Assan",
+            "position": "MF",
+            "club": "RB Leipzig (GER)"
+        },
+        {
+            "player_name": "UNDAV Deniz",
+            "position": "FW",
+            "club": "VfB Stuttgart (GER)"
+        }
+    ],
+    "Ghana": [
+        {
+            "player_name": "ZIGI Lawrence Ati",
+            "position": "GK",
+            "club": "FC St. Gallen (SUI)"
+        },
+        {
+            "player_name": "SEIDU Alidu",
+            "position": "DF",
+            "club": "Stade Rennais FC (FRA)"
+        },
+        {
+            "player_name": "YIRENKYI Caleb",
+            "position": "MF",
+            "club": "FC Nordsjælland (DEN)"
+        },
+        {
+            "player_name": "ADJETEY Jonas",
+            "position": "DF",
+            "club": "VfL Wolfsburg (GER)"
+        },
+        {
+            "player_name": "PARTEY Thomas",
+            "position": "MF",
+            "club": "Villarreal CF (ESP)"
+        },
+        {
+            "player_name": "MUMIN Abdul",
+            "position": "DF",
+            "club": "Rayo Vallecano (ESP)"
+        },
+        {
+            "player_name": "FATAWU Abdul",
+            "position": "FW",
+            "club": "Leicester City FC (ENG)"
+        },
+        {
+            "player_name": "SIBO Kwasi",
+            "position": "MF",
+            "club": "Real Oviedo (ESP)"
+        },
+        {
+            "player_name": "AYEW Jordan",
+            "position": "FW",
+            "club": "Leicester City FC (ENG)"
+        },
+        {
+            "player_name": "THOMAS-ASANTE Brandon",
+            "position": "FW",
+            "club": "Coventry City FC (ENG)"
+        },
+        {
+            "player_name": "SEMENYO Antoine",
+            "position": "MF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "ANANG Joseph",
+            "position": "GK",
+            "club": "St Patrick's Athletic FC (IRL)"
+        },
+        {
+            "player_name": "BAAH Christopher Bonsu",
+            "position": "FW",
+            "club": "Al Qadsiah FC (KSA)"
+        },
+        {
+            "player_name": "MENSAH Gideon",
+            "position": "DF",
+            "club": "AJ Auxerre (FRA)"
+        },
+        {
+            "player_name": "OWUSU Elisha",
+            "position": "MF",
+            "club": "AJ Auxerre (FRA)"
+        },
+        {
+            "player_name": "ASARE Benjamin",
+            "position": "GK",
+            "club": "Hearts Of Oak SC (GHA)"
+        },
+        {
+            "player_name": "RAHMAN Baba",
+            "position": "DF",
+            "club": "PAOK Saloniki (GRE)"
+        },
+        {
+            "player_name": "OPOKU Jerome",
+            "position": "DF",
+            "club": "Başakşehir FK (TUR)"
+        },
+        {
+            "player_name": "WILLIAMS Inaki",
+            "position": "FW",
+            "club": "Athletic Club (ESP)"
+        },
+        {
+            "player_name": "BOAKYE Augustine",
+            "position": "MF",
+            "club": "AS Saint-Etienne (FRA)"
+        },
+        {
+            "player_name": "OPPONG Kojo Peprah",
+            "position": "DF",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "SULEMANA Kamaldeen",
+            "position": "FW",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "LUCKASSEN Derrick",
+            "position": "DF",
+            "club": "Pafos FC (CYP)"
+        },
+        {
+            "player_name": "NUAMAH Ernest",
+            "position": "FW",
+            "club": "Olympique Lyonnais (FRA)"
+        },
+        {
+            "player_name": "ADU Prince",
+            "position": "FW",
+            "club": "FC Viktoria Plzeň (CZE)"
+        },
+        {
+            "player_name": "SENAYA Marvin",
+            "position": "DF",
+            "club": "AJ Auxerre (FRA)"
+        }
+    ],
+    "Haiti": [
+        {
+            "player_name": "PLACIDE Johny",
+            "position": "GK",
+            "club": "SC Bastia (FRA)"
+        },
+        {
+            "player_name": "ARCUS Carlens",
+            "position": "DF",
+            "club": "Angers SCO (FRA)"
+        },
+        {
+            "player_name": "THERMONCY Keeto",
+            "position": "DF",
+            "club": "BSC Young Boys (SUI)"
+        },
+        {
+            "player_name": "ADE Ricardo",
+            "position": "DF",
+            "club": "LDU Quito (ECU)"
+        },
+        {
+            "player_name": "DELCROIX Hannes",
+            "position": "DF",
+            "club": "FC Lugano (SUI)"
+        },
+        {
+            "player_name": "SAINTE Carl",
+            "position": "MF",
+            "club": "El Paso Locomotive FC (USA)"
+        },
+        {
+            "player_name": "ETIENNE Derrick",
+            "position": "FW",
+            "club": "Toronto FC (CAN)"
+        },
+        {
+            "player_name": "EXPERIENCE Martin",
+            "position": "DF",
+            "club": "AS Nancy (FRA)"
+        },
+        {
+            "player_name": "NAZON Duckens",
+            "position": "FW",
+            "club": "Esteghlal Tehran FC (IRN)"
+        },
+        {
+            "player_name": "BELLEGARDE Jean-Ricner",
+            "position": "MF",
+            "club": "Wolverhampton Wanderers FC (ENG)"
+        },
+        {
+            "player_name": "DEEDSON Louicius",
+            "position": "FW",
+            "club": "FC Dallas (USA)"
+        },
+        {
+            "player_name": "PIERRE Alexandre",
+            "position": "GK",
+            "club": "FC Sochaux-Montbéliard (FRA)"
+        },
+        {
+            "player_name": "LACROIX Markhus",
+            "position": "DF",
+            "club": "Colorado Springs Switchbacks FC (USA)"
+        },
+        {
+            "player_name": "PIERRE Leverton",
+            "position": "MF",
+            "club": "FC Vizela (POR)"
+        },
+        {
+            "player_name": "PROVIDENCE Ruben",
+            "position": "FW",
+            "club": "Almere City FC (NED)"
+        },
+        {
+            "player_name": "JOSEPH Lenny",
+            "position": "FW",
+            "club": "Ferencvárosi TC (HUN)"
+        },
+        {
+            "player_name": "JEAN JACQUES Danley",
+            "position": "MF",
+            "club": "Philadelphia Union (USA)"
+        },
+        {
+            "player_name": "ISIDOR Wilson",
+            "position": "FW",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "FORTUNE Yassin",
+            "position": "FW",
+            "club": "FC Vizela (POR)"
+        },
+        {
+            "player_name": "PIERROT Frantzdy",
+            "position": "FW",
+            "club": "Çaykur Rizespor (TUR)"
+        },
+        {
+            "player_name": "CASIMIR Josue",
+            "position": "FW",
+            "club": "AJ Auxerre (FRA)"
+        },
+        {
+            "player_name": "DUVERNE Jean-Kevin",
+            "position": "DF",
+            "club": "KAA Gent (BEL)"
+        },
+        {
+            "player_name": "DUVERGER Josue",
+            "position": "GK",
+            "club": "FC Cosmos Koblenz (GER)"
+        },
+        {
+            "player_name": "PAUGAIN Wilguens",
+            "position": "DF",
+            "club": "SV Zulte Waregem (BEL)"
+        },
+        {
+            "player_name": "SIMON Dominique",
+            "position": "MF",
+            "club": "FC Tatran Prešov (SVK)"
+        },
+        {
+            "player_name": "PIERRE Woodensky",
+            "position": "MF",
+            "club": "Violette AC (HAI)"
+        }
+    ],
+    "IR Iran": [
+        {
+            "player_name": "BEIRANVAND Alireza",
+            "position": "GK",
+            "club": "Tractor Sazi Tabriz FC (IRN)"
+        },
+        {
+            "player_name": "HARDANI Saleh",
+            "position": "DF",
+            "club": "Esteghlal Tehran FC (IRN)"
+        },
+        {
+            "player_name": "HAJISAFI Ehsan",
+            "position": "DF",
+            "club": "Sepahan SC (IRN)"
+        },
+        {
+            "player_name": "KHALILZADEH Shoja",
+            "position": "DF",
+            "club": "Tractor Sazi Tabriz FC (IRN)"
+        },
+        {
+            "player_name": "MOHAMMADI Milad",
+            "position": "DF",
+            "club": "Persepolis FC (IRN)"
+        },
+        {
+            "player_name": "EZATOLAHI Saeid",
+            "position": "MF",
+            "club": "Shabab Al Ahli Club (UAE)"
+        },
+        {
+            "player_name": "JAHANBAKHSH Alireza",
+            "position": "MF",
+            "club": "FCV Dender EH (BEL)"
+        },
+        {
+            "player_name": "MOHEBBI Mohammad",
+            "position": "MF",
+            "club": "FC Rostov (RUS)"
+        },
+        {
+            "player_name": "TAREMI Mehdi",
+            "position": "FW",
+            "club": "Olympiacos FC (GRE)"
+        },
+        {
+            "player_name": "GHAYEDI Mehdi",
+            "position": "FW",
+            "club": "Al Nasr SC (UAE)"
+        },
+        {
+            "player_name": "ALIPOUR Ali",
+            "position": "FW",
+            "club": "Persepolis FC (IRN)"
+        },
+        {
+            "player_name": "NIAZMAND Payam",
+            "position": "GK",
+            "club": "Persepolis FC (IRN)"
+        },
+        {
+            "player_name": "KANANI Hossein",
+            "position": "DF",
+            "club": "Persepolis FC (IRN)"
+        },
+        {
+            "player_name": "GHODDOS Saman",
+            "position": "MF",
+            "club": "Al Ittihad Kalba SCC (UAE)"
+        },
+        {
+            "player_name": "CHESHMI Roozbeh",
+            "position": "MF",
+            "club": "Esteghlal Tehran FC (IRN)"
+        },
+        {
+            "player_name": "TORABI Mehdi",
+            "position": "MF",
+            "club": "Tractor Sazi Tabriz FC (IRN)"
+        },
+        {
+            "player_name": "YOUSEFI Arya",
+            "position": "DF",
+            "club": "Sepahan SC (IRN)"
+        },
+        {
+            "player_name": "HOSSEINZADEH Amirhossein",
+            "position": "FW",
+            "club": "Tractor Sazi Tabriz FC (IRN)"
+        },
+        {
+            "player_name": "NEMATI Ali",
+            "position": "DF",
+            "club": "Foolad Khuzestan FC (IRN)"
+        },
+        {
+            "player_name": "MOGHANLOO Shahriyar",
+            "position": "FW",
+            "club": "Al Ittihad Kalba SCC (UAE)"
+        },
+        {
+            "player_name": "GHORBANI Mohammad",
+            "position": "MF",
+            "club": "Al Wahda SC (UAE)"
+        },
+        {
+            "player_name": "HOSSEINI Hossein",
+            "position": "GK",
+            "club": "Sepahan SC (IRN)"
+        },
+        {
+            "player_name": "REZAEIAN Ramin",
+            "position": "DF",
+            "club": "Foolad Khuzestan FC (IRN)"
+        },
+        {
+            "player_name": "DARGAHI Dennis",
+            "position": "FW",
+            "club": "Standard Liège (BEL)"
+        },
+        {
+            "player_name": "IRI Danial",
+            "position": "DF",
+            "club": "Malavan Anzali FC (IRN)"
+        },
+        {
+            "player_name": "RAZAGHINIA Amirmohammad",
+            "position": "MF",
+            "club": "Esteghlal Tehran FC (IRN)"
+        }
+    ],
+    "Iraq": [
+        {
+            "player_name": "FAHAD TALIB",
+            "position": "GK",
+            "club": "Al Talaba SC (IRQ)"
+        },
+        {
+            "player_name": "REBIN SULAKA",
+            "position": "DF",
+            "club": "Port FC (THA)"
+        },
+        {
+            "player_name": "HUSSEIN ALI",
+            "position": "DF",
+            "club": "Pogoń Szczecin (POL)"
+        },
+        {
+            "player_name": "ZAID TAHSEEN",
+            "position": "DF",
+            "club": "Pakhtakor Tashkent FK (UZB)"
+        },
+        {
+            "player_name": "AKAM HASHIM",
+            "position": "DF",
+            "club": "Al Zawra'a SC (IRQ)"
+        },
+        {
+            "player_name": "MUNAF YOUNUS",
+            "position": "DF",
+            "club": "Al Shorta SC (IRQ)"
+        },
+        {
+            "player_name": "YOUSSEF AMYN",
+            "position": "MF",
+            "club": "AEK Larnaca FC (CYP)"
+        },
+        {
+            "player_name": "IBRAHIM BAYESH",
+            "position": "MF",
+            "club": "Al Dhafra SCC (UAE)"
+        },
+        {
+            "player_name": "ALI ALHAMADI",
+            "position": "FW",
+            "club": "Luton Town FC (ENG)"
+        },
+        {
+            "player_name": "MOHANAD ALI",
+            "position": "FW",
+            "club": "Dibba FC (UAE)"
+        },
+        {
+            "player_name": "AHMED QASIM",
+            "position": "FW",
+            "club": "Nashville SC (USA)"
+        },
+        {
+            "player_name": "JALAL HASSAN",
+            "position": "GK",
+            "club": "Al Zawra'a SC (IRQ)"
+        },
+        {
+            "player_name": "ALI YOUSIF",
+            "position": "FW",
+            "club": "Al Talaba SC (IRQ)"
+        },
+        {
+            "player_name": "ZIDANE IQBAL",
+            "position": "MF",
+            "club": "FC Utrecht (NED)"
+        },
+        {
+            "player_name": "AHMED MAKNAZI",
+            "position": "DF",
+            "club": "Al Karma SC (IRQ)"
+        },
+        {
+            "player_name": "AMIR ALAMMARI",
+            "position": "MF",
+            "club": "KS Cracovia (POL)"
+        },
+        {
+            "player_name": "ALI JASIM",
+            "position": "FW",
+            "club": "Al Najmah SC (KSA)"
+        },
+        {
+            "player_name": "AYMEN HUSSEIN",
+            "position": "FW",
+            "club": "Al Karma SC (IRQ)"
+        },
+        {
+            "player_name": "KEVIN YAKOB",
+            "position": "MF",
+            "club": "Aarhus GF (DEN)"
+        },
+        {
+            "player_name": "AIMAR SHER",
+            "position": "MF",
+            "club": "Sarpsborg 08 FF (NOR)"
+        },
+        {
+            "player_name": "MARKO FARJI",
+            "position": "FW",
+            "club": "Venezia FC (ITA)"
+        },
+        {
+            "player_name": "AHMED BASIL",
+            "position": "GK",
+            "club": "Al Shorta SC (IRQ)"
+        },
+        {
+            "player_name": "MERCHAS DOSKI",
+            "position": "DF",
+            "club": "FC Viktoria Plzeň (CZE)"
+        },
+        {
+            "player_name": "ZAID ISMAEL",
+            "position": "MF",
+            "club": "Al Talaba SC (IRQ)"
+        },
+        {
+            "player_name": "MUSTAFA SAADOON",
+            "position": "DF",
+            "club": "Al Shorta SC (IRQ)"
+        },
+        {
+            "player_name": "FRANS PUTROS",
+            "position": "DF",
+            "club": "Persib Bandung (IDN)"
+        }
+    ],
+    "Japan": [
+        {
+            "player_name": "SUZUKI Zion",
+            "position": "GK",
+            "club": "Parma (ITA)"
+        },
+        {
+            "player_name": "SUGAWARA Yukinari",
+            "position": "DF",
+            "club": "SV Werder Bremen (GER)"
+        },
+        {
+            "player_name": "TANIGUCHI Shogo",
+            "position": "DF",
+            "club": "Sint-Truiden VV (BEL)"
+        },
+        {
+            "player_name": "ITAKURA Kou",
+            "position": "DF",
+            "club": "AFC Ajax (NED)"
+        },
+        {
+            "player_name": "NAGATOMO Yuto",
+            "position": "DF",
+            "club": "FC Tokyo (JPN)"
+        },
+        {
+            "player_name": "ENDO Wataru",
+            "position": "MF",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "TANAKA Ao",
+            "position": "MF",
+            "club": "Leeds United FC (ENG)"
+        },
+        {
+            "player_name": "KUBO Takefusa",
+            "position": "MF",
+            "club": "Real Sociedad (ESP)"
+        },
+        {
+            "player_name": "GOTO Keisuke",
+            "position": "FW",
+            "club": "Sint-Truiden VV (BEL)"
+        },
+        {
+            "player_name": "DOAN Ritsu",
+            "position": "MF",
+            "club": "Eintracht Frankfurt (GER)"
+        },
+        {
+            "player_name": "MAEDA Daizen",
+            "position": "MF",
+            "club": "Celtic FC (SCO)"
+        },
+        {
+            "player_name": "OSAKO Keisuke",
+            "position": "GK",
+            "club": "Sanfrecce Hiroshima (JPN)"
+        },
+        {
+            "player_name": "NAKAMURA Keito",
+            "position": "MF",
+            "club": "Stade Reims (FRA)"
+        },
+        {
+            "player_name": "ITO Junya",
+            "position": "MF",
+            "club": "KRC Genk (BEL)"
+        },
+        {
+            "player_name": "KAMADA Daichi",
+            "position": "MF",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "WATANABE Tsuyoshi",
+            "position": "DF",
+            "club": "Feyenoord Rotterdam (NED)"
+        },
+        {
+            "player_name": "SUZUKI Yuito",
+            "position": "MF",
+            "club": "SC Freiburg (GER)"
+        },
+        {
+            "player_name": "UEDA Ayase",
+            "position": "FW",
+            "club": "Feyenoord Rotterdam (NED)"
+        },
+        {
+            "player_name": "OGAWA Koki",
+            "position": "FW",
+            "club": "NEC Nijmegen (NED)"
+        },
+        {
+            "player_name": "SEKO Ayumu",
+            "position": "DF",
+            "club": "Le Havre AC (FRA)"
+        },
+        {
+            "player_name": "ITO Hiroki",
+            "position": "DF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "TOMIYASU Takehiro",
+            "position": "DF",
+            "club": "AFC Ajax (NED)"
+        },
+        {
+            "player_name": "HAYAKAWA Tomoki",
+            "position": "GK",
+            "club": "Kashima Antlers (JPN)"
+        },
+        {
+            "player_name": "SANO Kaishu",
+            "position": "MF",
+            "club": "1. FSV Mainz 05 (GER)"
+        },
+        {
+            "player_name": "SUZUKI Junnosuke",
+            "position": "DF",
+            "club": "FC København (DEN)"
+        },
+        {
+            "player_name": "SHIOGAI Kento",
+            "position": "FW",
+            "club": "VfL Wolfsburg (GER)"
+        }
+    ],
+    "Jordan": [
+        {
+            "player_name": "YAZEED ABULAILA",
+            "position": "GK",
+            "club": "Al Hussein SC (JOR)"
+        },
+        {
+            "player_name": "MOHAMMAD ABUHASHEESH",
+            "position": "DF",
+            "club": "Al Karma SC (IRQ)"
+        },
+        {
+            "player_name": "ABDALLAH NASIB",
+            "position": "DF",
+            "club": "Al Zawra'a SC (IRQ)"
+        },
+        {
+            "player_name": "HUSAM ABUDAHAB",
+            "position": "DF",
+            "club": "Al Faisaly SC (JOR)"
+        },
+        {
+            "player_name": "YAZAN ALARAB",
+            "position": "DF",
+            "club": "FC Seoul (KOR)"
+        },
+        {
+            "player_name": "AMER JAMOUS",
+            "position": "MF",
+            "club": "Al Zawra'a SC (IRQ)"
+        },
+        {
+            "player_name": "MOHAMMAD ABUZRAIQ",
+            "position": "FW",
+            "club": "Raja Casablanca (MAR)"
+        },
+        {
+            "player_name": "NOOR ALRAWABDEH",
+            "position": "MF",
+            "club": "Selangor FC (MAS)"
+        },
+        {
+            "player_name": "ALI OLWAN",
+            "position": "FW",
+            "club": "Al Sailiya SC (QAT)"
+        },
+        {
+            "player_name": "MOUSA ALTAMARI",
+            "position": "FW",
+            "club": "Stade Rennais FC (FRA)"
+        },
+        {
+            "player_name": "ODEH FAKHOURY",
+            "position": "FW",
+            "club": "Pyramids FC (EGY)"
+        },
+        {
+            "player_name": "NOUR BANIATEYAH",
+            "position": "GK",
+            "club": "Al Faisaly SC (JOR)"
+        },
+        {
+            "player_name": "MAHMOUD ALMARDI",
+            "position": "FW",
+            "club": "Al Hussein SC (JOR)"
+        },
+        {
+            "player_name": "RAJAEI AYED",
+            "position": "MF",
+            "club": "Al Hussein SC (JOR)"
+        },
+        {
+            "player_name": "IBRAHIM SADEH",
+            "position": "MF",
+            "club": "Al Karma SC (IRQ)"
+        },
+        {
+            "player_name": "MOHAMMAD ABUALNADI",
+            "position": "DF",
+            "club": "Selangor FC (MAS)"
+        },
+        {
+            "player_name": "SALEEM OBAID",
+            "position": "DF",
+            "club": "Al Hussein SC (JOR)"
+        },
+        {
+            "player_name": "MOHAMMAD ABUGHOUSH",
+            "position": "MF",
+            "club": "Al Hussein SC (JOR)"
+        },
+        {
+            "player_name": "SAED ALROSAN",
+            "position": "DF",
+            "club": "Al Hussein SC (JOR)"
+        },
+        {
+            "player_name": "MOHANNAD ABUTAHA",
+            "position": "MF",
+            "club": "Al-Quwa Al-Jawiya (IRQ)"
+        },
+        {
+            "player_name": "NIZAR ALRASHDAN",
+            "position": "MF",
+            "club": "Qatar SC (QAT)"
+        },
+        {
+            "player_name": "ABDALLAH ALFAKHORI",
+            "position": "GK",
+            "club": "Al Wahdat SC (JOR)"
+        },
+        {
+            "player_name": "EHSAN HADDAD",
+            "position": "DF",
+            "club": "Al Hussein SC (JOR)"
+        },
+        {
+            "player_name": "ALI AZAIZEH",
+            "position": "FW",
+            "club": "Al Shabab FC (KSA)"
+        },
+        {
+            "player_name": "MOHAMMAD ALDAOUD",
+            "position": "MF",
+            "club": "Al Wahdat SC (JOR)"
+        },
+        {
+            "player_name": "ANAS BADAWI",
+            "position": "DF",
+            "club": "Al Faisaly SC (JOR)"
+        }
+    ],
+    "Korea Republic": [
+        {
+            "player_name": "KIM Seunggyu",
+            "position": "GK",
+            "club": "FC Tokyo (JPN)"
+        },
+        {
+            "player_name": "LEE Hanbeom",
+            "position": "DF",
+            "club": "FC Midtjylland (DEN)"
+        },
+        {
+            "player_name": "LEE Gihyuk",
+            "position": "MF",
+            "club": "Gangwon FC (KOR)"
+        },
+        {
+            "player_name": "KIM Minjae",
+            "position": "DF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "KIM Taehyeon",
+            "position": "DF",
+            "club": "Kashima Antlers (JPN)"
+        },
+        {
+            "player_name": "HWANG Inbeom",
+            "position": "MF",
+            "club": "Feyenoord Rotterdam (NED)"
+        },
+        {
+            "player_name": "SON Heungmin",
+            "position": "FW",
+            "club": "LAFC (USA)"
+        },
+        {
+            "player_name": "PAIK Seungho",
+            "position": "MF",
+            "club": "Birmingham City FC (ENG)"
+        },
+        {
+            "player_name": "CHO Guesung",
+            "position": "FW",
+            "club": "FC Midtjylland (DEN)"
+        },
+        {
+            "player_name": "LEE Jaesung",
+            "position": "MF",
+            "club": "1. FSV Mainz 05 (GER)"
+        },
+        {
+            "player_name": "HWANG Heechan",
+            "position": "MF",
+            "club": "Wolverhampton Wanderers FC (ENG)"
+        },
+        {
+            "player_name": "SONG Bumkeun",
+            "position": "GK",
+            "club": "Jeonbuk Hyundai Motors FC (KOR)"
+        },
+        {
+            "player_name": "LEE Taeseok",
+            "position": "DF",
+            "club": "FK Austria Wien (AUT)"
+        },
+        {
+            "player_name": "CHO Wije",
+            "position": "DF",
+            "club": "Jeonbuk Hyundai Motors FC (KOR)"
+        },
+        {
+            "player_name": "KIM Moonhwan",
+            "position": "DF",
+            "club": "Daejeon Hana Citizen FC (KOR)"
+        },
+        {
+            "player_name": "PARK Jinseob",
+            "position": "DF",
+            "club": "Zhejiang FC (CHN)"
+        },
+        {
+            "player_name": "BAE Junho",
+            "position": "MF",
+            "club": "Stoke City FC (ENG)"
+        },
+        {
+            "player_name": "OH Hyeongyu",
+            "position": "FW",
+            "club": "Beşiktaş JK (TUR)"
+        },
+        {
+            "player_name": "LEE Kangin",
+            "position": "MF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "YANG Hyunjun",
+            "position": "MF",
+            "club": "Celtic FC (SCO)"
+        },
+        {
+            "player_name": "JO Hyeonwoo",
+            "position": "GK",
+            "club": "Ulsan HD (KOR)"
+        },
+        {
+            "player_name": "SEOL Youngwoo",
+            "position": "DF",
+            "club": "FK Crvena Zvezda (SRB)"
+        },
+        {
+            "player_name": "CASTROP Jens",
+            "position": "DF",
+            "club": "Borussia Mönchengladbach (GER)"
+        },
+        {
+            "player_name": "KIM Jingyu",
+            "position": "MF",
+            "club": "Jeonbuk Hyundai Motors FC (KOR)"
+        },
+        {
+            "player_name": "EOM Jisung",
+            "position": "MF",
+            "club": "Swansea City AFC (WAL)"
+        },
+        {
+            "player_name": "LEE Donggyeong",
+            "position": "MF",
+            "club": "Ulsan HD (KOR)"
+        }
+    ],
+    "Mexico": [
+        {
+            "player_name": "RANGEL Raul José",
+            "position": "GK",
+            "club": "CD Guadalajara (MEX)"
+        },
+        {
+            "player_name": "SANCHEZ Jorge",
+            "position": "DF",
+            "club": "PAOK Saloniki (GRE)"
+        },
+        {
+            "player_name": "MONTES Cesar",
+            "position": "DF",
+            "club": "FC Lokomotiv Moscow (RUS)"
+        },
+        {
+            "player_name": "ALVAREZ Edson",
+            "position": "DF",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "VASQUEZ Johan",
+            "position": "DF",
+            "club": "Genoa CFC (ITA)"
+        },
+        {
+            "player_name": "LIRA Erik",
+            "position": "MF",
+            "club": "CF Cruz Azul (MEX)"
+        },
+        {
+            "player_name": "ROMO Luis",
+            "position": "MF",
+            "club": "CD Guadalajara (MEX)"
+        },
+        {
+            "player_name": "FIDALGO Alvaro",
+            "position": "MF",
+            "club": "Real Betis (ESP)"
+        },
+        {
+            "player_name": "JIMENEZ Raul",
+            "position": "FW",
+            "club": "Fulham FC (ENG)"
+        },
+        {
+            "player_name": "VEGA Alexis",
+            "position": "FW",
+            "club": "Deportivo Toluca FC (MEX)"
+        },
+        {
+            "player_name": "GIMENEZ Santiago",
+            "position": "FW",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "ACEVEDO Carlos",
+            "position": "GK",
+            "club": "Club Santos Laguna (MEX)"
+        },
+        {
+            "player_name": "OCHOA Guillermo Francisco",
+            "position": "GK",
+            "club": "AEL Limassol (CYP)"
+        },
+        {
+            "player_name": "GONZALEZ Armando",
+            "position": "FW",
+            "club": "CD Guadalajara (MEX)"
+        },
+        {
+            "player_name": "REYES Israel",
+            "position": "DF",
+            "club": "Club América (MEX)"
+        },
+        {
+            "player_name": "QUINONES Julian",
+            "position": "FW",
+            "club": "Al Qadsiah FC (KSA)"
+        },
+        {
+            "player_name": "PINEDA Orbelin",
+            "position": "MF",
+            "club": "AEK Athens (GRE)"
+        },
+        {
+            "player_name": "VARGAS Obed",
+            "position": "MF",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "MORA Gilberto",
+            "position": "MF",
+            "club": "Club Tijuana (MEX)"
+        },
+        {
+            "player_name": "CHAVEZ Mateo",
+            "position": "DF",
+            "club": "AZ Alkmaar (NED)"
+        },
+        {
+            "player_name": "HUERTA Cesar",
+            "position": "FW",
+            "club": "RSC Anderlecht (BEL)"
+        },
+        {
+            "player_name": "MARTINEZ Guillermo",
+            "position": "FW",
+            "club": "Pumas UNAM (MEX)"
+        },
+        {
+            "player_name": "GALLARDO Jesus",
+            "position": "DF",
+            "club": "Deportivo Toluca FC (MEX)"
+        },
+        {
+            "player_name": "CHAVEZ Luis",
+            "position": "MF",
+            "club": "FC Dynamo Moscow (RUS)"
+        },
+        {
+            "player_name": "ALVARADO Roberto",
+            "position": "FW",
+            "club": "CD Guadalajara (MEX)"
+        },
+        {
+            "player_name": "GUTIERREZ Brian",
+            "position": "MF",
+            "club": "CD Guadalajara (MEX)"
+        }
+    ],
+    "Morocco": [
+        {
+            "player_name": "BOUNOU Yassine",
+            "position": "GK",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "HAKIMI Achraf",
+            "position": "DF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "MAZRAOUI Noussair",
+            "position": "DF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "AMRABAT Sofyan",
+            "position": "MF",
+            "club": "Real Betis (ESP)"
+        },
+        {
+            "player_name": "AGUERD Nayef",
+            "position": "DF",
+            "club": "Olympique Marseille (FRA)"
+        },
+        {
+            "player_name": "BOUADDI Ayyoub",
+            "position": "MF",
+            "club": "Lille OSC (FRA)"
+        },
+        {
+            "player_name": "TALBI Chemsdine",
+            "position": "MF",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "OUNAHI Azzedine",
+            "position": "MF",
+            "club": "Girona FC (ESP)"
+        },
+        {
+            "player_name": "RAHIMI Souane",
+            "position": "FW",
+            "club": "Al Ain FC (UAE)"
+        },
+        {
+            "player_name": "DIAZ Brahim",
+            "position": "FW",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "SAIBARI Ismael",
+            "position": "MF",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "EL KAJOUI Munir",
+            "position": "GK",
+            "club": "RS Berkane (MAR)"
+        },
+        {
+            "player_name": "EL OUAHDI Zakaria",
+            "position": "DF",
+            "club": "KRC Genk (BEL)"
+        },
+        {
+            "player_name": "DIOP Issa",
+            "position": "DF",
+            "club": "Fulham FC (ENG)"
+        },
+        {
+            "player_name": "EL MOURABET Samir",
+            "position": "MF",
+            "club": "RC Strasbourg (FRA)"
+        },
+        {
+            "player_name": "YASSINE Gessime",
+            "position": "MF",
+            "club": "RC Strasbourg (FRA)"
+        },
+        {
+            "player_name": "EZZALZOULI Abde",
+            "position": "FW",
+            "club": "Real Betis (ESP)"
+        },
+        {
+            "player_name": "RIAD Chadi",
+            "position": "DF",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "BELAMMARI Youssef",
+            "position": "DF",
+            "club": "Al Ahly FC (EGY)"
+        },
+        {
+            "player_name": "EL KAABI Ayoub",
+            "position": "FW",
+            "club": "Olympiacos FC (GRE)"
+        },
+        {
+            "player_name": "AMAIMOUNI Ayoube",
+            "position": "FW",
+            "club": "Eintracht Frankfurt (GER)"
+        },
+        {
+            "player_name": "TAGNAOUTI Ahmed Reda",
+            "position": "GK",
+            "club": "ASFAR (MAR)"
+        },
+        {
+            "player_name": "EL KHANNOUSS Bilal",
+            "position": "MF",
+            "club": "VfB Stuttgart (GER)"
+        },
+        {
+            "player_name": "EL AYNAOUI Neil",
+            "position": "MF",
+            "club": "AS Roma (ITA)"
+        },
+        {
+            "player_name": "HALHAL Redouane",
+            "position": "DF",
+            "club": "KV Mechelen (BEL)"
+        },
+        {
+            "player_name": "SALAH EDDINE Anass",
+            "position": "DF",
+            "club": "PSV Eindhoven (NED)"
+        }
+    ],
+    "Netherlands": [
+        {
+            "player_name": "VERBRUGGEN Bart",
+            "position": "GK",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "GEERTRUIDA Lutsharel",
+            "position": "DF",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "DE ROON Marten",
+            "position": "MF",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "VAN DIJK Virgil",
+            "position": "DF",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "AKE Nathan",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "VAN HECKE Jan Paul",
+            "position": "DF",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "KLUIVERT Justin",
+            "position": "MF",
+            "club": "AFC Bournemouth (ENG)"
+        },
+        {
+            "player_name": "GRAVENBERCH Ryan",
+            "position": "MF",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "WEGHORST Wout",
+            "position": "FW",
+            "club": "AFC Ajax (NED)"
+        },
+        {
+            "player_name": "DEPAY Memphis",
+            "position": "FW",
+            "club": "SC Corinthians (BRA)"
+        },
+        {
+            "player_name": "GAKPO Cody",
+            "position": "FW",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "WIEFFER Mats",
+            "position": "DF",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "ROEFS Robin",
+            "position": "GK",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "REIJNDERS Tijjani",
+            "position": "MF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "VAN DE VEN Micky",
+            "position": "DF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "TIL Guus",
+            "position": "MF",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "LANG Noa",
+            "position": "FW",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "MALEN Donyell",
+            "position": "FW",
+            "club": "AS Roma (ITA)"
+        },
+        {
+            "player_name": "BROBBEY Brian",
+            "position": "FW",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "KOOPMEINERS Teun",
+            "position": "MF",
+            "club": "Juventus FC (ITA)"
+        },
+        {
+            "player_name": "DE JONG Frenkie",
+            "position": "MF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "DUMFRIES Denzel",
+            "position": "DF",
+            "club": "FC Internazionale Milano (ITA)"
+        },
+        {
+            "player_name": "FLEKKEN Mark",
+            "position": "GK",
+            "club": "Bayer 04 Leverkusen (GER)"
+        },
+        {
+            "player_name": "SUMMERVILLE Crysencio",
+            "position": "FW",
+            "club": "West Ham United FC (ENG)"
+        },
+        {
+            "player_name": "HATO Jorrel",
+            "position": "DF",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "TIMBER Quinten",
+            "position": "MF",
+            "club": "Olympique Marseille (FRA)"
+        }
+    ],
+    "New Zealand": [
+        {
+            "player_name": "CROCOMBE Max",
+            "position": "GK",
+            "club": "Millwall FC (ENG)"
+        },
+        {
+            "player_name": "PAYNE Tim",
+            "position": "DF",
+            "club": "Wellington Phoenix FC (NZL)"
+        },
+        {
+            "player_name": "DE VRIES Francis",
+            "position": "DF",
+            "club": "Auckland FC (NZL)"
+        },
+        {
+            "player_name": "BINDON Tyler",
+            "position": "DF",
+            "club": "Sheeld United FC (ENG)"
+        },
+        {
+            "player_name": "BOXALL Michael",
+            "position": "DF",
+            "club": "Minnesota United FC (USA)"
+        },
+        {
+            "player_name": "BELL Joe",
+            "position": "MF",
+            "club": "Viking Stavanger (NOR)"
+        },
+        {
+            "player_name": "GARBETT Matthew",
+            "position": "MF",
+            "club": "Peterborough United FC (ENG)"
+        },
+        {
+            "player_name": "STAMENIC Marko",
+            "position": "MF",
+            "club": "Swansea City AFC (WAL)"
+        },
+        {
+            "player_name": "WOOD Chris",
+            "position": "FW",
+            "club": "Nottingham Forest FC (ENG)"
+        },
+        {
+            "player_name": "SINGH Sarpreet",
+            "position": "MF",
+            "club": "Wellington Phoenix FC (NZL)"
+        },
+        {
+            "player_name": "JUST Elijah",
+            "position": "MF",
+            "club": "Motherwell FC (SCO)"
+        },
+        {
+            "player_name": "PAULSEN Alex",
+            "position": "GK",
+            "club": "Lechia Gdańsk (POL)"
+        },
+        {
+            "player_name": "CACACE Liberato",
+            "position": "DF",
+            "club": "Wrexham AFC (WAL)"
+        },
+        {
+            "player_name": "RUFER Alex",
+            "position": "MF",
+            "club": "Wellington Phoenix FC (NZL)"
+        },
+        {
+            "player_name": "PIJNAKER Nando",
+            "position": "DF",
+            "club": "Auckland FC (NZL)"
+        },
+        {
+            "player_name": "SURMAN Finn",
+            "position": "DF",
+            "club": "Portland Timbers (USA)"
+        },
+        {
+            "player_name": "BARBAROUSES Kosta",
+            "position": "FW",
+            "club": "WS Wanderers FC (AUS)"
+        },
+        {
+            "player_name": "WAINE Ben",
+            "position": "FW",
+            "club": "Port Vale FC (ENG)"
+        },
+        {
+            "player_name": "OLD Ben",
+            "position": "MF",
+            "club": "AS Saint-Etienne (FRA)"
+        },
+        {
+            "player_name": "McCOWATT Callum",
+            "position": "MF",
+            "club": "Silkeborg IF (DEN)"
+        },
+        {
+            "player_name": "RANDALL Jesse",
+            "position": "FW",
+            "club": "Auckland FC (NZL)"
+        },
+        {
+            "player_name": "WOUD Michael",
+            "position": "GK",
+            "club": "Auckland FC (NZL)"
+        },
+        {
+            "player_name": "THOMAS Ryan",
+            "position": "MF",
+            "club": "PEC Zwolle (NED)"
+        },
+        {
+            "player_name": "ELLIOT Callan",
+            "position": "DF",
+            "club": "Auckland FC (NZL)"
+        },
+        {
+            "player_name": "BAYLISS Lachlan",
+            "position": "MF",
+            "club": "Newcastle United Jets FC (AUS)"
+        },
+        {
+            "player_name": "SMITH Tommy",
+            "position": "DF",
+            "club": "Braintree Town FC (ENG)"
+        }
+    ],
+    "Norway": [
+        {
+            "player_name": "NYLAND Orjan",
+            "position": "GK",
+            "club": "Sevilla FC (ESP)"
+        },
+        {
+            "player_name": "THORSBY Morten",
+            "position": "MF",
+            "club": "US Cremonese (ITA)"
+        },
+        {
+            "player_name": "AJER Kristoffer",
+            "position": "DF",
+            "club": "Brentford FC (ENG)"
+        },
+        {
+            "player_name": "OSTIGARD Leo",
+            "position": "DF",
+            "club": "Genoa CFC (ITA)"
+        },
+        {
+            "player_name": "MOLLER WOLFE David",
+            "position": "DF",
+            "club": "Wolverhampton Wanderers FC (ENG)"
+        },
+        {
+            "player_name": "BERG Patrick",
+            "position": "MF",
+            "club": "FK Bodø/Glimt (NOR)"
+        },
+        {
+            "player_name": "SORLOTH Alexander",
+            "position": "FW",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "BERGE Sander",
+            "position": "MF",
+            "club": "Fulham FC (ENG)"
+        },
+        {
+            "player_name": "HAALAND Erling",
+            "position": "FW",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "ODEGAARD Martin",
+            "position": "MF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "STRAND LARSEN Jorgen",
+            "position": "FW",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "TANGVIK Sander",
+            "position": "GK",
+            "club": "Hamburger SV (GER)"
+        },
+        {
+            "player_name": "SELVIV Egil",
+            "position": "GK",
+            "club": "Watford FC (ENG)"
+        },
+        {
+            "player_name": "AURSNES Fredrik",
+            "position": "MF",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "BJORKAN Fredrik Andre",
+            "position": "DF",
+            "club": "FK Bodø/Glimt (NOR)"
+        },
+        {
+            "player_name": "HOLMGREN PEDERSEN Marcus",
+            "position": "DF",
+            "club": "Torino FC (ITA)"
+        },
+        {
+            "player_name": "HEGGEM Torbjorn",
+            "position": "DF",
+            "club": "Bologna FC (ITA)"
+        },
+        {
+            "player_name": "THORSTVEDT Kristian",
+            "position": "MF",
+            "club": "US Sassuolo (ITA)"
+        },
+        {
+            "player_name": "AASGAARD Thelo",
+            "position": "MF",
+            "club": "Rangers FC (SCO)"
+        },
+        {
+            "player_name": "NUSA Antonio",
+            "position": "FW",
+            "club": "RB Leipzig (GER)"
+        },
+        {
+            "player_name": "SCHJELDERUP Andreas",
+            "position": "MF",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "BOBB Oscar",
+            "position": "MF",
+            "club": "Fulham FC (ENG)"
+        },
+        {
+            "player_name": "HAUGE Jens Petter",
+            "position": "MF",
+            "club": "FK Bodø/Glimt (NOR)"
+        },
+        {
+            "player_name": "LANGAS Sondre",
+            "position": "DF",
+            "club": "Derby County FC (ENG)"
+        },
+        {
+            "player_name": "FALCHENER Henrik",
+            "position": "DF",
+            "club": "Viking Stavanger (NOR)"
+        },
+        {
+            "player_name": "RYERSON Julian",
+            "position": "FW",
+            "club": "Borussia Dortmund (GER)"
+        }
+    ],
+    "Panama": [
+        {
+            "player_name": "MEJIA Luis",
+            "position": "GK",
+            "club": "Club Nacional (URU)"
+        },
+        {
+            "player_name": "BLACKMAN Cesar",
+            "position": "DF",
+            "club": "ŠK Slovan Bratislava (SVK)"
+        },
+        {
+            "player_name": "CORDOBA Jose",
+            "position": "DF",
+            "club": "Norwich City FC (ENG)"
+        },
+        {
+            "player_name": "ESCOBAR Fidel",
+            "position": "DF",
+            "club": "Deportivo Saprissa (CRC)"
+        },
+        {
+            "player_name": "FARINA Edgardo",
+            "position": "DF",
+            "club": "FC Pari Nizhny Novgorod (RUS)"
+        },
+        {
+            "player_name": "MARTINEZ Cristian",
+            "position": "MF",
+            "club": "Hapoel Kiryat Shmona FC (ISR)"
+        },
+        {
+            "player_name": "RODRIGUEZ Jose Luis",
+            "position": "MF",
+            "club": "FC Juárez (MEX)"
+        },
+        {
+            "player_name": "CARRASQUILLA Adalberto",
+            "position": "MF",
+            "club": "Pumas UNAM (MEX)"
+        },
+        {
+            "player_name": "RODRIGUEZ Tomas",
+            "position": "FW",
+            "club": "Deportivo Saprissa (CRC)"
+        },
+        {
+            "player_name": "DIAZ Ismael",
+            "position": "MF",
+            "club": "Club León (MEX)"
+        },
+        {
+            "player_name": "BARCENAS Edgar Yoel",
+            "position": "MF",
+            "club": "Mazatlán FC (MEX)"
+        },
+        {
+            "player_name": "SAMUDIO Cesar",
+            "position": "GK",
+            "club": "CD Marathón (HON)"
+        },
+        {
+            "player_name": "RAMOS Jiovany",
+            "position": "DF",
+            "club": "Puerto Cabello CF (VEN)"
+        },
+        {
+            "player_name": "HARVEY Carlos",
+            "position": "DF",
+            "club": "Minnesota United FC (USA)"
+        },
+        {
+            "player_name": "DAVIS Eric",
+            "position": "DF",
+            "club": "CD Plaza Amador (PAN)"
+        },
+        {
+            "player_name": "ANDRADE Andres",
+            "position": "DF",
+            "club": "LASK Linz (AUT)"
+        },
+        {
+            "player_name": "FAJARDO Jose",
+            "position": "FW",
+            "club": "CD Universidad Católica (ECU)"
+        },
+        {
+            "player_name": "WATERMAN Cecilio",
+            "position": "FW",
+            "club": "CD Universidad De Concepción (CHI)"
+        },
+        {
+            "player_name": "QUINTERO Alberto",
+            "position": "MF",
+            "club": "CD Plaza Amador (PAN)"
+        },
+        {
+            "player_name": "GODOY Anibal",
+            "position": "MF",
+            "club": "San Diego FC (USA)"
+        },
+        {
+            "player_name": "YANIS Cesar",
+            "position": "MF",
+            "club": "CD Cobresal (CHI)"
+        },
+        {
+            "player_name": "MOSQUERA Orlando",
+            "position": "GK",
+            "club": "Al Fayha FC (KSA)"
+        },
+        {
+            "player_name": "MURILLO Amir Michael",
+            "position": "DF",
+            "club": "Beşiktaş JK (TUR)"
+        },
+        {
+            "player_name": "LONDONO Azarias",
+            "position": "FW",
+            "club": "CD Universidad Católica (ECU)"
+        },
+        {
+            "player_name": "MILLER Roderick",
+            "position": "DF",
+            "club": "Turan Tovuz (AZE)"
+        },
+        {
+            "player_name": "GUTIERREZ Jorge",
+            "position": "DF",
+            "club": "Deportivo La Guaira (VEN)"
+        }
+    ],
+    "Paraguay": [
+        {
+            "player_name": "FERNANDEZ Gatito",
+            "position": "GK",
+            "club": "Cerro Porteño (PAR)"
+        },
+        {
+            "player_name": "VELAZQUEZ Gustavo Victor",
+            "position": "DF",
+            "club": "Cerro Porteño (PAR)"
+        },
+        {
+            "player_name": "ALDERETE Omar",
+            "position": "DF",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "CACERES Juan Jose",
+            "position": "DF",
+            "club": "FC Dynamo Moscow (RUS)"
+        },
+        {
+            "player_name": "BALBUENA Fabian",
+            "position": "DF",
+            "club": "Grêmio FBPA (BRA)"
+        },
+        {
+            "player_name": "ALONSO Junior",
+            "position": "DF",
+            "club": "Atlético Mineiro (BRA)"
+        },
+        {
+            "player_name": "SOSA Ramon",
+            "position": "MF",
+            "club": "SE Palmeiras (BRA)"
+        },
+        {
+            "player_name": "GOMEZ Diego",
+            "position": "MF",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "SANABRIA Antonio Arnaldo",
+            "position": "FW",
+            "club": "US Cremonese (ITA)"
+        },
+        {
+            "player_name": "ALMIRON Miguel",
+            "position": "MF",
+            "club": "Atlanta United FC (USA)"
+        },
+        {
+            "player_name": "MAURICIO",
+            "position": "MF",
+            "club": "SE Palmeiras (BRA)"
+        },
+        {
+            "player_name": "GILL Orlando",
+            "position": "GK",
+            "club": "CA San Lorenzo (ARG)"
+        },
+        {
+            "player_name": "CANALE Jose Jose Maria",
+            "position": "DF",
+            "club": "CA Lanús (ARG)"
+        },
+        {
+            "player_name": "CUBAS Andres",
+            "position": "MF",
+            "club": "Vancouver Whitecaps FC (CAN)"
+        },
+        {
+            "player_name": "GOMEZ Gustavo",
+            "position": "DF",
+            "club": "SE Palmeiras (BRA)"
+        },
+        {
+            "player_name": "BOBADILLA Damian",
+            "position": "MF",
+            "club": "São Paulo FC (BRA)"
+        },
+        {
+            "player_name": "ROMERO GAMARRA Alejandro",
+            "position": "FW",
+            "club": "Al Ain FC (UAE)"
+        },
+        {
+            "player_name": "ARCE Alex",
+            "position": "FW",
+            "club": "CS Independiente Rivadavia (ARG)"
+        },
+        {
+            "player_name": "ENCISO Julio",
+            "position": "FW",
+            "club": "RC Strasbourg (FRA)"
+        },
+        {
+            "player_name": "OJEDA Braian",
+            "position": "MF",
+            "club": "Orlando City SC (USA)"
+        },
+        {
+            "player_name": "AVALOS Gabriel",
+            "position": "FW",
+            "club": "CA Independiente (ARG)"
+        },
+        {
+            "player_name": "OLVEIRA Gaston",
+            "position": "GK",
+            "club": "Club Olimpia (PAR)"
+        },
+        {
+            "player_name": "GALARZA Matias",
+            "position": "MF",
+            "club": "Atlanta United FC (USA)"
+        },
+        {
+            "player_name": "CABALLERO Gustavo",
+            "position": "MF",
+            "club": "Portsmouth FC (ENG)"
+        },
+        {
+            "player_name": "PITTA Isidro",
+            "position": "FW",
+            "club": "Red Bull Bragantino (BRA)"
+        },
+        {
+            "player_name": "MAIDANA Alexandro",
+            "position": "DF",
+            "club": "CA Talleres (ARG)"
+        }
+    ],
+    "Portugal": [
+        {
+            "player_name": "DIOGO COSTA",
+            "position": "GK",
+            "club": "FC Porto (POR)"
+        },
+        {
+            "player_name": "NELSON SEMEDO",
+            "position": "DF",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "RUBEN DIAS",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "TOMAS ARAUJO",
+            "position": "DF",
+            "club": "SL Benca (POR)"
+        },
+        {
+            "player_name": "DIOGO DALOT",
+            "position": "DF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "MATHEUS NUNES",
+            "position": "MF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "CRISTIANO RONALDO",
+            "position": "FW",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "BRUNO FERNANDES",
+            "position": "MF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "GONCALO RAMOS",
+            "position": "FW",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "BERNARDO SILVA",
+            "position": "MF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "JOAO FELIX",
+            "position": "FW",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "JOSE SA",
+            "position": "GK",
+            "club": "Wolverhampton Wanderers FC (ENG)"
+        },
+        {
+            "player_name": "RENATO VEIGA",
+            "position": "DF",
+            "club": "Villarreal CF (ESP)"
+        },
+        {
+            "player_name": "GONCALO INACIO",
+            "position": "DF",
+            "club": "Sporting CP (POR)"
+        },
+        {
+            "player_name": "JOAO NEVES",
+            "position": "MF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "FRANCISCO TRINCAO",
+            "position": "FW",
+            "club": "Sporting CP (POR)"
+        },
+        {
+            "player_name": "RAFAEL LEAO",
+            "position": "FW",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "PEDRO NETO",
+            "position": "FW",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "GONCALO GUEDES",
+            "position": "FW",
+            "club": "Real Sociedad (ESP)"
+        },
+        {
+            "player_name": "JOAO CANCELO",
+            "position": "DF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "RUBEN NEVES",
+            "position": "MF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "RUI SILVA",
+            "position": "GK",
+            "club": "Sporting CP (POR)"
+        },
+        {
+            "player_name": "VITINHA",
+            "position": "MF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "SAMU COSTA",
+            "position": "DF",
+            "club": "RCD Mallorca (ESP)"
+        },
+        {
+            "player_name": "NUNO MENDES",
+            "position": "DF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "FRANCISCO CONCEICAO",
+            "position": "FW",
+            "club": "Juventus FC (ITA)"
+        }
+    ],
+    "Qatar": [
+        {
+            "player_name": "MAHMOUD ABUNADA",
+            "position": "GK",
+            "club": "Al Rayyan SC (QAT)"
+        },
+        {
+            "player_name": "PEDRO MIGUEL",
+            "position": "DF",
+            "club": "Al Sadd SC (QAT)"
+        },
+        {
+            "player_name": "LUCAS MENDES",
+            "position": "DF",
+            "club": "Al Wakrah SC (QAT)"
+        },
+        {
+            "player_name": "ISSA LAYE",
+            "position": "DF",
+            "club": "Al Arabi SC (QAT)"
+        },
+        {
+            "player_name": "JASSEM GABER",
+            "position": "DF",
+            "club": "Al Rayyan SC (QAT)"
+        },
+        {
+            "player_name": "ABDULAZIZ HATEM",
+            "position": "MF",
+            "club": "Al Rayyan SC (QAT)"
+        },
+        {
+            "player_name": "AHMED ALAAELDIN",
+            "position": "FW",
+            "club": "Al Rayyan SC (QAT)"
+        },
+        {
+            "player_name": "EDMILSON JUNIOR",
+            "position": "FW",
+            "club": "Al Duhail SC (QAT)"
+        },
+        {
+            "player_name": "MOHAMMED MUNTARI",
+            "position": "FW",
+            "club": "Al Gharafa SC (QAT)"
+        },
+        {
+            "player_name": "HASSAN ALHAYDOS",
+            "position": "FW",
+            "club": "Al Sadd SC (QAT)"
+        },
+        {
+            "player_name": "AKRAM AFIF",
+            "position": "FW",
+            "club": "Al Sadd SC (QAT)"
+        },
+        {
+            "player_name": "KARIM BOUDIAF",
+            "position": "MF",
+            "club": "Al Duhail SC (QAT)"
+        },
+        {
+            "player_name": "AYOUB ALOUI",
+            "position": "DF",
+            "club": "Al Gharafa SC (QAT)"
+        },
+        {
+            "player_name": "HOMAM AHMED",
+            "position": "DF",
+            "club": "Cultural Leonesa (ESP)"
+        },
+        {
+            "player_name": "YUSUF ABDURISAG",
+            "position": "FW",
+            "club": "Al Wakrah SC (QAT)"
+        },
+        {
+            "player_name": "BOUALEM KHOUKHI",
+            "position": "DF",
+            "club": "Al Sadd SC (QAT)"
+        },
+        {
+            "player_name": "AHMED ALGANEHI",
+            "position": "MF",
+            "club": "Al Gharafa SC (QAT)"
+        },
+        {
+            "player_name": "SULTAN ALBRAKE",
+            "position": "DF",
+            "club": "Al Duhail SC (QAT)"
+        },
+        {
+            "player_name": "ALMOEZ ALI",
+            "position": "FW",
+            "club": "Al Duhail SC (QAT)"
+        },
+        {
+            "player_name": "AHMED FATHY",
+            "position": "MF",
+            "club": "Al Arabi SC (QAT)"
+        },
+        {
+            "player_name": "SALAH ZAKARIA",
+            "position": "GK",
+            "club": "Al Duhail SC (QAT)"
+        },
+        {
+            "player_name": "MESHAAL BARSHAM",
+            "position": "GK",
+            "club": "Al Sadd SC (QAT)"
+        },
+        {
+            "player_name": "ASSIM MADIBO",
+            "position": "MF",
+            "club": "Al Wakrah SC (QAT)"
+        },
+        {
+            "player_name": "TAHSIN MOHAMMED",
+            "position": "FW",
+            "club": "Al Duhail SC (QAT)"
+        },
+        {
+            "player_name": "ALHASHMI ALHUSSEIN",
+            "position": "DF",
+            "club": "Al Arabi SC (QAT)"
+        },
+        {
+            "player_name": "MOHAMED MANAI",
+            "position": "FW",
+            "club": "Al Shamal SC (QAT)"
+        }
+    ],
+    "Saudi Arabia": [
+        {
+            "player_name": "NAWAF ALAQIDI",
+            "position": "GK",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "ALI MAJRASHI",
+            "position": "DF",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "ALI LAJAMI",
+            "position": "DF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "ABDULELAH ALAMRI",
+            "position": "DF",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "HASSAN ALTAMBAKTI",
+            "position": "DF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "NASSER ALDAWSARI",
+            "position": "MF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "MUSAB ALJUWAYR",
+            "position": "MF",
+            "club": "Al Qadsiah FC (KSA)"
+        },
+        {
+            "player_name": "AIMAN YAHYA",
+            "position": "FW",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "FERAS ALBRIKAN",
+            "position": "FW",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "SALEM ALDAWSARI",
+            "position": "FW",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "SALEH ALSHEHRI",
+            "position": "FW",
+            "club": "Al Ittihad (KSA)"
+        },
+        {
+            "player_name": "SAUD ABDULHAMID",
+            "position": "DF",
+            "club": "RC Lens (FRA)"
+        },
+        {
+            "player_name": "NAWAF BU WASHL",
+            "position": "DF",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "HASSAN KADISH",
+            "position": "DF",
+            "club": "Al Ittihad (KSA)"
+        },
+        {
+            "player_name": "ABDULLAH ALKHAIBARI",
+            "position": "MF",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "ZIYAD ALJOHANI",
+            "position": "MF",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "KHALID ALGHANNAM",
+            "position": "FW",
+            "club": "Al Ettifaq FC (KSA)"
+        },
+        {
+            "player_name": "ALA ALHAJJI",
+            "position": "MF",
+            "club": "Neom SC (KSA)"
+        },
+        {
+            "player_name": "ABDULLAH ALHAMDDAN",
+            "position": "FW",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "SULTAN MANDASH",
+            "position": "FW",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "MOHAMMED ALOWAIS",
+            "position": "GK",
+            "club": "Al Ula Saudi FC (KSA)"
+        },
+        {
+            "player_name": "AHMED ALKASSAR",
+            "position": "GK",
+            "club": "Al Qadsiah FC (KSA)"
+        },
+        {
+            "player_name": "MOHAMED KANNO",
+            "position": "MF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "MOTEB ALHARBI",
+            "position": "DF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "JEHAD THIKRI",
+            "position": "DF",
+            "club": "Al Qadsiah FC (KSA)"
+        },
+        {
+            "player_name": "MOHAMMED ABU ALSHAMAT",
+            "position": "DF",
+            "club": "Al Qadsiah FC (KSA)"
+        }
+    ],
+    "Scotland": [
+        {
+            "player_name": "GUNN Angus",
+            "position": "GK",
+            "club": "Nottingham Forest FC (ENG)"
+        },
+        {
+            "player_name": "HICKEY Aaron",
+            "position": "DF",
+            "club": "Brentford FC (ENG)"
+        },
+        {
+            "player_name": "ROBERTSON Andy",
+            "position": "DF",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "McTOMINAY Scott",
+            "position": "MF",
+            "club": "SSC Napoli (ITA)"
+        },
+        {
+            "player_name": "HANLEY Grant",
+            "position": "DF",
+            "club": "Hibernian FC (SCO)"
+        },
+        {
+            "player_name": "TIERNEY Kieran",
+            "position": "DF",
+            "club": "Celtic FC (SCO)"
+        },
+        {
+            "player_name": "McGINN John",
+            "position": "MF",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "FLETCHER Tyler",
+            "position": "MF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "DYKES Lyndon",
+            "position": "FW",
+            "club": "Charlton Athletic FC (ENG)"
+        },
+        {
+            "player_name": "ADAMS Che",
+            "position": "FW",
+            "club": "Torino FC (ITA)"
+        },
+        {
+            "player_name": "CHRISTIE Ryan",
+            "position": "MF",
+            "club": "AFC Bournemouth (ENG)"
+        },
+        {
+            "player_name": "KELLY Liam",
+            "position": "GK",
+            "club": "Rangers FC (SCO)"
+        },
+        {
+            "player_name": "HENDRY Jack",
+            "position": "DF",
+            "club": "Al Ettifaq FC (KSA)"
+        },
+        {
+            "player_name": "STEWART Ross",
+            "position": "FW",
+            "club": "Southampton FC (ENG)"
+        },
+        {
+            "player_name": "SOUTTAR John",
+            "position": "DF",
+            "club": "Rangers FC (SCO)"
+        },
+        {
+            "player_name": "HYAM Dominic",
+            "position": "DF",
+            "club": "Wrexham AFC (WAL)"
+        },
+        {
+            "player_name": "GANNON-DOAK Ben",
+            "position": "FW",
+            "club": "AFC Bournemouth (ENG)"
+        },
+        {
+            "player_name": "HIRST George",
+            "position": "FW",
+            "club": "Ipswich Town FC (ENG)"
+        },
+        {
+            "player_name": "FERGUSON Lewis",
+            "position": "MF",
+            "club": "Bologna FC (ITA)"
+        },
+        {
+            "player_name": "SHANKLAND Lawrence",
+            "position": "FW",
+            "club": "Heart Of Midlothian FC (SCO)"
+        },
+        {
+            "player_name": "GORDON Craig",
+            "position": "GK",
+            "club": "Heart Of Midlothian FC (SCO)"
+        },
+        {
+            "player_name": "PATTERSON Nathan",
+            "position": "DF",
+            "club": "Everton FC (ENG)"
+        },
+        {
+            "player_name": "McLEAN Kenny",
+            "position": "MF",
+            "club": "Norwich City FC (ENG)"
+        },
+        {
+            "player_name": "RALSTON Anthony",
+            "position": "DF",
+            "club": "Celtic FC (SCO)"
+        },
+        {
+            "player_name": "CURTIS Findlay",
+            "position": "FW",
+            "club": "Kilmarnock FC (SCO)"
+        },
+        {
+            "player_name": "McKENNA Scott",
+            "position": "DF",
+            "club": "GNK Dinamo Zagreb (CRO)"
+        }
+    ],
+    "Senegal": [
+        {
+            "player_name": "DIOUF Yehvann",
+            "position": "GK",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "SARR Mamadou",
+            "position": "DF",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "KOULIBALY Kalidou",
+            "position": "DF",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "SECK Abdoulaye",
+            "position": "DF",
+            "club": "Maccabi Haifa FC (ISR)"
+        },
+        {
+            "player_name": "GUEYE Idrissa Gana",
+            "position": "MF",
+            "club": "Everton FC (ENG)"
+        },
+        {
+            "player_name": "CISS Pathe Ismaila",
+            "position": "MF",
+            "club": "Rayo Vallecano (ESP)"
+        },
+        {
+            "player_name": "DIAO Assane",
+            "position": "FW",
+            "club": "Como (ITA)"
+        },
+        {
+            "player_name": "CAMARA Lamine",
+            "position": "MF",
+            "club": "AS Monaco (FRA)"
+        },
+        {
+            "player_name": "DIENG Bamba",
+            "position": "FW",
+            "club": "FC Lorient (FRA)"
+        },
+        {
+            "player_name": "MANE Sadio",
+            "position": "FW",
+            "club": "Al Nassr FC (KSA)"
+        },
+        {
+            "player_name": "JACKSON Nicolas",
+            "position": "FW",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "NDIAYE Cherif Pape",
+            "position": "FW",
+            "club": "Samsunspor (TUR)"
+        },
+        {
+            "player_name": "NDIAYE Iliman",
+            "position": "FW",
+            "club": "Everton FC (ENG)"
+        },
+        {
+            "player_name": "JAKOBS Ismail",
+            "position": "DF",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "DIATTA Krepin",
+            "position": "DF",
+            "club": "AS Monaco (FRA)"
+        },
+        {
+            "player_name": "MENDY Edouard",
+            "position": "GK",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "SARR Pape Matar",
+            "position": "MF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "SARR Ismaila",
+            "position": "FW",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "NIAKHATE Moussa",
+            "position": "DF",
+            "club": "Olympique Lyonnais (FRA)"
+        },
+        {
+            "player_name": "MBAYE Ibrahim",
+            "position": "FW",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "DIARRA Habib Mouhamadou",
+            "position": "MF",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "NDIAYE Bara Sapoko",
+            "position": "MF",
+            "club": "FC Bayern München (GER)"
+        },
+        {
+            "player_name": "DIAW Mory",
+            "position": "GK",
+            "club": "Le Havre AC (FRA)"
+        },
+        {
+            "player_name": "MENDY Antoine",
+            "position": "DF",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "DIOUF El Hadji Malick",
+            "position": "DF",
+            "club": "West Ham United FC (ENG)"
+        },
+        {
+            "player_name": "GUEYE Pape",
+            "position": "MF",
+            "club": "Villarreal CF (ESP)"
+        }
+    ],
+    "South Africa": [
+        {
+            "player_name": "WILLIAMS Ronwen",
+            "position": "GK",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "MATULUDI Thabang Tholo",
+            "position": "DF",
+            "club": "Polokwane City FC (RSA)"
+        },
+        {
+            "player_name": "NDAMANE Khulumani",
+            "position": "DF",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "MOKOENA Teboho",
+            "position": "MF",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "MBATHA Thalente",
+            "position": "MF",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "MODIBA Aubrey",
+            "position": "DF",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "APPOLLIS Oswin",
+            "position": "FW",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "MOREMI Tshepang",
+            "position": "FW",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "FOSTER Lyle",
+            "position": "FW",
+            "club": "Burnley FC (ENG)"
+        },
+        {
+            "player_name": "MOFOKENG Relebohile",
+            "position": "FW",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "ZWANE Themba",
+            "position": "MF",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "MASEKO Thapelo",
+            "position": "FW",
+            "club": "AEL Limassol (CYP)"
+        },
+        {
+            "player_name": "SITHOLE Sphephelo",
+            "position": "MF",
+            "club": "CD Tondela (POR)"
+        },
+        {
+            "player_name": "MBOKAZI Mbekezeli",
+            "position": "DF",
+            "club": "Chicago Fire FC (USA)"
+        },
+        {
+            "player_name": "RAYNERS Iqraam",
+            "position": "FW",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "CHAINE Sipho",
+            "position": "GK",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "MAKGOPA Evidence Sekotori",
+            "position": "FW",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "KABINI Samukele",
+            "position": "DF",
+            "club": "Molde FK (NOR)"
+        },
+        {
+            "player_name": "SIBISI Nkosinathi",
+            "position": "DF",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "MUDAU Khuliso",
+            "position": "DF",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "OKON Ime",
+            "position": "DF",
+            "club": "Hannover 96 (GER)"
+        },
+        {
+            "player_name": "GOSS Ricardo Stuart",
+            "position": "GK",
+            "club": "Siwelele FC (RSA)"
+        },
+        {
+            "player_name": "ADAMS Jayden",
+            "position": "MF",
+            "club": "Mamelodi Sundowns FC (RSA)"
+        },
+        {
+            "player_name": "MAKHANYA Olwethu",
+            "position": "DF",
+            "club": "Philadelphia Union (USA)"
+        },
+        {
+            "player_name": "SEBELEBELE Kamogelo",
+            "position": "FW",
+            "club": "Orlando Pirates FC (RSA)"
+        },
+        {
+            "player_name": "CROSS Bradley",
+            "position": "DF",
+            "club": "Kaizer Chiefs FC (RSA)"
+        }
+    ],
+    "Spain": [
+        {
+            "player_name": "RAYA David",
+            "position": "GK",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "PUBILL Marc",
+            "position": "DF",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "GRIMALDO Alex",
+            "position": "DF",
+            "club": "Bayer 04 Leverkusen (GER)"
+        },
+        {
+            "player_name": "GARCIA Eric",
+            "position": "DF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "LLORENTE Marcos",
+            "position": "DF",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "MERINO Mikel",
+            "position": "MF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "TORRES Ferran",
+            "position": "FW",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "RUIZ Fabian",
+            "position": "MF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "GAVI Pablo",
+            "position": "MF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "OLMO Dani",
+            "position": "FW",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "PINO Yeremy",
+            "position": "FW",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "PORRO Pedro",
+            "position": "DF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "GARCIA Joan",
+            "position": "GK",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "LAPORTE Aymeric",
+            "position": "DF",
+            "club": "Athletic Club (ESP)"
+        },
+        {
+            "player_name": "BAENA Alex",
+            "position": "MF",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "RODRI",
+            "position": "MF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "WILLIAMS Nico",
+            "position": "FW",
+            "club": "Athletic Club (ESP)"
+        },
+        {
+            "player_name": "ZUBIMENDI Martin",
+            "position": "MF",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "YAMAL Lamine",
+            "position": "FW",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "PEDRI",
+            "position": "MF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "OYARZABAL Mikel",
+            "position": "FW",
+            "club": "Real Sociedad (ESP)"
+        },
+        {
+            "player_name": "CUBARSI Pau",
+            "position": "DF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "SIMON Unai",
+            "position": "GK",
+            "club": "Athletic Club (ESP)"
+        },
+        {
+            "player_name": "CUCURELLA Marc",
+            "position": "DF",
+            "club": "Chelsea FC (ENG)"
+        },
+        {
+            "player_name": "MUNOZ Victor",
+            "position": "FW",
+            "club": "CA Osasuna (ESP)"
+        },
+        {
+            "player_name": "IGLESIAS Borja",
+            "position": "FW",
+            "club": "RC Celta Vigo (ESP)"
+        }
+    ],
+    "Sweden": [
+        {
+            "player_name": "WIDELL ZETTERSTRÖM Jacob",
+            "position": "GK",
+            "club": "Derby County FC (ENG)"
+        },
+        {
+            "player_name": "LAGERBIELKE Gustaf",
+            "position": "DF",
+            "club": "SC Braga (POR)"
+        },
+        {
+            "player_name": "LINDELOF Victor",
+            "position": "DF",
+            "club": "Aston Villa FC (ENG)"
+        },
+        {
+            "player_name": "HIEN Isak",
+            "position": "DF",
+            "club": "Atalanta Bergamo (ITA)"
+        },
+        {
+            "player_name": "GUDMUNDSSON Gabriel",
+            "position": "DF",
+            "club": "Leeds United FC (ENG)"
+        },
+        {
+            "player_name": "JOHANSSON Herman",
+            "position": "DF",
+            "club": "FC Dallas (USA)"
+        },
+        {
+            "player_name": "BERGVALL Lucas",
+            "position": "MF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "SVENSSON Daniel",
+            "position": "DF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "ISAK Alexander",
+            "position": "FW",
+            "club": "Liverpool FC (ENG)"
+        },
+        {
+            "player_name": "NYGREN Benjamin",
+            "position": "MF",
+            "club": "Celtic FC (SCO)"
+        },
+        {
+            "player_name": "ELANGA Anthony",
+            "position": "FW",
+            "club": "Newcastle United FC (ENG)"
+        },
+        {
+            "player_name": "JOHANSSON Viktor",
+            "position": "GK",
+            "club": "Stoke City FC (ENG)"
+        },
+        {
+            "player_name": "SEMA Ken",
+            "position": "MF",
+            "club": "Pafos FC (CYP)"
+        },
+        {
+            "player_name": "EKDAL Hjalmar",
+            "position": "DF",
+            "club": "Burnley FC (ENG)"
+        },
+        {
+            "player_name": "STARFELT Carl",
+            "position": "DF",
+            "club": "RC Celta Vigo (ESP)"
+        },
+        {
+            "player_name": "KARLSTROM Jesper",
+            "position": "MF",
+            "club": "Udinese (ITA)"
+        },
+        {
+            "player_name": "GYOKERES Viktor",
+            "position": "FW",
+            "club": "Arsenal FC (ENG)"
+        },
+        {
+            "player_name": "AYARI Yasin",
+            "position": "MF",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "SVANBERG Mattias",
+            "position": "MF",
+            "club": "VfL Wolfsburg (GER)"
+        },
+        {
+            "player_name": "SMITH Eric",
+            "position": "DF",
+            "club": "FC St. Pauli (GER)"
+        },
+        {
+            "player_name": "BERNHARDSSON Alexander",
+            "position": "DF",
+            "club": "Holstein Kiel (GER)"
+        },
+        {
+            "player_name": "ZENELI Besfort",
+            "position": "MF",
+            "club": "Royale Union Saint-Gilloise (BEL)"
+        },
+        {
+            "player_name": "NORDFELDT Kristoffer Bo",
+            "position": "GK",
+            "club": "AIK Stockholm (SWE)"
+        },
+        {
+            "player_name": "STROUD Elliot",
+            "position": "DF",
+            "club": "Mjällby AIF (SWE)"
+        },
+        {
+            "player_name": "NILSSON Gustaf Håkan",
+            "position": "FW",
+            "club": "Club Brugge (BEL)"
+        },
+        {
+            "player_name": "ALI Taha",
+            "position": "FW",
+            "club": "Malmö FF (SWE)"
+        }
+    ],
+    "Switzerland": [
+        {
+            "player_name": "KOBEL Gregor",
+            "position": "GK",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "MUHEIM Miro",
+            "position": "DF",
+            "club": "Hamburger SV (GER)"
+        },
+        {
+            "player_name": "WIDMER Silvan",
+            "position": "DF",
+            "club": "1. FSV Mainz 05 (GER)"
+        },
+        {
+            "player_name": "ELVEDI Nico",
+            "position": "DF",
+            "club": "Borussia Mönchengladbach (GER)"
+        },
+        {
+            "player_name": "AKANJI Manuel",
+            "position": "DF",
+            "club": "FC Internazionale Milano (ITA)"
+        },
+        {
+            "player_name": "ZAKARIA Denis",
+            "position": "MF",
+            "club": "AS Monaco (FRA)"
+        },
+        {
+            "player_name": "EMBOLO Breel",
+            "position": "FW",
+            "club": "Stade Rennais FC (FRA)"
+        },
+        {
+            "player_name": "FREULER Remo",
+            "position": "MF",
+            "club": "Bologna FC (ITA)"
+        },
+        {
+            "player_name": "MANZAMBI Johan",
+            "position": "MF",
+            "club": "SC Freiburg (GER)"
+        },
+        {
+            "player_name": "XHAKA Granit",
+            "position": "MF",
+            "club": "Sunderland AFC (ENG)"
+        },
+        {
+            "player_name": "NDOYE Dan",
+            "position": "FW",
+            "club": "Nottingham Forest FC (ENG)"
+        },
+        {
+            "player_name": "MVOGO Yvon",
+            "position": "GK",
+            "club": "FC Lorient (FRA)"
+        },
+        {
+            "player_name": "RODRIGUEZ Ricardo",
+            "position": "DF",
+            "club": "Real Betis (ESP)"
+        },
+        {
+            "player_name": "JASHARI Ardon",
+            "position": "MF",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "SOW Djibril Mohameth",
+            "position": "MF",
+            "club": "Sevilla FC (ESP)"
+        },
+        {
+            "player_name": "FASSNACHT Christian",
+            "position": "FW",
+            "club": "BSC Young Boys (SUI)"
+        },
+        {
+            "player_name": "VARGAS Ruben",
+            "position": "FW",
+            "club": "Sevilla FC (ESP)"
+        },
+        {
+            "player_name": "COEMERT Eray",
+            "position": "DF",
+            "club": "Valencia CF (ESP)"
+        },
+        {
+            "player_name": "OKAFOR Noah",
+            "position": "FW",
+            "club": "Leeds United FC (ENG)"
+        },
+        {
+            "player_name": "AEBISCHER Michel",
+            "position": "MF",
+            "club": "Pisa SC (ITA)"
+        },
+        {
+            "player_name": "KELLER Marvin",
+            "position": "GK",
+            "club": "BSC Young Boys (SUI)"
+        },
+        {
+            "player_name": "RIEDER Fabian",
+            "position": "MF",
+            "club": "FC Augsburg (GER)"
+        },
+        {
+            "player_name": "AMDOUNI Zeki Mohamed",
+            "position": "FW",
+            "club": "Burnley FC (ENG)"
+        },
+        {
+            "player_name": "AMENDA Aurele",
+            "position": "DF",
+            "club": "Eintracht Frankfurt (GER)"
+        },
+        {
+            "player_name": "JAQUEZ Luca",
+            "position": "DF",
+            "club": "VfB Stuttgart (GER)"
+        },
+        {
+            "player_name": "ITTEN Cedric",
+            "position": "FW",
+            "club": "Fortuna Düsseldorf (GER)"
+        }
+    ],
+    "Tunisia": [
+        {
+            "player_name": "CHAMAKH Mouhib",
+            "position": "GK",
+            "club": "Club Africain (TUN)"
+        },
+        {
+            "player_name": "ABDI Ali",
+            "position": "DF",
+            "club": "OGC Nice (FRA)"
+        },
+        {
+            "player_name": "TALBI Montassar",
+            "position": "DF",
+            "club": "FC Lorient (FRA)"
+        },
+        {
+            "player_name": "REKIK Omar",
+            "position": "DF",
+            "club": "NK Maribor (SVN)"
+        },
+        {
+            "player_name": "AROUS Adam",
+            "position": "DF",
+            "club": "Kasımpaşa SK (TUR)"
+        },
+        {
+            "player_name": "BRONN Dylan",
+            "position": "DF",
+            "club": "Servette FC (SUI)"
+        },
+        {
+            "player_name": "ACHOURI Elias",
+            "position": "FW",
+            "club": "FC København (DEN)"
+        },
+        {
+            "player_name": "SAAD Elias",
+            "position": "FW",
+            "club": "Hannover 96 (GER)"
+        },
+        {
+            "player_name": "MASTOURI Hazem",
+            "position": "FW",
+            "club": "FC Dynamo Makhachkala (RUS)"
+        },
+        {
+            "player_name": "MEJBRI Hannibal",
+            "position": "MF",
+            "club": "Burnley FC (ENG)"
+        },
+        {
+            "player_name": "GHARBI Ismael",
+            "position": "MF",
+            "club": "FC Augsburg (GER)"
+        },
+        {
+            "player_name": "BEN OUANES Mortadha",
+            "position": "DF",
+            "club": "Kasımpaşa SK (TUR)"
+        },
+        {
+            "player_name": "KHEDIRA Rani",
+            "position": "MF",
+            "club": "1. FC Union Berlin (GER)"
+        },
+        {
+            "player_name": "AYARI Khalil",
+            "position": "MF",
+            "club": "Paris Saint-Germain (FRA)"
+        },
+        {
+            "player_name": "HADJ MAHMOUD Mohamed",
+            "position": "MF",
+            "club": "FC Lugano (SUI)"
+        },
+        {
+            "player_name": "DAHMEN Aymen",
+            "position": "GK",
+            "club": "CS Sfaxien (TUN)"
+        },
+        {
+            "player_name": "SKHIRI Ellyes",
+            "position": "MF",
+            "club": "Eintracht Frankfurt (GER)"
+        },
+        {
+            "player_name": "ELLOUMI Rayan",
+            "position": "FW",
+            "club": "Vancouver Whitecaps FC (CAN)"
+        },
+        {
+            "player_name": "CHAOUAT Firas",
+            "position": "FW",
+            "club": "Club Africain (TUN)"
+        },
+        {
+            "player_name": "VALERY Yan",
+            "position": "DF",
+            "club": "BSC Young Boys (SUI)"
+        },
+        {
+            "player_name": "BEN HMIDA Mohamed Amine",
+            "position": "DF",
+            "club": "Espérance De Tunisie (TUN)"
+        },
+        {
+            "player_name": "BEN HESSEN Sabri",
+            "position": "GK",
+            "club": "Étoile Du Sahel (TUN)"
+        },
+        {
+            "player_name": "NEFFATI Moutaz",
+            "position": "DF",
+            "club": "IFK Norrköping FK (SWE)"
+        },
+        {
+            "player_name": "CHIKHAOUI Raed",
+            "position": "DF",
+            "club": "US Monastir (TUN)"
+        },
+        {
+            "player_name": "SLIMANE Anis",
+            "position": "MF",
+            "club": "Norwich City FC (ENG)"
+        },
+        {
+            "player_name": "TOUNEKTI Sebastian",
+            "position": "MF",
+            "club": "Celtic FC (SCO)"
+        }
+    ],
+    "Türkiye": [
+        {
+            "player_name": "GUNOK Mert",
+            "position": "GK",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "CELIK Zeki",
+            "position": "DF",
+            "club": "AS Roma (ITA)"
+        },
+        {
+            "player_name": "DEMIRAL Merih",
+            "position": "DF",
+            "club": "Al Ahli FC (KSA)"
+        },
+        {
+            "player_name": "SOYUNCU Caglar",
+            "position": "DF",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "OZCAN Salih",
+            "position": "MF",
+            "club": "Borussia Dortmund (GER)"
+        },
+        {
+            "player_name": "KOKCU Orkun",
+            "position": "MF",
+            "club": "Beşiktaş JK (TUR)"
+        },
+        {
+            "player_name": "AKTURKOGLU Kerem",
+            "position": "FW",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "GULER Arda",
+            "position": "FW",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "GUL Deniz",
+            "position": "FW",
+            "club": "FC Porto (POR)"
+        },
+        {
+            "player_name": "CALHANOGLU Hakan",
+            "position": "MF",
+            "club": "FC Internazionale Milano (ITA)"
+        },
+        {
+            "player_name": "YILDIZ Kenan",
+            "position": "FW",
+            "club": "Juventus FC (ITA)"
+        },
+        {
+            "player_name": "BAYINDIR Altay",
+            "position": "GK",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "ELMALI Eren",
+            "position": "DF",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "BARDAKCI Abdulkerim",
+            "position": "DF",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "KABAK Ozan",
+            "position": "DF",
+            "club": "TSG Hoffenheim (GER)"
+        },
+        {
+            "player_name": "YUKSEK Ismail",
+            "position": "MF",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "KAHVECI Irfan Can",
+            "position": "FW",
+            "club": "Kasımpaşa SK (TUR)"
+        },
+        {
+            "player_name": "MULDUR Mert",
+            "position": "DF",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "AKGUN Yunus",
+            "position": "FW",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "KADIOGLU Ferdi",
+            "position": "DF",
+            "club": "Brighton & Hove Albion FC (ENG)"
+        },
+        {
+            "player_name": "YILMAZ Baris Alper",
+            "position": "FW",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "AYHAN Kaan",
+            "position": "MF",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "CAKIR Ugurcan",
+            "position": "GK",
+            "club": "Galatasaray SK (TUR)"
+        },
+        {
+            "player_name": "AYDIN Oguz",
+            "position": "FW",
+            "club": "Fenerbahçe SK (TUR)"
+        },
+        {
+            "player_name": "AKAYDIN Samet",
+            "position": "DF",
+            "club": "Çaykur Rizespor (TUR)"
+        },
+        {
+            "player_name": "UZUN Can",
+            "position": "FW",
+            "club": "Eintracht Frankfurt (GER)"
+        }
+    ],
+    "Uruguay": [
+        {
+            "player_name": "ROCHET Sergio",
+            "position": "GK",
+            "club": "SC Internacional (BRA)"
+        },
+        {
+            "player_name": "GIMENEZ Jose Maria",
+            "position": "DF",
+            "club": "Atlético De Madrid (ESP)"
+        },
+        {
+            "player_name": "CACERES Sebastian",
+            "position": "DF",
+            "club": "Club América (MEX)"
+        },
+        {
+            "player_name": "ARAUJO Ronald",
+            "position": "DF",
+            "club": "FC Barcelona (ESP)"
+        },
+        {
+            "player_name": "UGARTE Manuel",
+            "position": "MF",
+            "club": "Manchester United FC (ENG)"
+        },
+        {
+            "player_name": "BENTANCUR Rodrigo",
+            "position": "MF",
+            "club": "Tottenham Hotspur FC (ENG)"
+        },
+        {
+            "player_name": "DE LA CRUZ Nicolas",
+            "position": "MF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "VALVERDE Federico",
+            "position": "MF",
+            "club": "Real Madrid C. F. (ESP)"
+        },
+        {
+            "player_name": "NUNEZ Darwin",
+            "position": "FW",
+            "club": "Al Hilal SC (KSA)"
+        },
+        {
+            "player_name": "DE ARRASCAETA Giorgian",
+            "position": "MF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "PELLISTRI Facundo",
+            "position": "FW",
+            "club": "Panathinaikos FC (GRE)"
+        },
+        {
+            "player_name": "MELE Santiago",
+            "position": "GK",
+            "club": "CF Monterrey (MEX)"
+        },
+        {
+            "player_name": "VARELA Guillermo",
+            "position": "DF",
+            "club": "CR Flamengo (BRA)"
+        },
+        {
+            "player_name": "CANOBBIO Agustin",
+            "position": "MF",
+            "club": "Fluminense FC (BRA)"
+        },
+        {
+            "player_name": "MARTINEZ Emiliano",
+            "position": "MF",
+            "club": "SE Palmeiras (BRA)"
+        },
+        {
+            "player_name": "OLIVERA Mathias",
+            "position": "DF",
+            "club": "SSC Napoli (ITA)"
+        },
+        {
+            "player_name": "VINA Matias",
+            "position": "DF",
+            "club": "CA River Plate (ARG)"
+        },
+        {
+            "player_name": "RODRIGUEZ Brian Paul",
+            "position": "FW",
+            "club": "Club América (MEX)"
+        },
+        {
+            "player_name": "AGUIRRE Rodrigo",
+            "position": "FW",
+            "club": "Tigres UANL (MEX)"
+        },
+        {
+            "player_name": "ARAUJO Maxi",
+            "position": "MF",
+            "club": "Sporting CP (POR)"
+        },
+        {
+            "player_name": "VINAS Federico",
+            "position": "FW",
+            "club": "Real Oviedo (ESP)"
+        },
+        {
+            "player_name": "PIQUEREZ Joaquin",
+            "position": "MF",
+            "club": "SE Palmeiras (BRA)"
+        },
+        {
+            "player_name": "MUSLERA Fernando Nestor",
+            "position": "GK",
+            "club": "Estudiantes LP (ARG)"
+        },
+        {
+            "player_name": "BUENO Santiago",
+            "position": "DF",
+            "club": "Wolverhampton Wanderers FC (ENG)"
+        },
+        {
+            "player_name": "SANABRIA Juan Manuel",
+            "position": "MF",
+            "club": "Real Salt Lake (USA)"
+        },
+        {
+            "player_name": "ZALAZAR Rodrigo",
+            "position": "MF",
+            "club": "SC Braga (POR)"
+        }
+    ],
+    "USA": [
+        {
+            "player_name": "TURNER Matt",
+            "position": "GK",
+            "club": "New England Revolution (USA)"
+        },
+        {
+            "player_name": "DEST Sergino",
+            "position": "DF",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "RICHARDS Chris",
+            "position": "DF",
+            "club": "Crystal Palace FC (ENG)"
+        },
+        {
+            "player_name": "ADAMS Tyler",
+            "position": "MF",
+            "club": "AFC Bournemouth (ENG)"
+        },
+        {
+            "player_name": "ROBINSON Antonee",
+            "position": "DF",
+            "club": "Fulham FC (ENG)"
+        },
+        {
+            "player_name": "TRUSTY Auston",
+            "position": "DF",
+            "club": "Celtic FC (SCO)"
+        },
+        {
+            "player_name": "REYNA Giovanni",
+            "position": "MF",
+            "club": "Borussia Mönchengladbach (GER)"
+        },
+        {
+            "player_name": "McKENNIE Weston",
+            "position": "MF",
+            "club": "Juventus FC (ITA)"
+        },
+        {
+            "player_name": "PEPI Ricardo",
+            "position": "FW",
+            "club": "PSV Eindhoven (NED)"
+        },
+        {
+            "player_name": "PULISIC Christian",
+            "position": "FW",
+            "club": "AC Milan (ITA)"
+        },
+        {
+            "player_name": "AARONSON Brenden",
+            "position": "FW",
+            "club": "Leeds United FC (ENG)"
+        },
+        {
+            "player_name": "ROBINSON Miles",
+            "position": "DF",
+            "club": "FC Cincinnatti (USA)"
+        },
+        {
+            "player_name": "REAM Tim",
+            "position": "DF",
+            "club": "Charlotte FC (USA)"
+        },
+        {
+            "player_name": "BERHALTER Sebastian",
+            "position": "MF",
+            "club": "Vancouver Whitecaps FC (CAN)"
+        },
+        {
+            "player_name": "ROLDAN Cristian",
+            "position": "MF",
+            "club": "Seattle Sounders FC (USA)"
+        },
+        {
+            "player_name": "FREEMAN Alex",
+            "position": "DF",
+            "club": "Villarreal CF (ESP)"
+        },
+        {
+            "player_name": "TILLMAN Malik",
+            "position": "MF",
+            "club": "Bayer 04 Leverkusen (GER)"
+        },
+        {
+            "player_name": "ARFSTEN Max",
+            "position": "DF",
+            "club": "Columbus Crew (USA)"
+        },
+        {
+            "player_name": "WRIGHT Haji",
+            "position": "FW",
+            "club": "Coventry City FC (ENG)"
+        },
+        {
+            "player_name": "BALOGUN Folarin",
+            "position": "FW",
+            "club": "AS Monaco (FRA)"
+        },
+        {
+            "player_name": "WEAH Timothy",
+            "position": "FW",
+            "club": "Olympique Marseille (FRA)"
+        },
+        {
+            "player_name": "McKENZIE Mark",
+            "position": "DF",
+            "club": "Toulouse FC (FRA)"
+        },
+        {
+            "player_name": "SCALLY Joe",
+            "position": "DF",
+            "club": "Borussia Mönchengladbach (GER)"
+        },
+        {
+            "player_name": "FREESE Matt",
+            "position": "GK",
+            "club": "New York City FC (USA)"
+        },
+        {
+            "player_name": "BRADY Chris",
+            "position": "GK",
+            "club": "Chicago Fire FC (USA)"
+        },
+        {
+            "player_name": "ZENDEJAS Alex",
+            "position": "FW",
+            "club": "Club América (MEX)"
+        }
+    ],
+    "Uzbekistan": [
+        {
+            "player_name": "YUSUPOV Utkir",
+            "position": "GK",
+            "club": "PFC Navbahor Namangan (UZB)"
+        },
+        {
+            "player_name": "KHUSANOV Abdukodir",
+            "position": "DF",
+            "club": "Manchester City FC (ENG)"
+        },
+        {
+            "player_name": "ALIJONOV Khojiakbar",
+            "position": "DF",
+            "club": "Pakhtakor Tashkent FK (UZB)"
+        },
+        {
+            "player_name": "SAYFIEV Farrukh",
+            "position": "DF",
+            "club": "FK Neftchi Farg'ona (UZB)"
+        },
+        {
+            "player_name": "ASHURMATOV Rustam",
+            "position": "DF",
+            "club": "Esteghlal Tehran FC (IRN)"
+        },
+        {
+            "player_name": "MOZGOVOY Akmal",
+            "position": "MF",
+            "club": "Pakhtakor Tashkent FK (UZB)"
+        },
+        {
+            "player_name": "SHUKUROV Otabek",
+            "position": "MF",
+            "club": "Baniyas Club (UAE)"
+        },
+        {
+            "player_name": "ISKANDEROV Jamshid",
+            "position": "MF",
+            "club": "FK Neftchi Farg'ona (UZB)"
+        },
+        {
+            "player_name": "XAMROBEKOV Odiljon",
+            "position": "MF",
+            "club": "Tractor Sazi Tabriz FC (IRN)"
+        },
+        {
+            "player_name": "MASHARIPOV Jaloliddin",
+            "position": "MF",
+            "club": "Esteghlal Tehran FC (IRN)"
+        },
+        {
+            "player_name": "URUNOV Oston",
+            "position": "MF",
+            "club": "Persepolis FC (IRN)"
+        },
+        {
+            "player_name": "NEMATOV Abduvohid",
+            "position": "GK",
+            "club": "Nasaf Qarshi FC (UZB)"
+        },
+        {
+            "player_name": "NASRULLAEV Sherzod",
+            "position": "DF",
+            "club": "Pakhtakor Tashkent FK (UZB)"
+        },
+        {
+            "player_name": "SHOMURODOV Eldor",
+            "position": "FW",
+            "club": "Başakşehir FK (TUR)"
+        },
+        {
+            "player_name": "ESHMURODOV Umar",
+            "position": "DF",
+            "club": "Nasaf Qarshi FC (UZB)"
+        },
+        {
+            "player_name": "ERGASHEV Botirali",
+            "position": "GK",
+            "club": "FK Neftchi Farg'ona (UZB)"
+        },
+        {
+            "player_name": "KHAMDAMOV Dostonbek",
+            "position": "MF",
+            "club": "Pakhtakor Tashkent FK (UZB)"
+        },
+        {
+            "player_name": "ABDULLAEV Abdulla",
+            "position": "DF",
+            "club": "Dibba FC (UAE)"
+        },
+        {
+            "player_name": "GANIEV Azizjon",
+            "position": "MF",
+            "club": "Al Bataeh Club (UAE)"
+        },
+        {
+            "player_name": "AMONOV Azizbek",
+            "position": "FW",
+            "club": "FK Dinamo Samarkand (UZB)"
+        },
+        {
+            "player_name": "SERGEEV Igor",
+            "position": "FW",
+            "club": "Persepolis FC (IRN)"
+        },
+        {
+            "player_name": "FAYZULLAEV Abbosbek",
+            "position": "MF",
+            "club": "Başakşehir FK (TUR)"
+        },
+        {
+            "player_name": "ESANOV Sherzod",
+            "position": "MF",
+            "club": "FK Buxoro (UZB)"
+        },
+        {
+            "player_name": "KARIMOV Behruzjon",
+            "position": "DF",
+            "club": "Surkhon FK (UZB)"
+        },
+        {
+            "player_name": "ULMASALIYEV Avazbek",
+            "position": "DF",
+            "club": "OKMK FK (UZB)"
+        },
+        {
+            "player_name": "UROZOV Jakhongir",
+            "position": "DF",
+            "club": "FK Dinamo Samarkand (UZB)"
+        }
+    ]
+}

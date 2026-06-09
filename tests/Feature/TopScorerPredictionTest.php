@@ -107,7 +107,7 @@ test('scores top scorer predictions when player id is provided', function () {
 
     TopScorerPrediction::factory()->create([
         'user_id' => $wrongUser->id,
-        'player_id' => 'brazil-neymar',
+        'player_id' => 'brazil-neymar-jr',
     ]);
 
     expect(app(ScoreTopScorerPredictions::class)->score(TOP_SCORER_PLAYER_ID))->toBeTrue()
