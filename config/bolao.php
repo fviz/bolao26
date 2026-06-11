@@ -13,7 +13,7 @@ return [
 
     'champion_predictions_deadline' => env(
         'CHAMPION_PREDICTIONS_DEADLINE',
-        '2026-06-11 00:00:00',
+        '2026-06-11 19:00:00',
     ),
 
     /*
@@ -27,7 +27,7 @@ return [
 
     'top_scorer_predictions_deadline' => env(
         'TOP_SCORER_PREDICTIONS_DEADLINE',
-        env('CHAMPION_PREDICTIONS_DEADLINE', '2026-06-11 00:00:00'),
+        env('CHAMPION_PREDICTIONS_DEADLINE', '2026-06-11 19:00:00'),
     ),
 
     /*
