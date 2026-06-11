@@ -10,6 +10,7 @@ use App\Support\NotificationDispatcher;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 #[Signature('notifications:send-game-reminders')]
 #[Description('Send reminders for games that are starting soon without a user prediction.')]
@@ -17,6 +18,8 @@ class SendGameReminderNotifications extends Command
 {
     public function handle(NotificationDispatcher $dispatcher): int
     {
+        Log::info('Starting game reminder notifications.');
+
         $sent = 0;
 
         User::query()
@@ -53,6 +56,8 @@ class SendGameReminderNotifications extends Command
                         }
                     });
             });
+
+        Log::info("Sent {$sent} game reminder notifications.");
 
         $this->components->info("Sent {$sent} game reminder notifications.");
 

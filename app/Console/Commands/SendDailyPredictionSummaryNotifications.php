@@ -10,6 +10,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 #[Signature('notifications:send-daily-summary')]
 #[Description('Send daily summaries for users with missing predictions today.')]
@@ -17,6 +18,8 @@ class SendDailyPredictionSummaryNotifications extends Command
 {
     public function handle(NotificationDispatcher $dispatcher): int
     {
+        Log::info('Starting daily summary notifications.');
+
         $sent = 0;
 
         User::query()
@@ -58,6 +61,8 @@ class SendDailyPredictionSummaryNotifications extends Command
                     $sent++;
                 }
             });
+
+        Log::info("Sent {$sent} daily summary notifications.");
 
         $this->components->info("Sent {$sent} daily summary notifications.");
 

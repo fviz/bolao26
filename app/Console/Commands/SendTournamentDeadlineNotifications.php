@@ -9,6 +9,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 #[Signature('notifications:send-tournament-deadline')]
 #[Description('Send one-time reminders for missing champion or top scorer predictions.')]
@@ -16,9 +17,13 @@ class SendTournamentDeadlineNotifications extends Command
 {
     public function handle(NotificationDispatcher $dispatcher): int
     {
+        Log::info('Starting tournament deadline notifications.');
+
         $deadline = $this->deadline();
 
         if ($deadline === null || now()->lt($deadline->subDay()) || now()->gt($deadline)) {
+            Log::info('Tournament prediction deadline is not inside the reminder window.');
+
             $this->components->info('Tournament prediction deadline is not inside the reminder window.');
 
             return self::SUCCESS;
@@ -53,6 +58,8 @@ class SendTournamentDeadlineNotifications extends Command
                     $sent++;
                 }
             });
+
+        Log::info("Sent {$sent} tournament deadline notifications.");
 
         $this->components->info("Sent {$sent} tournament deadline notifications.");
 

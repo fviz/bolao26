@@ -4,6 +4,8 @@ use App\Models\Game;
 use App\Models\Prediction;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Log\Events\MessageLogged;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
 
 uses(RefreshDatabase::class);
@@ -35,6 +37,28 @@ function fakeFifaCalendarMatchSequence(string ...$fixtures): void
         '*' => $sequence,
     ]);
 }
+
+test('sync fifa game results command logs sync activity', function () {
+    Event::fake([MessageLogged::class]);
+    fakeFifaCalendarMatches('calendar-matches.json');
+
+    $this->artisan('games:sync-fifa-results')
+        ->assertSuccessful();
+
+    Event::assertDispatched(MessageLogged::class, fn (MessageLogged $event) => $event->level === 'info' && $event->message === 'Starting FIFA game results sync.');
+    Event::assertDispatched(MessageLogged::class, fn (MessageLogged $event) => $event->level === 'info' && $event->message === 'Updated 0 game results from FIFA.');
+});
+
+test('sync fifa games command logs sync activity', function () {
+    Event::fake([MessageLogged::class]);
+    fakeFifaCalendarMatches('calendar-matches.json');
+
+    $this->artisan('games:sync-fifa')
+        ->assertSuccessful();
+
+    Event::assertDispatched(MessageLogged::class, fn (MessageLogged $event) => $event->level === 'info' && $event->message === 'Starting FIFA games sync.');
+    Event::assertDispatched(MessageLogged::class, fn (MessageLogged $event) => $event->level === 'info' && $event->message === 'Synced 2 games from FIFA.');
+});
 
 test('sync fifa games command creates games from api', function () {
     fakeFifaCalendarMatches('calendar-matches.json');
