@@ -221,3 +221,102 @@ test('dashboard exposes browser push as unavailable when vapid keys are missing'
         ->assertInertia(fn ($page) => $page
             ->where('browserPushAvailable', false));
 });
+
+test('dashboard featured game prioritizes likely live match over last finished', function () {
+    $user = User::factory()->create();
+
+    $finishedGame = Game::factory()->finished([
+        'home_name' => 'Brazil',
+        'away_name' => 'France',
+    ])->create([
+        'scheduled_at' => now()->subDays(2),
+    ]);
+
+    $liveGame = Game::factory()->live()->create([
+        'home_name' => 'Argentina',
+        'away_name' => 'Germany',
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('featuredGame.status', 'live')
+            ->where('featuredGame.game.id', $liveGame->id)
+            ->where('featuredGame.game.matchTitle', 'Argentina x Germany')
+            ->missing('featuredGame.game.result'));
+});
+
+test('dashboard featured game shows last finished when no likely live match', function () {
+    $user = User::factory()->create();
+
+    Game::factory()->finished([
+        'home_score' => 1,
+        'away_score' => 0,
+    ])->create([
+        'scheduled_at' => now()->subDays(3),
+        'home_name' => 'Brazil',
+        'away_name' => 'France',
+    ]);
+
+    $latestFinished = Game::factory()->finished([
+        'home_score' => 2,
+        'away_score' => 1,
+    ])->create([
+        'scheduled_at' => now()->subDay(),
+        'home_name' => 'Argentina',
+        'away_name' => 'Germany',
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('featuredGame.status', 'finished')
+            ->where('featuredGame.game.id', $latestFinished->id)
+            ->where('featuredGame.game.result.homeScore', 2)
+            ->where('featuredGame.game.result.awayScore', 1));
+});
+
+test('dashboard featured game is null when only upcoming games exist', function () {
+    $user = User::factory()->create();
+
+    Game::factory()->create([
+        'scheduled_at' => now()->addDay(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('featuredGame', null));
+});
+
+test('dashboard featured game excludes stale kickoff from likely live window', function () {
+    $user = User::factory()->create();
+
+    Game::factory()->create([
+        'scheduled_at' => now()->subHours(5),
+        'is_final' => false,
+        'home_name' => 'Stale',
+        'away_name' => 'Match',
+    ]);
+
+    $finishedGame = Game::factory()->finished([
+        'home_score' => 3,
+        'away_score' => 2,
+    ])->create([
+        'scheduled_at' => now()->subDay(),
+        'home_name' => 'Brazil',
+        'away_name' => 'France',
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('featuredGame.status', 'finished')
+            ->where('featuredGame.game.id', $finishedGame->id)
+            ->where('featuredGame.game.result.homeScore', 3)
+            ->where('featuredGame.game.result.awayScore', 2));
+});

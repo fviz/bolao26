@@ -174,6 +174,55 @@ class Game extends Model
         });
     }
 
+    /**
+     * @param  Builder<Game>  $query
+     * @return Builder<Game>
+     */
+    public function scopeFinished(Builder $query): Builder
+    {
+        return $query->where('is_final', true);
+    }
+
+    /**
+     * @param  Builder<Game>  $query
+     * @return Builder<Game>
+     */
+    public function scopeLikelyLive(Builder $query): Builder
+    {
+        $windowMinutes = config('bolao.likely_live_window_minutes', 150);
+
+        return $query
+            ->where('is_final', false)
+            ->where('scheduled_at', '<=', now())
+            ->where('scheduled_at', '>', now()->subMinutes($windowMinutes));
+    }
+
+    /**
+     * @return array{game: self, status: 'live'|'finished'}|null
+     */
+    public static function featuredForDashboard(): ?array
+    {
+        $live = static::query()
+            ->likelyLive()
+            ->orderByDesc('scheduled_at')
+            ->first();
+
+        if ($live !== null) {
+            return ['game' => $live, 'status' => 'live'];
+        }
+
+        $finished = static::query()
+            ->finished()
+            ->orderByDesc('scheduled_at')
+            ->first();
+
+        if ($finished !== null) {
+            return ['game' => $finished, 'status' => 'finished'];
+        }
+
+        return null;
+    }
+
     public function isGroupStage(): bool
     {
         return $this->id_group !== null;

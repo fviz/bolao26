@@ -70,6 +70,17 @@ class GameFactory extends Factory
         ]);
     }
 
+    public function live(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'scheduled_at' => now()->subMinutes(30),
+            'local_scheduled_at' => now()->subMinutes(30),
+            'is_final' => false,
+            'home_score' => null,
+            'away_score' => null,
+        ]);
+    }
+
     public function knockout(): static
     {
         return $this->state(fn (array $attributes) => [

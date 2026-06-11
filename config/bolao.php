@@ -54,4 +54,16 @@ return [
 
     'leaderboard_widget_size' => (int) env('BOLAO_LEADERBOARD_WIDGET_SIZE', 5),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Likely live window
+    |--------------------------------------------------------------------------
+    |
+    | Minutes after kickoff during which a non-final game is treated as
+    | in progress on the dashboard (no FIFA API calls; schedule-based only).
+    |
+    */
+
+    'likely_live_window_minutes' => (int) env('BOLAO_LIKELY_LIVE_WINDOW_MINUTES', 150),
+
 ];

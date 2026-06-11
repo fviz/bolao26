@@ -3,6 +3,7 @@ import { Head, Link } from '@inertiajs/vue3';
 import { BellRing, Target, Trophy } from 'lucide-vue-next';
 import { computed, onMounted } from 'vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
+import FeaturedGameCard from '@/components/games/FeaturedGameCard.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -11,13 +12,14 @@ import { dashboard } from '@/routes';
 import { edit as editNotifications } from '@/routes/notifications/settings';
 import { index as predictionsIndex } from '@/routes/predictions';
 import { index as rankingIndex } from '@/routes/ranking';
-import type { GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
+import type { FeaturedGame, GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
 
 type Props = {
     games: Paginated<GameListItem>;
     userTotalPoints: number;
     leaderboard: LeaderboardEntry[];
     nextGame: GameListItem | null;
+    featuredGame: FeaturedGame | null;
     browserPushAvailable: boolean;
     championPredictionsOpen: boolean;
     topScorerPredictionsOpen: boolean;
@@ -119,7 +121,7 @@ defineOptions({
             </AlertDescription>
         </Alert>
 
-        <div class="grid auto-rows-min gap-4 md:grid-cols-2 mb-8">
+        <div class="grid auto-rows-min gap-4 md:grid-cols-3 mb-8">
             <div
                 class="flex flex-col justify-between gap-1 rounded-xl border border-green-500/20 dark:border-green-500/20 p-4 bg-green-50 dark:bg-green-950"
             >
@@ -157,6 +159,19 @@ defineOptions({
                         Ver ranking completo
                     </Link>
                 </div>
+            </div>
+            <FeaturedGameCard
+                v-if="featuredGame"
+                :featured-game="featuredGame"
+            />
+            <div
+                v-else
+                class="flex flex-col justify-between gap-2 rounded-xl border border-yellow-500/20 bg-yellow-50 p-4 dark:border-yellow-500/20 dark:bg-yellow-950"
+            >
+                <p class="text-sm">Jogos recentes</p>
+                <p class="text-xs text-yellow-700 dark:text-yellow-400">
+                    Nenhum jogo em andamento ou finalizado.
+                </p>
             </div>
         </div>
 

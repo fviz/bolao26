@@ -41,11 +41,17 @@ class DashboardController extends Controller
             ->withCount('comments')
             ->first();
 
+        $featured = Game::featuredForDashboard();
+
         return Inertia::render('Dashboard', [
             'games' => GameResource::collection($games),
             'userTotalPoints' => $user->total_points,
             'leaderboard' => $leaderboard->values()->all(),
             'nextGame' => $nextGame ? GameResource::make($nextGame) : null,
+            'featuredGame' => $featured ? [
+                'status' => $featured['status'],
+                'game' => GameResource::make($featured['game']),
+            ] : null,
             'browserPushAvailable' => filled(config('webpush.vapid.public_key'))
                 && filled(config('webpush.vapid.private_key')),
             'championPredictionsOpen' => ChampionPredictions::isOpen(),

@@ -61,6 +61,11 @@ export type GameListItem = {
     allPredictions?: GamePredictionEntry[];
 };
 
+export type FeaturedGame = {
+    status: 'live' | 'finished';
+    game: GameListItem;
+};
+
 export type Paginated<T> = {
     data: T[];
     links: {
