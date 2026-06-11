@@ -19,6 +19,7 @@ test('notification settings page is displayed with default preferences', functio
             ->where('preferences.gameResultNotificationsEnabled', true)
             ->where('preferences.dailySummaryEnabled', true)
             ->where('preferences.tournamentDeadlineEnabled', true)
+            ->where('preferences.commentReplyNotificationsEnabled', true)
             ->where('preferences.browserNotificationsEnabled', false)
             ->where('preferences.gameReminderMinutes', 60)
             ->where('preferences.dailySummaryTime', '09:00'),
@@ -43,6 +44,7 @@ test('notification settings can be updated', function () {
             'game_result_notifications_enabled' => true,
             'daily_summary_enabled' => true,
             'tournament_deadline_enabled' => false,
+            'comment_reply_notifications_enabled' => false,
             'browser_notifications_enabled' => false,
             'game_reminder_minutes' => 180,
             'daily_summary_time' => '08:30',
@@ -58,6 +60,7 @@ test('notification settings can be updated', function () {
         ->and($preference->game_result_notifications_enabled)->toBeTrue()
         ->and($preference->daily_summary_enabled)->toBeTrue()
         ->and($preference->tournament_deadline_enabled)->toBeFalse()
+        ->and($preference->comment_reply_notifications_enabled)->toBeFalse()
         ->and($preference->game_reminder_minutes)->toBe(180)
         ->and($preference->daily_summary_time)->toBe('08:30')
         ->and($preference->daily_summary_timezone)->toBe('America/Sao_Paulo')
@@ -70,6 +73,7 @@ test('notification settings can be updated', function () {
             ->where('preferences.gameResultNotificationsEnabled', true)
             ->where('preferences.dailySummaryEnabled', true)
             ->where('preferences.tournamentDeadlineEnabled', false)
+            ->where('preferences.commentReplyNotificationsEnabled', false)
             ->where('preferences.gameReminderMinutes', 180)
             ->where('preferences.dailySummaryTime', '08:30')
             ->where('preferences.dailySummaryTimezone', 'America/Sao_Paulo'),
@@ -85,6 +89,7 @@ test('notification settings validate reminder interval and timezone', function (
             'game_result_notifications_enabled' => true,
             'daily_summary_enabled' => true,
             'tournament_deadline_enabled' => true,
+            'comment_reply_notifications_enabled' => true,
             'browser_notifications_enabled' => false,
             'game_reminder_minutes' => 45,
             'daily_summary_time' => '25:00',

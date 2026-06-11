@@ -26,6 +26,7 @@ export type NotificationPreferences = {
     gameResultNotificationsEnabled: boolean;
     dailySummaryEnabled: boolean;
     tournamentDeadlineEnabled: boolean;
+    commentReplyNotificationsEnabled: boolean;
     browserNotificationsEnabled: boolean;
     gameReminderMinutes: number;
     dailySummaryTime: string;

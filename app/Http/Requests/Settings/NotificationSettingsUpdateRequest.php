@@ -30,6 +30,7 @@ class NotificationSettingsUpdateRequest extends FormRequest
             'game_result_notifications_enabled' => ['required', 'boolean'],
             'daily_summary_enabled' => ['required', 'boolean'],
             'tournament_deadline_enabled' => ['required', 'boolean'],
+            'comment_reply_notifications_enabled' => ['required', 'boolean'],
             'browser_notifications_enabled' => ['required', 'boolean'],
             'game_reminder_minutes' => ['required', 'integer', Rule::in(NotificationPreference::GAME_REMINDER_MINUTES)],
             'daily_summary_time' => ['required', 'date_format:H:i'],

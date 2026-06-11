@@ -45,6 +45,8 @@ const form = useForm({
         props.preferences.gameResultNotificationsEnabled,
     daily_summary_enabled: props.preferences.dailySummaryEnabled,
     tournament_deadline_enabled: props.preferences.tournamentDeadlineEnabled,
+    comment_reply_notifications_enabled:
+        props.preferences.commentReplyNotificationsEnabled,
     browser_notifications_enabled:
         props.preferences.browserNotificationsEnabled,
     game_reminder_minutes: props.preferences.gameReminderMinutes,
@@ -272,6 +274,27 @@ onMounted(() => {
                     <InputError :message="form.errors.daily_summary_time" />
                     <InputError :message="form.errors.daily_summary_timezone" />
                 </div>
+
+                <label class="flex items-start gap-3">
+                    <Checkbox
+                        v-model="form.comment_reply_notifications_enabled"
+                        class="mt-1"
+                    />
+                    <span class="space-y-1">
+                        <span class="block text-sm font-medium">
+                            Respostas nos comentários
+                        </span>
+                        <span class="block text-sm text-muted-foreground">
+                            Receba um aviso quando alguém responder um
+                            comentário seu em uma partida.
+                        </span>
+                        <InputError
+                            :message="
+                                form.errors.comment_reply_notifications_enabled
+                            "
+                        />
+                    </span>
+                </label>
 
                 <label class="flex items-start gap-3">
                     <Checkbox

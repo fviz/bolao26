@@ -6,18 +6,24 @@ use App\Http\Requests\DestroyGameCommentRequest;
 use App\Http\Requests\StoreGameCommentRequest;
 use App\Models\Game;
 use App\Models\GameComment;
+use App\Services\Notifications\NotifyGameCommentReply;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 
 class GameCommentController extends Controller
 {
-    public function store(StoreGameCommentRequest $request, Game $game): RedirectResponse
-    {
-        $request->user()->gameComments()->create([
+    public function store(
+        StoreGameCommentRequest $request,
+        Game $game,
+        NotifyGameCommentReply $notifyGameCommentReply,
+    ): RedirectResponse {
+        $comment = $request->user()->gameComments()->create([
             'game_id' => $game->id,
             'body' => $request->validated('body'),
             'parent_id' => $request->validated('parent_id'),
         ]);
+
+        $notifyGameCommentReply->notify($comment);
 
         Inertia::flash('toast', [
             'type' => 'success',

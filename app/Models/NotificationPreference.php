@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'game_result_notifications_enabled',
     'daily_summary_enabled',
     'tournament_deadline_enabled',
+    'comment_reply_notifications_enabled',
     'browser_notifications_enabled',
     'game_reminder_minutes',
     'daily_summary_time',
@@ -32,6 +33,7 @@ class NotificationPreference extends Model
         'game_result_notifications_enabled' => true,
         'daily_summary_enabled' => true,
         'tournament_deadline_enabled' => true,
+        'comment_reply_notifications_enabled' => true,
         'browser_notifications_enabled' => false,
         'game_reminder_minutes' => 60,
         'daily_summary_time' => '09:00',
@@ -48,6 +50,7 @@ class NotificationPreference extends Model
             'game_result_notifications_enabled' => 'boolean',
             'daily_summary_enabled' => 'boolean',
             'tournament_deadline_enabled' => 'boolean',
+            'comment_reply_notifications_enabled' => 'boolean',
             'browser_notifications_enabled' => 'boolean',
             'game_reminder_minutes' => 'integer',
         ];
