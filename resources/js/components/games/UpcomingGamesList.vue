@@ -11,11 +11,12 @@ defineProps<Props>();
 </script>
 
 <template>
-    <div class="flex flex-col gap-4 p-4 md:p-6">
+    <div class="flex flex-col gap-4 md:p-6">
         <Heading
-            variant="small"
+            variant="default"
             title="Lista de jogos"
             description="Próximos jogos do campeonato"
+            class="text-center"
         />
 
         <GamesList

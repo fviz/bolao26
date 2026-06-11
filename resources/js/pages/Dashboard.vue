@@ -74,7 +74,7 @@ defineOptions({
             </AlertDescription>
         </Alert>
 
-        <div class="grid auto-rows-min gap-4 md:grid-cols-2">
+        <div class="grid auto-rows-min gap-4 md:grid-cols-2 mb-8">
             <div
                 class="flex flex-col justify-between gap-1 rounded-xl border border-green-500/20 dark:border-green-500/20 p-4 bg-green-50 dark:bg-green-950"
             >
@@ -115,10 +115,7 @@ defineOptions({
             </div>
         </div>
 
-        <div
-            class="relative flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
-        >
-            <UpcomingGamesList :games="games" />
-        </div>
+        <UpcomingGamesList :games="games" />
+
     </div>
 </template>
