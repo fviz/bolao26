@@ -19,11 +19,13 @@ class DashboardController extends Controller
 
         $games = Game::query()
             ->upcoming()
+            ->filterByTeam($request->string('team')->toString())
+            ->filterByLocalDate($request->string('date')->toString())
             ->with([
                 'predictions' => fn ($query) => $query->where('user_id', $user->id),
             ])
             ->withCount('comments')
-            ->paginate(20)
+            ->paginate(10)
             ->withQueryString();
 
         $entries = Leaderboard::rankedEntries($user);
@@ -42,6 +44,10 @@ class DashboardController extends Controller
             ->first();
 
         return Inertia::render('Dashboard', [
+            'gameListFilters' => [
+                'team' => $request->string('team')->toString() ?: null,
+                'date' => $request->string('date')->toString() ?: null,
+            ],
             'games' => GameResource::collection($games),
             'userTotalPoints' => $user->total_points,
             'leaderboard' => $leaderboard->values()->all(),

@@ -51,6 +51,39 @@ class ScoreGamePredictions
         return true;
     }
 
+    public function unscore(Game $game): bool
+    {
+        if ($game->scored_at === null) {
+            return false;
+        }
+
+        DB::transaction(function () use ($game): void {
+            $game->predictions()
+                ->with('user')
+                ->each(function (Prediction $prediction): void {
+                    $this->unscorePrediction($prediction);
+                });
+
+            $game->scored_at = null;
+            $game->save();
+        });
+
+        return true;
+    }
+
+    private function unscorePrediction(Prediction $prediction): void
+    {
+        $oldPoints = $prediction->points ?? 0;
+
+        if ($oldPoints !== 0) {
+            $prediction->user->decrement('total_points', $oldPoints);
+        }
+
+        $prediction->points = null;
+        $prediction->scored_at = null;
+        $prediction->save();
+    }
+
     private function scorePrediction(Game $game, Prediction $prediction): void
     {
         $newPoints = $this->calculator->calculate(

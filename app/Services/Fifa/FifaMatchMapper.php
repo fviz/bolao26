@@ -111,11 +111,7 @@ class FifaMatchMapper
 
     private function determineIsFinal(int $matchStatus, ?int $homeScore, ?int $awayScore): bool
     {
-        if ($homeScore !== null && $awayScore !== null && $matchStatus !== 1) {
-            return true;
-        }
-
-        return in_array($matchStatus, [3, 4, 7], true);
+        return $matchStatus === 4;
     }
 
     /**

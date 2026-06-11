@@ -63,8 +63,13 @@ class SyncFifaGames
             }
 
             $attributes = $this->mapper->toAttributes($match);
+            $wasFinal = $game->is_final;
             $game->fill($attributes);
             $game->save();
+
+            if ($wasFinal && ! $game->is_final) {
+                $this->scoreGamePredictions->unscore($game->fresh());
+            }
 
             if ($this->shouldScoreGame($game)) {
                 $this->scoreGamePredictions->score($game->fresh());

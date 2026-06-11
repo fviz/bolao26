@@ -93,3 +93,32 @@ test('bolao score games command scores final games', function () {
 
     expect($user->fresh()->total_points)->toBe(200);
 });
+
+test('unscore removes awarded points from users', function () {
+    $user = User::factory()->create(['total_points' => 75]);
+    $game = Game::factory()->finished([
+        'home_score' => 1,
+        'away_score' => 0,
+        'match_status' => 3,
+        'scored_at' => now(),
+    ])->create();
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $game->id,
+        'home_score' => 2,
+        'away_score' => 1,
+        'points' => 75,
+        'scored_at' => now(),
+    ]);
+
+    app(ScoreGamePredictions::class)->unscore($game->fresh());
+
+    $user->refresh();
+    $prediction = $user->predictions()->first();
+
+    expect($user->total_points)->toBe(0)
+        ->and($prediction->points)->toBeNull()
+        ->and($prediction->scored_at)->toBeNull()
+        ->and($game->fresh()->scored_at)->toBeNull();
+});

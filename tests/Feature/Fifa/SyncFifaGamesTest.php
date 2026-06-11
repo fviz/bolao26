@@ -123,6 +123,8 @@ test('sync fifa game results command skips games that have not kicked off', func
 
     $this->artisan('games:sync-fifa')->assertSuccessful();
 
+    Game::query()->update(['scheduled_at' => now()->addDay()]);
+
     $this->artisan('games:sync-fifa-results')
         ->assertSuccessful()
         ->expectsOutputToContain('Updated 0 game results');
@@ -176,4 +178,64 @@ test('sync fifa game results command rescores predictions when a final match is 
     expect($game->home_score)->toBe(3)
         ->and($user->predictions()->first()->points)->toBe(95)
         ->and($user->total_points)->toBe(95);
+});
+
+test('sync fifa game results command keeps live matches from being marked final', function () {
+    fakeFifaCalendarMatchSequence('calendar-matches.json', 'calendar-matches-live.json');
+
+    $this->artisan('games:sync-fifa')->assertSuccessful();
+
+    $game = Game::query()->where('fifa_match_id', '400021443')->first();
+    $game->update([
+        'scheduled_at' => now()->subHour(),
+        'is_final' => false,
+    ]);
+
+    $this->artisan('games:sync-fifa-results')->assertSuccessful();
+
+    $game->refresh();
+
+    expect($game->home_score)->toBe(1)
+        ->and($game->away_score)->toBe(0)
+        ->and($game->match_status)->toBe(3)
+        ->and($game->is_final)->toBeFalse()
+        ->and($game->scored_at)->toBeNull();
+});
+
+test('sync fifa game results command rolls back points when a live match was wrongly marked final', function () {
+    fakeFifaCalendarMatchSequence('calendar-matches.json', 'calendar-matches-live.json');
+
+    $this->artisan('games:sync-fifa')->assertSuccessful();
+
+    $game = Game::query()->where('fifa_match_id', '400021443')->first();
+    $game->update([
+        'scheduled_at' => now()->subHour(),
+        'is_final' => true,
+        'home_score' => 1,
+        'away_score' => 0,
+        'match_status' => 3,
+        'scored_at' => now(),
+    ]);
+
+    $user = User::factory()->create(['total_points' => 75]);
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $game->id,
+        'home_score' => 2,
+        'away_score' => 1,
+        'points' => 75,
+        'scored_at' => now(),
+    ]);
+
+    $this->artisan('games:sync-fifa-results')->assertSuccessful();
+
+    $game->refresh();
+    $user->refresh();
+
+    expect($game->is_final)->toBeFalse()
+        ->and($game->scored_at)->toBeNull()
+        ->and($user->predictions()->first()->points)->toBeNull()
+        ->and($user->predictions()->first()->scored_at)->toBeNull()
+        ->and($user->total_points)->toBe(0);
 });
