@@ -80,9 +80,9 @@ defineOptions({
             </AlertDescription>
         </Alert>
 
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
+        <div class="grid auto-rows-min gap-4 md:grid-cols-2">
             <div
-                class="flex flex-col justify-between gap-1 rounded-xl border p-4"
+                class="flex flex-col justify-between gap-1 rounded-xl border border-green-500/20 dark:border-green-500/20 p-4 bg-green-50 dark:bg-green-950"
             >
                 <div class="">
                     <p class="text-sm">
@@ -101,7 +101,7 @@ defineOptions({
                 </div>
             </div>
             <div
-                class="flex flex-col justify-between gap-2 rounded-xl border p-4"
+                class="flex flex-col justify-between gap-2 rounded-xl border border-blue-500/20 dark:border-blue-500/20 p-4 bg-blue-50 dark:bg-blue-950"
             >
                 <div>
                     <p class="text-sm">Ranking geral</p>
@@ -118,37 +118,6 @@ defineOptions({
                         Ver ranking completo
                     </Link>
                 </div>
-            </div>
-            <div
-                class="flex flex-col gap-1.5 rounded-xl border p-3 md:gap-2 md:p-4"
-            >
-                <p class="text-sm">Próximo jogo</p>
-                <template v-if="nextGame">
-                    <GameMatchDisplay
-                        :home="nextGame.home"
-                        :away="nextGame.away"
-                        layout="stacked"
-                    />
-                    <div class="flex justify-between items-center gap-2">
-                        <p class="text-xs md:text-sm">
-                            {{ formatScheduledAt(nextGame.scheduledAt).combined }}
-                        </p>
-                        <GameCommentsCount :count="nextGame.commentsCount" />
-                    </div>
-                    <UserPredictionSummary
-                        v-if="nextGame.userPrediction"
-                        :prediction="nextGame.userPrediction"
-                    />
-                    <Link
-                        :href="showGame(nextGame.id)"
-                        class="text-sm font-medium hover:underline text-yellow-500 dark:text-yellow-400"
-                    >
-                        Ver jogo
-                    </Link>
-                </template>
-                <p v-else class="text-sm text-muted-foreground">
-                    Nenhum jogo programado.
-                </p>
             </div>
         </div>
 

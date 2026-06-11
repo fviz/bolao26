@@ -63,7 +63,7 @@ const actionLabelForGame = (game: GameListItem): string => {
                 <Card
                     v-for="game in games.data"
                     :key="game.id"
-                    class="gap-0 py-0"
+                    class="gap-0 py-0 bg-gray-100 dark:bg-gray-950 mb-4 last:mb-0"
                 >
                     <CardContent class="flex flex-col gap-2 p-3">
                         <GameMatchDisplay
@@ -93,10 +93,10 @@ const actionLabelForGame = (game: GameListItem): string => {
                             </p>
                         </div>
                     </CardContent>
-                    <CardFooter class="border-t px-3 py-2">
+                    <CardFooter class="border-t px-3">
                         <Button
                             as-child
-                            class="min-h-9 w-full"
+                            class="w-full bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700"
                             variant="default"
                         >
                             <Link :href="showGame(game.id)">
