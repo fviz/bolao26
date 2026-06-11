@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\GameResource;
 use App\Models\Game;
+use App\Support\ChampionPredictions;
 use App\Support\Leaderboard;
+use App\Support\TopScorerPredictions;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -46,6 +48,10 @@ class DashboardController extends Controller
             'nextGame' => $nextGame ? GameResource::make($nextGame) : null,
             'browserPushAvailable' => filled(config('webpush.vapid.public_key'))
                 && filled(config('webpush.vapid.private_key')),
+            'championPredictionsOpen' => ChampionPredictions::isOpen(),
+            'topScorerPredictionsOpen' => TopScorerPredictions::isOpen(),
+            'hasChampionPrediction' => $user->championPrediction !== null,
+            'hasTopScorerPrediction' => $user->topScorerPrediction !== null,
         ]);
     }
 }

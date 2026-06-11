@@ -1,10 +1,13 @@
 <?php
 
+use App\Models\ChampionPrediction;
 use App\Models\Game;
 use App\Models\GameComment;
 use App\Models\Prediction;
+use App\Models\TopScorerPrediction;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Config;
 
 uses(RefreshDatabase::class);
 
@@ -151,6 +154,57 @@ test('dashboard exposes browser push availability when vapid keys are configured
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->where('browserPushAvailable', true));
+});
+
+test('dashboard exposes open tournament predictions when deadlines are in the future and user has none', function () {
+    Config::set('bolao.champion_predictions_deadline', now()->addDay()->toDateTimeString());
+    Config::set('bolao.top_scorer_predictions_deadline', now()->addDay()->toDateTimeString());
+
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('championPredictionsOpen', true)
+            ->where('topScorerPredictionsOpen', true)
+            ->where('hasChampionPrediction', false)
+            ->where('hasTopScorerPrediction', false));
+});
+
+test('dashboard exposes tournament prediction presence when user has predictions', function () {
+    Config::set('bolao.champion_predictions_deadline', now()->addDay()->toDateTimeString());
+    Config::set('bolao.top_scorer_predictions_deadline', now()->addDay()->toDateTimeString());
+
+    $user = User::factory()->create();
+
+    ChampionPrediction::factory()->for($user)->create();
+    TopScorerPrediction::factory()->for($user)->create();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('championPredictionsOpen', true)
+            ->where('topScorerPredictionsOpen', true)
+            ->where('hasChampionPrediction', true)
+            ->where('hasTopScorerPrediction', true));
+});
+
+test('dashboard exposes closed tournament predictions when deadlines have passed', function () {
+    Config::set('bolao.champion_predictions_deadline', now()->subMinute()->toDateTimeString());
+    Config::set('bolao.top_scorer_predictions_deadline', now()->subMinute()->toDateTimeString());
+
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('championPredictionsOpen', false)
+            ->where('topScorerPredictionsOpen', false)
+            ->where('hasChampionPrediction', false)
+            ->where('hasTopScorerPrediction', false));
 });
 
 test('dashboard exposes browser push as unavailable when vapid keys are missing', function () {

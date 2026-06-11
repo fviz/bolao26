@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { BellRing } from 'lucide-vue-next';
+import { BellRing, Target, Trophy } from 'lucide-vue-next';
 import { computed, onMounted } from 'vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { useWebPush } from '@/composables/useWebPush';
 import { dashboard } from '@/routes';
 import { edit as editNotifications } from '@/routes/notifications/settings';
+import { index as predictionsIndex } from '@/routes/predictions';
 import { index as rankingIndex } from '@/routes/ranking';
 import type { GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
 
@@ -18,6 +19,10 @@ type Props = {
     leaderboard: LeaderboardEntry[];
     nextGame: GameListItem | null;
     browserPushAvailable: boolean;
+    championPredictionsOpen: boolean;
+    topScorerPredictionsOpen: boolean;
+    hasChampionPrediction: boolean;
+    hasTopScorerPrediction: boolean;
 };
 
 const props = defineProps<Props>();
@@ -35,6 +40,14 @@ const showNotificationsPrompt = computed(
         && isSupported.value
         && permission.value !== 'denied'
         && !isSubscribed.value,
+);
+
+const showChampionPredictionBanner = computed(
+    () => props.championPredictionsOpen && !props.hasChampionPrediction,
+);
+
+const showTopScorerPredictionBanner = computed(
+    () => props.topScorerPredictionsOpen && !props.hasTopScorerPrediction,
 );
 
 onMounted(() => {
@@ -69,6 +82,38 @@ defineOptions({
                 <Button as-child size="sm" class="mt-3">
                     <Link :href="editNotifications()">
                         Habilitar neste dispositivo
+                    </Link>
+                </Button>
+            </AlertDescription>
+        </Alert>
+
+        <Alert v-if="showChampionPredictionBanner">
+            <Trophy />
+            <AlertTitle>Palpite de campeão pendente</AlertTitle>
+            <AlertDescription>
+                <p>
+                    Você ainda não escolheu a seleção campeã da Copa. Faça seu
+                    palpite antes do prazo encerrar.
+                </p>
+                <Button as-child size="sm" class="mt-3">
+                    <Link :href="predictionsIndex()">
+                        Fazer palpite
+                    </Link>
+                </Button>
+            </AlertDescription>
+        </Alert>
+
+        <Alert v-if="showTopScorerPredictionBanner">
+            <Target />
+            <AlertTitle>Palpite de artilheiro pendente</AlertTitle>
+            <AlertDescription>
+                <p>
+                    Você ainda não escolheu o artilheiro da Copa. Faça seu
+                    palpite antes do prazo encerrar.
+                </p>
+                <Button as-child size="sm" class="mt-3">
+                    <Link :href="predictionsIndex()">
+                        Fazer palpite
                     </Link>
                 </Button>
             </AlertDescription>
