@@ -20,6 +20,7 @@ class FifaMatchMapper
         $homePenaltyScore = $this->normalizeScore($match['HomeTeamPenaltyScore'] ?? null);
         $awayPenaltyScore = $this->normalizeScore($match['AwayTeamPenaltyScore'] ?? null);
         $matchStatus = (int) ($match['MatchStatus'] ?? 0);
+        $resultType = (int) ($match['ResultType'] ?? 0);
 
         return [
             'fifa_match_id' => (string) $match['IdMatch'],
@@ -54,7 +55,7 @@ class FifaMatchMapper
                 $awayPenaltyScore,
             ),
             'time_defined' => (bool) ($match['TimeDefined'] ?? true),
-            'is_final' => $this->determineIsFinal($matchStatus, $homeScore, $awayScore),
+            'is_final' => $this->determineIsFinal($matchStatus, $resultType, $homeScore, $awayScore),
             'payload' => $match,
             'synced_at' => now(),
         ];
@@ -109,9 +110,20 @@ class FifaMatchMapper
         return (int) $score;
     }
 
-    private function determineIsFinal(int $matchStatus, ?int $homeScore, ?int $awayScore): bool
+    private function determineIsFinal(int $matchStatus, int $resultType, ?int $homeScore, ?int $awayScore): bool
     {
-        return $matchStatus === 4;
+        if ($matchStatus === 3) {
+            return false;
+        }
+
+        if ($matchStatus === 4) {
+            return true;
+        }
+
+        return $matchStatus === 0
+            && $resultType === 1
+            && $homeScore !== null
+            && $awayScore !== null;
     }
 
     /**
