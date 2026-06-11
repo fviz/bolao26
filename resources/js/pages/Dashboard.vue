@@ -2,17 +2,12 @@
 import { Head, Link } from '@inertiajs/vue3';
 import { BellRing } from 'lucide-vue-next';
 import { computed, onMounted } from 'vue';
-import GameCommentsCount from '@/components/games/GameCommentsCount.vue';
-import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
-import UserPredictionSummary from '@/components/games/UserPredictionSummary.vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { useGameSchedule } from '@/composables/useGameSchedule';
 import { useWebPush } from '@/composables/useWebPush';
 import { dashboard } from '@/routes';
-import { show as showGame } from '@/routes/games';
 import { edit as editNotifications } from '@/routes/notifications/settings';
 import { index as rankingIndex } from '@/routes/ranking';
 import type { GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
@@ -27,7 +22,6 @@ type Props = {
 
 const props = defineProps<Props>();
 
-const { formatScheduledAt } = useGameSchedule();
 const {
     isSupported,
     permission,
