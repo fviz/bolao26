@@ -79,10 +79,10 @@ test('dashboard exposes user prediction on listed games', function () {
             ->where('games.data.1.userPrediction', null));
 });
 
-test('dashboard lists only upcoming games paginated twenty per page', function () {
+test('dashboard lists only upcoming games paginated ten per page', function () {
     $user = User::factory()->create();
 
-    Game::factory()->count(21)->create([
+    Game::factory()->count(11)->create([
         'scheduled_at' => now()->addDay(),
     ]);
 
@@ -93,8 +93,8 @@ test('dashboard lists only upcoming games paginated twenty per page', function (
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->component('Dashboard')
-            ->has('games.data', 20)
-            ->where('games.meta.total', 21)
+            ->has('games.data', 10)
+            ->where('games.meta.total', 11)
             ->where('games.meta.last_page', 2));
 
     $this->actingAs($user)
