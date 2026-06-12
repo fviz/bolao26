@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { Form, Head, Link, usePage } from '@inertiajs/vue3';
-import { Bell, CheckCheck, Send } from 'lucide-vue-next';
-import { computed, ref } from 'vue';
+import { Bell, BellRing, CheckCheck, Send } from 'lucide-vue-next';
+import { computed, onMounted, ref } from 'vue';
 import InputError from '@/components/InputError.vue';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
     Card,
@@ -21,15 +22,18 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useWebPush } from '@/composables/useWebPush';
 import { index, read, readAll } from '@/routes/notifications';
+import { edit as editNotifications } from '@/routes/notifications/settings';
 import { store as storeBroadcast } from '@/routes/notifications/broadcast';
 import type { AppNotification, NotificationPaginator } from '@/types';
 
 type Props = {
     notifications: NotificationPaginator<AppNotification>;
+    browserPushAvailable: boolean;
 };
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 defineOptions({
     layout: {
@@ -45,6 +49,25 @@ defineOptions({
 const page = usePage();
 const isAdmin = computed(() => page.props.auth.user.is_admin);
 const showBroadcastDialog = ref(false);
+
+const {
+    isSupported,
+    permission,
+    isSubscribed,
+    refreshSubscription,
+} = useWebPush();
+
+const showNotificationsPrompt = computed(
+    () =>
+        props.browserPushAvailable
+        && isSupported.value
+        && permission.value !== 'denied'
+        && !isSubscribed.value,
+);
+
+onMounted(() => {
+    void refreshSubscription();
+});
 
 const formatDate = (value: string | null): string => {
     if (!value) {
@@ -101,6 +124,21 @@ const formatDate = (value: string | null): string => {
                 </Form>
             </div>
         </div>
+
+        <Alert v-if="showNotificationsPrompt">
+            <BellRing />
+            <AlertTitle>Ative as notificações do navegador</AlertTitle>
+            <AlertDescription>
+                <p>
+                    Receba lembretes e resultados mesmo com o app fechado.
+                </p>
+                <Button as-child size="sm" class="mt-3">
+                    <Link :href="editNotifications()">
+                        Habilitar neste dispositivo
+                    </Link>
+                </Button>
+            </AlertDescription>
+        </Alert>
 
         <div v-if="notifications.data.length" class="space-y-3">
             <Card

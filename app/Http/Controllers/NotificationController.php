@@ -30,6 +30,8 @@ class NotificationController extends Controller
 
         return Inertia::render('Notifications', [
             'notifications' => $notifications,
+            'browserPushAvailable' => filled(config('webpush.vapid.public_key'))
+                && filled(config('webpush.vapid.private_key')),
         ]);
     }
 

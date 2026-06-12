@@ -16,7 +16,8 @@ test('notifications page lists user notifications', function () {
             ->component('Notifications')
             ->has('notifications.data', 1)
             ->where('notifications.data.0.title', 'Previsões de hoje')
-            ->where('notifications.data.0.readAt', null),
+            ->where('notifications.data.0.readAt', null)
+            ->where('browserPushAvailable', true),
         );
 });
 

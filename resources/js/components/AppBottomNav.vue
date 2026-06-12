@@ -12,7 +12,7 @@ const { navItems, isNavItemActive } = useAppNavigation();
         aria-label="Navegação principal"
     >
         <div
-            class="mx-auto flex max-w-lg items-center justify-around rounded-full border border-border/60 bg-background/80 px-2 py-2 shadow-lg backdrop-blur-lg pb-[calc(0.5rem+env(safe-area-inset-bottom))]"
+            class="mx-auto flex max-w-lg items-center justify-around rounded-full border border-border/60 bg-background/50 px-2 py-2 shadow-lg backdrop-blur-lg pb-[calc(0.5rem+env(safe-area-inset-bottom))]"
         >
             <Link
                 v-for="item in navItems"

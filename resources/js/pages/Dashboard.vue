@@ -5,6 +5,7 @@ import { computed, onMounted } from 'vue';
 import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import FeaturedGameCard from '@/components/games/FeaturedGameCard.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
+import { ArrowRight } from 'lucide-vue-next';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { useWebPush } from '@/composables/useWebPush';
@@ -74,20 +75,6 @@ defineOptions({
     <div
         class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"
     >
-        <Alert v-if="showNotificationsPrompt">
-            <BellRing />
-            <AlertTitle>Ative as notificações do navegador</AlertTitle>
-            <AlertDescription>
-                <p>
-                    Receba lembretes e resultados mesmo com o app fechado.
-                </p>
-                <Button as-child size="sm" class="mt-3">
-                    <Link :href="editNotifications()">
-                        Habilitar neste dispositivo
-                    </Link>
-                </Button>
-            </AlertDescription>
-        </Alert>
 
         <Alert v-if="showChampionPredictionBanner">
             <Trophy />
@@ -123,7 +110,7 @@ defineOptions({
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-3 mb-8">
             <div
-                class="flex flex-col justify-between gap-1 rounded-xl border border-green-500/20 dark:border-green-500/20 p-4 bg-green-50 dark:bg-green-950"
+                class="flex flex-col justify-between gap-1 rounded-xl shadow-sm p-4 bg-green-700 text-green-100 dark:bg-green-950 dark:text-green-100"
             >
                 <div class="">
                     <p class="text-sm">
@@ -132,17 +119,17 @@ defineOptions({
                 </div>
                 <div>
                     <p
-                        class="text-4xl font-black text-green-700 dark:text-green-400"
+                        class="text-4xl font-black"
                     >
                         {{ userTotalPoints }}
                     </p>
-                    <p class="text-xs text-green-700 dark:text-green-400">
+                    <p class="text-xs">
                         pontos no total
                     </p>
                 </div>
             </div>
             <div
-                class="flex flex-col justify-between gap-2 rounded-xl border border-blue-500/20 dark:border-blue-500/20 p-4 bg-blue-50 dark:bg-blue-950"
+                class="flex flex-col justify-between gap-2 rounded-xl p-4 bg-blue-700 text-blue-200 dark:bg-blue-950 dark:text-blue-100"
             >
                 <div>
                     <p class="text-sm">Ranking geral</p>
@@ -151,12 +138,12 @@ defineOptions({
                         class=""
                     />
                 </div>
-                <div>
+                <div class="flex justify-end">
                     <Link
                         :href="rankingIndex()"
-                        class="text-sm font-medium hover:underline text-blue-500 dark:text-blue-400"
+                        class="text-sm font-medium hover:underline flex items-center gap-1"
                     >
-                        Ver ranking completo
+                        <ArrowRight class="size-4" /> Ver ranking completo
                     </Link>
                 </div>
             </div>
@@ -166,7 +153,7 @@ defineOptions({
             />
             <div
                 v-else
-                class="flex flex-col justify-between gap-2 rounded-xl border border-yellow-500/20 bg-yellow-50 p-4 dark:border-yellow-500/20 dark:bg-yellow-950"
+                class="flex flex-col justify-between gap-2 rounded-xl bg-yellow-50 p-4 dark:bg-yellow-950"
             >
                 <p class="text-sm">Jogos recentes</p>
                 <p class="text-xs text-yellow-700 dark:text-yellow-400">

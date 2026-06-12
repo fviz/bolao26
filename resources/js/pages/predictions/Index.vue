@@ -371,6 +371,7 @@ defineOptions({
                 :games="missingGames"
                 empty-message="Nenhum jogo aberto para palpite no momento."
                 action-label="Fazer palpite"
+                show-user-prediction
                 pagination-aria-label="Paginação de jogos sem palpite"
             />
         </section>

@@ -4,7 +4,7 @@ import GameCommentsCount from '@/components/games/GameCommentsCount.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import UserPredictionSummary from '@/components/games/UserPredictionSummary.vue';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { useGameSchedule } from '@/composables/useGameSchedule';
 import { show as showGame } from '@/routes/games';
 import type { GameListItem, Paginated } from '@/types/game';
@@ -59,55 +59,50 @@ const actionLabelForGame = (game: GameListItem): string => {
         </p>
 
         <div v-else class="flex flex-col gap-4">
-            <div class="flex flex-col gap-2 md:hidden">
-                <Card
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <Link
                     v-for="game in games.data"
                     :key="game.id"
-                    class="gap-0 py-0 bg-gray-100 dark:bg-gray-950 mb-4 last:mb-0"
+                    :href="showGame(game.id)"
+                    class="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    :aria-label="`${actionLabelForGame(game)} — ${game.matchTitle}`"
                 >
-                    <CardContent class="flex flex-col gap-2 p-3">
-                        <GameMatchDisplay
-                            :home="game.home"
-                            :away="game.away"
-                        />
-                        <UserPredictionSummary
-                            v-if="showUserPrediction && game.userPrediction"
-                            :prediction="game.userPrediction"
-                        />
-                        <div class="flex flex-col gap-0.5">
-                            <div
-                                class="flex items-center justify-between gap-2"
-                            >
-                                <p class="text-xs text-muted-foreground">
-                                    {{
-                                        formatScheduledAt(game.scheduledAt)
-                                            .combined
-                                    }}
+                    <Card
+                        class="h-full cursor-pointer gap-0 bg-gray-100 py-0 transition-colors last:mb-0 group-hover:bg-gray-200 dark:bg-gray-900 dark:group-hover:bg-gray-800"
+                    >
+                        <CardContent class="flex flex-col gap-2 p-3">
+                            <GameMatchDisplay
+                                :home="game.home"
+                                :away="game.away"
+                            />
+                            <UserPredictionSummary
+                                v-if="showUserPrediction"
+                                :prediction="game.userPrediction"
+                            />
+                            <div class="flex flex-col gap-0.5">
+                                <div
+                                    class="flex items-center justify-between gap-2"
+                                >
+                                    <p class="text-xs text-muted-foreground">
+                                        {{
+                                            formatScheduledAt(game.scheduledAt)
+                                                .combined
+                                        }}
+                                    </p>
+                                    <GameCommentsCount
+                                        :count="game.commentsCount"
+                                    />
+                                </div>
+                                <p class="text-xs">
+                                    {{ venueLabel(game) }}
                                 </p>
-                                <GameCommentsCount
-                                    :count="game.commentsCount"
-                                />
                             </div>
-                            <p class="text-xs">
-                                {{ venueLabel(game) }}
-                            </p>
-                        </div>
-                    </CardContent>
-                    <CardFooter class="border-t px-3">
-                        <Button
-                            as-child
-                            class="w-full bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700"
-                            variant="default"
-                        >
-                            <Link :href="showGame(game.id)">
-                                {{ actionLabelForGame(game) }}
-                            </Link>
-                        </Button>
-                    </CardFooter>
-                </Card>
+                        </CardContent>
+                    </Card>
+                </Link>
             </div>
 
-            <div class="hidden overflow-x-auto rounded-xl border md:block">
+            <!-- <div class="hidden overflow-x-auto rounded-xl border md:block">
                 <table class="w-full border-separate border-spacing-0 text-sm">
                     <thead>
                         <tr class="border-b bg-muted/50">
@@ -152,10 +147,7 @@ const actionLabelForGame = (game: GameListItem): string => {
                                         :away="game.away"
                                     />
                                     <UserPredictionSummary
-                                        v-if="
-                                            showUserPrediction
-                                                && game.userPrediction
-                                        "
+                                        v-if="showUserPrediction"
                                         :prediction="game.userPrediction"
                                     />
                                 </div>
@@ -193,7 +185,7 @@ const actionLabelForGame = (game: GameListItem): string => {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
             <nav
                 v-if="games.meta.last_page > 1"

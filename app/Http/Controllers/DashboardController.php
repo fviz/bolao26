@@ -23,7 +23,7 @@ class DashboardController extends Controller
                 'predictions' => fn ($query) => $query->where('user_id', $user->id),
             ])
             ->withCount('comments')
-            ->paginate(10)
+            ->paginate(12)
             ->withQueryString();
 
         $entries = Leaderboard::rankedEntries($user);

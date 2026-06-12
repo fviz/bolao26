@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/vue3';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import { useGameSchedule } from '@/composables/useGameSchedule';
 import { show as showGame } from '@/routes/games';
+import { ArrowRight } from 'lucide-vue-next';
 import type { FeaturedGame } from '@/types/game';
 
 type Props = {
@@ -22,9 +23,9 @@ const stageLabel = [props.featuredGame.game.stageName, props.featuredGame.game.g
 
 <template>
     <div
-        class="flex flex-col justify-between gap-2 rounded-xl border border-yellow-500/20 bg-yellow-50 p-4 dark:border-yellow-500/20 dark:bg-yellow-950"
+        class="flex flex-col justify-between gap-2 rounded-xl bg-emerald-700 p-4 dark:bg-emerald-950"
     >
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 text-emerald-200 dark:text-white">
             <div class="flex items-center justify-between gap-2">
                 <p class="text-sm">
                     {{
@@ -47,29 +48,30 @@ const stageLabel = [props.featuredGame.game.stageName, props.featuredGame.game.g
             <GameMatchDisplay
                 :home="featuredGame.game.home"
                 :away="featuredGame.game.away"
-                layout="stacked"
+                layout="inline"
             />
 
             <p
                 v-if="featuredGame.status === 'finished' && featuredGame.game.result"
-                class="text-2xl font-black text-yellow-700 dark:text-yellow-400"
+                class="text-2xl font-black text-emerald-200 dark:text-white"
             >
                 {{ featuredGame.game.result.homeScore }}
                 ×
                 {{ featuredGame.game.result.awayScore }}
             </p>
 
-            <div class="flex flex-col gap-0.5 text-xs text-yellow-700/80 dark:text-yellow-400/80">
+            <div class="flex flex-col gap-0.5 text-xs">
                 <p>{{ schedule.combined }}</p>
                 <p v-if="stageLabel">{{ stageLabel }}</p>
             </div>
         </div>
 
-        <div>
+        <div class="flex justify-end">
             <Link
                 :href="showGame(featuredGame.game.id)"
-                class="text-sm font-medium hover:underline text-yellow-600 dark:text-yellow-400"
+                class="text-sm font-medium hover:underline text-emerald-200 dark:text-white flex items-center gap-1"
             >
+                <ArrowRight class="size-4 text-emerald-200 dark:text-white" />
                 Ver jogo
             </Link>
         </div>
