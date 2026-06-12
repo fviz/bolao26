@@ -8,6 +8,7 @@ import LeaderboardList from '@/components/LeaderboardList.vue';
 import { ArrowRight } from 'lucide-vue-next';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
+import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useWebPush } from '@/composables/useWebPush';
 import { dashboard } from '@/routes';
 import { edit as editNotifications } from '@/routes/notifications/settings';
@@ -16,19 +17,21 @@ import { index as rankingIndex } from '@/routes/ranking';
 import type { FeaturedGame, GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
 
 type Props = {
-    games: Paginated<GameListItem>;
-    userTotalPoints: number;
-    leaderboard: LeaderboardEntry[];
-    nextGame: GameListItem | null;
-    featuredGame: FeaturedGame | null;
-    browserPushAvailable: boolean;
-    championPredictionsOpen: boolean;
-    topScorerPredictionsOpen: boolean;
-    hasChampionPrediction: boolean;
-    hasTopScorerPrediction: boolean;
+    games?: Paginated<GameListItem>;
+    userTotalPoints?: number;
+    leaderboard?: LeaderboardEntry[];
+    nextGame?: GameListItem | null;
+    featuredGame?: FeaturedGame | null;
+    browserPushAvailable?: boolean;
+    championPredictionsOpen?: boolean;
+    topScorerPredictionsOpen?: boolean;
+    hasChampionPrediction?: boolean;
+    hasTopScorerPrediction?: boolean;
 };
 
 const props = defineProps<Props>();
+
+const isReady = useHasPageProp('games');
 
 const {
     isSupported,
@@ -73,6 +76,7 @@ defineOptions({
     <Head title="Painel" />
 
     <div
+        v-if="isReady"
         class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"
     >
 
@@ -134,6 +138,7 @@ defineOptions({
                 <div>
                     <p class="text-sm">Ranking geral</p>
                     <LeaderboardList
+                        v-if="leaderboard"
                         :entries="leaderboard"
                         class=""
                     />
@@ -162,7 +167,7 @@ defineOptions({
             </div>
         </div>
 
-        <UpcomingGamesList :games="games" />
+        <UpcomingGamesList v-if="games" :games="games" />
 
     </div>
 </template>

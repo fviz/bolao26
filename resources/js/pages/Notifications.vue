@@ -22,6 +22,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useWebPush } from '@/composables/useWebPush';
 import { index, read, readAll } from '@/routes/notifications';
 import { edit as editNotifications } from '@/routes/notifications/settings';
@@ -29,11 +30,33 @@ import { store as storeBroadcast } from '@/routes/notifications/broadcast';
 import type { AppNotification, NotificationPaginator } from '@/types';
 
 type Props = {
-    notifications: NotificationPaginator<AppNotification>;
-    browserPushAvailable: boolean;
+    notifications?: NotificationPaginator<AppNotification>;
+    browserPushAvailable?: boolean;
 };
 
 const props = defineProps<Props>();
+
+// Shared props also expose `notifications` as `{ unreadCount }`, so we cannot
+// use that key alone to detect when the inbox paginator has loaded.
+const isReady = useHasPageProp('browserPushAvailable');
+
+function isNotificationPaginator(
+    value: unknown,
+): value is NotificationPaginator<AppNotification> {
+    return (
+        typeof value === 'object'
+        && value !== null
+        && 'data' in value
+        && Array.isArray(value.data)
+    );
+}
+
+const loadedNotifications = computed(
+    (): NotificationPaginator<AppNotification> | null =>
+        isNotificationPaginator(props.notifications)
+            ? props.notifications
+            : null,
+);
 
 defineOptions({
     layout: {
@@ -84,7 +107,10 @@ const formatDate = (value: string | null): string => {
 <template>
     <Head title="Notificações" />
 
-    <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto p-4">
+    <div
+        v-if="isReady && loadedNotifications"
+        class="flex h-full flex-1 flex-col gap-4 overflow-x-auto p-4"
+    >
         <div
             class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
         >
@@ -108,7 +134,7 @@ const formatDate = (value: string | null): string => {
                 </Button>
 
                 <Form
-                    v-if="notifications.total > 0"
+                    v-if="loadedNotifications.total > 0"
                     v-bind="readAll.form()"
                     :options="{ preserveScroll: true }"
                     v-slot="{ processing }"
@@ -140,9 +166,9 @@ const formatDate = (value: string | null): string => {
             </AlertDescription>
         </Alert>
 
-        <div v-if="notifications.data.length" class="space-y-3">
+        <div v-if="loadedNotifications.data.length" class="space-y-3">
             <Card
-                v-for="notification in notifications.data"
+                v-for="notification in loadedNotifications.data"
                 :key="notification.id"
                 :class="[
                     'transition-colors',
@@ -222,12 +248,12 @@ const formatDate = (value: string | null): string => {
         </div>
 
         <nav
-            v-if="notifications.links.length > 3"
+            v-if="loadedNotifications.links.length > 3"
             class="flex flex-wrap items-center gap-2"
             aria-label="Paginação de notificações"
         >
             <Button
-                v-for="link in notifications.links"
+                v-for="link in loadedNotifications.links"
                 :key="link.label"
                 :variant="link.active ? 'default' : 'outline'"
                 :disabled="!link.url"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
+import AppNavLink from '@/components/AppNavLink.vue';
 import { useAppNavigation } from '@/composables/useAppNavigation';
 import { cn } from '@/lib/utils';
 
@@ -14,11 +14,11 @@ const { navItems, isNavItemActive } = useAppNavigation();
         <div
             class="mx-auto flex max-w-lg items-center justify-around rounded-full border border-border/60 bg-background/50 px-2 py-2 shadow-lg backdrop-blur-lg pb-[calc(0.5rem+env(safe-area-inset-bottom))]"
         >
-            <Link
+            <AppNavLink
                 v-for="item in navItems"
                 :key="item.title"
                 :href="item.href"
-                prefetch
+                :component="item.component"
                 :class="
                     cn(
                         'relative flex min-w-0 flex-1 flex-col items-center gap-0.5 rounded-full px-1 py-1.5 text-[10px] font-medium transition-colors',
@@ -46,7 +46,7 @@ const { navItems, isNavItemActive } = useAppNavigation();
                     </span>
                 </span>
                 <span class="truncate">{{ item.title }}</span>
-            </Link>
+            </AppNavLink>
         </div>
     </nav>
 </template>

@@ -17,6 +17,7 @@ import { index as rankingIndex } from '@/routes/ranking';
 import type { NavItem } from '@/types';
 
 export type AppNavItem = NavItem & {
+    component: string;
     matches?: (pathname: string) => boolean;
 };
 
@@ -41,27 +42,32 @@ export function useAppNavigation(): UseAppNavigationReturn {
         {
             title: 'Painel',
             href: dashboard(),
+            component: 'Dashboard',
             icon: Volleyball,
         },
         {
             title: 'Ranking',
             href: rankingIndex(),
+            component: 'ranking/Index',
             icon: Trophy,
         },
         {
             title: 'Palpites',
             href: predictionsIndex(),
+            component: 'predictions/Index',
             icon: ClipboardList,
         },
         {
             title: 'Notificações',
             href: notificationsIndex(),
+            component: 'Notifications',
             icon: Bell,
             badge: unreadNotificationsCount.value || undefined,
         },
         {
             title: 'Perfil',
             href: editProfile(),
+            component: 'settings/Profile',
             icon: User,
             matches: (pathname: string) =>
                 pathname.startsWith('/settings') || pathname === '/rules',

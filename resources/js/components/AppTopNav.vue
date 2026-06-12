@@ -2,6 +2,7 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import AppLogo from '@/components/AppLogo.vue';
+import AppNavLink from '@/components/AppNavLink.vue';
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -49,9 +50,9 @@ const activeItemStyles =
                         :key="item.title"
                         class="relative flex h-full items-center"
                     >
-                        <Link
+                        <AppNavLink
                             :href="item.href"
-                            prefetch
+                            :component="item.component"
                             :class="[
                                 'flex h-9 cursor-pointer items-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground',
                                 isNavItemActive(item) ? activeItemStyles : '',
@@ -69,7 +70,7 @@ const activeItemStyles =
                             >
                                 {{ item.badge }}
                             </span>
-                        </Link>
+                        </AppNavLink>
                         <div
                             v-if="isNavItemActive(item)"
                             class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"

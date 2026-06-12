@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Label } from '@/components/ui/label';
 import { useGameSchedule } from '@/composables/useGameSchedule';
+import { useHasPageProp } from '@/composables/useHasPageProp';
 import type { CountrySearchTerms } from '@/composables/usePlayerSearch';
 import {
     destroy as destroyChampionPrediction,
@@ -35,20 +36,22 @@ import type {
 } from '@/types/game';
 
 type Props = {
-    predictedGames: Paginated<GameListItem>;
-    missingGames: Paginated<GameListItem>;
-    championPrediction: ChampionPrediction | null;
-    championPredictionsOpen: boolean;
-    championPredictionsDeadline: string;
-    championTeams: ChampionTeam[];
-    topScorerPrediction: TopScorerPrediction | null;
-    topScorerPredictionsOpen: boolean;
-    topScorerPredictionsDeadline: string;
-    players: WorldCupPlayer[];
-    playerCountrySearchTerms: CountrySearchTerms;
+    predictedGames?: Paginated<GameListItem>;
+    missingGames?: Paginated<GameListItem>;
+    championPrediction?: ChampionPrediction | null;
+    championPredictionsOpen?: boolean;
+    championPredictionsDeadline?: string;
+    championTeams?: ChampionTeam[];
+    topScorerPrediction?: TopScorerPrediction | null;
+    topScorerPredictionsOpen?: boolean;
+    topScorerPredictionsDeadline?: string;
+    players?: WorldCupPlayer[];
+    playerCountrySearchTerms?: CountrySearchTerms;
 };
 
 const props = defineProps<Props>();
+
+const isReady = useHasPageProp('predictedGames');
 
 const { formatScheduledAt } = useGameSchedule();
 
@@ -64,7 +67,7 @@ const championTeamName = computed(() => {
     }
 
     return (
-        props.championTeams.find(
+        props.championTeams?.find(
             (team) => team.fifaTeamId === props.championPrediction?.fifaTeamId,
         )?.name ?? props.championPrediction.fifaTeamId
     );
@@ -76,7 +79,7 @@ const selectedTopScorerPlayer = computed(() => {
     }
 
     return (
-        props.players.find(
+        props.players?.find(
             (player) => player.id === props.topScorerPrediction?.playerId,
         ) ?? null
     );
@@ -97,14 +100,14 @@ const topScorerDisplayName = computed(() => {
 const showChampionPredictionForm = computed(
     () =>
         props.championPredictionsOpen &&
-        props.championTeams.length > 0 &&
+        (props.championTeams?.length ?? 0) > 0 &&
         (!props.championPrediction || showChampionForm.value),
 );
 
 const showTopScorerPredictionForm = computed(
     () =>
         props.topScorerPredictionsOpen &&
-        props.players.length > 0 &&
+        (props.players?.length ?? 0) > 0 &&
         (!props.topScorerPrediction || showTopScorerForm.value),
 );
 
@@ -142,7 +145,7 @@ defineOptions({
 <template>
     <Head title="Palpites" />
 
-    <div class="flex flex-col gap-8 p-4 md:p-6">
+    <div v-if="isReady" class="flex flex-col gap-8 p-4 md:p-6">
         <Heading
             variant="small"
             title="Palpites"
@@ -326,6 +329,7 @@ defineOptions({
                 @success="showTopScorerForm = false"
             >
                 <TopScorerPlayerPicker
+                    v-if="players && playerCountrySearchTerms"
                     v-model="selectedPlayerId"
                     :players="players"
                     :country-search-terms="playerCountrySearchTerms"
@@ -352,6 +356,7 @@ defineOptions({
             />
 
             <GamesList
+                v-if="predictedGames"
                 :games="predictedGames"
                 empty-message="Você ainda não fez nenhum palpite."
                 action-label="Ver jogo"
@@ -368,6 +373,7 @@ defineOptions({
             />
 
             <GamesList
+                v-if="missingGames"
                 :games="missingGames"
                 empty-message="Nenhum jogo aberto para palpite no momento."
                 action-label="Fazer palpite"

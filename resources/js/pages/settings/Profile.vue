@@ -8,16 +8,19 @@ import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useInitials } from '@/composables/useInitials';
 import { edit } from '@/routes/profile';
 import { send } from '@/routes/verification';
 
 type Props = {
-    mustVerifyEmail: boolean;
+    mustVerifyEmail?: boolean;
     status?: string;
 };
 
 defineProps<Props>();
+
+const isReady = useHasPageProp('mustVerifyEmail');
 
 defineOptions({
     layout: {
@@ -78,9 +81,10 @@ const submitAvatar = (): void => {
 <template>
     <Head title="Ajustes de perfil" />
 
-    <h1 class="sr-only">Ajustes de perfil</h1>
+    <template v-if="isReady">
+        <h1 class="sr-only">Ajustes de perfil</h1>
 
-    <div class="flex flex-col space-y-6">
+        <div class="flex flex-col space-y-6">
         <Heading
             variant="small"
             title="Foto de perfil"
@@ -218,7 +222,8 @@ const submitAvatar = (): void => {
                 >
             </div>
         </Form>
-    </div>
+        </div>
 
-    <DeleteUser />
+        <DeleteUser />
+    </template>
 </template>
