@@ -60,7 +60,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Painel do Bolão',
+                title: 'Painel',
                 href: dashboard(),
             },
         ],
@@ -69,7 +69,7 @@ defineOptions({
 </script>
 
 <template>
-    <Head title="Painel do Bolão" />
+    <Head title="Painel" />
 
     <div
         class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"

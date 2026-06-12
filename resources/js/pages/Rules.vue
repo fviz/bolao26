@@ -7,7 +7,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Regras do Bolão',
+                title: 'Regras',
                 href: rules(),
             },
         ],
@@ -16,15 +16,15 @@ defineOptions({
 </script>
 
 <template>
-    <Head title="Regras do Bolão" />
+    <Head title="Regras" />
 
-    <div class="flex flex-col gap-4 p-4">
-        <h1 class="sr-only">Regras do Bolão</h1>
+    <div class="flex flex-col gap-4">
+        <h1 class="sr-only">Regras</h1>
 
         <div class="space-y-6">
             <Heading
                 variant="small"
-                title="Regras do Bolão"
+                title="Regras"
                 description="Pontuação por jogo e bônus de campeão"
             />
         </div>

@@ -74,7 +74,7 @@ watchEffect(() => {
     setLayoutProps({
         breadcrumbs: [
             {
-                title: 'Painel do Bolão',
+                title: 'Painel',
                 href: dashboard(),
             },
             {

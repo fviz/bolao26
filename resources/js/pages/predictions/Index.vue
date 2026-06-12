@@ -131,7 +131,7 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Meus palpites',
+                title: 'Palpites',
                 href: predictionsIndex(),
             },
         ],
@@ -140,12 +140,12 @@ defineOptions({
 </script>
 
 <template>
-    <Head title="Meus palpites" />
+    <Head title="Palpites" />
 
     <div class="flex flex-col gap-8 p-4 md:p-6">
         <Heading
             variant="small"
-            title="Meus palpites"
+            title="Palpites"
             description="Acompanhe seus palpites e os jogos que ainda faltam palpitar"
         />
 

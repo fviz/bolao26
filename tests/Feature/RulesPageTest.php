@@ -17,3 +17,14 @@ test('authenticated users can visit the rules page', function () {
     $response = $this->get(route('rules'));
     $response->assertOk();
 });
+
+test('rules page renders the rules component', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user);
+
+    $this->get(route('rules'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->component('Rules')
+            ->missing('sidebarOpen'));
+});
