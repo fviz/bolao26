@@ -5,7 +5,6 @@ import { computed, ref, watchEffect } from 'vue';
 import GameCommentsSection from '@/components/games/GameCommentsSection.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import Heading from '@/components/Heading.vue';
-import UserProfileLink from '@/components/users/UserProfileLink.vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,6 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import UserProfileLink from '@/components/users/UserProfileLink.vue';
 import { useGameSchedule } from '@/composables/useGameSchedule';
 import { dashboard } from '@/routes';
 import { upsert as upsertPrediction } from '@/routes/games/prediction';

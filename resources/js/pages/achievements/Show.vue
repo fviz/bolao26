@@ -2,11 +2,10 @@
 import { Head, Link, setLayoutProps } from '@inertiajs/vue3';
 import { watchEffect } from 'vue';
 import AchievementEmblem from '@/components/achievements/AchievementEmblem.vue';
-import Heading from '@/components/Heading.vue';
 import { Button } from '@/components/ui/button';
 import { useHasPageProp } from '@/composables/useHasPageProp';
-import { index as achievementsIndex } from '@/routes/users/achievements';
 import { show as showUser } from '@/routes/users';
+import { index as achievementsIndex } from '@/routes/users/achievements';
 import type { Achievement } from '@/types/achievement';
 import type { UserProfile } from '@/types/game';
 

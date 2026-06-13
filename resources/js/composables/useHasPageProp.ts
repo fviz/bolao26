@@ -1,5 +1,6 @@
 import { usePage } from '@inertiajs/vue3';
-import { computed, type ComputedRef } from 'vue';
+import { computed  } from 'vue';
+import type {ComputedRef} from 'vue';
 
 export function useHasPageProp(...propNames: string[]): ComputedRef<boolean> {
     const page = usePage();

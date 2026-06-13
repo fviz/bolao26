@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
+import { ArrowRight } from 'lucide-vue-next';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import { useGameSchedule } from '@/composables/useGameSchedule';
 import { show as showGame } from '@/routes/games';
-import { ArrowRight } from 'lucide-vue-next';
 import type { FeaturedGame } from '@/types/game';
 
 type Props = {

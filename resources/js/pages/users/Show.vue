@@ -10,10 +10,10 @@ import { Button } from '@/components/ui/button';
 import { useGameSchedule } from '@/composables/useGameSchedule';
 import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useInitials } from '@/composables/useInitials';
-import { edit as editProfile } from '@/routes/profile';
 import { show as showGame } from '@/routes/games';
-import { index as achievementsIndex } from '@/routes/users/achievements';
+import { edit as editProfile } from '@/routes/profile';
 import { show as showUser } from '@/routes/users';
+import { index as achievementsIndex } from '@/routes/users/achievements';
 import type { Achievement, AchievementSummary } from '@/types/achievement';
 import type { Paginated, ProfileGameEntry, UserProfile } from '@/types/game';
 

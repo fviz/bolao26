@@ -5,7 +5,6 @@ import { ref } from 'vue';
 import { destroy } from '@/actions/App/Http/Controllers/GameCommentController';
 import GameCommentAvatar from '@/components/games/GameCommentAvatar.vue';
 import GameCommentForm from '@/components/games/GameCommentForm.vue';
-import UserProfileLink from '@/components/users/UserProfileLink.vue';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -13,6 +12,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import UserProfileLink from '@/components/users/UserProfileLink.vue';
 import type { GameComment } from '@/types/game';
 
 type Props = {

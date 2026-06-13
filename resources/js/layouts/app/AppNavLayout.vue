@@ -3,8 +3,8 @@ import AppBottomNav from '@/components/AppBottomNav.vue';
 import AppContent from '@/components/AppContent.vue';
 import AppShell from '@/components/AppShell.vue';
 import AppTopNav from '@/components/AppTopNav.vue';
-import { Spinner } from '@/components/ui/spinner';
 import { Toaster } from '@/components/ui/sonner';
+import { Spinner } from '@/components/ui/spinner';
 import { useInertiaVisitLoading } from '@/composables/useInertiaVisitLoading';
 import type { BreadcrumbItem } from '@/types';
 

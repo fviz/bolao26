@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { BellRing, Target, Trophy } from 'lucide-vue-next';
+import { ArrowRight, Target, Trophy } from 'lucide-vue-next';
 import { computed, onMounted } from 'vue';
-import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import FeaturedGameCard from '@/components/games/FeaturedGameCard.vue';
+import UpcomingGamesList from '@/components/games/UpcomingGamesList.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
-import { ArrowRight } from 'lucide-vue-next';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useWebPush } from '@/composables/useWebPush';
 import { dashboard } from '@/routes';
-import { edit as editNotifications } from '@/routes/notifications/settings';
 import { index as predictionsIndex } from '@/routes/predictions';
 import { index as rankingIndex } from '@/routes/ranking';
 import type { FeaturedGame, GameListItem, LeaderboardEntry, Paginated } from '@/types/game';
@@ -22,7 +20,6 @@ type Props = {
     leaderboard?: LeaderboardEntry[];
     nextGame?: GameListItem | null;
     featuredGame?: FeaturedGame | null;
-    browserPushAvailable?: boolean;
     championPredictionsOpen?: boolean;
     topScorerPredictionsOpen?: boolean;
     hasChampionPrediction?: boolean;
@@ -33,20 +30,7 @@ const props = defineProps<Props>();
 
 const isReady = useHasPageProp('games');
 
-const {
-    isSupported,
-    permission,
-    isSubscribed,
-    refreshSubscription,
-} = useWebPush();
-
-const showNotificationsPrompt = computed(
-    () =>
-        props.browserPushAvailable
-        && isSupported.value
-        && permission.value !== 'denied'
-        && !isSubscribed.value,
-);
+const { refreshSubscription } = useWebPush();
 
 const showChampionPredictionBanner = computed(
     () => props.championPredictionsOpen && !props.hasChampionPrediction,

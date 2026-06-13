@@ -25,8 +25,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useWebPush } from '@/composables/useWebPush';
 import { index, read, readAll } from '@/routes/notifications';
-import { edit as editNotifications } from '@/routes/notifications/settings';
 import { store as storeBroadcast } from '@/routes/notifications/broadcast';
+import { edit as editNotifications } from '@/routes/notifications/settings';
 import type { AppNotification, NotificationPaginator } from '@/types';
 
 type Props = {
