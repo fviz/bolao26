@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\TournamentTopScorerResolver;
+use App\Services\Achievements\AchievementAwarder;
 use App\Services\TournamentTopScorer\NullTournamentTopScorerResolver;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
             TournamentTopScorerResolver::class,
             NullTournamentTopScorerResolver::class,
         );
+
+        $this->app->singleton(AchievementAwarder::class);
     }
 
     /**

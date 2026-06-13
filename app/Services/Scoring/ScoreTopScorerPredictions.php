@@ -4,6 +4,8 @@ namespace App\Services\Scoring;
 
 use App\Contracts\TournamentTopScorerResolver;
 use App\Models\TopScorerPrediction;
+use App\Services\Achievements\AchievementAwarder;
+use App\Services\Achievements\Evaluators\TournamentEvaluator;
 use App\Support\WorldCupPlayers;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +15,8 @@ class ScoreTopScorerPredictions
 
     public function __construct(
         private readonly TournamentTopScorerResolver $resolver,
+        private readonly AchievementAwarder $achievementAwarder,
+        private readonly TournamentEvaluator $tournamentAchievements,
     ) {}
 
     public function score(?string $playerId = null): bool
@@ -27,6 +31,8 @@ class ScoreTopScorerPredictions
             return false;
         }
 
+        $this->achievementAwarder->beginBatch();
+
         DB::transaction(function () use ($playerId): void {
             TopScorerPrediction::query()
                 ->with('user')
@@ -34,6 +40,8 @@ class ScoreTopScorerPredictions
                     $this->scorePrediction($prediction, $playerId);
                 });
         });
+
+        $this->achievementAwarder->flushBatches();
 
         return true;
     }
@@ -56,5 +64,7 @@ class ScoreTopScorerPredictions
         $prediction->points = $newPoints;
         $prediction->scored_at = now();
         $prediction->save();
+
+        $this->tournamentAchievements->evaluateTopScorer($prediction->user);
     }
 }

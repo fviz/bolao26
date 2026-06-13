@@ -1,0 +1,249 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Enums\AchievementTier;
+use App\Models\Achievement;
+use Illuminate\Database\Seeder;
+
+class AchievementSeeder extends Seeder
+{
+    /**
+     * @var list<array{slug: string, name: string, description: string, emoji: string, tier: AchievementTier, sort_order: int, progress_target: ?int}>
+     */
+    private const array ACHIEVEMENTS = [
+        [
+            'slug' => 'primeiro-chute',
+            'name' => 'Primeiro Chute',
+            'description' => 'Fez o seu primeiríssimo palpite no site.',
+            'emoji' => '👟',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 1,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'saindo-do-zero',
+            'name' => 'Saindo do Zero',
+            'description' => 'Conquistou os seus primeiros pontos no campeonato.',
+            'emoji' => '📈',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 2,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'gabaritando-a-agenda',
+            'name' => 'Gabaritando a Agenda',
+            'description' => 'Deixou palpites registrados para todos os jogos da fase de grupos.',
+            'emoji' => '🗓️',
+            'tier' => AchievementTier::Silver,
+            'sort_order' => 3,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'no-embalo',
+            'name' => 'No Embalo',
+            'description' => 'Pontuou em 2 jogos seguidos.',
+            'emoji' => '🏃‍♂️',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 4,
+            'progress_target' => 2,
+        ],
+        [
+            'slug' => 'hat-trick',
+            'name' => 'Hat-Trick',
+            'description' => 'Pontuou em 3 jogos seguidos.',
+            'emoji' => '⚽',
+            'tier' => AchievementTier::Silver,
+            'sort_order' => 5,
+            'progress_target' => 3,
+        ],
+        [
+            'slug' => 'em-chamas',
+            'name' => 'Em Chamas',
+            'description' => 'Pontuou em 5 jogos seguidos.',
+            'emoji' => '🔥',
+            'tier' => AchievementTier::Gold,
+            'sort_order' => 6,
+            'progress_target' => 5,
+        ],
+        [
+            'slug' => 'iluminado',
+            'name' => 'Iluminado',
+            'description' => 'Acertou o placar exato (200 pts) em 2 jogos seguidos.',
+            'emoji' => '🌟',
+            'tier' => AchievementTier::Diamond,
+            'sort_order' => 7,
+            'progress_target' => 2,
+        ],
+        [
+            'slug' => 'na-gaveta',
+            'name' => 'Na Gaveta',
+            'description' => 'Acertou um placar cheio/exato de um jogo (200 pts).',
+            'emoji' => '🎯',
+            'tier' => AchievementTier::Silver,
+            'sort_order' => 8,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'diplomata',
+            'name' => 'Diplomata',
+            'description' => 'Acertou um palpite de empate com placar exato ou bola na rede (100 pts).',
+            'emoji' => '🤝',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 9,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'mae-dinah',
+            'name' => 'Mãe Dináh',
+            'description' => 'Acertou o vencedor e o número de gols de um dos times (95 pts).',
+            'emoji' => '🔮',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 10,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'dupla-de-honra',
+            'name' => 'Dupla de Honra',
+            'description' => 'Acertou dois placares exatos (200 pts) no mesmo dia de jogos.',
+            'emoji' => '✌️',
+            'tier' => AchievementTier::Gold,
+            'sort_order' => 11,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'no-quase',
+            'name' => 'No Quase',
+            'description' => 'Errou o placar exato por apenas 1 gol de diferença no total.',
+            'emoji' => '💔',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 12,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'efeito-espelho',
+            'name' => 'Efeito Espelho',
+            'description' => 'Acertou o placar, mas pro time errado (ex: botou 2x1 pro Time A, deu 2x1 pro Time B).',
+            'emoji' => '🪞',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 13,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'pe-de-rato',
+            'name' => 'Pé de Rato',
+            'description' => 'Passou uma rodada inteira (um dia cheio de jogos) fazendo 0 pontos.',
+            'emoji' => '🐭',
+            'tier' => AchievementTier::Silver,
+            'sort_order' => 14,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'inocente',
+            'name' => 'Inocente',
+            'description' => 'Palpitou 0x0 em um jogo que terminou em chuva de gols (4+ gols no total).',
+            'emoji' => '🤡',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 15,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'frieza-total',
+            'name' => 'Frieza Total',
+            'description' => 'Acertou o empate exato e quem passou nos pênaltis (220 pts).',
+            'emoji' => '🧊',
+            'tier' => AchievementTier::Diamond,
+            'sort_order' => 16,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'morreu-na-praia',
+            'name' => 'Morreu na Praia',
+            'description' => 'Acertou o empate, mas errou o vencedor dos pênaltis (50 pts).',
+            'emoji' => '🌊',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 17,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'coracao-de-aco',
+            'name' => 'Coração de Aço',
+            'description' => 'Acertou que o jogo iria para os pênaltis, independente do placar.',
+            'emoji' => '🫀',
+            'tier' => AchievementTier::Silver,
+            'sort_order' => 18,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'o-profeta',
+            'name' => 'O Profeta',
+            'description' => 'Cravou a seleção campeã antes do início da Copa (300 pts).',
+            'emoji' => '👑',
+            'tier' => AchievementTier::Gold,
+            'sort_order' => 19,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'olheiro-de-elite',
+            'name' => 'Olheiro de Elite',
+            'description' => 'Cravou o artilheiro do torneio antes do início da Copa (300 pts).',
+            'emoji' => '🥾',
+            'tier' => AchievementTier::Gold,
+            'sort_order' => 20,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'dono-da-copa',
+            'name' => 'Dono da Copa',
+            'description' => 'Acertou tanto o campeão quanto o artilheiro do torneio.',
+            'emoji' => '🌌',
+            'tier' => AchievementTier::Diamond,
+            'sort_order' => 21,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'lobo-solitario',
+            'name' => 'Lobo Solitário',
+            'description' => 'Foi o único de todo o bolão a acertar o placar exato de um jogo específico.',
+            'emoji' => '🐺',
+            'tier' => AchievementTier::Gold,
+            'sort_order' => 22,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'contra-a-correnteza',
+            'name' => 'Contra a Correnteza',
+            'description' => 'Acertou a vitória de uma zebra que menos de 20% do bolão acreditava.',
+            'emoji' => '🦓',
+            'tier' => AchievementTier::Silver,
+            'sort_order' => 23,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'zicou-o-bonde',
+            'name' => 'Zicou o Bonde',
+            'description' => 'Todo mundo do bolão apostou no favorito, o time perdeu e todos ganharam a medalha.',
+            'emoji' => '🚌',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 24,
+            'progress_target' => null,
+        ],
+    ];
+
+    public function run(): void
+    {
+        foreach (self::ACHIEVEMENTS as $achievement) {
+            Achievement::query()->updateOrCreate(
+                ['slug' => $achievement['slug']],
+                [
+                    'name' => $achievement['name'],
+                    'description' => $achievement['description'],
+                    'emoji' => $achievement['emoji'],
+                    'tier' => $achievement['tier'],
+                    'sort_order' => $achievement['sort_order'],
+                    'progress_target' => $achievement['progress_target'],
+                ],
+            );
+        }
+    }
+}

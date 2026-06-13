@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Services\Achievements\Evaluators;
+
+use App\Models\Game;
+use App\Models\Prediction;
+use App\Models\User;
+use App\Services\Achievements\AchievementAwarder;
+use App\Services\Achievements\AchievementProgressTracker;
+
+class PredictionSavedEvaluator
+{
+    public function __construct(
+        private readonly AchievementAwarder $awarder,
+        private readonly AchievementProgressTracker $progress,
+    ) {}
+
+    public function evaluate(
+        User $user,
+        Game $game,
+        ?Prediction $prediction = null,
+        bool $notify = true,
+    ): void {
+        $prediction ??= $user->predictions()->where('game_id', $game->id)->first();
+
+        $awardedAt = $prediction?->created_at ?? now();
+
+        $predictionCount = $user->predictions()->count();
+
+        if ($predictionCount === 1) {
+            $this->awarder->award($user, 'primeiro-chute', [
+                'game_id' => $game->id,
+                'awarded_at' => $awardedAt,
+            ], $notify);
+        }
+
+        $this->evaluateGroupStageCompletion($user, $awardedAt, $notify);
+    }
+
+    private function evaluateGroupStageCompletion(User $user, $awardedAt, bool $notify): void
+    {
+        $totalGroupStageGames = Game::query()
+            ->whereNotNull('id_group')
+            ->count();
+
+        if ($totalGroupStageGames === 0) {
+            return;
+        }
+
+        $userGroupStagePredictions = $user->predictions()
+            ->whereHas('game', fn ($query) => $query->whereNotNull('id_group'))
+            ->get();
+
+        $userGroupStageCount = $userGroupStagePredictions->count();
+
+        $this->progress->set($user, 'gabaritando-a-agenda', $userGroupStageCount);
+
+        if ($userGroupStageCount >= $totalGroupStageGames) {
+            $latestPredictionAt = $userGroupStagePredictions->max('created_at') ?? $awardedAt;
+
+            $this->awarder->award($user, 'gabaritando-a-agenda', [
+                'awarded_at' => $latestPredictionAt,
+            ], $notify);
+        }
+    }
+}

@@ -5,6 +5,10 @@ namespace App\Services\Scoring;
 use App\Models\Game;
 use App\Models\Prediction;
 use App\Notifications\GameFinishedPredictionScored;
+use App\Services\Achievements\AchievementAwarder;
+use App\Services\Achievements\Evaluators\DayCompleteEvaluator;
+use App\Services\Achievements\Evaluators\GameScoredEvaluator;
+use App\Services\Achievements\Evaluators\GameSocialEvaluator;
 use App\Support\NotificationDispatcher;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +17,10 @@ class ScoreGamePredictions
     public function __construct(
         private readonly MatchScoreCalculator $calculator,
         private readonly NotificationDispatcher $notifications,
+        private readonly AchievementAwarder $achievementAwarder,
+        private readonly GameScoredEvaluator $gameScoredAchievements,
+        private readonly GameSocialEvaluator $gameSocialAchievements,
+        private readonly DayCompleteEvaluator $dayCompleteAchievements,
     ) {}
 
     public function score(Game $game): bool
@@ -20,6 +28,8 @@ class ScoreGamePredictions
         if (! $game->isReadyForScoring()) {
             return false;
         }
+
+        $this->achievementAwarder->beginBatch();
 
         $scoredPredictions = [];
 
@@ -47,6 +57,11 @@ class ScoreGamePredictions
                 new GameFinishedPredictionScored($game, $prediction->points ?? 0),
             );
         }
+
+        $this->gameSocialAchievements->evaluate($game);
+        $this->dayCompleteAchievements->evaluateForGame($game);
+
+        $this->achievementAwarder->flushBatches();
 
         return true;
     }
@@ -82,6 +97,8 @@ class ScoreGamePredictions
         $prediction->points = null;
         $prediction->scored_at = null;
         $prediction->save();
+
+        $this->gameScoredAchievements->recalculateStreaks($prediction->user);
     }
 
     private function scorePrediction(Game $game, Prediction $prediction): void
@@ -107,5 +124,13 @@ class ScoreGamePredictions
         $prediction->points = $newPoints;
         $prediction->scored_at = now();
         $prediction->save();
+
+        $this->gameScoredAchievements->evaluate(
+            $prediction->user,
+            $game,
+            $prediction,
+            $newPoints,
+            $oldPoints,
+        );
     }
 }

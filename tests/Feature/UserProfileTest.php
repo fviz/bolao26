@@ -30,7 +30,8 @@ test('authenticated users can view another users profile', function () {
             ->where('profile.name', 'Profile User')
             ->where('profile.totalPoints', 350)
             ->where('profile.isCurrentUser', false)
-            ->has('finishedGames'));
+            ->has('finishedGames')
+            ->has('earnedAchievements'));
 });
 
 test('profile response does not expose email', function () {

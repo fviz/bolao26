@@ -2,6 +2,7 @@
 import { Head, Link, setLayoutProps } from '@inertiajs/vue3';
 import { Settings } from 'lucide-vue-next';
 import { watchEffect } from 'vue';
+import AchievementGrid from '@/components/achievements/AchievementGrid.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import Heading from '@/components/Heading.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -11,12 +12,15 @@ import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useInitials } from '@/composables/useInitials';
 import { edit as editProfile } from '@/routes/profile';
 import { show as showGame } from '@/routes/games';
+import { index as achievementsIndex } from '@/routes/users/achievements';
 import { show as showUser } from '@/routes/users';
+import type { Achievement } from '@/types/achievement';
 import type { Paginated, ProfileGameEntry, UserProfile } from '@/types/game';
 
 type Props = {
     profile?: UserProfile;
     finishedGames?: Paginated<ProfileGameEntry>;
+    earnedAchievements?: Achievement[];
 };
 
 const props = defineProps<Props>();
@@ -109,6 +113,35 @@ const penaltyWinnerLabel = (
                 </Button>
             </div>
         </div>
+
+        <section
+            class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border md:p-6"
+        >
+            <div
+                class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
+            >
+                <Heading
+                    variant="small"
+                    title="Medalhas"
+                    description="Conquistas no bolão"
+                />
+                <Button as-child variant="outline" size="sm" class="shrink-0">
+                    <Link :href="achievementsIndex(profile.id)">
+                        Todas Medalhas
+                    </Link>
+                </Button>
+            </div>
+
+            <AchievementGrid
+                v-if="earnedAchievements?.length"
+                class="mt-4"
+                :achievements="earnedAchievements"
+                :user-id="profile.id"
+            />
+            <p v-else class="mt-4 text-sm text-muted-foreground">
+                Nenhuma medalha conquistada ainda.
+            </p>
+        </section>
 
         <section
             class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border md:p-6"

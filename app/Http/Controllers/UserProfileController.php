@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AchievementResource;
 use App\Http\Resources\ProfileGameResource;
 use App\Http\Resources\UserProfileResource;
 use App\Models\Game;
 use App\Models\User;
+use App\Support\Achievements\UserAchievementData;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -24,6 +26,8 @@ class UserProfileController extends Controller
         return Inertia::render('users/Show', [
             'profile' => UserProfileResource::make($user),
             'finishedGames' => ProfileGameResource::collection($finishedGames),
+            'earnedAchievements' => UserAchievementData::earnedForUser($user)
+                ->map(fn (array $item) => AchievementResource::fromItem($item)->resolve()),
         ]);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -44,7 +45,9 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function userHasAchievement(User $user, string $slug): bool
 {
-    // ..
+    return $user->userAchievements()
+        ->whereHas('achievement', fn ($query) => $query->where('slug', $slug))
+        ->exists();
 }

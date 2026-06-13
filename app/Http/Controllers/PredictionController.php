@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePredictionRequest;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
+use App\Services\Achievements\AchievementAwarder;
+use App\Services\Achievements\Evaluators\PredictionSavedEvaluator;
 use App\Support\ChampionPredictions;
 use App\Support\TopScorerPredictions;
 use App\Support\WorldCupPlayers;
@@ -15,6 +17,11 @@ use Inertia\Response;
 
 class PredictionController extends Controller
 {
+    public function __construct(
+        private readonly PredictionSavedEvaluator $predictionSavedAchievements,
+        private readonly AchievementAwarder $achievementAwarder,
+    ) {}
+
     public function index(Request $request): Response
     {
         $user = $request->user();
@@ -66,10 +73,18 @@ class PredictionController extends Controller
 
     public function upsert(StorePredictionRequest $request, Game $game): RedirectResponse
     {
-        $request->user()->predictions()->updateOrCreate(
+        $user = $request->user();
+
+        $user->predictions()->updateOrCreate(
             ['game_id' => $game->id],
             $request->validated(),
         );
+
+        $prediction = $user->predictions()->where('game_id', $game->id)->first();
+
+        $this->achievementAwarder->beginBatch();
+        $this->predictionSavedAchievements->evaluate($user, $game, $prediction);
+        $this->achievementAwarder->flushBatches();
 
         Inertia::flash('toast', [
             'type' => 'success',

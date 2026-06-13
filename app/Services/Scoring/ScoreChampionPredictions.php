@@ -4,11 +4,18 @@ namespace App\Services\Scoring;
 
 use App\Models\ChampionPrediction;
 use App\Models\Game;
+use App\Services\Achievements\AchievementAwarder;
+use App\Services\Achievements\Evaluators\TournamentEvaluator;
 use Illuminate\Support\Facades\DB;
 
 class ScoreChampionPredictions
 {
     private const int CorrectChampionPoints = 300;
+
+    public function __construct(
+        private readonly AchievementAwarder $achievementAwarder,
+        private readonly TournamentEvaluator $tournamentAchievements,
+    ) {}
 
     public function scoreForFinal(Game $game): bool
     {
@@ -22,6 +29,8 @@ class ScoreChampionPredictions
             return false;
         }
 
+        $this->achievementAwarder->beginBatch();
+
         DB::transaction(function () use ($championTeamId): void {
             ChampionPrediction::query()
                 ->with('user')
@@ -29,6 +38,8 @@ class ScoreChampionPredictions
                     $this->scoreChampionPrediction($championPrediction, $championTeamId);
                 });
         });
+
+        $this->achievementAwarder->flushBatches();
 
         return true;
     }
@@ -51,5 +62,7 @@ class ScoreChampionPredictions
         $championPrediction->points = $newPoints;
         $championPrediction->scored_at = now();
         $championPrediction->save();
+
+        $this->tournamentAchievements->evaluateChampion($championPrediction->user);
     }
 }
