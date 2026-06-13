@@ -16,9 +16,38 @@ test('notifications page lists user notifications', function () {
             ->component('Notifications')
             ->has('notifications.data', 1)
             ->where('notifications.data.0.title', 'Previsões de hoje')
-            ->where('notifications.data.0.readAt', null)
-            ->where('browserPushAvailable', true),
+            ->where('notifications.data.0.readAt', null),
         );
+});
+
+test('notifications page exposes browser push availability when vapid keys are configured', function () {
+    config([
+        'webpush.vapid.public_key' => 'public-key',
+        'webpush.vapid.private_key' => 'private-key',
+    ]);
+
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('notifications.index'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('browserPushAvailable', true));
+});
+
+test('notifications page exposes browser push as unavailable when vapid keys are missing', function () {
+    config([
+        'webpush.vapid.public_key' => null,
+        'webpush.vapid.private_key' => null,
+    ]);
+
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('notifications.index'))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('browserPushAvailable', false));
 });
 
 test('user can mark own notification as read', function () {
