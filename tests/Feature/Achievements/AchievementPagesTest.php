@@ -25,8 +25,9 @@ test('profile page includes earned achievements', function () {
             ->component('users/Show')
             ->has('earnedAchievements', 1)
             ->where('earnedAchievements.0.slug', 'primeiro-chute')
+            ->where('earnedAchievements.0.tierLabel', 'Cobre')
             ->where('achievementSummary.earned', 1)
-            ->where('achievementSummary.total', 24));
+            ->where('achievementSummary.total', 25));
 });
 
 test('profile page limits earned achievements preview to six most recent', function () {
@@ -48,7 +49,7 @@ test('profile page limits earned achievements preview to six most recent', funct
             ->has('earnedAchievements', 6)
             ->where('earnedAchievements.0.slug', $achievements[6]->slug)
             ->where('achievementSummary.earned', 7)
-            ->where('achievementSummary.total', 24));
+            ->where('achievementSummary.total', 25));
 });
 
 test('user can view all achievements page', function () {
@@ -59,11 +60,12 @@ test('user can view all achievements page', function () {
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
             ->component('achievements/Index')
-            ->has('achievements', 24)
+            ->has('achievements', 25)
             ->where('profile.id', $user->id)
             ->where('achievementSummary.earned', 0)
-            ->where('achievementSummary.total', 24)
-            ->where('sort', 'catalog'));
+            ->where('achievementSummary.total', 25)
+            ->where('sort', 'catalog')
+            ->where('achievements.0.tierLabel', 'Cobre'));
 });
 
 test('achievements page can sort by name', function () {
@@ -87,7 +89,7 @@ test('achievements page can sort by tier ascending', function () {
             ->where('sort', 'tier_asc')
             ->where('achievements.0.slug', 'primeiro-chute')
             ->where('achievements.0.tier', 'bronze')
-            ->where('achievements.23.slug', 'dono-da-copa')
+            ->where('achievements.24.slug', 'dono-da-copa')
             ->where('achievements.23.tier', 'diamond'));
 });
 
@@ -101,7 +103,7 @@ test('achievements page can sort by tier descending', function () {
             ->where('sort', 'tier_desc')
             ->where('achievements.0.slug', 'iluminado')
             ->where('achievements.0.tier', 'diamond')
-            ->where('achievements.23.slug', 'zicou-o-bonde')
+            ->where('achievements.24.slug', 'leigo-da-bola')
             ->where('achievements.23.tier', 'bronze'));
 });
 

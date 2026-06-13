@@ -54,6 +54,16 @@ class PredictionOutcome
             && ($predictedHome !== $actualHome || $predictedAway !== $actualAway);
     }
 
+    public static function hasWrongResult(
+        int $predictedHome,
+        int $predictedAway,
+        int $actualHome,
+        int $actualAway,
+    ): bool {
+        return self::fromScores($predictedHome, $predictedAway)
+            !== self::fromScores($actualHome, $actualAway);
+    }
+
     public static function isNearMiss(
         int $predictedHome,
         int $predictedAway,

@@ -228,6 +228,15 @@ class AchievementSeeder extends Seeder
             'sort_order' => 24,
             'progress_target' => null,
         ],
+        [
+            'slug' => 'leigo-da-bola',
+            'name' => 'Leigo da Bola',
+            'description' => 'Errou o resultado de dois jogos seguidos.',
+            'emoji' => '🤷',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 25,
+            'progress_target' => 2,
+        ],
     ];
 
     public function run(): void

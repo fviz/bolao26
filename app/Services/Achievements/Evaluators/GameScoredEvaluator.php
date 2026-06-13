@@ -134,6 +134,7 @@ class GameScoredEvaluator
         $this->progress->set($user, 'hat-trick', min($streaks['scoringStreak'], 3));
         $this->progress->set($user, 'em-chamas', min($streaks['scoringStreak'], 5));
         $this->progress->set($user, 'iluminado', min($streaks['exactStreak'], 2));
+        $this->progress->set($user, 'leigo-da-bola', min($streaks['wrongResultStreak'], 2));
 
         if ($streaks['scoringStreak'] >= 2) {
             $this->award($user, 'no-embalo', $context, $notify);
@@ -149,6 +150,10 @@ class GameScoredEvaluator
 
         if ($streaks['exactStreak'] >= 2) {
             $this->award($user, 'iluminado', $context, $notify);
+        }
+
+        if ($streaks['wrongResultStreak'] >= 2) {
+            $this->award($user, 'leigo-da-bola', $context, $notify);
         }
     }
 

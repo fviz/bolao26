@@ -153,6 +153,61 @@ test('wrong penalty winner awards morreu na praia', function () {
     expect(userHasAchievement($user->fresh(), 'morreu-na-praia'))->toBeTrue();
 });
 
+test('wrong result streak awards leigo da bola', function () {
+    $user = User::factory()->create();
+
+    collect([
+        ['home_score' => 2, 'away_score' => 0, 'pred_home' => 0, 'pred_away' => 1],
+        ['home_score' => 1, 'away_score' => 2, 'pred_home' => 2, 'pred_away' => 0],
+    ])->each(function (array $data, int $index) use ($user) {
+        $game = Game::factory()->finished([
+            'home_score' => $data['home_score'],
+            'away_score' => $data['away_score'],
+            'scheduled_at' => now()->subDays(2 - $index),
+            'local_scheduled_at' => now()->subDays(2 - $index),
+        ])->create();
+
+        Prediction::factory()->create([
+            'user_id' => $user->id,
+            'game_id' => $game->id,
+            'home_score' => $data['pred_home'],
+            'away_score' => $data['pred_away'],
+        ]);
+
+        app(ScoreGamePredictions::class)->score($game->fresh());
+    });
+
+    expect(userHasAchievement($user->fresh(), 'leigo-da-bola'))->toBeTrue();
+});
+
+test('wrong result streak is broken by correct result', function () {
+    $user = User::factory()->create();
+
+    collect([
+        ['home_score' => 2, 'away_score' => 0, 'pred_home' => 0, 'pred_away' => 1],
+        ['home_score' => 1, 'away_score' => 0, 'pred_home' => 1, 'pred_away' => 0],
+        ['home_score' => 0, 'away_score' => 2, 'pred_home' => 2, 'pred_away' => 0],
+    ])->each(function (array $data, int $index) use ($user) {
+        $game = Game::factory()->finished([
+            'home_score' => $data['home_score'],
+            'away_score' => $data['away_score'],
+            'scheduled_at' => now()->subDays(3 - $index),
+            'local_scheduled_at' => now()->subDays(3 - $index),
+        ])->create();
+
+        Prediction::factory()->create([
+            'user_id' => $user->id,
+            'game_id' => $game->id,
+            'home_score' => $data['pred_home'],
+            'away_score' => $data['pred_away'],
+        ]);
+
+        app(ScoreGamePredictions::class)->score($game->fresh());
+    });
+
+    expect(userHasAchievement($user->fresh(), 'leigo-da-bola'))->toBeFalse();
+});
+
 test('scoring streak awards no embalo and hat trick', function () {
     $user = User::factory()->create();
 

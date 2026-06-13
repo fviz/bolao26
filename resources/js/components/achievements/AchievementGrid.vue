@@ -29,11 +29,18 @@ withDefaults(defineProps<Props>(), {
                 :achievement="achievement"
                 :show-progress="showProgress"
             />
-            <span
-                class="line-clamp-2 text-xs text-muted-foreground group-hover:text-foreground"
-            >
-                {{ achievement.name }}
-            </span>
+            <div class="flex flex-col items-center gap-0.5">
+                <span
+                    class="line-clamp-2 text-xs text-muted-foreground group-hover:text-foreground"
+                >
+                    {{ achievement.name }}
+                </span>
+                <span
+                    class="text-[10px] font-medium uppercase tracking-wide text-muted-foreground/80"
+                >
+                    {{ achievement.tierLabel }}
+                </span>
+            </div>
         </Link>
     </div>
 </template>
