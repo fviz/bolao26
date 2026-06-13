@@ -18,4 +18,14 @@ enum AchievementTier: string
             self::Diamond => 'Diamante',
         };
     }
+
+    public function rank(): int
+    {
+        return match ($this) {
+            self::Bronze => 1,
+            self::Silver => 2,
+            self::Gold => 3,
+            self::Diamond => 4,
+        };
+    }
 }

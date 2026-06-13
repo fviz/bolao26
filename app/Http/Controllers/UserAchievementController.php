@@ -15,7 +15,7 @@ class UserAchievementController extends Controller
 {
     public function index(Request $request, User $user): Response
     {
-        $sort = in_array($request->query('sort'), ['catalog', 'name', 'awarded'], true)
+        $sort = in_array($request->query('sort'), ['catalog', 'name', 'awarded', 'tier_asc', 'tier_desc'], true)
             ? $request->query('sort')
             : 'catalog';
 

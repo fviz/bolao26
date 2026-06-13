@@ -77,6 +77,34 @@ test('achievements page can sort by name', function () {
             ->where('achievements.0.name', 'Contra a Correnteza'));
 });
 
+test('achievements page can sort by tier ascending', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('users.achievements.index', ['user' => $user, 'sort' => 'tier_asc']))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('sort', 'tier_asc')
+            ->where('achievements.0.slug', 'primeiro-chute')
+            ->where('achievements.0.tier', 'bronze')
+            ->where('achievements.23.slug', 'dono-da-copa')
+            ->where('achievements.23.tier', 'diamond'));
+});
+
+test('achievements page can sort by tier descending', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('users.achievements.index', ['user' => $user, 'sort' => 'tier_desc']))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('sort', 'tier_desc')
+            ->where('achievements.0.slug', 'iluminado')
+            ->where('achievements.0.tier', 'diamond')
+            ->where('achievements.23.slug', 'zicou-o-bonde')
+            ->where('achievements.23.tier', 'bronze'));
+});
+
 test('achievements page can sort by last awarded', function () {
     $user = User::factory()->create();
     $first = Achievement::query()->where('slug', 'primeiro-chute')->firstOrFail();

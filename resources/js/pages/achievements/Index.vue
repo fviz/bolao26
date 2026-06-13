@@ -18,7 +18,7 @@ import { index as achievementsIndex } from '@/routes/users/achievements';
 import type { Achievement, AchievementSummary } from '@/types/achievement';
 import type { UserProfile } from '@/types/game';
 
-type SortOption = 'catalog' | 'name' | 'awarded';
+type SortOption = 'catalog' | 'name' | 'awarded' | 'tier_asc' | 'tier_desc';
 
 type Props = {
     profile?: UserProfile;
@@ -34,6 +34,8 @@ const isReady = useHasPageProp('profile');
 const sortOptions: { value: SortOption; label: string }[] = [
     { value: 'catalog', label: 'Padrão' },
     { value: 'name', label: 'Nome' },
+    { value: 'tier_asc', label: 'Nível (crescente)' },
+    { value: 'tier_desc', label: 'Nível (decrescente)' },
     { value: 'awarded', label: 'Última conquistada' },
 ];
 

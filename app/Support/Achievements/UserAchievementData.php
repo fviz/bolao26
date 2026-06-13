@@ -94,6 +94,36 @@ class UserAchievementData
                 ->values();
         }
 
+        if ($sort === 'tier_asc') {
+            return $items
+                ->sort(function (array $first, array $second): int {
+                    $tierComparison = $first['achievement']->tier->rank()
+                        <=> $second['achievement']->tier->rank();
+
+                    if ($tierComparison !== 0) {
+                        return $tierComparison;
+                    }
+
+                    return $first['achievement']->sort_order <=> $second['achievement']->sort_order;
+                })
+                ->values();
+        }
+
+        if ($sort === 'tier_desc') {
+            return $items
+                ->sort(function (array $first, array $second): int {
+                    $tierComparison = $second['achievement']->tier->rank()
+                        <=> $first['achievement']->tier->rank();
+
+                    if ($tierComparison !== 0) {
+                        return $tierComparison;
+                    }
+
+                    return $first['achievement']->sort_order <=> $second['achievement']->sort_order;
+                })
+                ->values();
+        }
+
         return $items->values();
     }
 
