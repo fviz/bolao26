@@ -25,6 +25,7 @@ class UserAchievementController extends Controller
         return Inertia::render('achievements/Index', [
             'profile' => UserProfileResource::make($user),
             'achievements' => $achievements,
+            'achievementSummary' => UserAchievementData::summaryForUser($user),
             'sort' => $sort,
         ]);
     }
@@ -43,6 +44,7 @@ class UserAchievementController extends Controller
                 'progressCurrent' => null,
                 'progressTarget' => $achievement->progress_target,
             ])->resolve(),
+            'achievementEarnedPercentage' => UserAchievementData::earnedPercentageForAchievement($achievement),
         ]);
     }
 }

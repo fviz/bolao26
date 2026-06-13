@@ -24,7 +24,31 @@ test('profile page includes earned achievements', function () {
         ->assertInertia(fn (Assert $page) => $page
             ->component('users/Show')
             ->has('earnedAchievements', 1)
-            ->where('earnedAchievements.0.slug', 'primeiro-chute'));
+            ->where('earnedAchievements.0.slug', 'primeiro-chute')
+            ->where('achievementSummary.earned', 1)
+            ->where('achievementSummary.total', 24));
+});
+
+test('profile page limits earned achievements preview to six most recent', function () {
+    $user = User::factory()->create();
+    $achievements = Achievement::query()->orderBy('sort_order')->take(7)->get();
+
+    foreach ($achievements as $index => $achievement) {
+        UserAchievement::query()->create([
+            'user_id' => $user->id,
+            'achievement_id' => $achievement->id,
+            'awarded_at' => now()->subDays(7 - $index),
+        ]);
+    }
+
+    $this->actingAs($user)
+        ->get(route('users.show', $user))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->has('earnedAchievements', 6)
+            ->where('earnedAchievements.0.slug', $achievements[6]->slug)
+            ->where('achievementSummary.earned', 7)
+            ->where('achievementSummary.total', 24));
 });
 
 test('user can view all achievements page', function () {
@@ -37,6 +61,8 @@ test('user can view all achievements page', function () {
             ->component('achievements/Index')
             ->has('achievements', 24)
             ->where('profile.id', $user->id)
+            ->where('achievementSummary.earned', 0)
+            ->where('achievementSummary.total', 24)
             ->where('sort', 'catalog'));
 });
 
@@ -88,7 +114,28 @@ test('user can view achievement detail page', function () {
             ->component('achievements/Show')
             ->where('achievement.slug', 'na-gaveta')
             ->where('achievement.name', 'Na Gaveta')
-            ->where('profile.id', $user->id));
+            ->where('profile.id', $user->id)
+            ->where('achievementEarnedPercentage', 0));
+});
+
+test('achievement detail page includes earned percentage', function () {
+    $achievement = Achievement::query()->where('slug', 'primeiro-chute')->firstOrFail();
+    $earnedUsers = User::factory()->count(2)->create();
+    $otherUsers = User::factory()->count(2)->create();
+
+    foreach ($earnedUsers as $earnedUser) {
+        UserAchievement::query()->create([
+            'user_id' => $earnedUser->id,
+            'achievement_id' => $achievement->id,
+            'awarded_at' => now(),
+        ]);
+    }
+
+    $this->actingAs($otherUsers->first())
+        ->get(route('users.achievements.show', [$otherUsers->first(), $achievement]))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('achievementEarnedPercentage', 50));
 });
 
 test('guests cannot view achievements pages', function () {

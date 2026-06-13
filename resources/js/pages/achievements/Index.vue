@@ -15,7 +15,7 @@ import {
 import { useHasPageProp } from '@/composables/useHasPageProp';
 import { show as showUser } from '@/routes/users';
 import { index as achievementsIndex } from '@/routes/users/achievements';
-import type { Achievement } from '@/types/achievement';
+import type { Achievement, AchievementSummary } from '@/types/achievement';
 import type { UserProfile } from '@/types/game';
 
 type SortOption = 'catalog' | 'name' | 'awarded';
@@ -23,6 +23,7 @@ type SortOption = 'catalog' | 'name' | 'awarded';
 type Props = {
     profile?: UserProfile;
     achievements?: Achievement[];
+    achievementSummary?: AchievementSummary;
     sort?: SortOption;
 };
 
@@ -68,6 +69,19 @@ const updateSort = (value: unknown) => {
         { preserveState: true, preserveScroll: true, replace: true },
     );
 };
+
+const achievementSummaryDescription = (
+    summary: AchievementSummary,
+    profile: UserProfile,
+): string => {
+    const count = `${summary.earned} de ${summary.total} medalhas conquistadas`;
+
+    if (profile.isCurrentUser) {
+        return count;
+    }
+
+    return `${count} por ${profile.name}`;
+};
 </script>
 
 <template>
@@ -81,9 +95,11 @@ const updateSort = (value: unknown) => {
                 variant="small"
                 title="Todas Medalhas"
                 :description="
-                    profile.isCurrentUser
-                        ? 'Suas medalhas e progresso no bolão.'
-                        : `Medalhas de ${profile.name}.`
+                    achievementSummary && profile
+                        ? achievementSummaryDescription(achievementSummary, profile)
+                        : profile.isCurrentUser
+                            ? 'Suas medalhas e progresso no bolão.'
+                            : `Medalhas de ${profile.name}.`
                 "
             />
             <Button as-child variant="outline" class="shrink-0">

@@ -97,6 +97,44 @@ class UserAchievementData
         return $items->values();
     }
 
+    public static function totalCount(): int
+    {
+        return Achievement::query()->count();
+    }
+
+    public static function earnedCountForUser(User $user): int
+    {
+        return self::buildForUser($user)
+            ->filter(fn (array $item) => $item['earned'])
+            ->count();
+    }
+
+    public static function earnedPercentageForAchievement(Achievement $achievement): int
+    {
+        $totalUsers = User::query()->count();
+
+        if ($totalUsers === 0) {
+            return 0;
+        }
+
+        $earnedCount = UserAchievement::query()
+            ->where('achievement_id', $achievement->id)
+            ->count();
+
+        return (int) round(($earnedCount / $totalUsers) * 100);
+    }
+
+    /**
+     * @return array{earned: int, total: int}
+     */
+    public static function summaryForUser(User $user): array
+    {
+        return [
+            'earned' => self::earnedCountForUser($user),
+            'total' => self::totalCount(),
+        ];
+    }
+
     /**
      * @return Collection<int, array{achievement: Achievement, earned: bool, awardedAt: ?Carbon, progressCurrent: ?int, progressTarget: ?int}>
      */

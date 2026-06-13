@@ -14,13 +14,14 @@ import { edit as editProfile } from '@/routes/profile';
 import { show as showGame } from '@/routes/games';
 import { index as achievementsIndex } from '@/routes/users/achievements';
 import { show as showUser } from '@/routes/users';
-import type { Achievement } from '@/types/achievement';
+import type { Achievement, AchievementSummary } from '@/types/achievement';
 import type { Paginated, ProfileGameEntry, UserProfile } from '@/types/game';
 
 type Props = {
     profile?: UserProfile;
     finishedGames?: Paginated<ProfileGameEntry>;
     earnedAchievements?: Achievement[];
+    achievementSummary?: AchievementSummary;
 };
 
 const props = defineProps<Props>();
@@ -57,6 +58,19 @@ const penaltyWinnerLabel = (
     }
 
     return '—';
+};
+
+const achievementSummaryDescription = (
+    summary: AchievementSummary,
+    profile: UserProfile,
+): string => {
+    const count = `${summary.earned} de ${summary.total} medalhas conquistadas`;
+
+    if (profile.isCurrentUser) {
+        return count;
+    }
+
+    return `${count} por ${profile.name}`;
 };
 </script>
 
@@ -123,7 +137,11 @@ const penaltyWinnerLabel = (
                 <Heading
                     variant="small"
                     title="Medalhas"
-                    description="Conquistas no bolão"
+                    :description="
+                        achievementSummary
+                            ? achievementSummaryDescription(achievementSummary, profile)
+                            : 'Conquistas no bolão'
+                    "
                 />
                 <Button as-child variant="outline" size="sm" class="shrink-0">
                     <Link :href="achievementsIndex(profile.id)">

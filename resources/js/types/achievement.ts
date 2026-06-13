@@ -1,5 +1,10 @@
 export type AchievementTier = 'bronze' | 'silver' | 'gold' | 'diamond';
 
+export type AchievementSummary = {
+    earned: number;
+    total: number;
+};
+
 export type Achievement = {
     slug: string;
     name: string;

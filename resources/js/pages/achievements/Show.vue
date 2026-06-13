@@ -13,6 +13,7 @@ import type { UserProfile } from '@/types/game';
 type Props = {
     profile?: UserProfile;
     achievement?: Achievement;
+    achievementEarnedPercentage?: number;
 };
 
 const props = defineProps<Props>();
@@ -81,6 +82,12 @@ const formattedAwardDate = (date: string | null): string | null => {
                     </h1>
                     <p class="max-w-md text-muted-foreground">
                         {{ achievement.description }}
+                    </p>
+                    <p
+                        v-if="achievementEarnedPercentage !== undefined"
+                        class="text-sm text-muted-foreground"
+                    >
+                        {{ achievementEarnedPercentage }}% dos usuários conquistaram esta medalha
                     </p>
                 </div>
 
