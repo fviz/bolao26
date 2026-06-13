@@ -36,10 +36,10 @@ const stageLabel = [props.featuredGame.game.stageName, props.featuredGame.game.g
                 </p>
                 <span
                     v-if="featuredGame.status === 'live'"
-                    class="inline-flex items-center gap-1.5 text-xs font-medium text-yellow-700 dark:text-yellow-400"
+                    class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-200 dark:text-emerald-400"
                 >
                     <span
-                        class="size-2 animate-pulse rounded-full bg-yellow-600 dark:bg-yellow-400"
+                        class="size-2 animate-pulse rounded-full bg-emerald-200 dark:bg-emerald-400"
                     />
                     Ao vivo
                 </span>
