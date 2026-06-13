@@ -237,6 +237,15 @@ class AchievementSeeder extends Seeder
             'sort_order' => 25,
             'progress_target' => 2,
         ],
+        [
+            'slug' => 'atrasado-do-enem',
+            'name' => 'Atrasado do Enem',
+            'description' => 'Fez aposta faltando menos de 10 minutos para o jogo.',
+            'emoji' => '⏰',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 26,
+            'progress_target' => null,
+        ],
     ];
 
     public function run(): void

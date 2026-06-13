@@ -7,6 +7,8 @@ use App\Models\Prediction;
 use App\Models\User;
 use App\Services\Achievements\AchievementAwarder;
 use App\Services\Achievements\AchievementProgressTracker;
+use App\Services\Achievements\Support\PredictionTiming;
+use Carbon\CarbonInterface;
 
 class PredictionSavedEvaluator
 {
@@ -20,10 +22,12 @@ class PredictionSavedEvaluator
         Game $game,
         ?Prediction $prediction = null,
         bool $notify = true,
+        ?CarbonInterface $placedAt = null,
     ): void {
         $prediction ??= $user->predictions()->where('game_id', $game->id)->first();
 
-        $awardedAt = $prediction?->created_at ?? now();
+        $placedAt ??= now();
+        $awardedAt = $prediction?->created_at ?? $placedAt;
 
         if (! $this->awarder->has($user, 'primeiro-chute')) {
             $firstPrediction = $user->predictions()->oldest('created_at')->first();
@@ -34,6 +38,13 @@ class PredictionSavedEvaluator
                     'awarded_at' => $firstPrediction->created_at,
                 ], $notify);
             }
+        }
+
+        if (PredictionTiming::isLateBet($game, $placedAt)) {
+            $this->awarder->award($user, 'atrasado-do-enem', [
+                'game_id' => $game->id,
+                'awarded_at' => $placedAt,
+            ], $notify);
         }
 
         $this->evaluateGroupStageCompletion($user, $awardedAt, $notify);

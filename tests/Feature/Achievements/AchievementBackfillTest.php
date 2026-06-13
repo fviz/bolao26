@@ -154,3 +154,37 @@ test('backfill awards saindo do zero for users with existing total points', func
 
     expect(userHasAchievement($user->fresh(), 'saindo-do-zero'))->toBeTrue();
 });
+
+test('backfill awards atrasado do enem for late predictions', function () {
+    $user = User::factory()->create();
+    $scheduledAt = now()->subDay();
+    $placedAt = $scheduledAt->copy()->subMinutes(5);
+
+    $game = Game::factory()->finished([
+        'home_score' => 2,
+        'away_score' => 1,
+        'scheduled_at' => $scheduledAt,
+        'local_scheduled_at' => $scheduledAt,
+        'scored_at' => $scheduledAt,
+    ])->create();
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $game->id,
+        'home_score' => 2,
+        'away_score' => 1,
+        'points' => 200,
+        'scored_at' => $scheduledAt,
+        'created_at' => $placedAt,
+    ]);
+
+    app(AchievementBackfiller::class)->backfill($user);
+
+    expect(userHasAchievement($user->fresh(), 'atrasado-do-enem'))->toBeTrue();
+
+    $award = $user->fresh()->userAchievements()
+        ->whereHas('achievement', fn ($query) => $query->where('slug', 'atrasado-do-enem'))
+        ->first();
+
+    expect($award?->awarded_at?->toDateTimeString())->toBe($placedAt->toDateTimeString());
+});

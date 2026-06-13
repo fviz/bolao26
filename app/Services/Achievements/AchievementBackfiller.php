@@ -74,6 +74,7 @@ class AchievementBackfiller
                         $prediction->game,
                         $prediction,
                         notify: false,
+                        placedAt: $prediction->created_at,
                     );
                 });
 
