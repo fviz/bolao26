@@ -2,17 +2,19 @@
 import { Head } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
 import LeaderboardList from '@/components/LeaderboardList.vue';
+import MedalLeaderboardList from '@/components/MedalLeaderboardList.vue';
 import { useHasPageProp } from '@/composables/useHasPageProp';
 import { index as rankingIndex } from '@/routes/ranking';
-import type { LeaderboardEntry } from '@/types/game';
+import type { LeaderboardEntry, MedalLeaderboardEntry } from '@/types/game';
 
 type Props = {
     leaderboard?: LeaderboardEntry[];
+    medalLeaderboard?: MedalLeaderboardEntry[];
 };
 
 defineProps<Props>();
 
-const isReady = useHasPageProp('leaderboard');
+const isReady = useHasPageProp('leaderboard', 'medalLeaderboard');
 
 defineOptions({
     layout: {
@@ -33,17 +35,31 @@ defineOptions({
         <Heading
             variant="small"
             title="Ranking"
-            description="Classificação geral do bolão por pontuação"
+            description="Classificação geral do bolão por pontuação e medalhas"
         />
 
-        <div
-            class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
-        >
-            <LeaderboardList
-                v-if="leaderboard"
-                :entries="leaderboard"
-                show-avatar
-            />
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <section
+                class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
+            >
+                <h2 class="mb-4 text-sm font-semibold">Pontuação</h2>
+                <LeaderboardList
+                    v-if="leaderboard"
+                    :entries="leaderboard"
+                    show-avatar
+                />
+            </section>
+
+            <section
+                class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border"
+            >
+                <h2 class="mb-4 text-sm font-semibold">Medalhas</h2>
+                <MedalLeaderboardList
+                    v-if="medalLeaderboard"
+                    :entries="medalLeaderboard"
+                    show-avatar
+                />
+            </section>
         </div>
     </div>
 </template>

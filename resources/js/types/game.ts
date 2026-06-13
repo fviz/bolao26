@@ -100,6 +100,18 @@ export type LeaderboardEntry = {
     isCurrentUser: boolean;
 };
 
+export type MedalLeaderboardEntry = {
+    id: number;
+    name: string;
+    avatar: string | null;
+    diamondCount: number;
+    goldCount: number;
+    silverCount: number;
+    bronzeCount: number;
+    rank: number;
+    isCurrentUser: boolean;
+};
+
 export type ChampionTeam = {
     fifaTeamId: string;
     name: string;

@@ -15,6 +15,7 @@ class RankingController extends Controller
 
         return Inertia::render('ranking/Index', [
             'leaderboard' => Leaderboard::rankedEntries($user)->values()->all(),
+            'medalLeaderboard' => Leaderboard::medalRankedEntries($user)->values()->all(),
         ]);
     }
 }

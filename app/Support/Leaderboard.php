@@ -36,6 +36,63 @@ final class Leaderboard
     }
 
     /**
+     * @return Collection<int, array{id: int, name: string, avatar: ?string, diamondCount: int, goldCount: int, silverCount: int, bronzeCount: int, rank: int, isCurrentUser: bool}>
+     */
+    public static function medalRankedEntries(?User $currentUser = null): Collection
+    {
+        $users = User::query()
+            ->select(['users.id', 'users.name', 'users.avatar_path'])
+            ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'diamond' THEN 1 END), 0) as diamond_count")
+            ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'gold' THEN 1 END), 0) as gold_count")
+            ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'silver' THEN 1 END), 0) as silver_count")
+            ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'bronze' THEN 1 END), 0) as bronze_count")
+            ->leftJoin('user_achievements', 'user_achievements.user_id', '=', 'users.id')
+            ->leftJoin('achievements', 'achievements.id', '=', 'user_achievements.achievement_id')
+            ->groupBy('users.id', 'users.name', 'users.avatar_path')
+            ->orderByDesc('diamond_count')
+            ->orderByDesc('gold_count')
+            ->orderByDesc('silver_count')
+            ->orderByDesc('bronze_count')
+            ->orderBy('users.name')
+            ->get();
+
+        $rank = 1;
+
+        return $users->values()->map(function (User $user, int $index) use ($users, &$rank, $currentUser): array {
+            if ($index > 0 && self::hasLowerMedalCount($user, $users[$index - 1])) {
+                $rank = $index + 1;
+            }
+
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+                'avatar' => $user->avatar,
+                'diamondCount' => (int) $user->diamond_count,
+                'goldCount' => (int) $user->gold_count,
+                'silverCount' => (int) $user->silver_count,
+                'bronzeCount' => (int) $user->bronze_count,
+                'rank' => $rank,
+                'isCurrentUser' => $currentUser !== null && $user->is($currentUser),
+            ];
+        });
+    }
+
+    private static function hasLowerMedalCount(User $current, User $previous): bool
+    {
+        foreach (['diamond_count', 'gold_count', 'silver_count', 'bronze_count'] as $tier) {
+            if ((int) $current->{$tier} < (int) $previous->{$tier}) {
+                return true;
+            }
+
+            if ((int) $current->{$tier} > (int) $previous->{$tier}) {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * @param  Collection<int, array{id: int, name: string, avatar: ?string, totalPoints: int, rank: int, isCurrentUser: bool}>  $entries
      * @return Collection<int, array{id: int, name: string, avatar: ?string, totalPoints: int, rank: int, isCurrentUser: bool}>
      */
