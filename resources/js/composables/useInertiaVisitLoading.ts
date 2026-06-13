@@ -4,6 +4,10 @@ import { readonly, ref, type DeepReadonly, type Ref } from 'vue';
 const isNavigating = ref(false);
 let listenersRegistered = false;
 
+function isPrefetchVisit(visit: { prefetch: boolean }): boolean {
+    return visit.prefetch;
+}
+
 function registerListeners(): void {
     if (listenersRegistered) {
         return;
@@ -11,11 +15,19 @@ function registerListeners(): void {
 
     listenersRegistered = true;
 
-    router.on('start', () => {
+    router.on('start', (event) => {
+        if (isPrefetchVisit(event.detail.visit)) {
+            return;
+        }
+
         isNavigating.value = true;
     });
 
-    router.on('finish', () => {
+    router.on('finish', (event) => {
+        if (isPrefetchVisit(event.detail.visit)) {
+            return;
+        }
+
         isNavigating.value = false;
     });
 
