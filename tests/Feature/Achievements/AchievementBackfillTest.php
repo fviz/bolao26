@@ -96,3 +96,61 @@ test('scoring without prior achievement evaluation does not duplicate medals on 
         ->whereHas('achievement', fn ($query) => $query->where('slug', 'na-gaveta'))
         ->count())->toBe(1);
 });
+
+test('backfill awards primeiro chute for users with multiple predictions', function () {
+    $user = User::factory()->create(['total_points' => 275]);
+
+    collect([
+        ['scheduled_at' => now()->subDays(3), 'points' => 75],
+        ['scheduled_at' => now()->subDays(2), 'points' => 200],
+        ['scheduled_at' => now()->subDay(), 'points' => 0],
+    ])->each(function (array $data) use ($user): void {
+        $game = Game::factory()->finished([
+            'home_score' => 2,
+            'away_score' => 1,
+            'scheduled_at' => $data['scheduled_at'],
+            'local_scheduled_at' => $data['scheduled_at'],
+            'scored_at' => $data['scheduled_at'],
+        ])->create();
+
+        Prediction::factory()->create([
+            'user_id' => $user->id,
+            'game_id' => $game->id,
+            'home_score' => 2,
+            'away_score' => 1,
+            'points' => $data['points'],
+            'scored_at' => $data['scheduled_at'],
+            'created_at' => $data['scheduled_at']->copy()->subHours(2),
+        ]);
+    });
+
+    app(AchievementBackfiller::class)->backfill($user);
+
+    expect(userHasAchievement($user->fresh(), 'primeiro-chute'))->toBeTrue();
+});
+
+test('backfill awards saindo do zero for users with existing total points', function () {
+    $user = User::factory()->create(['total_points' => 275]);
+    $scoredAt = now()->subDays(3);
+
+    $game = Game::factory()->finished([
+        'home_score' => 2,
+        'away_score' => 1,
+        'scheduled_at' => $scoredAt,
+        'local_scheduled_at' => $scoredAt,
+        'scored_at' => $scoredAt,
+    ])->create();
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $game->id,
+        'home_score' => 2,
+        'away_score' => 1,
+        'points' => 75,
+        'scored_at' => $scoredAt,
+    ]);
+
+    app(AchievementBackfiller::class)->backfill($user);
+
+    expect(userHasAchievement($user->fresh(), 'saindo-do-zero'))->toBeTrue();
+});

@@ -29,11 +29,14 @@ class GameScoredEvaluator
     ): void {
         $awardedAt = $game->scored_at ?? $game->scheduled_at ?? now();
 
-        if ($newPoints > 0) {
-            $delta = $newPoints - $oldPoints;
-            $previousTotal = $user->total_points - $delta;
+        if ($newPoints > 0 && ! $this->awarder->has($user, 'saindo-do-zero')) {
+            $hadPriorScoringPoints = Prediction::query()
+                ->where('user_id', $user->id)
+                ->where('points', '>', 0)
+                ->whereHas('game', fn ($query) => $query->where('scheduled_at', '<', $game->scheduled_at))
+                ->exists();
 
-            if ($previousTotal <= 0) {
+            if (! $hadPriorScoringPoints) {
                 $this->award($user, 'saindo-do-zero', [
                     'game_id' => $game->id,
                     'awarded_at' => $awardedAt,

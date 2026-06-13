@@ -25,13 +25,15 @@ class PredictionSavedEvaluator
 
         $awardedAt = $prediction?->created_at ?? now();
 
-        $predictionCount = $user->predictions()->count();
+        if (! $this->awarder->has($user, 'primeiro-chute')) {
+            $firstPrediction = $user->predictions()->oldest('created_at')->first();
 
-        if ($predictionCount === 1) {
-            $this->awarder->award($user, 'primeiro-chute', [
-                'game_id' => $game->id,
-                'awarded_at' => $awardedAt,
-            ], $notify);
+            if ($firstPrediction !== null) {
+                $this->awarder->award($user, 'primeiro-chute', [
+                    'game_id' => $firstPrediction->game_id,
+                    'awarded_at' => $firstPrediction->created_at,
+                ], $notify);
+            }
         }
 
         $this->evaluateGroupStageCompletion($user, $awardedAt, $notify);
