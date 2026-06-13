@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use App\Models\Game;
 use App\Models\Prediction;
-use App\Support\TeamFlagIcon;
+use App\Support\GameTeamPayload;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -31,13 +31,13 @@ class GameResource extends JsonResource
             'localScheduledAt' => $this->local_scheduled_at?->toIso8601String(),
             'stadiumName' => $this->stadium_name,
             'cityName' => $this->city_name,
-            'home' => $this->teamPayload(
+            'home' => GameTeamPayload::forSide(
                 $this->home_name,
                 $this->home_abbr,
                 $this->home_placeholder,
                 is_array($payload['Home'] ?? null) ? $payload['Home'] : null,
             ),
-            'away' => $this->teamPayload(
+            'away' => GameTeamPayload::forSide(
                 $this->away_name,
                 $this->away_abbr,
                 $this->away_placeholder,
@@ -62,23 +62,6 @@ class GameResource extends JsonResource
                 $this->relationLoaded('predictions'),
                 fn () => $this->allPredictionsPayload($request),
             ),
-        ];
-    }
-
-    /**
-     * @param  array<string, mixed>|null  $payloadSide
-     * @return array{displayName: string, abbr: string|null, flagIconCode: string|null}
-     */
-    private function teamPayload(
-        ?string $name,
-        ?string $abbr,
-        ?string $placeholder,
-        ?array $payloadSide,
-    ): array {
-        return [
-            'displayName' => $name ?? $placeholder ?? '—',
-            'abbr' => $abbr,
-            'flagIconCode' => TeamFlagIcon::forTeam($abbr, $payloadSide),
         ];
     }
 

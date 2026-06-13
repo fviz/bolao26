@@ -5,6 +5,7 @@ import { ref } from 'vue';
 import { destroy } from '@/actions/App/Http/Controllers/GameCommentController';
 import GameCommentAvatar from '@/components/games/GameCommentAvatar.vue';
 import GameCommentForm from '@/components/games/GameCommentForm.vue';
+import UserProfileLink from '@/components/users/UserProfileLink.vue';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -44,13 +45,11 @@ const formattedCreatedAt = (iso: string): string => {
             <div class="min-w-0 flex-1 space-y-1">
                 <div class="flex items-start justify-between gap-2">
                     <p class="text-sm font-medium">
-                        {{ comment.userName }}
-                        <span
-                            v-if="comment.isCurrentUser"
-                            class="text-muted-foreground font-normal"
-                        >
-                            (você)
-                        </span>
+                        <UserProfileLink
+                            :user-id="comment.userId"
+                            :user-name="comment.userName"
+                            :is-current-user="comment.isCurrentUser"
+                        />
                     </p>
                     <DropdownMenu v-if="canReply || comment.isCurrentUser">
                         <DropdownMenuTrigger as-child>

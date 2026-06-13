@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import UserProfileLink from '@/components/users/UserProfileLink.vue';
 import { useInitials } from '@/composables/useInitials';
 import type { LeaderboardEntry } from '@/types/game';
 
@@ -43,13 +44,12 @@ const { getInitials } = useInitials();
                     </AvatarFallback>
                 </Avatar>
                 <span class="min-w-0 truncate">
-                    {{ entry.rank }}º {{ entry.name }}
-                    <span
-                        v-if="showYouLabel && entry.isCurrentUser"
-                        class="font-normal"
-                    >
-                        (você)
-                    </span>
+                    {{ entry.rank }}º
+                    <UserProfileLink
+                        :user-id="entry.id"
+                        :user-name="entry.name"
+                        :is-current-user="entry.isCurrentUser && showYouLabel"
+                    />
                 </span>
             </span>
             <span class="shrink-0">{{ entry.totalPoints }}</span>

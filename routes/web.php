@@ -9,6 +9,7 @@ use App\Http\Controllers\PredictionController;
 use App\Http\Controllers\PushSubscriptionController;
 use App\Http\Controllers\RankingController;
 use App\Http\Controllers\TopScorerPredictionController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -21,6 +22,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('games/{game}', [GameController::class, 'show'])->name('games.show');
     Route::get('predictions', [PredictionController::class, 'index'])->name('predictions.index');
     Route::get('ranking', [RankingController::class, 'index'])->name('ranking.index');
+    Route::get('users/{user}', [UserProfileController::class, 'show'])->name('users.show');
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::patch('notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
     Route::patch('notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');

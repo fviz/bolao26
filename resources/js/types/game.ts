@@ -124,3 +124,23 @@ export type TopScorerPrediction = {
     playerId: string;
     points: number | null;
 };
+
+export type UserProfile = {
+    id: number;
+    name: string;
+    avatar: string | null;
+    totalPoints: number;
+    rank: number;
+    isCurrentUser: boolean;
+};
+
+export type ProfileGameEntry = {
+    id: number;
+    matchTitle: string;
+    stageName: string | null;
+    scheduledAt: string | null;
+    home: GameTeam;
+    away: GameTeam;
+    result: GameResult;
+    prediction: UserPrediction | null;
+};

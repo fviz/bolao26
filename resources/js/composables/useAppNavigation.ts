@@ -11,9 +11,9 @@ import { computed, type ComputedRef } from 'vue';
 import { useCurrentUrl } from '@/composables/useCurrentUrl';
 import { dashboard } from '@/routes';
 import { index as notificationsIndex } from '@/routes/notifications';
-import { edit as editProfile } from '@/routes/profile';
 import { index as predictionsIndex } from '@/routes/predictions';
 import { index as rankingIndex } from '@/routes/ranking';
+import { show as showUserProfile } from '@/routes/users';
 import type { NavItem } from '@/types';
 
 export type AppNavItem = NavItem & {
@@ -66,11 +66,14 @@ export function useAppNavigation(): UseAppNavigationReturn {
         },
         {
             title: 'Perfil',
-            href: editProfile(),
-            component: 'settings/Profile',
+            href: showUserProfile(page.props.auth.user.id),
+            component: 'users/Show',
             icon: User,
-            matches: (pathname: string) =>
-                pathname.startsWith('/settings') || pathname === '/rules',
+            matches: (pathname: string) => {
+                const userId = page.props.auth.user?.id;
+
+                return userId !== undefined && pathname === `/users/${userId}`;
+            },
         },
     ]);
 

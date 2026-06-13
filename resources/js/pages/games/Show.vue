@@ -5,6 +5,7 @@ import { computed, ref, watchEffect } from 'vue';
 import GameCommentsSection from '@/components/games/GameCommentsSection.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import Heading from '@/components/Heading.vue';
+import UserProfileLink from '@/components/users/UserProfileLink.vue';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import {
@@ -349,13 +350,11 @@ function showPredictionEditor(event: Event): void {
                         :class="{ 'font-semibold': prediction.isCurrentUser }"
                     >
                         <span class="text-center sm:text-left">
-                            {{ prediction.userName }}
-                            <span
-                                v-if="prediction.isCurrentUser"
-                                class="font-normal text-muted-foreground"
-                            >
-                                (você)
-                            </span>
+                            <UserProfileLink
+                                :user-id="prediction.userId"
+                                :user-name="prediction.userName"
+                                :is-current-user="prediction.isCurrentUser"
+                            />
                         </span>
                         <div class="text-center sm:text-right">
                             <p class="text-base font-medium sm:text-sm">
