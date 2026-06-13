@@ -23,7 +23,7 @@ class GameCommentFactory extends Factory
             'user_id' => User::factory(),
             'game_id' => Game::factory(),
             'parent_id' => null,
-            'body' => fake()->realTextBetween(10, 120),
+            'body' => fake()->text(fake()->numberBetween(10, 120)),
         ];
     }
 
