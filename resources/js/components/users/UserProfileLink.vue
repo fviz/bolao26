@@ -17,16 +17,16 @@ defineProps<Props>();
 <template>
     <Link
         :href="showUser(userId)"
-        class="inline-flex items-center gap-1 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        class="inline-flex min-w-0 max-w-full items-center gap-1 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
-        <span>{{ userName }}</span>
+        <span class="truncate">{{ userName }}</span>
         <FeaturedAchievementBadge
             v-if="featuredAchievement"
             :achievement="featuredAchievement"
         />
         <span
             v-if="isCurrentUser"
-            class="font-normal text-muted-foreground"
+            class="shrink-0 font-normal text-muted-foreground"
         >
             (você)
         </span>

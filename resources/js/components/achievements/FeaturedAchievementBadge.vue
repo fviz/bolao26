@@ -25,7 +25,7 @@ const sizeClasses = {
 
 <template>
     <span
-        class="inline-flex shrink-0 items-center justify-center rounded-full ring-offset-1 ring-offset-background"
+        class="inline-flex shrink-0 items-center justify-center rounded-full"
         :class="[tierClasses[achievement.tier], sizeClasses[size]]"
         :title="achievement.name"
         role="img"

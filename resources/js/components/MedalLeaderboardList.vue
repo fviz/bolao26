@@ -66,8 +66,8 @@ const tierBadges = [
                         {{ getInitials(entry.name) }}
                     </AvatarFallback>
                 </Avatar>
-                <span class="min-w-0 truncate">
-                    {{ entry.rank }}º
+                <span class="flex min-w-0 items-center gap-1">
+                    <span class="shrink-0">{{ entry.rank }}º</span>
                     <UserProfileLink
                         :user-id="entry.id"
                         :user-name="entry.name"
