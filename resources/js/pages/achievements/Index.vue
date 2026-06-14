@@ -141,6 +141,7 @@ const achievementSummaryDescription = (
                 :user-id="profile.id"
                 show-progress
                 :show-featured-actions="profile.isCurrentUser"
+                :featured-achievement-locked="profile.featuredAchievementLocked ?? false"
             />
         </section>
     </div>

@@ -7,6 +7,7 @@ export type User = {
     is_admin: boolean;
     avatar?: string;
     featuredAchievement?: FeaturedAchievement | null;
+    featuredAchievementLocked?: boolean;
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;

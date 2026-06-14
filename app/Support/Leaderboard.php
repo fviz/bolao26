@@ -39,7 +39,7 @@ final class Leaderboard
     }
 
     /**
-     * @return Collection<int, array{id: int, name: string, avatar: ?string, diamondCount: int, goldCount: int, silverCount: int, bronzeCount: int, rank: int, isCurrentUser: bool}>
+     * @return Collection<int, array{id: int, name: string, avatar: ?string, diamondCount: int, goldCount: int, silverCount: int, bronzeCount: int, lixoHumanoCount: int, rank: int, isCurrentUser: bool}>
      */
     public static function medalRankedEntries(?User $currentUser = null): Collection
     {
@@ -50,6 +50,7 @@ final class Leaderboard
             ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'gold' THEN 1 END), 0) as gold_count")
             ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'silver' THEN 1 END), 0) as silver_count")
             ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'bronze' THEN 1 END), 0) as bronze_count")
+            ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'lixo_humano' THEN 1 END), 0) as lixo_humano_count")
             ->leftJoin('user_achievements', 'user_achievements.user_id', '=', 'users.id')
             ->leftJoin('achievements', 'achievements.id', '=', 'user_achievements.achievement_id')
             ->groupBy('users.id', 'users.name', 'users.avatar_path', 'users.featured_achievement_id')
@@ -75,6 +76,7 @@ final class Leaderboard
                 'goldCount' => (int) $user->gold_count,
                 'silverCount' => (int) $user->silver_count,
                 'bronzeCount' => (int) $user->bronze_count,
+                'lixoHumanoCount' => (int) $user->lixo_humano_count,
                 'rank' => $rank,
                 'isCurrentUser' => $currentUser !== null && $user->is($currentUser),
                 'featuredAchievement' => FeaturedAchievementResource::forUser($user),

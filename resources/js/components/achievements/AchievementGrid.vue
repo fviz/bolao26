@@ -10,11 +10,13 @@ type Props = {
     userId: number;
     showProgress?: boolean;
     showFeaturedActions?: boolean;
+    featuredAchievementLocked?: boolean;
 };
 
 withDefaults(defineProps<Props>(), {
     showProgress: false,
     showFeaturedActions: false,
+    featuredAchievementLocked: false,
 });
 </script>
 
@@ -64,6 +66,7 @@ withDefaults(defineProps<Props>(), {
                 :achievement-slug="achievement.slug"
                 :is-featured="achievement.isFeatured ?? false"
                 :earned="achievement.earned"
+                :locked="featuredAchievementLocked"
                 size="sm"
             />
         </div>

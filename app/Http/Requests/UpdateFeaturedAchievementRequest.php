@@ -34,6 +34,15 @@ class UpdateFeaturedAchievementRequest extends FormRequest
     public function withValidator(Validator $validator): void
     {
         $validator->after(function (Validator $validator): void {
+            if ($this->user()->hasLockedFeaturedAchievement()) {
+                $validator->errors()->add(
+                    'achievementSlug',
+                    __('Sua medalha em destaque está bloqueada.'),
+                );
+
+                return;
+            }
+
             $slug = $this->input('achievementSlug');
 
             if ($slug === null) {

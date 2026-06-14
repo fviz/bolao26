@@ -224,5 +224,21 @@ test('medal ranked entries include users with zero medals', function () {
         ->and($entries->first()['goldCount'])->toBe(0)
         ->and($entries->first()['silverCount'])->toBe(0)
         ->and($entries->first()['bronzeCount'])->toBe(0)
+        ->and($entries->first()['lixoHumanoCount'])->toBe(0)
         ->and($entries->first()['rank'])->toBe(1);
+});
+
+test('medal ranked entries include lixo humano count', function () {
+    $user = User::factory()->create();
+    $achievement = Achievement::query()->where('slug', 'traidor-da-patria')->firstOrFail();
+
+    UserAchievement::query()->create([
+        'user_id' => $user->id,
+        'achievement_id' => $achievement->id,
+        'awarded_at' => now(),
+    ]);
+
+    $entries = Leaderboard::medalRankedEntries();
+
+    expect($entries->firstWhere('id', $user->id)['lixoHumanoCount'])->toBe(1);
 });

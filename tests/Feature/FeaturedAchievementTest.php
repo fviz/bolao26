@@ -143,3 +143,50 @@ test('achievement show page marks featured medal', function () {
             ->where('achievement.isFeatured', true)
             ->where('achievement.slug', 'primeiro-chute'));
 });
+
+test('user with traidor da patria cannot change featured medal', function () {
+    $user = User::factory()->create();
+    $traidor = awardAchievement($user, 'traidor-da-patria');
+    $user->featured_achievement_id = $traidor->id;
+    $user->save();
+
+    $other = Achievement::query()->where('slug', 'primeiro-chute')->firstOrFail();
+    awardAchievement($user, 'primeiro-chute');
+
+    $this->actingAs($user)
+        ->patch(route('users.featured-achievement.update', $user), [
+            'achievementSlug' => $other->slug,
+        ])
+        ->assertSessionHasErrors('achievementSlug');
+
+    expect($user->fresh()->featured_achievement_id)->toBe($traidor->id);
+});
+
+test('user with traidor da patria cannot clear featured medal', function () {
+    $user = User::factory()->create();
+    $traidor = awardAchievement($user, 'traidor-da-patria');
+    $user->featured_achievement_id = $traidor->id;
+    $user->save();
+
+    $this->actingAs($user)
+        ->patch(route('users.featured-achievement.update', $user), [
+            'achievementSlug' => '',
+        ])
+        ->assertSessionHasErrors('achievementSlug');
+
+    expect($user->fresh()->featured_achievement_id)->toBe($traidor->id);
+});
+
+test('profile page marks featured achievement as locked for traidor da patria', function () {
+    $user = User::factory()->create();
+    $traidor = awardAchievement($user, 'traidor-da-patria');
+    $user->featured_achievement_id = $traidor->id;
+    $user->save();
+
+    $this->actingAs($user)
+        ->get(route('users.show', $user))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('profile.featuredAchievementLocked', true)
+            ->where('profile.featuredAchievement.slug', 'traidor-da-patria'));
+});

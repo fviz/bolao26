@@ -30,6 +30,7 @@ class UserProfileResource extends JsonResource
             'rank' => $entry['rank'] ?? 1,
             'isCurrentUser' => $currentUser !== null && $currentUser->is($this->resource),
             'featuredAchievement' => FeaturedAchievementResource::forUser($this->resource),
+            'featuredAchievementLocked' => $this->resource->hasLockedFeaturedAchievement(),
         ];
     }
 }

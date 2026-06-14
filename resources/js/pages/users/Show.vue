@@ -190,11 +190,17 @@ const achievementSummaryDescription = (
                         </p>
                     </div>
                     <FeaturedAchievementPicker
-                        v-if="earnedAchievements?.length"
+                        v-if="earnedAchievements?.length && !profile.featuredAchievementLocked"
                         :user-id="profile.id"
                         :earned-achievements="earnedAchievements"
                     />
                 </div>
+                <p
+                    v-if="profile.featuredAchievementLocked"
+                    class="mt-3 text-sm text-muted-foreground"
+                >
+                    Sua medalha em destaque está bloqueada por conquistar Traidor da Pátria.
+                </p>
             </div>
 
             <AchievementGrid

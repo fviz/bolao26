@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Support\Achievements\AchievementCatalog;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -124,5 +125,18 @@ class User extends Authenticatable
     public function achievementProgress(): HasMany
     {
         return $this->hasMany(UserAchievementProgress::class);
+    }
+
+    public function hasLockedFeaturedAchievement(): bool
+    {
+        $achievementId = AchievementCatalog::id('traidor-da-patria');
+
+        if ($achievementId === null) {
+            return false;
+        }
+
+        return $this->userAchievements()
+            ->where('achievement_id', $achievementId)
+            ->exists();
     }
 }

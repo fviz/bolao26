@@ -246,6 +246,15 @@ class AchievementSeeder extends Seeder
             'sort_order' => 26,
             'progress_target' => null,
         ],
+        [
+            'slug' => 'traidor-da-patria',
+            'name' => 'Traidor da Pátria',
+            'description' => 'Apostou que o Brasil perderia e acertou. Vergonha eterna.',
+            'emoji' => '💩',
+            'tier' => AchievementTier::LixoHumano,
+            'sort_order' => 27,
+            'progress_target' => null,
+        ],
     ];
 
     public function run(): void

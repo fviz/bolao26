@@ -113,6 +113,7 @@ export type MedalLeaderboardEntry = {
     goldCount: number;
     silverCount: number;
     bronzeCount: number;
+    lixoHumanoCount: number;
     rank: number;
     isCurrentUser: boolean;
     featuredAchievement?: FeaturedAchievement | null;
@@ -151,6 +152,7 @@ export type UserProfile = {
     rank: number;
     isCurrentUser: boolean;
     featuredAchievement?: FeaturedAchievement | null;
+    featuredAchievementLocked?: boolean;
 };
 
 export type ProfileGameEntry = {

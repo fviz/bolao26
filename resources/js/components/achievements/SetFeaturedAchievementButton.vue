@@ -8,6 +8,7 @@ type Props = {
     achievementSlug: string;
     isFeatured: boolean;
     earned: boolean;
+    locked?: boolean;
     size?: 'default' | 'sm';
     variant?: 'default' | 'outline' | 'secondary';
     setLabel?: string;
@@ -15,6 +16,7 @@ type Props = {
 };
 
 withDefaults(defineProps<Props>(), {
+    locked: false,
     size: 'default',
     variant: 'outline',
     setLabel: 'Destacar',
@@ -24,7 +26,7 @@ withDefaults(defineProps<Props>(), {
 
 <template>
     <Form
-        v-if="earned"
+        v-if="earned && !locked"
         v-bind="update.form({ user: userId })"
         :options="{ preserveScroll: true }"
     >

@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const tierClasses: Record<AchievementTier, string> = {
+    lixo_humano: 'ring-stone-600/80 bg-stone-950/30',
     bronze: 'ring-amber-700/80 bg-amber-950/20',
     silver: 'ring-slate-400 bg-slate-900/20',
     gold: 'ring-yellow-500 bg-yellow-950/20',

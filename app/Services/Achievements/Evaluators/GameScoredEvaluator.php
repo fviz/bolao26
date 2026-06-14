@@ -7,6 +7,7 @@ use App\Models\Prediction;
 use App\Models\User;
 use App\Services\Achievements\AchievementAwarder;
 use App\Services\Achievements\AchievementProgressTracker;
+use App\Services\Achievements\Support\BrazilMatch;
 use App\Services\Achievements\Support\PredictionOutcome;
 use App\Services\Achievements\UserStreakCalculator;
 use Carbon\CarbonInterface;
@@ -122,6 +123,13 @@ class GameScoredEvaluator
             && ($game->home_score + $game->away_score) >= 4
         ) {
             $this->award($user, 'inocente', $context, $notify);
+        }
+
+        if (
+            BrazilMatch::predictedBrazilToLose($game, $prediction)
+            && BrazilMatch::brazilLost($game)
+        ) {
+            $this->award($user, 'traidor-da-patria', $context, $notify);
         }
     }
 

@@ -1,4 +1,9 @@
-export type AchievementTier = 'bronze' | 'silver' | 'gold' | 'diamond';
+export type AchievementTier =
+    | 'lixo_humano'
+    | 'bronze'
+    | 'silver'
+    | 'gold'
+    | 'diamond';
 
 export type AchievementSummary = {
     earned: number;

@@ -33,7 +33,7 @@ test('authenticated users can view another users profile', function () {
             ->has('finishedGames')
             ->has('earnedAchievements')
             ->where('achievementSummary.earned', 0)
-            ->where('achievementSummary.total', 26));
+            ->where('achievementSummary.total', 27));
 });
 
 test('profile response does not expose email', function () {

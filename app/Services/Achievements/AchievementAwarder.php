@@ -87,6 +87,11 @@ class AchievementAwarder
             return false;
         }
 
+        if ($slug === 'traidor-da-patria') {
+            $user->featured_achievement_id = $achievement->id;
+            $user->save();
+        }
+
         if (! $notify) {
             return true;
         }

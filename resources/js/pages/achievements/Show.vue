@@ -136,6 +136,7 @@ const formattedAwardDate = (date: string | null): string | null => {
                     :achievement-slug="achievement.slug"
                     :is-featured="achievement.isFeatured ?? false"
                     :earned="achievement.earned"
+                    :locked="profile.featuredAchievementLocked ?? false"
                     set-label="Exibir ao lado do meu nome"
                 />
             </div>

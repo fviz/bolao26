@@ -39,6 +39,11 @@ const tierBadges = [
         emoji: '🥉',
         className: 'text-amber-700',
     },
+    {
+        key: 'lixoHumanoCount' as const,
+        emoji: '💩',
+        className: 'text-stone-500',
+    },
 ];
 </script>
 

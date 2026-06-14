@@ -45,6 +45,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $user === null ? null : [
                     ...$user->toArray(),
                     'featuredAchievement' => FeaturedAchievementResource::forUser($user),
+                    'featuredAchievementLocked' => $user->hasLockedFeaturedAchievement(),
                 ],
             ],
             'notifications' => [
