@@ -72,6 +72,7 @@ const tierBadges = [
                         :user-id="entry.id"
                         :user-name="entry.name"
                         :is-current-user="entry.isCurrentUser && showYouLabel"
+                        :featured-achievement="entry.featuredAchievement"
                     />
                 </span>
             </span>

@@ -2,6 +2,7 @@
 import { Head, Link, setLayoutProps } from '@inertiajs/vue3';
 import { watchEffect } from 'vue';
 import AchievementEmblem from '@/components/achievements/AchievementEmblem.vue';
+import SetFeaturedAchievementButton from '@/components/achievements/SetFeaturedAchievementButton.vue';
 import { Button } from '@/components/ui/button';
 import { useHasPageProp } from '@/composables/useHasPageProp';
 import { show as showUser } from '@/routes/users';
@@ -128,6 +129,15 @@ const formattedAwardDate = (date: string | null): string | null => {
                         {{ achievement.progressTarget }}
                     </p>
                 </div>
+
+                <SetFeaturedAchievementButton
+                    v-if="profile.isCurrentUser && achievement.earned"
+                    :user-id="profile.id"
+                    :achievement-slug="achievement.slug"
+                    :is-featured="achievement.isFeatured ?? false"
+                    :earned="achievement.earned"
+                    set-label="Exibir ao lado do meu nome"
+                />
             </div>
         </div>
 

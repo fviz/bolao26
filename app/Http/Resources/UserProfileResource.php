@@ -18,6 +18,7 @@ class UserProfileResource extends JsonResource
     public function toArray(Request $request): array
     {
         $currentUser = $request->user();
+        $this->resource->loadMissing('featuredAchievement');
         $entries = Leaderboard::rankedEntries($currentUser);
         $entry = $entries->firstWhere('id', $this->id);
 
@@ -28,6 +29,7 @@ class UserProfileResource extends JsonResource
             'totalPoints' => $this->total_points,
             'rank' => $entry['rank'] ?? 1,
             'isCurrentUser' => $currentUser !== null && $currentUser->is($this->resource),
+            'featuredAchievement' => FeaturedAchievementResource::forUser($this->resource),
         ];
     }
 }

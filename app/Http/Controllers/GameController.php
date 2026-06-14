@@ -14,9 +14,9 @@ class GameController extends Controller
     public function show(Request $request, Game $game): Response
     {
         $game->load([
-            'predictions.user',
-            'topLevelComments.user',
-            'topLevelComments.replies.user',
+            'predictions.user.featuredAchievement',
+            'topLevelComments.user.featuredAchievement',
+            'topLevelComments.replies.user.featuredAchievement',
         ]);
         $game->loadCount('comments');
 

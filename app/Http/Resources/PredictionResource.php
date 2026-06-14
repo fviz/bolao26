@@ -16,9 +16,12 @@ class PredictionResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $this->user->loadMissing('featuredAchievement');
+
         return [
             'userId' => $this->user_id,
             'userName' => $this->user->name,
+            'featuredAchievement' => FeaturedAchievementResource::forUser($this->user),
             'homeScore' => $this->home_score,
             'awayScore' => $this->away_score,
             'penaltyWinner' => $this->penalty_winner,

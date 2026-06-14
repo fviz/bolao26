@@ -3,6 +3,9 @@ import { Head, Link, setLayoutProps } from '@inertiajs/vue3';
 import { Settings } from 'lucide-vue-next';
 import { watchEffect } from 'vue';
 import AchievementGrid from '@/components/achievements/AchievementGrid.vue';
+import AchievementEmblem from '@/components/achievements/AchievementEmblem.vue';
+import FeaturedAchievementBadge from '@/components/achievements/FeaturedAchievementBadge.vue';
+import FeaturedAchievementPicker from '@/components/achievements/FeaturedAchievementPicker.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import Heading from '@/components/Heading.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -98,8 +101,13 @@ const achievementSummaryDescription = (
                         </AvatarFallback>
                     </Avatar>
                     <div class="min-w-0 space-y-1">
-                        <h1 class="text-xl font-semibold">
-                            {{ profile.name }}
+                        <h1 class="inline-flex items-center gap-2 text-xl font-semibold">
+                            <span>{{ profile.name }}</span>
+                            <FeaturedAchievementBadge
+                                v-if="profile.featuredAchievement"
+                                :achievement="profile.featuredAchievement"
+                                size="md"
+                            />
                             <span
                                 v-if="profile.isCurrentUser"
                                 class="font-normal text-muted-foreground"
@@ -148,6 +156,45 @@ const achievementSummaryDescription = (
                         Todas Medalhas
                     </Link>
                 </Button>
+            </div>
+
+            <div
+                v-if="profile.isCurrentUser"
+                class="mt-4 rounded-lg border border-dashed border-sidebar-border/70 p-4 dark:border-sidebar-border"
+            >
+                <div
+                    class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+                >
+                    <div class="flex items-center gap-3">
+                        <template v-if="profile.featuredAchievement">
+                            <AchievementEmblem
+                                :achievement="{
+                                    ...profile.featuredAchievement,
+                                    earned: true,
+                                    progressCurrent: null,
+                                    progressTarget: null,
+                                }"
+                                size="sm"
+                            />
+                            <div>
+                                <p class="text-sm font-medium">
+                                    Medalha em destaque
+                                </p>
+                                <p class="text-sm text-muted-foreground">
+                                    {{ profile.featuredAchievement.name }}
+                                </p>
+                            </div>
+                        </template>
+                        <p v-else class="text-sm text-muted-foreground">
+                            Nenhuma medalha em destaque
+                        </p>
+                    </div>
+                    <FeaturedAchievementPicker
+                        v-if="earnedAchievements?.length"
+                        :user-id="profile.id"
+                        :earned-achievements="earnedAchievements"
+                    />
+                </div>
             </div>
 
             <AchievementGrid

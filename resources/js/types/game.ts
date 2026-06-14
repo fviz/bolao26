@@ -1,3 +1,5 @@
+import type { FeaturedAchievement } from '@/types/achievement';
+
 export type GameTeam = {
     displayName: string;
     abbr: string | null;
@@ -20,6 +22,7 @@ export type GameResult = {
 export type GamePredictionEntry = {
     userId: number;
     userName: string;
+    featuredAchievement?: FeaturedAchievement | null;
     isCurrentUser: boolean;
     homeScore?: number;
     awayScore?: number;
@@ -34,6 +37,7 @@ export type GameComment = {
     userId: number;
     userName: string;
     userAvatar: string | null;
+    featuredAchievement?: FeaturedAchievement | null;
     isCurrentUser: boolean;
     replies: GameComment[];
 };
@@ -98,6 +102,7 @@ export type LeaderboardEntry = {
     totalPoints: number;
     rank: number;
     isCurrentUser: boolean;
+    featuredAchievement?: FeaturedAchievement | null;
 };
 
 export type MedalLeaderboardEntry = {
@@ -110,6 +115,7 @@ export type MedalLeaderboardEntry = {
     bronzeCount: number;
     rank: number;
     isCurrentUser: boolean;
+    featuredAchievement?: FeaturedAchievement | null;
 };
 
 export type ChampionTeam = {
@@ -144,6 +150,7 @@ export type UserProfile = {
     totalPoints: number;
     rank: number;
     isCurrentUser: boolean;
+    featuredAchievement?: FeaturedAchievement | null;
 };
 
 export type ProfileGameEntry = {

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -101,6 +102,11 @@ class User extends Authenticatable
     public function gameComments(): HasMany
     {
         return $this->hasMany(GameComment::class);
+    }
+
+    public function featuredAchievement(): BelongsTo
+    {
+        return $this->belongsTo(Achievement::class, 'featured_achievement_id');
     }
 
     public function achievements(): BelongsToMany

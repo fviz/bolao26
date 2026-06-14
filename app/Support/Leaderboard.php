@@ -2,6 +2,7 @@
 
 namespace App\Support;
 
+use App\Http\Resources\FeaturedAchievementResource;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
@@ -13,9 +14,10 @@ final class Leaderboard
     public static function rankedEntries(?User $currentUser = null): Collection
     {
         $users = User::query()
+            ->with('featuredAchievement')
             ->orderByDesc('total_points')
             ->orderBy('name')
-            ->get(['id', 'name', 'avatar_path', 'total_points']);
+            ->get(['id', 'name', 'avatar_path', 'total_points', 'featured_achievement_id']);
 
         $rank = 1;
 
@@ -31,6 +33,7 @@ final class Leaderboard
                 'totalPoints' => $user->total_points,
                 'rank' => $rank,
                 'isCurrentUser' => $currentUser !== null && $user->is($currentUser),
+                'featuredAchievement' => FeaturedAchievementResource::forUser($user),
             ];
         });
     }
@@ -41,14 +44,15 @@ final class Leaderboard
     public static function medalRankedEntries(?User $currentUser = null): Collection
     {
         $users = User::query()
-            ->select(['users.id', 'users.name', 'users.avatar_path'])
+            ->with('featuredAchievement')
+            ->select(['users.id', 'users.name', 'users.avatar_path', 'users.featured_achievement_id'])
             ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'diamond' THEN 1 END), 0) as diamond_count")
             ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'gold' THEN 1 END), 0) as gold_count")
             ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'silver' THEN 1 END), 0) as silver_count")
             ->selectRaw("COALESCE(SUM(CASE WHEN achievements.tier = 'bronze' THEN 1 END), 0) as bronze_count")
             ->leftJoin('user_achievements', 'user_achievements.user_id', '=', 'users.id')
             ->leftJoin('achievements', 'achievements.id', '=', 'user_achievements.achievement_id')
-            ->groupBy('users.id', 'users.name', 'users.avatar_path')
+            ->groupBy('users.id', 'users.name', 'users.avatar_path', 'users.featured_achievement_id')
             ->orderByDesc('diamond_count')
             ->orderByDesc('gold_count')
             ->orderByDesc('silver_count')
@@ -73,6 +77,7 @@ final class Leaderboard
                 'bronzeCount' => (int) $user->bronze_count,
                 'rank' => $rank,
                 'isCurrentUser' => $currentUser !== null && $user->is($currentUser),
+                'featuredAchievement' => FeaturedAchievementResource::forUser($user),
             ];
         });
     }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import FeaturedAchievementBadge from '@/components/achievements/FeaturedAchievementBadge.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useInitials } from '@/composables/useInitials';
 import type { User } from '@/types';
@@ -35,7 +36,13 @@ const showAvatar = computed(
     </Avatar>
 
     <div class="grid flex-1 text-left text-sm leading-tight">
-        <span class="truncate font-medium">{{ user.name }}</span>
+        <span class="inline-flex items-center gap-1 truncate font-medium">
+            <span class="truncate">{{ user.name }}</span>
+            <FeaturedAchievementBadge
+                v-if="user.featuredAchievement"
+                :achievement="user.featuredAchievement"
+            />
+        </span>
         <span v-if="showEmail" class="truncate text-xs text-muted-foreground">{{
             user.email
         }}</span>

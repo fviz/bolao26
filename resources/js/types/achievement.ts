@@ -5,6 +5,13 @@ export type AchievementSummary = {
     total: number;
 };
 
+export type FeaturedAchievement = {
+    slug: string;
+    name: string;
+    emoji: string;
+    tier: AchievementTier;
+};
+
 export type Achievement = {
     slug: string;
     name: string;
@@ -16,4 +23,5 @@ export type Achievement = {
     awardedAt: string | null;
     progressCurrent: number | null;
     progressTarget: number | null;
+    isFeatured?: boolean;
 };

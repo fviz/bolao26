@@ -40,19 +40,21 @@ class AchievementResource extends JsonResource
                 : null,
             'progressCurrent' => $this->meta['progressCurrent'] ?? null,
             'progressTarget' => $this->meta['progressTarget'] ?? $this->progress_target,
+            'isFeatured' => $this->meta['isFeatured'] ?? false,
         ];
     }
 
     /**
      * @param  array{achievement: Achievement, earned: bool, awardedAt: ?Carbon, progressCurrent: ?int, progressTarget: ?int}  $item
      */
-    public static function fromItem(array $item): self
+    public static function fromItem(array $item, bool $isFeatured = false): self
     {
         return new self($item['achievement'], [
             'earned' => $item['earned'],
             'awardedAt' => $item['awardedAt'],
             'progressCurrent' => $item['progressCurrent'],
             'progressTarget' => $item['progressTarget'],
+            'isFeatured' => $isFeatured,
         ]);
     }
 }

@@ -136,9 +136,11 @@ const achievementSummaryDescription = (
             </div>
 
             <AchievementGrid
+                v-if="achievements?.length"
                 :achievements="achievements"
                 :user-id="profile.id"
                 show-progress
+                :show-featured-actions="profile.isCurrentUser"
             />
         </section>
     </div>

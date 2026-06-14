@@ -49,6 +49,7 @@ const formattedCreatedAt = (iso: string): string => {
                             :user-id="comment.userId"
                             :user-name="comment.userName"
                             :is-current-user="comment.isCurrentUser"
+                            :featured-achievement="comment.featuredAchievement"
                         />
                     </p>
                     <DropdownMenu v-if="canReply || comment.isCurrentUser">

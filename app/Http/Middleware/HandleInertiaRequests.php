@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\FeaturedAchievementResource;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -35,11 +36,16 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $user = $request->user()?->loadMissing('featuredAchievement');
+
         return [
             ...parent::share($request),
             'name' => config('app.name'),
             'auth' => [
-                'user' => $request->user(),
+                'user' => $user === null ? null : [
+                    ...$user->toArray(),
+                    'featuredAchievement' => FeaturedAchievementResource::forUser($user),
+                ],
             ],
             'notifications' => [
                 'unreadCount' => $request->user()?->unreadNotifications()->count() ?? 0,

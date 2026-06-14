@@ -16,6 +16,8 @@ class GameCommentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $this->user->loadMissing('featuredAchievement');
+
         $payload = [
             'id' => $this->id,
             'body' => $this->body,
@@ -23,6 +25,7 @@ class GameCommentResource extends JsonResource
             'userId' => $this->user_id,
             'userName' => $this->user->name,
             'userAvatar' => $this->user->avatar,
+            'featuredAchievement' => FeaturedAchievementResource::forUser($this->user),
             'isCurrentUser' => $request->user()?->id === $this->user_id,
         ];
 

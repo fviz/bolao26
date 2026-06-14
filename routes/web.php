@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChampionPredictionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeaturedAchievementController;
 use App\Http\Controllers\GameCommentController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\NotificationController;
@@ -26,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('users/{user}', [UserProfileController::class, 'show'])->name('users.show');
     Route::get('users/{user}/achievements', [UserAchievementController::class, 'index'])->name('users.achievements.index');
     Route::get('users/{user}/achievements/{achievement}', [UserAchievementController::class, 'show'])->name('users.achievements.show');
+    Route::patch('users/{user}/featured-achievement', [FeaturedAchievementController::class, 'update'])->name('users.featured-achievement.update');
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::patch('notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
     Route::patch('notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');

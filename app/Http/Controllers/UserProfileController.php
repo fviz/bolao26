@@ -16,6 +16,9 @@ class UserProfileController extends Controller
 {
     public function show(Request $request, User $user): Response
     {
+        $user->loadMissing('featuredAchievement');
+        $featuredSlug = $user->featuredAchievement?->slug;
+
         $finishedGames = Game::query()
             ->finished()
             ->whereHas('predictions', fn ($query) => $query->where('user_id', $user->id))
@@ -27,7 +30,10 @@ class UserProfileController extends Controller
             'profile' => UserProfileResource::make($user),
             'finishedGames' => ProfileGameResource::collection($finishedGames),
             'earnedAchievements' => UserAchievementData::earnedForUser($user, 6)
-                ->map(fn (array $item) => AchievementResource::fromItem($item)->resolve()),
+                ->map(fn (array $item) => AchievementResource::fromItem(
+                    $item,
+                    isFeatured: $item['achievement']->slug === $featuredSlug,
+                )->resolve()),
             'achievementSummary' => UserAchievementData::summaryForUser($user),
         ]);
     }

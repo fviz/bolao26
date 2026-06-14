@@ -85,6 +85,7 @@ class GameResource extends JsonResource
                 $payload = [
                     'userId' => $prediction->user_id,
                     'userName' => $prediction->user->name,
+                    'featuredAchievement' => FeaturedAchievementResource::forUser($prediction->user),
                     'isCurrentUser' => $isCurrentUser,
                 ];
 
