@@ -51,11 +51,21 @@ export function useGameSchedule() {
             return '—';
         }
 
-        return new Intl.DateTimeFormat('pt-BR', {
+        const dateValue = new Date(iso);
+        const weekdayLong = new Intl.DateTimeFormat('pt-BR', {
+            weekday: 'long',
+            timeZone,
+        }).format(dateValue);
+        const weekdayName = weekdayLong.split('-')[0]!;
+        const weekday =
+            weekdayName.charAt(0).toUpperCase() + weekdayName.slice(1);
+        const dateLabel = new Intl.DateTimeFormat('pt-BR', {
             day: 'numeric',
             month: 'long',
             timeZone,
-        }).format(new Date(iso));
+        }).format(dateValue);
+
+        return `${weekday}, ${dateLabel}`;
     };
 
     const groupGamesByDay = <T extends { scheduledAt: string | null }>(
