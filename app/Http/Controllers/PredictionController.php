@@ -51,8 +51,12 @@ class PredictionController extends Controller
         $topScorerPrediction = $user->topScorerPrediction;
 
         return Inertia::render('predictions/Index', [
-            'predictedGames' => GameResource::collection($predictedGames),
-            'missingGames' => GameResource::collection($missingGames),
+            'predictedGames' => Inertia::scroll(
+                GameResource::collection($predictedGames),
+            ),
+            'missingGames' => Inertia::scroll(
+                GameResource::collection($missingGames),
+            ),
             'championPrediction' => $championPrediction ? [
                 'fifaTeamId' => $championPrediction->fifa_team_id,
                 'points' => $championPrediction->points,

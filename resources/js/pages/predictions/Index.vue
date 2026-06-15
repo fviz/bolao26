@@ -358,10 +358,10 @@ defineOptions({
             <GamesList
                 v-if="predictedGames"
                 :games="predictedGames"
+                scroll-prop="predictedGames"
                 empty-message="Você ainda não fez nenhum palpite."
                 action-label="Ver jogo"
                 show-user-prediction
-                pagination-aria-label="Paginação de jogos com palpite"
             />
         </section>
 
@@ -375,10 +375,10 @@ defineOptions({
             <GamesList
                 v-if="missingGames"
                 :games="missingGames"
+                scroll-prop="missingGames"
                 empty-message="Nenhum jogo aberto para palpite no momento."
                 action-label="Fazer palpite"
                 show-user-prediction
-                pagination-aria-label="Paginação de jogos sem palpite"
             />
         </section>
     </div>

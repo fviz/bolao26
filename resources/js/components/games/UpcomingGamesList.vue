@@ -21,6 +21,7 @@ defineProps<Props>();
 
         <GamesList
             :games="games"
+            scroll-prop="games"
             empty-message="Nenhum jogo programado no momento."
             action-label-without-prediction="Faça seu palpite"
             action-label-with-prediction="Veja seu palpite"

@@ -8,6 +8,7 @@ import FeaturedAchievementBadge from '@/components/achievements/FeaturedAchievem
 import FeaturedAchievementPicker from '@/components/achievements/FeaturedAchievementPicker.vue';
 import GameMatchDisplay from '@/components/games/GameMatchDisplay.vue';
 import Heading from '@/components/Heading.vue';
+import LoadMoreList from '@/components/LoadMoreList.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { useGameSchedule } from '@/composables/useGameSchedule';
@@ -223,7 +224,12 @@ const achievementSummaryDescription = (
                 description="Palpites em jogos finalizados"
             />
 
-            <div v-if="finishedGames?.data.length" class="mt-4 flex flex-col gap-4">
+            <LoadMoreList
+                v-if="finishedGames?.data.length"
+                data="finishedGames"
+                class="mt-4"
+            >
+                <div class="flex flex-col gap-4">
                 <Link
                     v-for="game in finishedGames.data"
                     :key="game.id"
@@ -296,45 +302,8 @@ const achievementSummaryDescription = (
                     </div>
                 </Link>
 
-                <nav
-                    v-if="finishedGames.meta.last_page > 1"
-                    class="flex flex-wrap items-center justify-center gap-2 py-2"
-                    aria-label="Paginação do histórico"
-                >
-                    <Button
-                        v-if="finishedGames.links.prev"
-                        as-child
-                        variant="outline"
-                        size="sm"
-                        class="min-h-10"
-                    >
-                        <Link
-                            :href="finishedGames.links.prev"
-                            preserve-scroll
-                        >
-                            Anterior
-                        </Link>
-                    </Button>
-                    <span class="px-2 text-sm text-muted-foreground">
-                        Página {{ finishedGames.meta.current_page }} de
-                        {{ finishedGames.meta.last_page }}
-                    </span>
-                    <Button
-                        v-if="finishedGames.links.next"
-                        as-child
-                        variant="outline"
-                        size="sm"
-                        class="min-h-10"
-                    >
-                        <Link
-                            :href="finishedGames.links.next"
-                            preserve-scroll
-                        >
-                            Próxima
-                        </Link>
-                    </Button>
-                </nav>
-            </div>
+                </div>
+            </LoadMoreList>
 
             <p v-else class="mt-4 text-sm text-muted-foreground">
                 Nenhum palpite em jogos finalizados ainda.

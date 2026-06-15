@@ -45,7 +45,9 @@ class DashboardController extends Controller
         $earnedAchievementsCount = UserAchievementData::earnedCountForUser($user);
 
         return Inertia::render('Dashboard', [
-            'games' => GameResource::collection($games),
+            'games' => Inertia::scroll(
+                GameResource::collection($games),
+            ),
             'userTotalPoints' => $user->total_points,
             'userRank' => $userEntry['rank'] ?? 1,
             'nextGame' => $nextGame ? GameResource::make($nextGame) : null,

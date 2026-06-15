@@ -28,7 +28,9 @@ class UserProfileController extends Controller
 
         return Inertia::render('users/Show', [
             'profile' => UserProfileResource::make($user),
-            'finishedGames' => ProfileGameResource::collection($finishedGames),
+            'finishedGames' => Inertia::scroll(
+                ProfileGameResource::collection($finishedGames),
+            ),
             'earnedAchievements' => UserAchievementData::earnedForUser($user, 6)
                 ->map(fn (array $item) => AchievementResource::fromItem(
                     $item,
