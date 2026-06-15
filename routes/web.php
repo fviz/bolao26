@@ -21,6 +21,7 @@ Route::inertia('/', 'Welcome', [
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('games', [GameController::class, 'index'])->name('games.index');
     Route::get('games/{game}', [GameController::class, 'show'])->name('games.show');
     Route::get('predictions', [PredictionController::class, 'index'])->name('predictions.index');
     Route::get('ranking', [RankingController::class, 'index'])->name('ranking.index');

@@ -11,6 +11,26 @@ use Inertia\Response;
 
 class GameController extends Controller
 {
+    public function index(Request $request): Response
+    {
+        $user = $request->user();
+
+        $games = Game::query()
+            ->with([
+                'predictions' => fn ($query) => $query->where('user_id', $user->id),
+            ])
+            ->withCount('comments')
+            ->orderBy('scheduled_at')
+            ->paginate(12)
+            ->withQueryString();
+
+        return Inertia::render('games/Index', [
+            'games' => Inertia::scroll(
+                GameResource::collection($games),
+            ),
+        ]);
+    }
+
     public function show(Request $request, Game $game): Response
     {
         $game->load([

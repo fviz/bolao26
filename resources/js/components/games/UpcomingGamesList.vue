@@ -19,6 +19,8 @@ defineProps<Props>();
             class="text-center"
         />
 
+        <slot />
+
         <GamesList
             :games="games"
             scroll-prop="games"

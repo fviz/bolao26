@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { useHasPageProp } from '@/composables/useHasPageProp';
 import { useWebPush } from '@/composables/useWebPush';
 import { dashboard } from '@/routes';
+import { index as gamesIndex } from '@/routes/games';
 import { index as predictionsIndex } from '@/routes/predictions';
 import { index as rankingIndex } from '@/routes/ranking';
 import { index as achievementsIndex } from '@/routes/users/achievements';
@@ -236,7 +237,13 @@ defineOptions({
             </Link>
         </div>
 
-        <UpcomingGamesList v-if="games" :games="games" />
+        <UpcomingGamesList v-if="games" :games="games">
+            <Button as-child variant="outline" size="sm" class="mx-auto w-fit">
+                <Link :href="gamesIndex()">
+                    Ver jogos passados
+                </Link>
+            </Button>
+        </UpcomingGamesList>
 
     </div>
 </template>
