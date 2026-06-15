@@ -35,7 +35,7 @@ function teamLabel(team: GameTeam): string {
             <span class="truncate font-medium">{{ teamLabel(home) }}</span>
         </span>
         <span
-            class="shrink-0 text-sm text-muted-foreground"
+            class="shrink-0 text-sm"
             :class="layout === 'stacked' ? '' : 'px-0.5'"
             >×</span
         >
