@@ -15,10 +15,6 @@ const props = defineProps<Props>();
 const { formatScheduledAt } = useGameSchedule();
 
 const schedule = formatScheduledAt(props.featuredGame.game.scheduledAt);
-
-const stageLabel = [props.featuredGame.game.stageName, props.featuredGame.game.groupName]
-    .filter(Boolean)
-    .join(' · ');
 </script>
 
 <template>
