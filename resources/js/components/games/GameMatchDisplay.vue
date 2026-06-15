@@ -11,6 +11,10 @@ type Props = {
 withDefaults(defineProps<Props>(), {
     layout: 'inline',
 });
+
+function teamLabel(team: GameTeam): string {
+    return team.abbr || team.displayName;
+}
 </script>
 
 <template>
@@ -28,7 +32,7 @@ withDefaults(defineProps<Props>(), {
                 class="shrink-0 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
                 >{{ home.abbr }}</span
             >
-            <span class="truncate font-medium">{{ home.abbr }}</span>
+            <span class="truncate font-medium">{{ teamLabel(home) }}</span>
         </span>
         <span
             class="shrink-0 text-sm text-muted-foreground"
@@ -42,7 +46,7 @@ withDefaults(defineProps<Props>(), {
                 class="shrink-0 rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground"
                 >{{ away.abbr }}</span
             >
-            <span class="truncate font-medium">{{ away.abbr }}</span>
+            <span class="truncate font-medium">{{ teamLabel(away) }}</span>
         </span>
     </div>
 </template>
