@@ -63,8 +63,7 @@ defineOptions({
                 </tr>
                 <tr class="bg-gray-50 dark:bg-gray-900">
                     <td class="pl-4">
-                        Bom palpite do vencedor + número de gols de um
-                        time<br />
+                        Bom palpite do vencedor + número de gols de um time<br />
                         <span class="text-sm text-gray-500"
                             >Por exemplo, palpite de 3-0, resultado 3-1</span
                         >
@@ -120,8 +119,7 @@ defineOptions({
             <tbody class="rounded-xl">
                 <tr class="bg-gray-50 dark:bg-gray-900">
                     <td class="py-2 pl-4">
-                        Palpite perfeito de empate e vencedor nos
-                        pênaltis<br />
+                        Palpite perfeito de empate e vencedor nos pênaltis<br />
                         <span class="text-sm text-gray-500"
                             >Por exemplo, palpite de 2-2 e time B nos pênaltis,
                             resultado 2-2 e time B nos pênaltis</span

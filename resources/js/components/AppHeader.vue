@@ -62,7 +62,6 @@ const mainNavItems: NavItem[] = [
 ];
 
 const rightNavItems: NavItem[] = [
-
     {
         title: 'Regras do Bolão',
         href: rules(),

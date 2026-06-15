@@ -56,10 +56,7 @@ const tierBadges = [
             :class="{ 'font-semibold': entry.isCurrentUser }"
         >
             <span class="flex min-w-0 items-center gap-2">
-                <Avatar
-                    v-if="showAvatar"
-                    class="size-8 border bg-muted"
-                >
+                <Avatar v-if="showAvatar" class="size-8 border bg-muted">
                     <AvatarImage
                         v-if="entry.avatar"
                         :src="entry.avatar"
@@ -82,23 +79,22 @@ const tierBadges = [
                 </span>
             </span>
             <span class="flex shrink-0 items-center gap-2">
-                <template
-                    v-for="tier in tierBadges"
-                    :key="tier.key"
-                >
+                <template v-for="tier in tierBadges" :key="tier.key">
                     <span
                         v-if="entry[tier.key] > 0"
                         class="inline-flex items-center gap-0.5 tabular-nums"
                         :class="tier.className"
                     >
-                        <span role="img" :aria-hidden="true">{{ tier.emoji }}</span>
+                        <span role="img" :aria-hidden="true">{{
+                            tier.emoji
+                        }}</span>
                         {{ entry[tier.key] }}
                     </span>
                 </template>
             </span>
         </li>
     </ol>
-    <p v-else class="text-muted-foreground text-sm">
+    <p v-else class="text-sm text-muted-foreground">
         Nenhuma medalha conquistada ainda.
     </p>
 </template>

@@ -20,7 +20,7 @@ const schedule = formatScheduledAt(props.featuredGame.game.scheduledAt);
 <template>
     <Link
         :href="showGame(featuredGame.game.id)"
-        class="group relative flex flex-col justify-between gap-2 rounded-xl bg-emerald-700 p-4 transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 dark:bg-emerald-950 dark:hover:bg-emerald-900"
+        class="group relative flex flex-col justify-between gap-2 rounded-xl bg-emerald-700 p-4 transition-colors hover:bg-emerald-600 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none dark:bg-emerald-950 dark:hover:bg-emerald-900"
         :aria-label="`Ver jogo — ${featuredGame.game.matchTitle}`"
     >
         <div class="flex flex-col gap-2 text-emerald-200 dark:text-white">
@@ -49,7 +49,10 @@ const schedule = formatScheduledAt(props.featuredGame.game.scheduledAt);
             />
 
             <p
-                v-if="featuredGame.status === 'finished' && featuredGame.game.result"
+                v-if="
+                    featuredGame.status === 'finished' &&
+                    featuredGame.game.result
+                "
                 class="text-2xl font-black text-emerald-200 dark:text-white"
             >
                 {{ featuredGame.game.result.homeScore }}
@@ -59,9 +62,9 @@ const schedule = formatScheduledAt(props.featuredGame.game.scheduledAt);
 
             <p
                 v-if="
-                    featuredGame.status === 'finished'
-                    && featuredGame.game.userPrediction?.points !== null
-                    && featuredGame.game.userPrediction?.points !== undefined
+                    featuredGame.status === 'finished' &&
+                    featuredGame.game.userPrediction?.points !== null &&
+                    featuredGame.game.userPrediction?.points !== undefined
                 "
                 class="text-sm font-semibold text-emerald-200 dark:text-white"
             >

@@ -52,7 +52,9 @@ export const useTwoFactorAuth = (): UseTwoFactorAuthReturn => {
 
             manualSetupKey.value = key;
         } catch {
-            errors.value.push('Não foi possível carregar a chave de configuração.');
+            errors.value.push(
+                'Não foi possível carregar a chave de configuração.',
+            );
             manualSetupKey.value = null;
         }
     };
@@ -80,7 +82,9 @@ export const useTwoFactorAuth = (): UseTwoFactorAuthReturn => {
                 recoveryCodes(),
             )) as string[];
         } catch {
-            errors.value.push('Não foi possível carregar os códigos de recuperação.');
+            errors.value.push(
+                'Não foi possível carregar os códigos de recuperação.',
+            );
             recoveryCodesList.value = [];
         }
     };

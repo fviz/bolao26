@@ -21,7 +21,7 @@ function teamLabel(team: GameTeam): string {
     <div
         :class="
             layout === 'stacked'
-                ? 'flex flex-col items-center gap-1 rounded-lg border py-1.5 text-center [&_.fi]:text-base md:gap-2 md:rounded-xl md:py-2 md:[&_.fi]:text-lg'
+                ? 'flex flex-col items-center gap-1 rounded-lg border py-1.5 text-center md:gap-2 md:rounded-xl md:py-2 [&_.fi]:text-base md:[&_.fi]:text-lg'
                 : 'flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-xs'
         "
     >

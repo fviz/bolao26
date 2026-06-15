@@ -30,10 +30,7 @@ const { formatScheduledAt, groupGamesByDay } = useGameSchedule();
 const gamesByDay = computed(() => groupGamesByDay(props.games.data));
 
 const actionLabelForGame = (game: GameListItem): string => {
-    if (
-        props.actionLabelWithoutPrediction
-        && props.actionLabelWithPrediction
-    ) {
+    if (props.actionLabelWithoutPrediction && props.actionLabelWithPrediction) {
         return game.userPrediction
             ? props.actionLabelWithPrediction
             : props.actionLabelWithoutPrediction;
@@ -64,17 +61,17 @@ const actionLabelForGame = (game: GameListItem): string => {
                     </h3>
 
                     <div
-                        class="grid grid-cols-1 grid-cols-2 lg:grid-cols-3 gap-4"
+                        class="grid grid-cols-1 grid-cols-2 gap-4 lg:grid-cols-3"
                     >
                         <Link
                             v-for="game in group.games"
                             :key="game.id"
                             :href="showGame(game.id)"
-                            class="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            class="group block rounded-xl focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
                             :aria-label="`${actionLabelForGame(game)} — ${game.matchTitle}`"
                         >
                             <Card
-                                class="h-full cursor-pointer gap-0 bg-gray-100 py-0 transition-colors last:mb-0 group-hover:bg-gray-200 dark:bg-gray-900 dark:group-hover:bg-gray-800"
+                                class="h-full cursor-pointer gap-0 bg-gray-100 py-0 transition-colors group-hover:bg-gray-200 last:mb-0 dark:bg-gray-900 dark:group-hover:bg-gray-800"
                             >
                                 <CardContent class="flex flex-col gap-2 p-3">
                                     <GameMatchDisplay

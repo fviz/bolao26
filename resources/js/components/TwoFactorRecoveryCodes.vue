@@ -45,8 +45,9 @@ onMounted(async () => {
                 <LockKeyhole class="size-4" />Códigos de recuperação do 2FA
             </CardTitle>
             <CardDescription>
-                Os códigos de recuperação permitem recuperar o acesso se você perder seu
-                dispositivo 2FA. Guarde-os em um gerenciador de senhas seguro.
+                Os códigos de recuperação permitem recuperar o acesso se você
+                perder seu dispositivo 2FA. Guarde-os em um gerenciador de
+                senhas seguro.
             </CardDescription>
         </CardHeader>
         <CardContent>
@@ -58,7 +59,10 @@ onMounted(async () => {
                         :is="isRecoveryCodesVisible ? EyeOff : Eye"
                         class="size-4"
                     />
-                    {{ isRecoveryCodesVisible ? 'Ocultar' : 'Visualizar' }} códigos de recuperação
+                    {{
+                        isRecoveryCodesVisible ? 'Ocultar' : 'Visualizar'
+                    }}
+                    códigos de recuperação
                 </Button>
 
                 <Form
@@ -110,9 +114,9 @@ onMounted(async () => {
                         </div>
                     </div>
                     <p class="text-xs text-muted-foreground select-none">
-                        Cada código de recuperação pode ser usado uma vez para acessar sua
-                        conta e será removido após o uso. Se você precisar de mais,
-                        clique
+                        Cada código de recuperação pode ser usado uma vez para
+                        acessar sua conta e será removido após o uso. Se você
+                        precisar de mais, clique
                         <span class="font-bold">Recriar códigos</span> acima.
                     </p>
                 </div>

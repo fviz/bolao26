@@ -101,10 +101,10 @@ const formattedCreatedAt = (iso: string): string => {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-                <p class="text-muted-foreground text-xs">
+                <p class="text-xs text-muted-foreground">
                     {{ formattedCreatedAt(comment.createdAt) }}
                 </p>
-                <p class="text-sm whitespace-pre-wrap break-words">
+                <p class="text-sm break-words whitespace-pre-wrap">
                     {{ comment.body }}
                 </p>
             </div>

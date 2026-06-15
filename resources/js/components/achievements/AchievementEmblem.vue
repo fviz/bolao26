@@ -32,16 +32,17 @@ const sizeClasses = {
 
 const progressPercent = computed(() => {
     if (
-        props.achievement.progressTarget === null
-        || props.achievement.progressCurrent === null
-        || props.achievement.progressTarget === 0
+        props.achievement.progressTarget === null ||
+        props.achievement.progressCurrent === null ||
+        props.achievement.progressTarget === 0
     ) {
         return 0;
     }
 
     return Math.min(
         100,
-        (props.achievement.progressCurrent / props.achievement.progressTarget) * 100,
+        (props.achievement.progressCurrent / props.achievement.progressTarget) *
+            100,
     );
 });
 </script>
@@ -53,9 +54,7 @@ const progressPercent = computed(() => {
             :class="[
                 tierClasses[achievement.tier],
                 sizeClasses[size],
-                achievement.earned
-                    ? ''
-                    : 'opacity-50 grayscale',
+                achievement.earned ? '' : 'opacity-50 grayscale',
             ]"
         >
             <span role="img" :aria-label="achievement.emoji">{{
@@ -65,9 +64,9 @@ const progressPercent = computed(() => {
 
         <div
             v-if="
-                showProgress
-                && achievement.progressTarget !== null
-                && !achievement.earned
+                showProgress &&
+                achievement.progressTarget !== null &&
+                !achievement.earned
             "
             class="h-1.5 w-full max-w-[5rem] overflow-hidden rounded-full bg-muted"
         >

@@ -65,16 +65,15 @@ const formattedAwardDate = (date: string | null): string | null => {
         class="flex flex-col gap-8 p-4 md:p-6"
     >
         <div
-            class="rounded-xl border border-sidebar-border/70 p-6 dark:border-sidebar-border md:p-10"
+            class="rounded-xl border border-sidebar-border/70 p-6 md:p-10 dark:border-sidebar-border"
         >
             <div class="flex flex-col items-center gap-6 text-center">
-                <AchievementEmblem
-                    :achievement="achievement"
-                    size="lg"
-                />
+                <AchievementEmblem :achievement="achievement" size="lg" />
 
                 <div class="space-y-2">
-                    <p class="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+                    <p
+                        class="text-sm font-medium tracking-wide text-muted-foreground uppercase"
+                    >
                         {{ achievement.tierLabel }}
                     </p>
                     <h1 class="text-2xl font-semibold">
@@ -87,7 +86,8 @@ const formattedAwardDate = (date: string | null): string | null => {
                         v-if="achievementEarnedPercentage !== undefined"
                         class="text-sm text-muted-foreground"
                     >
-                        {{ achievementEarnedPercentage }}% dos usuários conquistaram esta medalha
+                        {{ achievementEarnedPercentage }}% dos usuários
+                        conquistaram esta medalha
                     </p>
                 </div>
 
@@ -110,9 +110,9 @@ const formattedAwardDate = (date: string | null): string | null => {
 
                 <div
                     v-if="
-                        !achievement.earned
-                        && achievement.progressTarget !== null
-                        && achievement.progressCurrent !== null
+                        !achievement.earned &&
+                        achievement.progressTarget !== null &&
+                        achievement.progressCurrent !== null
                     "
                     class="w-full max-w-xs space-y-2"
                 >

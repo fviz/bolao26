@@ -27,9 +27,7 @@ const open = ref(false);
 <template>
     <Dialog v-model:open="open">
         <DialogTrigger as-child>
-            <Button variant="outline" size="sm">
-                Escolher medalha
-            </Button>
+            <Button variant="outline" size="sm"> Escolher medalha </Button>
         </DialogTrigger>
         <DialogContent class="max-w-md">
             <DialogHeader>
@@ -58,7 +56,7 @@ const open = ref(false);
                     />
                     <button
                         type="submit"
-                        class="flex w-full flex-col items-center gap-2 rounded-lg p-2 text-center transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        class="flex w-full flex-col items-center gap-2 rounded-lg p-2 text-center transition-colors hover:bg-muted/50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                         :class="{
                             'ring-2 ring-primary ring-offset-2 ring-offset-background':
                                 achievement.isFeatured,
@@ -68,12 +66,14 @@ const open = ref(false);
                             :achievement="achievement"
                             size="sm"
                         />
-                        <span class="line-clamp-2 text-xs text-muted-foreground">
+                        <span
+                            class="line-clamp-2 text-xs text-muted-foreground"
+                        >
                             {{ achievement.name }}
                         </span>
                         <span
                             v-if="achievement.isFeatured"
-                            class="text-[10px] font-medium uppercase tracking-wide text-primary"
+                            class="text-[10px] font-medium tracking-wide text-primary uppercase"
                         >
                             Em destaque
                         </span>

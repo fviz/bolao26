@@ -31,9 +31,7 @@ export function useGameSchedule() {
         };
     };
 
-    const dayKeyForScheduledAt = (
-        iso: string | null | undefined,
-    ): string => {
+    const dayKeyForScheduledAt = (iso: string | null | undefined): string => {
         if (!iso) {
             return 'unknown';
         }

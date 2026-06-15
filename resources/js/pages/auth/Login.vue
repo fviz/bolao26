@@ -15,7 +15,8 @@ import { request } from '@/routes/password';
 defineOptions({
     layout: {
         title: 'Faça login em sua conta',
-        description: 'Digite seu endereço de email e senha abaixo para fazer login',
+        description:
+            'Digite seu endereço de email e senha abaixo para fazer login',
     },
 });
 

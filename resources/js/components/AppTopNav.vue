@@ -37,7 +37,10 @@ const activeItemStyles =
     <div class="hidden md:block">
         <div class="border-b border-sidebar-border/80">
             <div class="mx-auto flex h-16 items-center px-4 md:max-w-7xl">
-                <Link :href="dashboard()" class="flex shrink-0 items-center gap-x-2">
+                <Link
+                    :href="dashboard()"
+                    class="flex shrink-0 items-center gap-x-2"
+                >
                     <AppLogo />
                 </Link>
 

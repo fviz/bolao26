@@ -17,7 +17,7 @@ defineProps<Props>();
 <template>
     <Link
         :href="showUser(userId)"
-        class="inline-flex min-w-0 max-w-full items-center gap-1 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        class="inline-flex max-w-full min-w-0 items-center gap-1 hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
     >
         <span class="truncate">{{ userName }}</span>
         <FeaturedAchievementBadge

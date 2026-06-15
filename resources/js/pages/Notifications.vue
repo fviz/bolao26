@@ -44,10 +44,10 @@ function isNotificationPaginator(
     value: unknown,
 ): value is NotificationPaginator<AppNotification> {
     return (
-        typeof value === 'object'
-        && value !== null
-        && 'data' in value
-        && Array.isArray(value.data)
+        typeof value === 'object' &&
+        value !== null &&
+        'data' in value &&
+        Array.isArray(value.data)
     );
 }
 
@@ -73,19 +73,15 @@ const page = usePage();
 const isAdmin = computed(() => page.props.auth.user.is_admin);
 const showBroadcastDialog = ref(false);
 
-const {
-    isSupported,
-    permission,
-    isSubscribed,
-    refreshSubscription,
-} = useWebPush();
+const { isSupported, permission, isSubscribed, refreshSubscription } =
+    useWebPush();
 
 const showNotificationsPrompt = computed(
     () =>
-        props.browserPushAvailable
-        && isSupported.value
-        && permission.value !== 'denied'
-        && !isSubscribed.value,
+        props.browserPushAvailable &&
+        isSupported.value &&
+        permission.value !== 'denied' &&
+        !isSubscribed.value,
 );
 
 onMounted(() => {
@@ -155,9 +151,7 @@ const formatDate = (value: string | null): string => {
             <BellRing />
             <AlertTitle>Ative as notificações do navegador</AlertTitle>
             <AlertDescription>
-                <p>
-                    Receba lembretes e resultados mesmo com o app fechado.
-                </p>
+                <p>Receba lembretes e resultados mesmo com o app fechado.</p>
                 <Button as-child size="sm" class="mt-3">
                     <Link :href="editNotifications()">
                         Habilitar neste dispositivo

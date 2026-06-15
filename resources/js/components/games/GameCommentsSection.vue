@@ -14,7 +14,6 @@ type Props = {
 defineProps<Props>();
 
 const showNewCommentForm = ref(false);
-
 </script>
 
 <template>
@@ -50,7 +49,7 @@ const showNewCommentForm = ref(false);
                 />
             </ol>
 
-            <p v-else class="text-muted-foreground text-sm">
+            <p v-else class="text-sm text-muted-foreground">
                 Nenhum comentário ainda.
             </p>
         </div>

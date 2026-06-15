@@ -1,6 +1,6 @@
 import { router } from '@inertiajs/vue3';
-import { readonly, ref   } from 'vue';
-import type {DeepReadonly, Ref} from 'vue';
+import { readonly, ref } from 'vue';
+import type { DeepReadonly, Ref } from 'vue';
 
 const isNavigating = ref(false);
 let listenersRegistered = false;

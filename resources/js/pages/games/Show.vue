@@ -354,7 +354,9 @@ function showPredictionEditor(event: Event): void {
                                 :user-id="prediction.userId"
                                 :user-name="prediction.userName"
                                 :is-current-user="prediction.isCurrentUser"
-                                :featured-achievement="prediction.featuredAchievement"
+                                :featured-achievement="
+                                    prediction.featuredAchievement
+                                "
                             />
                         </span>
                         <div class="text-center sm:text-right">

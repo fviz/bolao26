@@ -1,14 +1,8 @@
 import { usePage } from '@inertiajs/vue3';
-import {
-    Bell,
-    ClipboardList,
-    Trophy,
-    User,
-    Volleyball,
-} from 'lucide-vue-next';
+import { Bell, ClipboardList, Trophy, User, Volleyball } from 'lucide-vue-next';
 import type { LucideIcon } from 'lucide-vue-next';
-import { computed  } from 'vue';
-import type {ComputedRef} from 'vue';
+import { computed } from 'vue';
+import type { ComputedRef } from 'vue';
 import { useCurrentUrl } from '@/composables/useCurrentUrl';
 import { dashboard } from '@/routes';
 import { index as notificationsIndex } from '@/routes/notifications';

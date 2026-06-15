@@ -34,8 +34,13 @@ withDefaults(defineProps<Props>(), {
             }"
         >
             <Link
-                :href="showAchievement({ user: userId, achievement: achievement.slug })"
-                class="group flex flex-col items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                :href="
+                    showAchievement({
+                        user: userId,
+                        achievement: achievement.slug,
+                    })
+                "
+                class="group flex flex-col items-center gap-2 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
             >
                 <AchievementEmblem
                     :achievement="achievement"
@@ -48,13 +53,13 @@ withDefaults(defineProps<Props>(), {
                         {{ achievement.name }}
                     </span>
                     <span
-                        class="text-[10px] font-medium uppercase tracking-wide text-muted-foreground/80"
+                        class="text-[10px] font-medium tracking-wide text-muted-foreground/80 uppercase"
                     >
                         {{ achievement.tierLabel }}
                     </span>
                     <span
                         v-if="achievement.isFeatured"
-                        class="text-[10px] font-medium uppercase tracking-wide text-primary"
+                        class="text-[10px] font-medium tracking-wide text-primary uppercase"
                     >
                         Em destaque
                     </span>

@@ -93,7 +93,6 @@ defineOptions({
         v-if="isReady"
         class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"
     >
-
         <Alert v-if="showChampionPredictionBanner">
             <Trophy />
             <AlertTitle>Palpite de campeão pendente</AlertTitle>
@@ -103,9 +102,7 @@ defineOptions({
                     palpite antes do prazo encerrar.
                 </p>
                 <Button as-child size="sm" class="mt-3">
-                    <Link :href="predictionsIndex()">
-                        Fazer palpite
-                    </Link>
+                    <Link :href="predictionsIndex()"> Fazer palpite </Link>
                 </Button>
             </AlertDescription>
         </Alert>
@@ -119,34 +116,28 @@ defineOptions({
                     palpite antes do prazo encerrar.
                 </p>
                 <Button as-child size="sm" class="mt-3">
-                    <Link :href="predictionsIndex()">
-                        Fazer palpite
-                    </Link>
+                    <Link :href="predictionsIndex()"> Fazer palpite </Link>
                 </Button>
             </AlertDescription>
         </Alert>
 
-        <div class="grid auto-rows-min gap-4 grid-cols-2 mb-8">
+        <div class="mb-8 grid auto-rows-min grid-cols-2 gap-4">
             <Link
                 :href="rankingIndex()"
                 :class="[
                     tileLinkClass,
-                    'shadow-sm bg-emerald-700 text-emerald-100 hover:bg-emerald-600 dark:bg-emerald-950 dark:text-emerald-100 dark:hover:bg-emerald-900',
+                    'bg-emerald-700 text-emerald-100 shadow-sm hover:bg-emerald-600 dark:bg-emerald-950 dark:text-emerald-100 dark:hover:bg-emerald-900',
                 ]"
                 aria-label="Minha pontuação"
             >
                 <div>
-                    <p class="text-sm">
-                        Minha pontuação
-                    </p>
+                    <p class="text-sm">Minha pontuação</p>
                 </div>
                 <div>
                     <p class="text-4xl font-black">
                         {{ userTotalPoints }}
                     </p>
-                    <p class="text-xs">
-                        pontos no total
-                    </p>
+                    <p class="text-xs">pontos no total</p>
                 </div>
                 <ArrowDownRight
                     class="absolute right-2 bottom-2 size-4 opacity-80 transition-opacity group-hover:opacity-100"
@@ -164,12 +155,8 @@ defineOptions({
                     <p class="text-sm">Ranking geral</p>
                 </div>
                 <div>
-                    <p class="text-4xl font-black">
-                        {{ userRank }}º
-                    </p>
-                    <p class="text-xs">
-                        posição no bolão
-                    </p>
+                    <p class="text-4xl font-black">{{ userRank }}º</p>
+                    <p class="text-xs">posição no bolão</p>
                 </div>
                 <ArrowDownRight
                     class="absolute right-2 bottom-2 size-4 opacity-80 transition-opacity group-hover:opacity-100"
@@ -197,10 +184,7 @@ defineOptions({
                 aria-label="Medalhas"
             >
                 <p class="text-sm">Medalhas</p>
-                <div
-                    v-if="latestAchievement"
-                    class="flex items-center gap-3"
-                >
+                <div v-if="latestAchievement" class="flex items-center gap-3">
                     <AchievementEmblem
                         :achievement="{
                             ...latestAchievement,
@@ -211,8 +195,8 @@ defineOptions({
                         size="sm"
                     />
                     <div>
-                        <p class="text-sm font-semibold leading-tight">
-                            {{ latestAchievement.name }}<br>
+                        <p class="text-sm leading-tight font-semibold">
+                            {{ latestAchievement.name }}<br />
                             <span
                                 v-if="additionalMedalsText"
                                 class="text-xs font-normal text-emerald-200 dark:text-emerald-400"
@@ -228,7 +212,10 @@ defineOptions({
                         </p>
                     </div>
                 </div>
-                <p v-else class="text-xs text-emerald-200 dark:text-emerald-400">
+                <p
+                    v-else
+                    class="text-xs text-emerald-200 dark:text-emerald-400"
+                >
                     Você ainda não tem nenhuma medalha
                 </p>
                 <ArrowDownRight
@@ -239,11 +226,8 @@ defineOptions({
 
         <UpcomingGamesList v-if="games" :games="games">
             <Button as-child variant="outline" size="sm" class="mx-auto w-fit">
-                <Link :href="gamesIndex()">
-                    Ver jogos passados
-                </Link>
+                <Link :href="gamesIndex()"> Ver jogos passados </Link>
             </Button>
         </UpcomingGamesList>
-
     </div>
 </template>

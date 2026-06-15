@@ -44,7 +44,10 @@ defineProps<Props>();
                 {{ result.homeScore }} × {{ result.awayScore }}
             </p>
             <p
-                v-if="prediction?.points !== null && prediction?.points !== undefined"
+                v-if="
+                    prediction?.points !== null &&
+                    prediction?.points !== undefined
+                "
                 class="font-medium text-green-700 dark:text-green-400"
             >
                 +{{ prediction.points }} pontos

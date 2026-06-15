@@ -54,7 +54,7 @@ const canSubmit = computed(
                     label
                 }}</Label>
                 <span
-                    class="text-muted-foreground text-xs tabular-nums"
+                    class="text-xs text-muted-foreground tabular-nums"
                     :class="{
                         'text-destructive': charCount > 250,
                     }"
@@ -75,11 +75,7 @@ const canSubmit = computed(
             <InputError :message="errors.body" />
             <InputError :message="errors.parent_id" />
         </div>
-        <Button
-            type="submit"
-            size="sm"
-            :disabled="processing || !canSubmit"
-        >
+        <Button type="submit" size="sm" :disabled="processing || !canSubmit">
             {{ submitLabel }}
         </Button>
     </Form>

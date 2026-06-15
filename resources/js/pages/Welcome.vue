@@ -59,15 +59,19 @@ withDefaults(
                 >
                     <h1 class="mb-1 font-medium">Bolão 2026!</h1>
                     <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
-                        Chegou o segundo momento mais aguardado do ano (depois do lançamento do GTA VI). <br /><br />É época de Copa do Mundo, e nada melhor que vencer no campo e no palpite.
+                        Chegou o segundo momento mais aguardado do ano (depois
+                        do lançamento do GTA VI). <br /><br />É época de Copa do
+                        Mundo, e nada melhor que vencer no campo e no palpite.
                     </p>
-                    <ul class="mb-4 flex flex-col lg:mb-6">
-
-                    </ul>
+                    <ul class="mb-4 flex flex-col lg:mb-6"></ul>
                     <ul class="flex gap-3 text-sm leading-normal">
                         <li>
                             <Link
-                                :href="$page.props.auth.user ? dashboard() : register()"
+                                :href="
+                                    $page.props.auth.user
+                                        ? dashboard()
+                                        : register()
+                                "
                                 class="inline-block rounded-sm border border-black bg-[#1b1b18] px-5 py-1.5 text-sm leading-normal text-white hover:border-black hover:bg-black dark:border-[#eeeeec] dark:bg-[#eeeeec] dark:text-[#1C1C1A] dark:hover:border-white dark:hover:bg-white"
                             >
                                 {{
@@ -80,9 +84,13 @@ withDefaults(
                     </ul>
                 </div>
                 <div
-                    class="bg-white relative -mb-px aspect-[335/364] w-full shrink-0 overflow-hidden rounded-t-lg lg:mb-0 lg:-ml-px lg:aspect-auto lg:w-[438px] lg:rounded-t-none lg:rounded-r-lg dark:bg-[#1D0002] p-2"
+                    class="relative -mb-px aspect-[335/364] w-full shrink-0 overflow-hidden rounded-t-lg bg-white p-2 lg:mb-0 lg:-ml-px lg:aspect-auto lg:w-[438px] lg:rounded-t-none lg:rounded-r-lg dark:bg-[#1D0002]"
                 >
-                    <img src="/logo.png" alt="Logo do Bolão 26" class="w-full h-full object-cover" />
+                    <img
+                        src="/logo.png"
+                        alt="Logo do Bolão 26"
+                        class="h-full w-full object-cover"
+                    />
                     <div
                         class="absolute inset-0 rounded-t-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-t-none lg:rounded-r-lg dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"
                     ></div>

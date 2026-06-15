@@ -28,10 +28,7 @@ const { getInitials } = useInitials();
             :class="{ 'font-semibold': entry.isCurrentUser }"
         >
             <span class="flex min-w-0 items-center gap-2">
-                <Avatar
-                    v-if="showAvatar"
-                    class="size-8 border bg-muted"
-                >
+                <Avatar v-if="showAvatar" class="size-8 border bg-muted">
                     <AvatarImage
                         v-if="entry.avatar"
                         :src="entry.avatar"
@@ -56,7 +53,5 @@ const { getInitials } = useInitials();
             <span class="shrink-0">{{ entry.totalPoints }}</span>
         </li>
     </ol>
-    <p v-else class="text-muted-foreground text-sm">
-        Nenhuma pontuação ainda.
-    </p>
+    <p v-else class="text-sm text-muted-foreground">Nenhuma pontuação ainda.</p>
 </template>

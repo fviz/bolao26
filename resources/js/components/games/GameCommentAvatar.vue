@@ -12,9 +12,7 @@ const props = defineProps<Props>();
 
 const { getInitials } = useInitials();
 
-const showAvatar = computed(
-    () => props.userAvatar && props.userAvatar !== '',
-);
+const showAvatar = computed(() => props.userAvatar && props.userAvatar !== '');
 </script>
 
 <template>

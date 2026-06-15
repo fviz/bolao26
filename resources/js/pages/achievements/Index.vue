@@ -89,7 +89,10 @@ const achievementSummaryDescription = (
 <template>
     <Head title="Todas Medalhas" />
 
-    <div v-if="isReady && profile && achievements" class="flex flex-col gap-8 p-4 md:p-6">
+    <div
+        v-if="isReady && profile && achievements"
+        class="flex flex-col gap-8 p-4 md:p-6"
+    >
         <div
             class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
         >
@@ -98,10 +101,13 @@ const achievementSummaryDescription = (
                 title="Todas Medalhas"
                 :description="
                     achievementSummary && profile
-                        ? achievementSummaryDescription(achievementSummary, profile)
+                        ? achievementSummaryDescription(
+                              achievementSummary,
+                              profile,
+                          )
                         : profile.isCurrentUser
-                            ? 'Suas medalhas e progresso no bolão.'
-                            : `Medalhas de ${profile.name}.`
+                          ? 'Suas medalhas e progresso no bolão.'
+                          : `Medalhas de ${profile.name}.`
                 "
             />
             <Button as-child variant="outline" class="shrink-0">
@@ -110,10 +116,15 @@ const achievementSummaryDescription = (
         </div>
 
         <section
-            class="rounded-xl border border-sidebar-border/70 p-4 dark:border-sidebar-border md:p-6"
+            class="rounded-xl border border-sidebar-border/70 p-4 md:p-6 dark:border-sidebar-border"
         >
-            <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <Label for="achievement-sort" class="text-sm text-muted-foreground">
+            <div
+                class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+            >
+                <Label
+                    for="achievement-sort"
+                    class="text-sm text-muted-foreground"
+                >
                     Ordenar por
                 </Label>
                 <Select
@@ -141,7 +152,9 @@ const achievementSummaryDescription = (
                 :user-id="profile.id"
                 show-progress
                 :show-featured-actions="profile.isCurrentUser"
-                :featured-achievement-locked="profile.featuredAchievementLocked ?? false"
+                :featured-achievement-locked="
+                    profile.featuredAchievementLocked ?? false
+                "
             />
         </section>
     </div>

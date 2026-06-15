@@ -131,9 +131,9 @@ onUnmounted(() => clearTwoFactorAuthData());
             class="flex flex-col items-start justify-start space-y-4"
         >
             <p class="text-sm text-muted-foreground">
-                Quando você habilitar a autenticação de dois fatores, você será solicitado
-                para um pin seguro durante o login. Este pin pode ser recuperado de um
-                aplicativo TOTP suportado no seu telefone.
+                Quando você habilitar a autenticação de dois fatores, você será
+                solicitado para um pin seguro durante o login. Este pin pode ser
+                recuperado de um aplicativo TOTP suportado no seu telefone.
             </p>
 
             <div>
@@ -155,8 +155,9 @@ onUnmounted(() => clearTwoFactorAuthData());
 
         <div v-else class="flex flex-col items-start justify-start space-y-4">
             <p class="text-sm text-muted-foreground">
-                Você será solicitado para um pin seguro, aleatório durante o login,
-                que você pode recuperar do aplicativo TOTP suportado no seu telefone.
+                Você será solicitado para um pin seguro, aleatório durante o
+                login, que você pode recuperar do aplicativo TOTP suportado no
+                seu telefone.
             </p>
 
             <div class="relative inline">
