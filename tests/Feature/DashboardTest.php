@@ -262,6 +262,14 @@ test('dashboard featured game shows last finished when no likely live match', fu
         'away_name' => 'Germany',
     ]);
 
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $latestFinished->id,
+        'home_score' => 2,
+        'away_score' => 1,
+        'points' => 200,
+    ]);
+
     $this->actingAs($user)
         ->get(route('dashboard'))
         ->assertOk()
@@ -269,7 +277,8 @@ test('dashboard featured game shows last finished when no likely live match', fu
             ->where('featuredGame.status', 'finished')
             ->where('featuredGame.game.id', $latestFinished->id)
             ->where('featuredGame.game.result.homeScore', 2)
-            ->where('featuredGame.game.result.awayScore', 1));
+            ->where('featuredGame.game.result.awayScore', 1)
+            ->where('featuredGame.game.userPrediction.points', 200));
 });
 
 test('dashboard featured game is null when only upcoming games exist', function () {

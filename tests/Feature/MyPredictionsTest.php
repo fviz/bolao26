@@ -100,6 +100,35 @@ test('missing games section lists only betting open games without user predictio
                 && ! collect($games)->pluck('id')->contains($bettingClosed->id)));
 });
 
+test('predicted games section exposes result and points for finished games', function () {
+    $user = User::factory()->create();
+
+    $finished = Game::factory()->finished([
+        'home_score' => 2,
+        'away_score' => 1,
+    ])->create([
+        'scheduled_at' => now()->subDay(),
+    ]);
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $finished->id,
+        'home_score' => 2,
+        'away_score' => 1,
+        'points' => 200,
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('predictions.index'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('predictedGames.data', 1)
+            ->where('predictedGames.data.0.isFinal', true)
+            ->where('predictedGames.data.0.result.homeScore', 2)
+            ->where('predictedGames.data.0.result.awayScore', 1)
+            ->where('predictedGames.data.0.userPrediction.points', 200));
+});
+
 test('predicted games are paginated twenty per page', function () {
     $user = User::factory()->create();
 

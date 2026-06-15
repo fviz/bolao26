@@ -84,6 +84,8 @@ const actionLabelForGame = (game: GameListItem): string => {
                                     <UserPredictionSummary
                                         v-if="showUserPrediction"
                                         :prediction="game.userPrediction"
+                                        :is-final="game.isFinal"
+                                        :result="game.result"
                                     />
                                     <div class="flex flex-col gap-0.5">
                                         <div

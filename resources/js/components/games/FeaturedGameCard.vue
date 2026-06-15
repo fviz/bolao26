@@ -57,6 +57,17 @@ const schedule = formatScheduledAt(props.featuredGame.game.scheduledAt);
                 {{ featuredGame.game.result.awayScore }}
             </p>
 
+            <p
+                v-if="
+                    featuredGame.status === 'finished'
+                    && featuredGame.game.userPrediction?.points !== null
+                    && featuredGame.game.userPrediction?.points !== undefined
+                "
+                class="text-sm font-semibold text-emerald-200 dark:text-white"
+            >
+                +{{ featuredGame.game.userPrediction.points }} pontos
+            </p>
+
             <div class="flex flex-col gap-0.5 text-xs">
                 <p>{{ schedule.combined }}</p>
             </div>

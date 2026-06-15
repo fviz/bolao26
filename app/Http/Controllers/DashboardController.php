@@ -41,6 +41,12 @@ class DashboardController extends Controller
 
         $featured = Game::featuredForDashboard();
 
+        if ($featured !== null) {
+            $featured['game']->load([
+                'predictions' => fn ($query) => $query->where('user_id', $user->id),
+            ]);
+        }
+
         $latestEarned = UserAchievementData::earnedForUser($user, 1)->first();
         $earnedAchievementsCount = UserAchievementData::earnedCountForUser($user);
 
