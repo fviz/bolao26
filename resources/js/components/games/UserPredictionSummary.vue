@@ -30,7 +30,7 @@ defineProps<Props>();
                 aria-hidden="true"
             />
             <span class="text-gray-600 dark:text-gray-400">
-                Palpite ainda não feito
+                Sem palpite
             </span>
         </template>
     </p>

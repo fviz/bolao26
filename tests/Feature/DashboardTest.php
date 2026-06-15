@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Achievement;
 use App\Models\ChampionPrediction;
 use App\Models\Game;
 use App\Models\GameComment;
 use App\Models\Prediction;
 use App\Models\TopScorerPrediction;
 use App\Models\User;
+use App\Models\UserAchievement;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 
@@ -104,7 +106,7 @@ test('dashboard lists only upcoming games paginated twelve per page', function (
             ->has('games.data', 1));
 });
 
-test('dashboard leaderboard widget centers on the current user', function () {
+test('dashboard shows current user rank', function () {
     foreach (range(1, 12) as $position) {
         User::factory()->create([
             'name' => "User {$position}",
@@ -118,15 +120,10 @@ test('dashboard leaderboard widget centers on the current user', function () {
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
-            ->has('leaderboard', 5)
-            ->where('leaderboard.0.rank', 8)
-            ->where('leaderboard.2.rank', 10)
-            ->where('leaderboard.4.rank', 12)
-            ->where('leaderboard.2.isCurrentUser', true)
-            ->where('leaderboard.2.name', 'User 10'));
+            ->where('userRank', 10));
 });
 
-test('dashboard leaderboard widget assigns tied ranks', function () {
+test('dashboard assigns tied rank to current user', function () {
     $user = User::factory()->create(['name' => 'Me', 'total_points' => 200]);
     User::factory()->create(['name' => 'Other', 'total_points' => 200]);
     User::factory()->create(['name' => 'Last', 'total_points' => 100]);
@@ -135,10 +132,7 @@ test('dashboard leaderboard widget assigns tied ranks', function () {
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
-            ->has('leaderboard', 3)
-            ->where('leaderboard.0.rank', 1)
-            ->where('leaderboard.1.rank', 1)
-            ->where('leaderboard.2.rank', 3));
+            ->where('userRank', 1));
 });
 
 test('dashboard exposes browser push availability when vapid keys are configured', function () {
@@ -290,6 +284,43 @@ test('dashboard featured game is null when only upcoming games exist', function 
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->where('featuredGame', null));
+});
+
+test('dashboard exposes null latest achievement when user has no medals', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('latestAchievement', null));
+});
+
+test('dashboard exposes most recently awarded medal', function () {
+    $user = User::factory()->create();
+    $olderAchievement = Achievement::query()->where('slug', 'primeiro-chute')->firstOrFail();
+    $latestAchievement = Achievement::query()->where('slug', 'na-gaveta')->firstOrFail();
+
+    UserAchievement::query()->create([
+        'user_id' => $user->id,
+        'achievement_id' => $olderAchievement->id,
+        'awarded_at' => now()->subDay(),
+    ]);
+
+    UserAchievement::query()->create([
+        'user_id' => $user->id,
+        'achievement_id' => $latestAchievement->id,
+        'awarded_at' => now(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('latestAchievement.slug', 'na-gaveta')
+            ->where('latestAchievement.name', $latestAchievement->name)
+            ->where('latestAchievement.tierLabel', 'Prata')
+            ->where('latestAchievement.earned', true));
 });
 
 test('dashboard featured game excludes stale kickoff from likely live window', function () {

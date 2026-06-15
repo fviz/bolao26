@@ -59,7 +59,7 @@ const actionLabelForGame = (game: GameListItem): string => {
         </p>
 
         <div v-else class="flex flex-col gap-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 grid-cols-2 lg:grid-cols-3 gap-4">
                 <Link
                     v-for="game in games.data"
                     :key="game.id"
@@ -93,9 +93,6 @@ const actionLabelForGame = (game: GameListItem): string => {
                                         :count="game.commentsCount"
                                     />
                                 </div>
-                                <p class="text-xs">
-                                    {{ venueLabel(game) }}
-                                </p>
                             </div>
                         </CardContent>
                     </Card>

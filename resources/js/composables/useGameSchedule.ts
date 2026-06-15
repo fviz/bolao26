@@ -10,7 +10,7 @@ export function useGameSchedule() {
 
         const dateValue = new Date(iso);
         const date = new Intl.DateTimeFormat('pt-BR', {
-            dateStyle: 'medium',
+            dateStyle: 'short',
             timeZone,
         }).format(dateValue);
         const time = new Intl.DateTimeFormat('pt-BR', {
@@ -21,7 +21,7 @@ export function useGameSchedule() {
         return {
             date,
             time,
-            combined: `${date} às ${time}`,
+            combined: `${date} ${time}`,
         };
     };
 

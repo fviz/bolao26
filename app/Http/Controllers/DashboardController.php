@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AchievementResource;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
+use App\Support\Achievements\UserAchievementData;
 use App\Support\ChampionPredictions;
 use App\Support\Leaderboard;
 use App\Support\TopScorerPredictions;
@@ -27,11 +29,7 @@ class DashboardController extends Controller
             ->withQueryString();
 
         $entries = Leaderboard::rankedEntries($user);
-        $leaderboard = Leaderboard::windowForUser(
-            $entries,
-            $user->id,
-            config('bolao.leaderboard_widget_size', 5),
-        );
+        $userEntry = $entries->firstWhere('id', $user->id);
 
         $nextGame = Game::query()
             ->upcoming()
@@ -43,10 +41,12 @@ class DashboardController extends Controller
 
         $featured = Game::featuredForDashboard();
 
+        $latestEarned = UserAchievementData::earnedForUser($user, 1)->first();
+
         return Inertia::render('Dashboard', [
             'games' => GameResource::collection($games),
             'userTotalPoints' => $user->total_points,
-            'leaderboard' => $leaderboard->values()->all(),
+            'userRank' => $userEntry['rank'] ?? 1,
             'nextGame' => $nextGame ? GameResource::make($nextGame) : null,
             'featuredGame' => $featured ? [
                 'status' => $featured['status'],
@@ -58,6 +58,9 @@ class DashboardController extends Controller
             'topScorerPredictionsOpen' => TopScorerPredictions::isOpen(),
             'hasChampionPrediction' => $user->championPrediction !== null,
             'hasTopScorerPrediction' => $user->topScorerPrediction !== null,
+            'latestAchievement' => $latestEarned
+                ? AchievementResource::fromItem($latestEarned)->resolve()
+                : null,
         ]);
     }
 }
