@@ -42,6 +42,7 @@ class DashboardController extends Controller
         $featured = Game::featuredForDashboard();
 
         $latestEarned = UserAchievementData::earnedForUser($user, 1)->first();
+        $earnedAchievementsCount = UserAchievementData::earnedCountForUser($user);
 
         return Inertia::render('Dashboard', [
             'games' => GameResource::collection($games),
@@ -61,6 +62,7 @@ class DashboardController extends Controller
             'latestAchievement' => $latestEarned
                 ? AchievementResource::fromItem($latestEarned)->resolve()
                 : null,
+            'earnedAchievementsCount' => $earnedAchievementsCount,
         ]);
     }
 }

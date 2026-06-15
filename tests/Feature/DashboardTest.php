@@ -293,7 +293,8 @@ test('dashboard exposes null latest achievement when user has no medals', functi
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
-            ->where('latestAchievement', null));
+            ->where('latestAchievement', null)
+            ->where('earnedAchievementsCount', 0));
 });
 
 test('dashboard exposes most recently awarded medal', function () {
@@ -320,7 +321,8 @@ test('dashboard exposes most recently awarded medal', function () {
             ->where('latestAchievement.slug', 'na-gaveta')
             ->where('latestAchievement.name', $latestAchievement->name)
             ->where('latestAchievement.tierLabel', 'Prata')
-            ->where('latestAchievement.earned', true));
+            ->where('latestAchievement.earned', true)
+            ->where('earnedAchievementsCount', 2));
 });
 
 test('dashboard featured game excludes stale kickoff from likely live window', function () {

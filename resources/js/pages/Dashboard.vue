@@ -27,6 +27,7 @@ type Props = {
     hasChampionPrediction?: boolean;
     hasTopScorerPrediction?: boolean;
     latestAchievement?: Achievement | null;
+    earnedAchievementsCount?: number;
 };
 
 const props = defineProps<Props>();
@@ -34,6 +35,26 @@ const props = defineProps<Props>();
 const page = usePage();
 
 const isReady = useHasPageProp('games');
+
+const additionalMedalsCount = computed(() => {
+    if (!props.latestAchievement) {
+        return 0;
+    }
+
+    return Math.max(0, (props.earnedAchievementsCount ?? 1) - 1);
+});
+
+const additionalMedalsText = computed(() => {
+    if (additionalMedalsCount.value === 1) {
+        return ' e mais 1 medalha';
+    }
+
+    if (additionalMedalsCount.value > 1) {
+        return ` e mais ${additionalMedalsCount.value} medalhas`;
+    }
+
+    return null;
+});
 
 const tileLinkClass =
     'group relative flex flex-col justify-between gap-1 rounded-xl p-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
@@ -190,9 +211,18 @@ defineOptions({
                     />
                     <div>
                         <p class="text-sm font-semibold leading-tight">
-                            {{ latestAchievement.name }}
+                            {{ latestAchievement.name }}<br>
+                            <span
+                                v-if="additionalMedalsText"
+                                class="text-xs font-normal text-emerald-200 dark:text-emerald-400"
+                            >
+                                {{ additionalMedalsText }}
+                            </span>
                         </p>
-                        <p class="text-xs text-emerald-200 dark:text-emerald-400">
+                        <p
+                            v-if="additionalMedalsCount === 0"
+                            class="text-xs text-emerald-200 dark:text-emerald-400"
+                        >
                             {{ latestAchievement.tierLabel }}
                         </p>
                     </div>
