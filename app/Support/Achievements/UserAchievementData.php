@@ -168,12 +168,16 @@ class UserAchievementData
     /**
      * @return Collection<int, array{achievement: Achievement, earned: bool, awardedAt: ?Carbon, progressCurrent: ?int, progressTarget: ?int}>
      */
-    public static function earnedForUser(User $user, int $limit = 12): Collection
+    public static function earnedForUser(User $user, ?int $limit = null): Collection
     {
-        return self::forUser($user)
+        $items = self::forUser($user)
             ->filter(fn (array $item) => $item['earned'])
-            ->sortByDesc(fn (array $item) => $item['awardedAt']?->timestamp ?? 0)
-            ->take($limit)
-            ->values();
+            ->sortByDesc(fn (array $item) => $item['awardedAt']?->timestamp ?? 0);
+
+        if ($limit !== null) {
+            $items = $items->take($limit);
+        }
+
+        return $items->values();
     }
 }

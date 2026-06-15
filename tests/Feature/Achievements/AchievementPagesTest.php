@@ -30,7 +30,7 @@ test('profile page includes earned achievements', function () {
             ->where('achievementSummary.total', 27));
 });
 
-test('profile page limits earned achievements preview to six most recent', function () {
+test('profile page shows all earned achievements sorted by most recent', function () {
     $user = User::factory()->create();
     $achievements = Achievement::query()->orderBy('sort_order')->take(7)->get();
 
@@ -46,7 +46,7 @@ test('profile page limits earned achievements preview to six most recent', funct
         ->get(route('users.show', $user))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
-            ->has('earnedAchievements', 6)
+            ->has('earnedAchievements', 7)
             ->where('earnedAchievements.0.slug', $achievements[6]->slug)
             ->where('achievementSummary.earned', 7)
             ->where('achievementSummary.total', 27));

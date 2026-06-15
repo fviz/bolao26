@@ -31,7 +31,7 @@ class UserProfileController extends Controller
             'finishedGames' => Inertia::scroll(
                 ProfileGameResource::collection($finishedGames),
             ),
-            'earnedAchievements' => UserAchievementData::earnedForUser($user, 6)
+            'earnedAchievements' => UserAchievementData::earnedForUser($user)
                 ->map(fn (array $item) => AchievementResource::fromItem(
                     $item,
                     isFeatured: $item['achievement']->slug === $featuredSlug,
