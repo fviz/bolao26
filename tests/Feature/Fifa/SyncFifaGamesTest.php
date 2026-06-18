@@ -118,6 +118,50 @@ test('sync fifa game results command updates scores for kicked off matches', fun
         ->and($game->is_final)->toBeTrue();
 });
 
+test('sync fifa game results command scores games marked final by full sync without result changes', function () {
+    fakeFifaCalendarMatchSequence(
+        'calendar-matches.json',
+        'calendar-matches-finished-status0.json',
+        'calendar-matches-finished-status0.json',
+    );
+
+    $this->artisan('games:sync-fifa')->assertSuccessful();
+
+    $game = Game::query()->where('fifa_match_id', '400021443')->first();
+    $game->update([
+        'scheduled_at' => now()->subHour(),
+        'is_final' => false,
+    ]);
+
+    $user = User::factory()->create(['total_points' => 0]);
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $game->id,
+        'home_score' => 2,
+        'away_score' => 0,
+    ]);
+
+    $this->artisan('games:sync-fifa')->assertSuccessful();
+
+    $game->refresh();
+
+    expect($game->is_final)->toBeTrue()
+        ->and($game->home_score)->toBe(2)
+        ->and($game->away_score)->toBe(0)
+        ->and($game->scored_at)->toBeNull();
+
+    $this->artisan('games:sync-fifa-results')
+        ->assertSuccessful();
+
+    $game->refresh();
+    $user->refresh();
+
+    expect($game->scored_at)->not->toBeNull()
+        ->and($user->predictions()->first()->points)->toBe(200)
+        ->and($user->total_points)->toBe(200);
+});
+
 test('sync fifa game results command marks match final with match status zero and result type one', function () {
     fakeFifaCalendarMatchSequence('calendar-matches.json', 'calendar-matches-finished-status0.json');
 

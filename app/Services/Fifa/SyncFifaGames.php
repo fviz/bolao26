@@ -96,8 +96,12 @@ class SyncFifaGames
 
     private function shouldScoreGame(Game $game): bool
     {
-        if (! $game->is_final) {
+        if (! $game->isReadyForScoring()) {
             return false;
+        }
+
+        if ($game->scored_at === null) {
+            return true;
         }
 
         return $game->wasChanged([
