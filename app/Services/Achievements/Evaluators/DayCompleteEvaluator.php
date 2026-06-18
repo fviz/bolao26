@@ -51,7 +51,11 @@ class DayCompleteEvaluator
             ?? $game->scheduled_at
             ?? now();
 
-        $context = ['awarded_at' => $awardedAt];
+        $context = [
+            'awarded_at' => $awardedAt,
+            'match_day' => $date,
+            'game_id' => $game->id,
+        ];
 
         $userIds = Prediction::query()
             ->whereIn('game_id', $gameIds)

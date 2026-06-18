@@ -46,12 +46,12 @@ class GameScoredEvaluator
         }
 
         $this->evaluatePointAchievements($user, $game, $prediction, $newPoints, $awardedAt, $notify);
-        $this->evaluateStreakAchievements($user, $awardedAt, $notify);
+        $this->evaluateStreakAchievements($user, $game, $awardedAt, $notify);
     }
 
     public function recalculateStreaks(User $user, bool $notify = true): void
     {
-        $this->evaluateStreakAchievements($user, now(), $notify);
+        $this->evaluateStreakAchievements($user, null, now(), $notify);
     }
 
     private function evaluatePointAchievements(
@@ -133,10 +133,14 @@ class GameScoredEvaluator
         }
     }
 
-    private function evaluateStreakAchievements(User $user, CarbonInterface $awardedAt, bool $notify): void
+    private function evaluateStreakAchievements(User $user, ?Game $game, CarbonInterface $awardedAt, bool $notify): void
     {
         $streaks = $this->streaks->current($user);
         $context = ['awarded_at' => $awardedAt];
+
+        if ($game !== null) {
+            $context['game_id'] = $game->id;
+        }
 
         $this->progress->set($user, 'no-embalo', min($streaks['scoringStreak'], 2));
         $this->progress->set($user, 'hat-trick', min($streaks['scoringStreak'], 3));

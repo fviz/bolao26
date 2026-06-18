@@ -2,6 +2,7 @@
 import { Head, Link, setLayoutProps } from '@inertiajs/vue3';
 import { watchEffect } from 'vue';
 import AchievementEmblem from '@/components/achievements/AchievementEmblem.vue';
+import AchievementAwardContext from '@/components/achievements/AchievementAwardContext.vue';
 import SetFeaturedAchievementButton from '@/components/achievements/SetFeaturedAchievementButton.vue';
 import { Button } from '@/components/ui/button';
 import { useHasPageProp } from '@/composables/useHasPageProp';
@@ -98,6 +99,12 @@ const formattedAwardDate = (date: string | null): string | null => {
                     Conquistada em
                     {{ formattedAwardDate(achievement.awardedAt) }}
                 </p>
+                <AchievementAwardContext
+                    v-if="achievement.earned && achievement.awardContext"
+                    :context="achievement.awardContext"
+                    :profile-name="profile.name"
+                    :is-current-user="profile.isCurrentUser"
+                />
                 <p
                     v-else-if="profile.isCurrentUser"
                     class="text-sm text-muted-foreground"

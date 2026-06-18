@@ -236,7 +236,9 @@ test('scoring streak awards no embalo and hat trick', function () {
     });
 
     expect(userHasAchievement($user->fresh(), 'no-embalo'))->toBeTrue()
-        ->and(userHasAchievement($user->fresh(), 'hat-trick'))->toBeTrue();
+        ->and(userHasAchievement($user->fresh(), 'hat-trick'))->toBeTrue()
+        ->and(userAchievementContext($user->fresh(), 'hat-trick'))
+        ->toMatchArray(['game_id' => $games->last()->id]);
 });
 
 test('achievements are not awarded twice', function () {

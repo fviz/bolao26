@@ -50,6 +50,9 @@ test('predicting all group stage games awards gabaritando a agenda', function ()
     expect($user->fresh()->userAchievements()
         ->whereHas('achievement', fn ($query) => $query->where('slug', 'gabaritando-a-agenda'))
         ->exists())->toBeTrue();
+
+    expect(userAchievementContext($user->fresh(), 'gabaritando-a-agenda'))
+        ->toHaveKey('game_id', $games->last()->id);
 });
 
 test('gabaritando progress tracks group stage predictions', function () {

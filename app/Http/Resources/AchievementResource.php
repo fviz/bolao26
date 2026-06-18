@@ -13,7 +13,7 @@ use Illuminate\Support\Carbon;
 class AchievementResource extends JsonResource
 {
     /**
-     * @param  array{earned?: bool, awardedAt?: ?Carbon, progressCurrent?: ?int, progressTarget?: ?int}  $meta
+     * @param  array{earned?: bool, awardedAt?: ?Carbon, progressCurrent?: ?int, progressTarget?: ?int, awardContext?: ?array, isFeatured?: bool}  $meta
      */
     public function __construct(
         $resource,
@@ -41,13 +41,15 @@ class AchievementResource extends JsonResource
             'progressCurrent' => $this->meta['progressCurrent'] ?? null,
             'progressTarget' => $this->meta['progressTarget'] ?? $this->progress_target,
             'isFeatured' => $this->meta['isFeatured'] ?? false,
+            'awardContext' => $this->meta['awardContext'] ?? null,
         ];
     }
 
     /**
      * @param  array{achievement: Achievement, earned: bool, awardedAt: ?Carbon, progressCurrent: ?int, progressTarget: ?int}  $item
+     * @param  array<string, mixed>|null  $awardContext
      */
-    public static function fromItem(array $item, bool $isFeatured = false): self
+    public static function fromItem(array $item, bool $isFeatured = false, ?array $awardContext = null): self
     {
         return new self($item['achievement'], [
             'earned' => $item['earned'],
@@ -55,6 +57,7 @@ class AchievementResource extends JsonResource
             'progressCurrent' => $item['progressCurrent'],
             'progressTarget' => $item['progressTarget'],
             'isFeatured' => $isFeatured,
+            'awardContext' => $awardContext,
         ]);
     }
 }

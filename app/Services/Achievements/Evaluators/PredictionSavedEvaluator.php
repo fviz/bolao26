@@ -47,10 +47,10 @@ class PredictionSavedEvaluator
             ], $notify);
         }
 
-        $this->evaluateGroupStageCompletion($user, $awardedAt, $notify);
+        $this->evaluateGroupStageCompletion($user, $game, $awardedAt, $notify);
     }
 
-    private function evaluateGroupStageCompletion(User $user, $awardedAt, bool $notify): void
+    private function evaluateGroupStageCompletion(User $user, Game $game, $awardedAt, bool $notify): void
     {
         $totalGroupStageGames = Game::query()
             ->whereNotNull('id_group')
@@ -72,6 +72,7 @@ class PredictionSavedEvaluator
             $latestPredictionAt = $userGroupStagePredictions->max('created_at') ?? $awardedAt;
 
             $this->awarder->award($user, 'gabaritando-a-agenda', [
+                'game_id' => $game->id,
                 'awarded_at' => $latestPredictionAt,
             ], $notify);
         }

@@ -51,3 +51,15 @@ function userHasAchievement(User $user, string $slug): bool
         ->whereHas('achievement', fn ($query) => $query->where('slug', $slug))
         ->exists();
 }
+
+/**
+ * @return array<string, mixed>|null
+ */
+function userAchievementContext(User $user, string $slug): ?array
+{
+    $userAchievement = $user->userAchievements()
+        ->whereHas('achievement', fn ($query) => $query->where('slug', $slug))
+        ->first();
+
+    return $userAchievement?->context;
+}
