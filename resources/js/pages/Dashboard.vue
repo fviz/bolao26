@@ -22,7 +22,7 @@ type Props = {
     userTotalPoints?: number;
     userRank?: number;
     nextGame?: GameListItem | null;
-    featuredGame?: FeaturedGame | null;
+    featuredGames?: FeaturedGame[];
     championPredictionsOpen?: boolean;
     topScorerPredictionsOpen?: boolean;
     hasChampionPrediction?: boolean;
@@ -163,11 +163,12 @@ defineOptions({
                 />
             </Link>
             <FeaturedGameCard
-                v-if="featuredGame"
-                :featured-game="featuredGame"
+                v-for="item in featuredGames"
+                :key="item.game.id"
+                :featured-game="item"
             />
             <div
-                v-else
+                v-if="!featuredGames || featuredGames.length === 0"
                 class="flex flex-col justify-between gap-2 rounded-xl bg-emerald-50 p-4 dark:bg-emerald-950"
             >
                 <p class="text-sm">Jogos recentes</p>

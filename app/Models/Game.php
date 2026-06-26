@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 #[Fillable([
     'fifa_match_id',
@@ -198,17 +199,17 @@ class Game extends Model
     }
 
     /**
-     * @return array{game: self, status: 'live'|'finished'}|null
+     * @return Collection<int, array{game: self, status: 'live'|'finished'}>
      */
-    public static function featuredForDashboard(): ?array
+    public static function featuredForDashboard(): Collection
     {
         $live = static::query()
             ->likelyLive()
             ->orderByDesc('scheduled_at')
-            ->first();
+            ->get();
 
-        if ($live !== null) {
-            return ['game' => $live, 'status' => 'live'];
+        if ($live->isNotEmpty()) {
+            return $live->map(fn ($game) => ['game' => $game, 'status' => 'live']);
         }
 
         $finished = static::query()
@@ -217,10 +218,10 @@ class Game extends Model
             ->first();
 
         if ($finished !== null) {
-            return ['game' => $finished, 'status' => 'finished'];
+            return collect([['game' => $finished, 'status' => 'finished']]);
         }
 
-        return null;
+        return collect();
     }
 
     public function isGroupStage(): bool

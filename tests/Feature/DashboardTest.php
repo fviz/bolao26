@@ -235,10 +235,11 @@ test('dashboard featured game prioritizes likely live match over last finished',
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
-            ->where('featuredGame.status', 'live')
-            ->where('featuredGame.game.id', $liveGame->id)
-            ->where('featuredGame.game.matchTitle', 'Argentina x Germany')
-            ->missing('featuredGame.game.result'));
+            ->has('featuredGames', 1)
+            ->where('featuredGames.0.status', 'live')
+            ->where('featuredGames.0.game.id', $liveGame->id)
+            ->where('featuredGames.0.game.matchTitle', 'Argentina x Germany')
+            ->missing('featuredGames.0.game.result'));
 });
 
 test('dashboard featured game shows last finished when no likely live match', function () {
@@ -274,11 +275,12 @@ test('dashboard featured game shows last finished when no likely live match', fu
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
-            ->where('featuredGame.status', 'finished')
-            ->where('featuredGame.game.id', $latestFinished->id)
-            ->where('featuredGame.game.result.homeScore', 2)
-            ->where('featuredGame.game.result.awayScore', 1)
-            ->where('featuredGame.game.userPrediction.points', 200));
+            ->has('featuredGames', 1)
+            ->where('featuredGames.0.status', 'finished')
+            ->where('featuredGames.0.game.id', $latestFinished->id)
+            ->where('featuredGames.0.game.result.homeScore', 2)
+            ->where('featuredGames.0.game.result.awayScore', 1)
+            ->where('featuredGames.0.game.userPrediction.points', 200));
 });
 
 test('dashboard featured game is null when only upcoming games exist', function () {
@@ -292,7 +294,33 @@ test('dashboard featured game is null when only upcoming games exist', function 
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
-            ->where('featuredGame', null));
+            ->where('featuredGames', []));
+});
+
+test('dashboard featured games shows all games currently live when there are multiple live games', function () {
+    $user = User::factory()->create();
+
+    $liveGame1 = Game::factory()->live()->create([
+        'home_name' => 'Argentina',
+        'away_name' => 'Germany',
+        'scheduled_at' => now()->subHour(),
+    ]);
+
+    $liveGame2 = Game::factory()->live()->create([
+        'home_name' => 'Brazil',
+        'away_name' => 'France',
+        'scheduled_at' => now()->subMinutes(30),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('featuredGames', 2)
+            ->where('featuredGames.0.status', 'live')
+            ->where('featuredGames.0.game.id', $liveGame2->id)
+            ->where('featuredGames.1.status', 'live')
+            ->where('featuredGames.1.game.id', $liveGame1->id));
 });
 
 test('dashboard exposes null latest achievement when user has no medals', function () {
@@ -357,8 +385,9 @@ test('dashboard featured game excludes stale kickoff from likely live window', f
         ->get(route('dashboard'))
         ->assertOk()
         ->assertInertia(fn ($page) => $page
-            ->where('featuredGame.status', 'finished')
-            ->where('featuredGame.game.id', $finishedGame->id)
-            ->where('featuredGame.game.result.homeScore', 3)
-            ->where('featuredGame.game.result.awayScore', 2));
+            ->has('featuredGames', 1)
+            ->where('featuredGames.0.status', 'finished')
+            ->where('featuredGames.0.game.id', $finishedGame->id)
+            ->where('featuredGames.0.game.result.homeScore', 3)
+            ->where('featuredGames.0.game.result.awayScore', 2));
 });

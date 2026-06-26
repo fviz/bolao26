@@ -41,11 +41,11 @@ class DashboardController extends Controller
 
         $featured = Game::featuredForDashboard();
 
-        if ($featured !== null) {
-            $featured['game']->load([
+        $featured->each(function ($item) use ($user) {
+            $item['game']->load([
                 'predictions' => fn ($query) => $query->where('user_id', $user->id),
             ]);
-        }
+        });
 
         $latestEarned = UserAchievementData::earnedForUser($user, 1)->first();
         $earnedAchievementsCount = UserAchievementData::earnedCountForUser($user);
@@ -57,10 +57,10 @@ class DashboardController extends Controller
             'userTotalPoints' => $user->total_points,
             'userRank' => $userEntry['rank'] ?? 1,
             'nextGame' => $nextGame ? GameResource::make($nextGame) : null,
-            'featuredGame' => $featured ? [
-                'status' => $featured['status'],
-                'game' => GameResource::make($featured['game']),
-            ] : null,
+            'featuredGames' => $featured->map(fn ($item) => [
+                'status' => $item['status'],
+                'game' => GameResource::make($item['game']),
+            ])->all(),
             'browserPushAvailable' => filled(config('webpush.vapid.public_key'))
                 && filled(config('webpush.vapid.private_key')),
             'championPredictionsOpen' => ChampionPredictions::isOpen(),
