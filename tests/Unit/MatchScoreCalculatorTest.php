@@ -98,7 +98,7 @@ test('knockout good penalty prediction awards 120 points', function () {
     ))->toBe(120);
 });
 
-test('knockout wrong penalty winner awards 50 points', function () {
+test('knockout exact score wrong penalty winner awards 200 points', function () {
     expect($this->calculator->calculate(
         isKnockout: true,
         wentToPenalties: true,
@@ -108,7 +108,20 @@ test('knockout wrong penalty winner awards 50 points', function () {
         predictedHome: 2,
         predictedAway: 2,
         predictedPenaltyWinner: PenaltyWinner::Away,
-    ))->toBe(50);
+    ))->toBe(200);
+});
+
+test('knockout tie wrong penalty winner awards 100 points', function () {
+    expect($this->calculator->calculate(
+        isKnockout: true,
+        wentToPenalties: true,
+        actualPenaltyWinner: PenaltyWinner::Home,
+        actualHome: 2,
+        actualAway: 2,
+        predictedHome: 1,
+        predictedAway: 1,
+        predictedPenaltyWinner: PenaltyWinner::Away,
+    ))->toBe(100);
 });
 
 test('knockout without penalties uses regular scoring', function () {

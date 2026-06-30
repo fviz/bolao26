@@ -63,7 +63,11 @@ class MatchScoreCalculator
             return 120;
         }
 
-        return 50;
+        if ($predictedHome === $actualHome && $predictedAway === $actualAway) {
+            return 200;
+        }
+
+        return 100;
     }
 
     private function regularTimePoints(
