@@ -83,7 +83,13 @@ class GameScoredEvaluator
             $this->award($user, 'frieza-total', $context, $notify);
         }
 
-        if ($points === 50) {
+        if (
+            $game->isKnockout()
+            && $game->wentToPenalties()
+            && $prediction->home_score === $prediction->away_score
+            && $prediction->penalty_winner !== null
+            && $prediction->penalty_winner !== $game->penaltyWinnerSide()
+        ) {
             $this->award($user, 'morreu-na-praia', $context, $notify);
         }
 
