@@ -281,6 +281,41 @@ test('sync fifa game results command keeps live matches from being marked final'
         ->and($game->scored_at)->toBeNull();
 });
 
+test('sync fifa game results command marks match final with match status zero and result type two (overtime/penalties)', function () {
+    fakeFifaCalendarMatchSequence('calendar-matches.json', 'calendar-matches-finished-penalties.json');
+
+    $this->artisan('games:sync-fifa')->assertSuccessful();
+
+    $game = Game::query()->where('fifa_match_id', '400021443')->first();
+    $game->update([
+        'scheduled_at' => now()->subHour(),
+        'is_final' => false,
+    ]);
+
+    $user = User::factory()->create(['total_points' => 0]);
+
+    Prediction::factory()->create([
+        'user_id' => $user->id,
+        'game_id' => $game->id,
+        'home_score' => 1,
+        'away_score' => 1,
+    ]);
+
+    $this->artisan('games:sync-fifa-results')->assertSuccessful();
+
+    $game->refresh();
+    $user->refresh();
+
+    expect($game->home_score)->toBe(1)
+        ->and($game->away_score)->toBe(1)
+        ->and($game->home_penalty_score)->toBe(3)
+        ->and($game->away_penalty_score)->toBe(4)
+        ->and($game->match_status)->toBe(0)
+        ->and($game->is_final)->toBeTrue()
+        ->and($game->scored_at)->not->toBeNull()
+        ->and($user->predictions()->first()->points)->toBeGreaterThan(0);
+});
+
 test('sync fifa game results command rolls back points when a live match was wrongly marked final', function () {
     fakeFifaCalendarMatchSequence('calendar-matches.json', 'calendar-matches-live.json');
 
