@@ -121,7 +121,7 @@ class FifaMatchMapper
         }
 
         return $matchStatus === 0
-            && in_array($resultType, [1, 2], true)
+            && in_array($resultType, [1, 2, 3], true)
             && $homeScore !== null
             && $awayScore !== null;
     }
