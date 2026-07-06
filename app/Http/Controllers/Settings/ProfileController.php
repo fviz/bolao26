@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\ProfileAvatarRequest;
 use App\Http\Requests\Settings\ProfileDeleteRequest;
 use App\Http\Requests\Settings\ProfileUpdateRequest;
+use App\Services\Achievements\Evaluators\ProfileEvaluator;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class ProfileController extends Controller
     /**
      * Store the user's profile avatar.
      */
-    public function storeAvatar(ProfileAvatarRequest $request): RedirectResponse
+    public function storeAvatar(ProfileAvatarRequest $request, ProfileEvaluator $profileEvaluator): RedirectResponse
     {
         $user = $request->user();
 
@@ -63,6 +64,8 @@ class ProfileController extends Controller
 
         $user->avatar_path = $path;
         $user->save();
+
+        $profileEvaluator->evaluate($user);
 
         Inertia::flash('toast', ['type' => 'success', 'message' => __('Foto de perfil atualizada.')]);
 
