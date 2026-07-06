@@ -3,12 +3,15 @@
 namespace App\Providers;
 
 use App\Contracts\TournamentTopScorerResolver;
+use App\Listeners\AwardNightOwlAchievement;
 use App\Services\Achievements\AchievementAwarder;
 use App\Services\TournamentTopScorer\NullTournamentTopScorerResolver;
 use Carbon\CarbonImmutable;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
@@ -37,6 +40,8 @@ class AppServiceProvider extends ServiceProvider
 
         $this->configureDefaults();
         $this->configureHttpMacros();
+
+        Event::listen(Login::class, AwardNightOwlAchievement::class);
     }
 
     protected function configureHttpMacros(): void
