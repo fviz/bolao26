@@ -255,6 +255,42 @@ class AchievementSeeder extends Seeder
             'sort_order' => 27,
             'progress_target' => null,
         ],
+        [
+            'slug' => 'o-bacurau',
+            'name' => 'O Bacurau',
+            'description' => 'Abriu o bolão de madrugada (00h-06h).',
+            'emoji' => '🦉',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 28,
+            'progress_target' => null,
+        ],
+        [
+            'slug' => 'falador',
+            'name' => 'Falador',
+            'description' => 'Fez 5 comentários nos jogos.',
+            'emoji' => '🗣️',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 29,
+            'progress_target' => 5,
+        ],
+        [
+            'slug' => 'azarado',
+            'name' => 'Azarado',
+            'description' => 'Pontuou 0 em cinco jogos.',
+            'emoji' => '🙃',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 30,
+            'progress_target' => 5,
+        ],
+        [
+            'slug' => 'boa-pinta',
+            'name' => 'Boa Pinta',
+            'description' => 'Colocou uma foto de perfil.',
+            'emoji' => '📸',
+            'tier' => AchievementTier::Bronze,
+            'sort_order' => 31,
+            'progress_target' => null,
+        ],
     ];
 
     public function run(): void
