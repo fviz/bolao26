@@ -5,10 +5,12 @@ namespace App\Services\Achievements;
 use App\Models\Game;
 use App\Models\Prediction;
 use App\Models\User;
+use App\Services\Achievements\Evaluators\CommentEvaluator;
 use App\Services\Achievements\Evaluators\DayCompleteEvaluator;
 use App\Services\Achievements\Evaluators\GameScoredEvaluator;
 use App\Services\Achievements\Evaluators\GameSocialEvaluator;
 use App\Services\Achievements\Evaluators\PredictionSavedEvaluator;
+use App\Services\Achievements\Evaluators\ProfileEvaluator;
 use App\Services\Achievements\Evaluators\TournamentEvaluator;
 
 class AchievementBackfiller
@@ -20,6 +22,8 @@ class AchievementBackfiller
         private readonly DayCompleteEvaluator $dayCompleteEvaluator,
         private readonly PredictionSavedEvaluator $predictionSavedEvaluator,
         private readonly TournamentEvaluator $tournamentEvaluator,
+        private readonly ProfileEvaluator $profileEvaluator,
+        private readonly CommentEvaluator $commentEvaluator,
     ) {}
 
     public function backfill(?User $user = null, bool $notify = false): void
@@ -61,6 +65,9 @@ class AchievementBackfiller
             : User::query()->get();
 
         foreach ($users as $subject) {
+            $this->profileEvaluator->evaluate($subject, notify: false);
+            $this->commentEvaluator->evaluate($subject, notify: false);
+
             $subject->predictions()
                 ->with('game')
                 ->orderBy('created_at')

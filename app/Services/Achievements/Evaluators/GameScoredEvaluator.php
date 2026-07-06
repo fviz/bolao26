@@ -83,6 +83,19 @@ class GameScoredEvaluator
             $this->award($user, 'frieza-total', $context, $notify);
         }
 
+        if ($points === 0) {
+            $zeroCount = Prediction::query()
+                ->where('user_id', $user->id)
+                ->where('points', 0)
+                ->count();
+
+            $this->progress->set($user, 'azarado', min($zeroCount, 5));
+
+            if ($zeroCount >= 5) {
+                $this->award($user, 'azarado', $context, $notify);
+            }
+        }
+
         if (
             $game->isKnockout()
             && $game->wentToPenalties()
